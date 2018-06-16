@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html class="gr__cleverhans_io" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>The challenge of verification and testing of machine learning</title>
+  <meta name="description" content="by Ian Goodfellow and Nicolas Papernot">
+
+  <link rel="stylesheet" href="The%20challenge%20of%20verification%20and%20testing%20of%20machine%20learning_files/main.css">
+  <link rel="canonical" href="http://cleverhans.io/security/privacy/ml/2017/06/14/verification.html">
+  <link rel="alternate" type="application/rss+xml" title="cleverhans-blog" href="http://www.cleverhans.io/feed.xml">
+  
+  
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Blank; src: url('about:blank')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+
+  <body data-gr-c-s-loaded="true"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px none; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="http://www.cleverhans.io/">cleverhans-blog</a>
+  
+    
+      <nav class="site-nav">
+        <input id="nav-trigger" class="nav-trigger" type="checkbox">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+            <a class="page-link" href="http://www.cleverhans.io/about/">About</a>
+            
+          
+            
+            
+            <a class="page-link" href="http://www.cleverhans.io/">Welcome to the cleverhans blog</a>
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+
+<!--
+  Begin modification from minima theme default by Ian.
+  This enables MathJax so that LaTeX actually renders. -->
+<script src="The%20challenge%20of%20verification%20and%20testing%20of%20machine%20learning_files/MathJax.js" id=""></script>
+<!-- End modification from minima theme default. -->
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">The challenge of verification and testing of machine learning</h1>
+    <p class="post-meta"><time datetime="2017-06-14T09:57:46+00:00" itemprop="datePublished">Jun 14, 2017</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><em>by Ian Goodfellow and Nicolas Papernot</em></p>
+
+<p>In our <a href="http://www.cleverhans.io/security/privacy/ml/2017/02/15/why-attacking-machine-learning-is-easier-than-defending-it.html">second post</a>, we gave some
+background explaining
+why attacking machine learning is often easier than defending it. 
+We saw some of the reasons why we do not yet have
+completely effective defenses against adversarial examples,
+and we speculated about whether we can ever expect such a defense.</p>
+
+<p>In this post, we explore the <strong>types of guarantees one can expect
+a machine learning model to possess</strong>.
+We argue that the limitations of existing defenses point to the lack of 
+verification of machine learning models.
+Indeed, to design reliable systems, engineers typically engage in both testing and verification:</p>
+
+<ul>
+  <li>
+    <p>By <em>testing</em>, we mean evaluating the system in several conditions and observing its
+behavior, watching for defects.</p>
+  </li>
+  <li>
+    <p>By <em>verification</em>, we mean producing a compelling argument that the system
+will not misbehave under a very broad range of circumstances.</p>
+  </li>
+</ul>
+
+<p>Orthogonal to this issue is the question of which input values should be subject
+to verification and testing.
+Do we intend to verify or test the system only for “naturally occurring” legitimate inputs,
+or do we intend to provide guarantees for its behavior on arbitrary, degenerate inputs?
+Many software systems such as compilers have undefined behavior for some inputs.</p>
+
+<h3 id="should-we-test-or-verify-on-which-inputs">Should we test or verify? On which inputs?</h3>
+
+<p><strong>Machine learning practitioners have traditionally relied primarily on testing.</strong>
+A classifier is usually evaluated by applying the classifier to several examples
+drawn from a test set and measuring its accuracy on these examples.
+By definition, these testing procedures cannot find all of the possible—previously unseen—examples that
+may be misclassified.</p>
+
+<p>The verification analog of measuring test set error is <em>statistical learning</em>
+theory [V98].
+Statistical learning theory provides guarantees that the test error rate is unlikely
+to exceed some threshold, but these guarantees are often so conservative that they
+are not used by engineers in practice.</p>
+
+<p>Even when statistical learning theory is applied, it is typical to consider only
+“naturally occurring” inputs: guarantees are expressed for points that
+are drawn from the <em>same</em> distribution as the training data.</p>
+
+<h3 id="bringing-adversaries-in-the-equation">Bringing adversaries in the equation</h3>
+
+<p>To provide security guarantees, it is necessary to improve along both axes: 1)
+we must use verification rather than testing, and 2) we must ensure that the model
+will behave safely on unusual inputs crafted by an attacker.
+One well-studied property that practitioners would like to guarantee is
+<a href="http://www.cleverhans.io/security/privacy/ml/2017/02/15/why-attacking-machine-learning-is-easier-than-defending-it.html">robustness to adversarial examples</a>.</p>
+
+<p>The natural way to <em>test</em>
+robustness to adversarial examples is simply to evaluate
+the accuracy of the model on a test set that has been adversarially perturbed
+to create adversarial examples [SZS13].
+This applies the traditional testing methodology used in machine learning to a new set
+of inputs.</p>
+
+<p><strong>Unfortunately, testing is insufficient to provide security guarantees, because
+an attacker can send inputs that differ from those used for the testing process.</strong>
+For example, a model that is tested and found to be robust against the
+fast gradient sign method of adversarial example generation [GSS14]
+may be vulnerable to more computationally expensive methods like attacks based on
+numerical optimization [SZS13] or saliency maps [PMJ16].</p>
+
+<p>In general, testing is insufficient because it provides a <em>lower bound</em>
+on the failure rate of the system when, to provide security guarantees,
+an <em>upper bound</em> is necessary. In other words,
+testing identifies <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 0.772em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.577em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.673em, 1000.56em, 2.415em, -1000em); top: -2.26em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math; font-style: italic;">n</span></span><span style="display: inline-block; width: 0px; height: 2.26em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.077em; border-left: 0px solid; width: 0px; height: 0.714em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">n</script> inputs that cause failure so the engineer can conclude
+that <em>at least</em> <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-4" style="width: 0.772em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.577em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.673em, 1000.56em, 2.415em, -1000em); top: -2.26em; left: 0em;"><span class="mrow" id="MathJax-Span-5"><span class="mi" id="MathJax-Span-6" style="font-family: MathJax_Math; font-style: italic;">n</span></span><span style="display: inline-block; width: 0px; height: 2.26em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.077em; border-left: 0px solid; width: 0px; height: 0.714em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></span></span><script type="math/tex" id="MathJax-Element-2">n</script> inputs cause failure; the engineer would prefer
+to have a means of becoming reasonably confident that <em>at most</em> <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-7" style="width: 0.772em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.577em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.673em, 1000.56em, 2.415em, -1000em); top: -2.26em; left: 0em;"><span class="mrow" id="MathJax-Span-8"><span class="mi" id="MathJax-Span-9" style="font-family: MathJax_Math; font-style: italic;">n</span></span><span style="display: inline-block; width: 0px; height: 2.26em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.077em; border-left: 0px solid; width: 0px; height: 0.714em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">n</script>
+inputs cause failure.</p>
+
+<p>These limitations of testing encountered in the context of machine learning
+are reminiscent of those encountered throughout many other kinds of
+software design.
+When discussing methods for guaranteeing program correctness,
+Edsger Dijkstra said, “testing shows the presence, not the absence of bugs.”</p>
+
+<p>It is clear that
+<strong>testing</strong> of <strong>naturally occurring inputs</strong> is sufficient for traditional machine learning
+applications, but <strong>verification</strong> of <strong>unusual inputs</strong> is necessary for security guarantees.
+<strong>We should verify, but so far we only know how to test</strong>.</p>
+
+<p>Current machine learning models are so easily broken that testing
+on unusual inputs is sufficient
+to expose their flaws.
+Hopefully, we will have better defenses against adversarial examples in the near
+future.
+Testing may no longer be sufficient to expose the flaws in such models, and we
+will need verification techniques to study the effectiveness of the new defenses.
+<strong>The development of
+a guarantee characterizing the space of inputs that are processed correctly
+is central to the future of ML in adversarial
+settings, and it will almost certainly be grounded in formal verification.</strong></p>
+
+<h3 id="theoretical-verification-of-ml">Theoretical verification of ML</h3>
+
+<p>Verification of machine learning models’ robustness to adversarial examples is
+in its infancy.
+Current approaches verify that a classifier assigns the same class to all points
+within a specified neighborhood of a point <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-10" style="width: 0.772em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.577em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.673em, 1000.53em, 2.415em, -1000em); top: -2.26em; left: 0em;"><span class="mrow" id="MathJax-Span-11"><span class="mi" id="MathJax-Span-12" style="font-family: MathJax_Math; font-style: italic;">x</span></span><span style="display: inline-block; width: 0px; height: 2.26em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.077em; border-left: 0px solid; width: 0px; height: 0.714em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-4">x</script>. In the animation below, we
+illustrate this type of approach and compare it to testing individual points
+in the same neighborhood.</p>
+
+<div style="text-align:center; margin-bottom:30px;"><img src="The%20challenge%20of%20verification%20and%20testing%20of%20machine%20learning_files/testing-verification.gif" width="75%"></div>
+
+<p>Researchers are working hard to build verification systems for neural networks.
+Unfortunately, these systems are not yet mature.
+Pulina et al. developed the first verification system for demonstrating that the
+output class of a neural network is constant across a desired neighborhood [PT10].
+This first system was limited to only one hidden layer, and was demonstrated only
+on networks with less than a dozen hidden units.
+In addition, the sigmoid
+activation function is approximated using constraints to reduce the problem to SAT.</p>
+
+<p>Later,
+Huang et al. improved upon this initial method and proposed a new verification system
+applicable to modern neural network architectures [HKW16].
+This system scaled to much larger networks, such as ImageNet classifiers.
+A remaining limitation of the new verification system is that it relies on a variety
+of assumptions—for example, that only a subset of the hidden units in the neural
+network are relevant to each input.
+These assumptions mean that the system can no longer provide an absolute guarantee
+of the absence of adversarial examples, because an adversarial example that violates
+these assumptions (for example, by manipulating one of the units that was assumed
+to be irrelevant) could evade detection.</p>
+
+<p>Reluplex [KBD17] is another verification system that uses LP solvers
+to scale to much larger networks. Reluplex is able to become much more efficient
+by specializing on rectified linear networks [GBB11, JKL09, NH10]
+and their piecewise linear structure.</p>
+
+<p><strong>These current verification systems are limited in scope because they verify
+only that the output class remains constant in some specified neighborhood
+of some specific point <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-13" style="width: 0.772em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.577em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.673em, 1000.53em, 2.415em, -1000em); top: -2.26em; left: 0em;"><span class="mrow" id="MathJax-Span-14"><span class="mi" id="MathJax-Span-15" style="font-family: MathJax_Math; font-style: italic;">x</span></span><span style="display: inline-block; width: 0px; height: 2.26em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.077em; border-left: 0px solid; width: 0px; height: 0.714em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-5">x</script>.</strong>
+There are two limitations to this:</p>
+
+<ol>
+  <li>
+    <p>We do not have a way to exhaustively 
+enumerate all <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-16" style="width: 0.772em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.577em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.673em, 1000.53em, 2.415em, -1000em); top: -2.26em; left: 0em;"><span class="mrow" id="MathJax-Span-17"><span class="mi" id="MathJax-Span-18" style="font-family: MathJax_Math; font-style: italic;">x</span></span><span style="display: inline-block; width: 0px; height: 2.26em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.077em; border-left: 0px solid; width: 0px; height: 0.714em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-6">x</script> points near which the classifier should be approximately
+constant (we cannot imagine all future naturally occurring inputs)</p>
+  </li>
+  <li>
+    <p>The neighborhoods surrounding <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-19" style="width: 0.772em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.577em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.673em, 1000.53em, 2.415em, -1000em); top: -2.26em; left: 0em;"><span class="mrow" id="MathJax-Span-20"><span class="mi" id="MathJax-Span-21" style="font-family: MathJax_Math; font-style: italic;">x</span></span><span style="display: inline-block; width: 0px; height: 2.26em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.077em; border-left: 0px solid; width: 0px; height: 0.714em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-7">x</script> that we currently use are somewhat arbitrary
+and conservative; we tend to use <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msup&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;/msup&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-22" style="width: 1.445em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.106em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.432em, 1001.11em, 2.404em, -1000em); top: -2.26em; left: 0em;"><span class="mrow" id="MathJax-Span-23"><span class="msubsup" id="MathJax-Span-24"><span style="display: inline-block; position: relative; width: 1.112em; height: 0px;"><span style="position: absolute; clip: rect(3.163em, 1000.65em, 4.135em, -1000em); top: -3.99em; left: 0em;"><span class="mi" id="MathJax-Span-25" style="font-family: MathJax_Math; font-style: italic;">L</span><span style="display: inline-block; width: 0px; height: 3.99em;"></span></span><span style="position: absolute; top: -4.353em; left: 0.681em;"><span class="mi" id="MathJax-Span-26" style="font-size: 70.7%; font-family: MathJax_Math; font-style: italic;">p</span><span style="display: inline-block; width: 0px; height: 3.99em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.26em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.063em; border-left: 0px solid; width: 0px; height: 1.013em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>L</mi><mi>p</mi></msup></math></span></span><script type="math/tex" id="MathJax-Element-8">L^p</script> norm balls of small size because human
+observers agree that, for a small enough norm ball, all enclosed points should
+have the same class, but in practice the region of constant class should presumably
+be larger and have a different, less regular, less readily specified shape.</p>
+  </li>
+</ol>
+
+<p>To summarize, verifying machine learning models first requires that we define
+the set of legal inputs, i.e., the set of inputs that we would
+like our model to correctly classify. This set of legal inputs
+is often much larger than the “test set” included in most benchmarks.
+Researchers will then have to
+design verification techniques that can efficiently guarantee the correctness
+of the machine learning predictions made on this entire set of legal inputs.
+Challenges often encountered in machine learning—such as the need to generalize
+to new inputs—may make this a particularly difficult goal
+to achieve, as indicated by efforts cited in this post [PT10, HKW16, KBD17].
+If that is the case, techniques developed in other communities may
+enable partial verification of machine learning models through procedures closer to
+the ones of testing: a good example is the positive impact of <a href="https://www.kapravelos.com/teaching/csc405-s17/lectures/09-fuzzing.pdf">fuzzing</a> in
+the computer security community.</p>
+
+<h3 id="is-there-a-no-free-lunch-theorem-in-adversarial-settings">Is there a “no free lunch” theorem in adversarial settings?</h3>
+
+<p>It is worth considering the possibility that no verification system will ever exist
+because no machine learning model will ever be fully robust and accurate.
+In particular, the challenge of generalizing to inputs near new, previously unseen
+but legitimate inputs <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-27" style="width: 0.772em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.577em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.673em, 1000.53em, 2.415em, -1000em); top: -2.26em; left: 0em;"><span class="mrow" id="MathJax-Span-28"><span class="mi" id="MathJax-Span-29" style="font-family: MathJax_Math; font-style: italic;">x</span></span><span style="display: inline-block; width: 0px; height: 2.26em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.077em; border-left: 0px solid; width: 0px; height: 0.714em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-9">x</script> seems difficult to overcome.</p>
+
+<p>In the traditional machine learning setting, there are clear theoretical limits
+to how well a machine learning system can be expected to perform on new
+test points.
+For example, the “no free lunch” theorem [W96] states that <em>all</em> supervised
+classification algorithms have the same accuracy on new test points, when averaged
+over all possible datasets.</p>
+
+<p><strong>An important open theoretical question is whether the “no free lunch” theorem can be
+extended to the adversarial setting.</strong> If we assume that attackers operate by making
+small perturbations to the test set, then the premise of the “no free lunch” theorem,
+where the average is taken over all possible datasets including those where small
+perturbations should not be ignored by the classifier, no longer applies.</p>
+
+<p>Depending on the resolution of this question, the arms race between attackers and
+defenders could have two different outcomes.
+The attacker might fundamentally have the advantage, due to inherent statistical
+difficulties associated with predicting the correct value for new test points.
+If we are fortunate, the defender might have a fundamental advantage for a broad
+set of problem classes, paving the way for the design and verification of
+algorithms with robustness guarantees.</p>
+
+<p>Interested readers will find a preliminary discussion of this question 
+in <a href="https://arxiv.org/abs/1611.03814">[PMS16]</a>. The analysis 
+characterizes the trade-off between model accuracy and robustness to adversarial efforts.
+It shows that in the presence of an adversary
+capable of finding a distribution that increases the learner’s loss, then the
+learner benefits from moving to a richer hypothesis class. A richer hypothesis
+class is informally defined as a more complex class of hypotheses that provides
+a lower minimum loss against any distribution. Hence, a tension potentially arises
+in the presence of limited data—because learning a more complex hypothesis would typically
+require more data in practice.</p>
+
+<h3 id="reproducible-testing-with-cleverhans">Reproducible testing with CleverHans</h3>
+
+<p>While verification is challenging even from a theoretical point of view, even
+straightforward testing can be challenging from a practical point of view.
+Suppose a researcher proposes a new defense procedure and evaluates that defense
+against a particular adversarial example attack procedure.
+If the resulting model obtains high accuracy, does it mean that the defense
+was effective? Possibly, but it could also mean that the researcher’s
+implementation of the attack was weak.
+A similar problem occurs when a researcher tests a proposed attack technique
+against their own implementation of a common defense procedure.</p>
+
+<p>To resolve these difficulties, we have created the <a href="https://github.com/tensorflow/cleverhans">CleverHans
+library</a>. This library contains reference implementations of several attack
+and defense procedures. <strong>Researchers and product developers can use <code class="highlighter-rouge">cleverhans</code>
+to test their models against standardized, state-of-the-art attacks and defenses.</strong>
+This way, if a defense obtains a high accuracy against a <code class="highlighter-rouge">cleverhans</code> attack,
+the test conclusively shows that the defense is strong, and if an attack obtains
+a high failure rate against a <code class="highlighter-rouge">cleverhans</code> defense, the test conclusively
+shows that the attack is strong.
+Moreover, results in published research are comparable to one another, so long
+as they are produced with the same version of CleverHans in similar computing
+environments.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>The verification of machine learning models is still in its infancy, because
+methods make assumptions that prevent them from providing absolute guarantees
+of the absence of adversarial examples.
+We hope our readers will be inspired to solve some of these problems.
+In addition, we encourage researchers to use CleverHans to improve the
+reproducibility of machine learning testing in adversarial settings.</p>
+
+<h3 id="acknowledgments">Acknowledgments</h3>
+
+<p>We would like to thank Martin Abadi for his feedback on drafts of this post.
+Thanks to Marta Kwiatkowska for pointing out a color error in the legend
+of the animation comparing testing to verification.</p>
+
+<h3 id="references">References</h3>
+
+<p>[GBB11] Glorot, X., Bordes, A., &amp; Bengio, Y. (2011, April). Deep 
+Sparse Rectifier Neural Networks. In Aistats (Vol. 15, No. 106, p. 275).</p>
+
+<p>[GSS14] Goodfellow, I. J., Shlens, J., &amp; Szegedy, C. (2014). 
+Explaining and harnessing adversarial examples. arXiv preprint 
+arXiv:1412.6572.</p>
+
+<p>[HKW16] Huang, X., Kwiatkowska, M., Wang, S., &amp; Wu, M. (2016). 
+Safety Verification of Deep Neural Networks. arXiv preprint 
+arXiv:1610.06940.</p>
+
+<p>[JKL09] Jarrett, K., Kavukcuoglu, K., &amp; LeCun, Y. (2009, 
+September). What is the best multi-stage architecture for object 
+recognition?. In Computer Vision, 2009 IEEE 12th International 
+Conference on (pp. 2146-2153). IEEE.</p>
+
+<p>[KBD17] Katz, G., Barrett, C., Dill, D., Julian, K., &amp; 
+Kochenderfer, M. (2017). Reluplex: An Efficient SMT Solver for Verifying
+ Deep Neural Networks. arXiv preprint arXiv:1702.01135.</p>
+
+<p>[NH10] Nair, V., &amp; Hinton, G. E. (2010). Rectified linear units 
+improve restricted boltzmann machines. In Proceedings of the 27th 
+international conference on machine learning (ICML-10) (pp. 807-814).</p>
+
+<p>[PMJ16] Papernot, N., McDaniel, P., Jha, S., Fredrikson, M., Celik, 
+Z. B., &amp; Swami, A. (2016, March). The limitations of deep learning 
+in adversarial settings. In 2016 IEEE European Symposium on Security and
+ Privacy (EuroS&amp;P) (pp. 372-387). IEEE.</p>
+
+<p>[PMS16] Papernot, N., McDaniel, P., Sinha, A., &amp; Wellman, M. 
+(2016). Towards the Science of Security and Privacy in Machine Learning.
+ arXiv preprint arXiv:1611.03814.</p>
+
+<p>[PT10] Pulina, L., &amp; Tacchella, A. (2010, July). An 
+abstraction-refinement approach to verification of artificial neural 
+networks. In International Conference on Computer Aided Verification 
+(pp. 243-257). Springer Berlin Heidelberg.</p>
+
+<p>[SZS13] Szegedy, C., Zaremba, W., Sutskever, I., Bruna, J., Erhan, 
+D., Goodfellow, I., &amp; Fergus, R. (2013). Intriguing properties of 
+neural networks. arXiv preprint arXiv:1312.6199.</p>
+
+<p>[V98] Vapnik, V. (1998). Statistical Learning Theory.</p>
+
+<p>[W96] Wolpert, D. H. (1996). The lack of a priori distinctions between learning algorithms. Neural computation, 8(7), 1341-1390.</p>
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cleverhans-blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              cleverhans-blog
+            
+            </li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Jekyll blog associated with cleverhans</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px none; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px none; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-size-adjust: none; font-family: MathJax_Size4, sans-serif;"></div></div></body></html>

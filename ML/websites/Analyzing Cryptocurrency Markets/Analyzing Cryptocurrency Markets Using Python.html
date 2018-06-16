@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html class="gr__blog_patricktriest_com"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Analyzing Cryptocurrency Markets Using Python</title>
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="shortcut icon" href="https://cdn.patricktriest.com/blog/images/favicon/favicon-32.png">
+<link href="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/css.css" rel="stylesheet">
+<link href="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/icon.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/screen.css">
+<meta name="description" content="A data-driven approach to cryptocurrency (Bitcoin, Ethereum, Litecoin, Ripple etc.) market analysis and visualization using Python.">
+<link rel="shortcut icon" href="https://blog.patricktriest.com/favicon.png" type="image/png">
+<link rel="canonical" href="https://blog.patricktriest.com/analyzing-cryptocurrencies-python/">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<link rel="amphtml" href="https://blog.patricktriest.com/analyzing-cryptocurrencies-python/amp/">
+<meta property="og:site_name" content="Break | Better">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Analyzing Cryptocurrency Markets Using Python">
+<meta property="og:description" content="A data-driven approach to cryptocurrency (Bitcoin, Ethereum, Litecoin, Ripple etc.) market analysis and visualization using Python.">
+<meta property="og:url" content="http://blog.patricktriest.com/analyzing-cryptocurrencies-python/">
+<meta property="og:image" content="https://cdn.patricktriest.com/blog/images/posts/crypto-markets/crypto_header.jpg">
+<meta property="article:published_time" content="2017-08-20T12:00:00.000Z">
+<meta property="article:modified_time" content="2017-10-17T12:55:09.000Z">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Data Science">
+<meta property="article:tag" content="Guides">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Analyzing Cryptocurrency Markets Using Python">
+<meta name="twitter:description" content="A data-driven approach to cryptocurrency (Bitcoin, Ethereum, Litecoin, Ripple etc.) market analysis and visualization using Python.">
+<meta name="twitter:url" content="http://blog.patricktriest.com/analyzing-cryptocurrencies-python/">
+<meta name="twitter:image" content="https://cdn.patricktriest.com/blog/images/posts/crypto-markets/crypto_header.jpg">
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="Patrick Triest">
+<meta name="twitter:label2" content="Filed under">
+<meta name="twitter:data2" content="Python, Data Science, Guides">
+<meta property="og:image:width" content="1440">
+<meta property="og:image:height" content="1024">
+<script async="" src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/analytics.js"></script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Break | Better",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog-images.patricktriest.com/uploads/ic_home_white_24dp_2x.png",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Patrick Triest",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog-images.patricktriest.com/uploads/me-1.jpg",
+            "width": 512,
+            "height": 512
+        },
+        "url": "http://blog.patricktriest.com/author/patrick/",
+        "sameAs": [
+            "https://github.com/triestpa"
+        ]
+    },
+    "headline": "Analyzing Cryptocurrency Markets Using Python",
+    "url": "http://blog.patricktriest.com/analyzing-cryptocurrencies-python/",
+    "datePublished": "2017-08-20T12:00:00.000Z",
+    "dateModified": "2017-10-17T12:55:09.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.patricktriest.com/blog/images/posts/crypto-markets/crypto_header.jpg",
+        "width": 1440,
+        "height": 1024
+    },
+    "keywords": "Python, Data Science, Guides",
+    "description": "A data-driven approach to cryptocurrency (Bitcoin, Ethereum, Litecoin, Ripple etc.) market analysis and visualization using Python.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://blog.patricktriest.com/"
+    }
+}
+    </script>
+<script type="text/javascript" src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/ghost-sdk.js"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "70bc1e47a7c1"
+});
+</script>
+<meta name="generator" content="Ghost 1.20">
+<link rel="alternate" type="application/rss+xml" title="Break | Better" href="https://blog.patricktriest.com/rss/">
+<link href="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/prism.css" rel="stylesheet">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47695665-8', 'auto');
+  ga('send', 'pageview');
+</script>
+<style>
+    .plotly-iframe {
+        display: block;
+        height: auto;
+        padding: 0.6em 0;
+        position: relative;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        height: 600px;
+      	width: 126%;
+    }
+    
+    @media screen and (min-width: 1200px) {
+        .plotly-iframe {
+            width: 140%;
+        }
+    }
+</style>
+<script src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/embed.js" data-timestamp="1520068876896"></script><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><link rel="prefetch" as="style" href="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/a_data/lounge.css"><link rel="prefetch" as="script" href="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/a_data/common.js"><link rel="prefetch" as="script" href="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/a_data/lounge.js"><link rel="prefetch" as="script" href="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/a_data/config.js"><style></style></head>
+<body class="post-template tag-python tag-data-science tag-guides nav-closed" data-gr-c-s-loaded="true">
+<div class="nav">
+<h3 class="nav-title">Menu</h3>
+<a href="#" class="nav-close">
+<span class="hidden">Close</span>
+</a>
+<ul>
+<li class="nav-home"><a href="https://blog.patricktriest.com/">Home</a></li>
+<li class="nav-projects-guides"><a href="https://blog.patricktriest.com/tag/guides/">Projects &amp; Guides</a></li>
+<li class="nav-web-development"><a href="https://blog.patricktriest.com/tag/web-development/">Web Development</a></li>
+<li class="nav-nodejs"><a href="https://blog.patricktriest.com/tag/nodejs/">Node.js</a></li>
+<li class="nav-data-science"><a href="https://blog.patricktriest.com/tag/data-science/">Data Science</a></li>
+<li class="nav-machine-learning"><a href="https://blog.patricktriest.com/tag/machine-learning/">Machine Learning</a></li>
+<li class="nav-internet-of-things"><a href="https://blog.patricktriest.com/tag/internet-of-things/">Internet Of Things</a></li>
+<li class="nav-github"><a href="https://github.com/triestpa">Github</a></li>
+<li class="nav-resume"><a href="https://cdn.patricktriest.com/docs/Patrick_Triest-Resume-Early-2018.pdf">Resume</a></li>
+<li class="nav-contact"><a href="https://blog.patricktriest.com/contact/">Contact</a></li>
+</ul>
+<a class="subscribe-button" href="https://blog.patricktriest.com/subscribe/">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+<div class="site-wrapper">
+<header class="main-header post-head-img img-background post-head " style="background-image: linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.75)
+    ), url(https://cdn.patricktriest.com/blog/images/posts/crypto-markets/crypto_header.jpg)">
+<nav class="main-nav overlay clearfix">
+<a class="blog-logo" href="https://blog.patricktriest.com/"><img src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/ic_home_white_24dp_2x.bin" alt="Break | Better"></a>
+<a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+</nav>
+<h1 class="post-img-title">Analyzing Cryptocurrency Markets Using Python</h1>
+<section class="post-meta">
+<a href="https://blog.patricktriest.com/tag/python/">Python</a>, <a href="https://blog.patricktriest.com/tag/data-science/">Data Science</a>, <a href="https://blog.patricktriest.com/tag/guides/">Guides</a> | <time class="post-date" datetime="2017-08-20">20 August 2017</time>
+</section>
+</header>
+<main class="content" role="main">
+<article class="post tag-python tag-data-science tag-guides featured">
+<section class="post-content">
+<div class="kg-card-markdown"><h2 id="adatadrivenapproachtocryptocurrencyspeculation">A Data-Driven Approach To Cryptocurrency Speculation</h2>
+<p><em>How do Bitcoin markets behave? What are the causes of the sudden 
+spikes and dips in cryptocurrency values? Are the markets for different 
+altcoins inseparably linked or largely independent? <strong>How can we predict what will happen next?</strong></em></p>
+<p>Articles on cryptocurrencies, such as Bitcoin and Ethereum, are rife 
+with speculation these days, with hundreds of self-proclaimed experts 
+advocating for the trends that they expect to emerge. What is lacking 
+from many of these analyses is a strong foundation of data and 
+statistics to backup the claims.</p>
+<p>The goal of this article is to provide an easy introduction to 
+cryptocurrency analysis using Python. We will walk through a simple 
+Python script to retrieve, analyze, and visualize data on different 
+cryptocurrencies. In the process, we will uncover an interesting trend 
+in how these volatile markets behave, and how they are evolving.</p>
+<img id="altcoin_prices_combined_0" src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/altcoin_prices_combined.png" alt="Combined Altcoin Prices">
+<p>This is not a post explaining what cryptocurrencies are (if you want one, I would recommend <a href="https://medium.com/tradecraft-traction/blockchain-for-the-rest-of-us-c3fc5e42254f" target="_blank" rel="noopener">this great overview</a>),
+ nor is it an opinion piece on which specific currencies will rise and 
+which will fall. Instead, all that we are concerned about in this 
+tutorial is procuring the raw data and uncovering the stories hidden in 
+the numbers.</p>
+<h3 id="step1setupyourdatalaboratory">Step 1 - Setup Your Data Laboratory</h3>
+<p>The tutorial is intended to be accessible for enthusiasts, engineers,
+ and data scientists at all skill levels. The only skills that you will 
+need are a basic understanding of Python and enough knowledge of the 
+command line to setup a project.</p>
+<p>A completed version of the notebook with all of the results is available <a href="https://cdn.patricktriest.com/blog/images/posts/crypto-markets/Cryptocurrency-Pricing-Analysis.html">here</a>.</p>
+<h5 id="step11installanaconda">Step 1.1 - Install Anaconda</h5>
+<p>The easiest way to install the dependencies for this project from 
+scratch is to use Anaconda, a prepackaged Python data science ecosystem 
+and dependency manager.</p>
+<p>To setup Anaconda, I would recommend following the official installation instructions - <a href="https://www.continuum.io/downloads">https://www.continuum.io/downloads</a>.</p>
+<p><em>If you're an advanced user, and you don't want to use Anaconda, 
+that's totally fine; I'll assume you don't need help installing the 
+required dependencies. Feel free to skip to section 2.</em></p>
+<h5 id="step12setupananacondaprojectenvironment">Step 1.2 - Setup an Anaconda Project Environment</h5>
+<p>Once Anaconda is installed, we'll want to create a new environment to keep our dependencies organized.</p>
+<p>Run <code>conda create --name cryptocurrency-analysis python=3</code> to create a new Anaconda environment for our project.</p>
+<p>Next, run <code>source activate cryptocurrency-analysis</code> (on Linux/macOS) or <code>activate cryptocurrency-analysis</code> (on windows) to activate this environment.</p>
+<p>Finally, run <code>conda install numpy pandas nb_conda jupyter plotly quandl</code> to install the required dependencies in the environment. This could take a few minutes to complete.</p>
+<p><em>Why use environments? If you plan on developing multiple Python 
+projects on your computer, it is helpful to keep the dependencies 
+(software libraries and packages) separate in order to avoid conflicts. 
+Anaconda will create a special environment directory for the 
+dependencies for each project to keep everything organized and 
+separated.</em></p>
+<h5 id="step13startaninterativejupyternotebook">Step 1.3 - Start An Interative Jupyter Notebook</h5>
+<p>Once the environment and dependencies are all set up, run <code>jupyter notebook</code> to start the iPython kernel, and open your browser to <code>http://localhost:8888/</code>. Create a new Python notebook, making sure to use the <code>Python [conda env:cryptocurrency-analysis]</code> kernel.</p>
+<p><img src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/jupyter-setup.png" alt="Empty Jupyer Notebook"></p>
+<h5 id="step14importthedependenciesatthetopofthenotebook">Step 1.4 - Import the Dependencies At The Top of The Notebook</h5>
+<p>Once you've got a blank Jupyter notebook open, the first thing we'll do is import the required dependencies.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> pickle
+<span class="token keyword">import</span> quandl
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+</code></pre>
+<br>
+<p>We'll also import Plotly and enable the offline mode.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">import</span> plotly<span class="token punctuation">.</span>offline <span class="token keyword">as</span> py
+<span class="token keyword">import</span> plotly<span class="token punctuation">.</span>graph_objs <span class="token keyword">as</span> go
+<span class="token keyword">import</span> plotly<span class="token punctuation">.</span>figure_factory <span class="token keyword">as</span> ff
+py<span class="token punctuation">.</span>init_notebook_mode<span class="token punctuation">(</span>connected<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre>
+<br>
+<h3 id="step2retrievebitcoinpricingdata">Step 2 - Retrieve Bitcoin Pricing Data</h3>
+<p>Now that everything is set up, we're ready to start retrieving data 
+for analysis. First, we need to get Bitcoin pricing data using <a href="https://blog.quandl.com/api-for-bitcoin-data">Quandl's free Bitcoin API</a>.</p>
+<h5 id="step21definequandlhelperfunction">Step 2.1 - Define Quandl Helper Function</h5>
+<p>To assist with this data retrieval we'll define a function to download and cache datasets from Quandl.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">get_quandl_data</span><span class="token punctuation">(</span>quandl_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''Download and cache Quandl dataseries'''</span>
+    cache_path <span class="token operator">=</span> <span class="token string">'{}.pkl'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>quandl_id<span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span><span class="token string">'-'</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>cache_path<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span>
+        df <span class="token operator">=</span> pickle<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">)</span>   
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Loaded {} from cache'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>quandl_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> <span class="token punctuation">(</span>OSError<span class="token punctuation">,</span> IOError<span class="token punctuation">)</span> <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Downloading {} from Quandl'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>quandl_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        df <span class="token operator">=</span> quandl<span class="token punctuation">.</span>get<span class="token punctuation">(</span>quandl_id<span class="token punctuation">,</span> returns<span class="token operator">=</span><span class="token string">"pandas"</span><span class="token punctuation">)</span>
+        df<span class="token punctuation">.</span>to_pickle<span class="token punctuation">(</span>cache_path<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Cached {} at {}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>quandl_id<span class="token punctuation">,</span> cache_path<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> df
+</code></pre>
+<p>We're using <code>pickle</code> to serialize and save the downloaded 
+data as a file, which will prevent our script from re-downloading the 
+same data each time we run the script. The function will return the data
+ as a <a href="https://blog.patricktriest.com/analyzing-cryptocurrencies-python/'http://pandas.pydata.org/'">Pandas</a> dataframe. If you're not familiar with dataframes, you can think of them as super-powered spreadsheets.</p>
+<h5 id="step22pullkrakenexchangepricingdata">Step 2.2 - Pull Kraken Exchange Pricing Data</h5>
+<p>Let's first pull the historical Bitcoin exchange rate for the <a href="https://www.kraken.com/">Kraken</a> Bitcoin exchange.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Pull Kraken BTC price exchange data</span>
+btc_usd_price_kraken <span class="token operator">=</span> get_quandl_data<span class="token punctuation">(</span><span class="token string">'BCHARTS/KRAKENUSD'</span><span class="token punctuation">)</span>
+</code></pre>
+<br>
+<p>We can inspect the first 5 rows of the dataframe using the <code>head()</code> method.</p>
+<pre class=" language-python"><code class=" language-python">btc_usd_price_kraken<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="dataframe">
+<table border="1">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Open</th>
+<th>High</th>
+<th>Low</th>
+<th>Close</th>
+<th>Volume (BTC)</th>
+<th>Volume (Currency)</th>
+<th>Weighted Price</th>
+</tr>
+<tr>
+<th>Date</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2014-01-07</th>
+<td>874.67040</td>
+<td>892.06753</td>
+<td>810.00000</td>
+<td>810.00000</td>
+<td>15.622378</td>
+<td>13151.472844</td>
+<td>841.835522</td>
+</tr>
+<tr>
+<th>2014-01-08</th>
+<td>810.00000</td>
+<td>899.84281</td>
+<td>788.00000</td>
+<td>824.98287</td>
+<td>19.182756</td>
+<td>16097.329584</td>
+<td>839.156269</td>
+</tr>
+<tr>
+<th>2014-01-09</th>
+<td>825.56345</td>
+<td>870.00000</td>
+<td>807.42084</td>
+<td>841.86934</td>
+<td>8.158335</td>
+<td>6784.249982</td>
+<td>831.572913</td>
+</tr>
+<tr>
+<th>2014-01-10</th>
+<td>839.99000</td>
+<td>857.34056</td>
+<td>817.00000</td>
+<td>857.33056</td>
+<td>8.024510</td>
+<td>6780.220188</td>
+<td>844.938794</td>
+</tr>
+<tr>
+<th>2014-01-11</th>
+<td>858.20000</td>
+<td>918.05471</td>
+<td>857.16554</td>
+<td>899.84105</td>
+<td>18.748285</td>
+<td>16698.566929</td>
+<td>890.671709</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Next, we'll generate a simple chart as a quick visual verification that the data looks correct.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Chart the BTC pricing data</span>
+btc_trace <span class="token operator">=</span> go<span class="token punctuation">.</span>Scatter<span class="token punctuation">(</span>x<span class="token operator">=</span>btc_usd_price_kraken<span class="token punctuation">.</span>index<span class="token punctuation">,</span> y<span class="token operator">=</span>btc_usd_price_kraken<span class="token punctuation">[</span><span class="token string">'Weighted Price'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+py<span class="token punctuation">.</span>iplot<span class="token punctuation">(</span><span class="token punctuation">[</span>btc_trace<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<iframe src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/kraken_price_plot.html" id="imageId" class="plotly-iframe" scrolling="no" frameborder="0"></iframe>
+<p>Here, we're using <a href="https://plot.ly/">Plotly</a> for 
+generating our visualizations. This is a less traditional choice than 
+some of the more established Python data visualization libraries such as
+ <a href="https://matplotlib.org/">Matplotlib</a>, but I think Plotly is a great choice since it produces fully-interactive charts using <a href="https://d3js.org/">D3.js</a>. These charts have attractive visual defaults, are easy to explore, and are very simple to embed in web pages.</p>
+<blockquote>
+<p>As a quick sanity check, you should compare the generated chart with 
+publicly available graphs on Bitcoin prices(such as those on <a href="https://www.coinbase.com/dashboard">Coinbase</a>), to verify that the downloaded data is legit.</p>
+</blockquote>
+<h5 id="step23pullpricingdatafrommorebtcexchanges">Step 2.3 - Pull Pricing Data From More BTC Exchanges</h5>
+<p>You might have noticed a hitch in this dataset - there are a few 
+notable down-spikes, particularly in late 2014 and early 2016. These 
+spikes are specific to the Kraken dataset, and we obviously don't want 
+them to be reflected in our overall pricing analysis.</p>
+<p>The nature of Bitcoin exchanges is that the pricing is determined by 
+supply and demand, hence no single exchange contains a true "master 
+price" of Bitcoin. To solve this issue, along with that of down-spikes 
+(which are likely the result of technical outages and data set glitches)
+ we will pull data from three more major Bitcoin exchanges to calculate 
+an aggregate Bitcoin price index.</p>
+<p>First, we will download the data from each exchange into a dictionary of dataframes.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Pull pricing data for 3 more BTC exchanges</span>
+exchanges <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'COINBASE'</span><span class="token punctuation">,</span><span class="token string">'BITSTAMP'</span><span class="token punctuation">,</span><span class="token string">'ITBIT'</span><span class="token punctuation">]</span>
+
+exchange_data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+exchange_data<span class="token punctuation">[</span><span class="token string">'KRAKEN'</span><span class="token punctuation">]</span> <span class="token operator">=</span> btc_usd_price_kraken
+
+<span class="token keyword">for</span> exchange <span class="token keyword">in</span> exchanges<span class="token punctuation">:</span>
+    exchange_code <span class="token operator">=</span> <span class="token string">'BCHARTS/{}USD'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>exchange<span class="token punctuation">)</span>
+    btc_exchange_df <span class="token operator">=</span> get_quandl_data<span class="token punctuation">(</span>exchange_code<span class="token punctuation">)</span>
+    exchange_data<span class="token punctuation">[</span>exchange<span class="token punctuation">]</span> <span class="token operator">=</span> btc_exchange_df
+</code></pre>
+<br>
+<h5 id="step24mergeallofthepricingdataintoasingledataframe">Step 2.4 - Merge All Of The Pricing Data Into A Single Dataframe</h5>
+<p>Next, we will define a simple function to merge a common column of each dataframe into a new combined dataframe.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">merge_dfs_on_column</span><span class="token punctuation">(</span>dataframes<span class="token punctuation">,</span> labels<span class="token punctuation">,</span> col<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''Merge a single column of each dataframe into a new combined dataframe'''</span>
+    series_dict <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> index <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>dataframes<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        series_dict<span class="token punctuation">[</span>labels<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> dataframes<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span>
+        
+    <span class="token keyword">return</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>series_dict<span class="token punctuation">)</span>
+</code></pre>
+<br>
+<p>Now we will merge all of the dataframes together on their "Weighted Price" column.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Merge the BTC price dataseries' into a single dataframe</span>
+btc_usd_datasets <span class="token operator">=</span> merge_dfs_on_column<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span>exchange_data<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">list</span><span class="token punctuation">(</span>exchange_data<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'Weighted Price'</span><span class="token punctuation">)</span>
+</code></pre>
+<br>
+<p>Finally, we can preview last five rows the result using the <code>tail()</code> method, to make sure it looks ok.</p>
+<pre class=" language-python"><code class=" language-python">btc_usd_datasets<span class="token punctuation">.</span>tail<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="dataframe">
+<table class="dataframe" border="1">
+<tbody><tr style="text-align: right;">
+<th></th>
+<th>BITSTAMP</th>
+<th>COINBASE</th>
+<th>ITBIT</th>
+<th>KRAKEN</th>
+</tr>
+<tr>
+<th>Date</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+
+</tbody><tbody>
+<tr>
+<th>2017-08-14</th>
+<td>4210.154943</td>
+<td>4213.332106</td>
+<td>4207.366696</td>
+<td>4213.257519</td>
+</tr>
+<tr>
+<th>2017-08-15</th>
+<td>4101.447155</td>
+<td>4131.606897</td>
+<td>4127.036871</td>
+<td>4149.146996</td>
+</tr>
+<tr>
+<th>2017-08-16</th>
+<td>4193.426713</td>
+<td>4193.469553</td>
+<td>4190.104520</td>
+<td>4187.399662</td>
+</tr>
+<tr>
+<th>2017-08-17</th>
+<td>4338.694675</td>
+<td>4334.115210</td>
+<td>4334.449440</td>
+<td>4346.508031</td>
+</tr>
+<tr>
+<th>2017-08-18</th>
+<td>4182.166174</td>
+<td>4169.555948</td>
+<td>4175.440768</td>
+<td>4198.277722</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The prices look to be as expected: they are in similar ranges, but 
+with slight variations based on the supply and demand of each individual
+ Bitcoin exchange.</p>
+<h5 id="step25visualizethepricingdatasets">Step 2.5 - Visualize The Pricing Datasets</h5>
+<p>The next logical step is to visualize how these pricing datasets 
+compare. For this, we'll define a helper function to provide a 
+single-line command to generate a graph from the dataframe.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">df_scatter</span><span class="token punctuation">(</span>df<span class="token punctuation">,</span> title<span class="token punctuation">,</span> seperate_y_axis<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> y_axis_label<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> scale<span class="token operator">=</span><span class="token string">'linear'</span><span class="token punctuation">,</span> initial_hide<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''Generate a scatter plot of the entire dataframe'''</span>
+    label_arr <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+    series_arr <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> col<span class="token punctuation">:</span> df<span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">,</span> label_arr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    layout <span class="token operator">=</span> go<span class="token punctuation">.</span>Layout<span class="token punctuation">(</span>
+        title<span class="token operator">=</span>title<span class="token punctuation">,</span>
+        legend<span class="token operator">=</span><span class="token builtin">dict</span><span class="token punctuation">(</span>orientation<span class="token operator">=</span><span class="token string">"h"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        xaxis<span class="token operator">=</span><span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token operator">=</span><span class="token string">'date'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        yaxis<span class="token operator">=</span><span class="token builtin">dict</span><span class="token punctuation">(</span>
+            title<span class="token operator">=</span>y_axis_label<span class="token punctuation">,</span>
+            showticklabels<span class="token operator">=</span> <span class="token operator">not</span> seperate_y_axis<span class="token punctuation">,</span>
+            <span class="token builtin">type</span><span class="token operator">=</span>scale
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+    
+    y_axis_config <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>
+        overlaying<span class="token operator">=</span><span class="token string">'y'</span><span class="token punctuation">,</span>
+        showticklabels<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+        <span class="token builtin">type</span><span class="token operator">=</span>scale <span class="token punctuation">)</span>
+    
+    visibility <span class="token operator">=</span> <span class="token string">'visible'</span>
+    <span class="token keyword">if</span> initial_hide<span class="token punctuation">:</span>
+        visibility <span class="token operator">=</span> <span class="token string">'legendonly'</span>
+        
+    <span class="token comment"># Form Trace For Each Series</span>
+    trace_arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> index<span class="token punctuation">,</span> series <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>series_arr<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        trace <span class="token operator">=</span> go<span class="token punctuation">.</span>Scatter<span class="token punctuation">(</span>
+            x<span class="token operator">=</span>series<span class="token punctuation">.</span>index<span class="token punctuation">,</span> 
+            y<span class="token operator">=</span>series<span class="token punctuation">,</span> 
+            name<span class="token operator">=</span>label_arr<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">,</span>
+            visible<span class="token operator">=</span>visibility
+        <span class="token punctuation">)</span>
+        
+        <span class="token comment"># Add seperate axis for the series</span>
+        <span class="token keyword">if</span> seperate_y_axis<span class="token punctuation">:</span>
+            trace<span class="token punctuation">[</span><span class="token string">'yaxis'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'y{}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            layout<span class="token punctuation">[</span><span class="token string">'yaxis{}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> y_axis_config    
+        trace_arr<span class="token punctuation">.</span>append<span class="token punctuation">(</span>trace<span class="token punctuation">)</span>
+
+    fig <span class="token operator">=</span> go<span class="token punctuation">.</span>Figure<span class="token punctuation">(</span>data<span class="token operator">=</span>trace_arr<span class="token punctuation">,</span> layout<span class="token operator">=</span>layout<span class="token punctuation">)</span>
+    py<span class="token punctuation">.</span>iplot<span class="token punctuation">(</span>fig<span class="token punctuation">)</span>
+</code></pre>
+<p>In the interest of brevity, I won't go too far into how this helper function works. Check out the documentation for <a href="http://pandas.pydata.org/">Pandas</a> and <a href="https://plot.ly/">Plotly</a> if you would like to learn more.</p>
+<p>We can now easily generate a graph for the Bitcoin pricing data.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Plot all of the BTC exchange prices</span>
+df_scatter<span class="token punctuation">(</span>btc_usd_datasets<span class="token punctuation">,</span> <span class="token string">'Bitcoin Price (USD) By Exchange'</span><span class="token punctuation">)</span>
+</code></pre>
+<iframe src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/combined-exchanges-pricing.html" id="imageId" class="plotly-iframe" scrolling="no" frameborder="0"></iframe>
+<h5 id="step26cleanandaggregatethepricingdata">Step 2.6 - Clean and Aggregate the Pricing Data</h5>
+<p>We can see that, although the four series follow roughly the same 
+path, there are various irregularities in each that we'll want to get 
+rid of.</p>
+<p>Let's remove all of the zero values from the dataframe, since we know
+ that the price of Bitcoin has never been equal to zero in the timeframe
+ that we are examining.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Remove "0" values</span>
+btc_usd_datasets<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre>
+<br>
+<p>When we re-chart the dataframe, we'll see a much cleaner looking chart without the down-spikes.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Plot the revised dataframe</span>
+df_scatter<span class="token punctuation">(</span>btc_usd_datasets<span class="token punctuation">,</span> <span class="token string">'Bitcoin Price (USD) By Exchange'</span><span class="token punctuation">)</span>
+</code></pre>
+<iframe src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/combined-exchanges-pricing-clean.html" id="imageId" class="plotly-iframe" scrolling="no" frameborder="0"></iframe>
+<p>We can now calculate a new column, containing the average daily Bitcoin price across all of the exchanges.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Calculate the average BTC price as a new column</span>
+btc_usd_datasets<span class="token punctuation">[</span><span class="token string">'avg_btc_price_usd'</span><span class="token punctuation">]</span> <span class="token operator">=</span> btc_usd_datasets<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<br>
+<p>This new column is our Bitcoin pricing index! Let's chart that column to make sure it looks ok.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Plot the average BTC price</span>
+btc_trace <span class="token operator">=</span> go<span class="token punctuation">.</span>Scatter<span class="token punctuation">(</span>x<span class="token operator">=</span>btc_usd_datasets<span class="token punctuation">.</span>index<span class="token punctuation">,</span> y<span class="token operator">=</span>btc_usd_datasets<span class="token punctuation">[</span><span class="token string">'avg_btc_price_usd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+py<span class="token punctuation">.</span>iplot<span class="token punctuation">(</span><span class="token punctuation">[</span>btc_trace<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<iframe src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/aggregate-bitcoin-price.html" id="imageId" class="plotly-iframe" scrolling="no" frameborder="0"></iframe>
+<p>Yup, looks good. We'll use this aggregate pricing series later on, in
+ order to convert the exchange rates of other cryptocurrencies to USD.</p>
+<h3 id="step3retrievealtcoinpricingdata">Step 3 - Retrieve Altcoin Pricing Data</h3>
+<p>Now that we have a solid time series dataset for the price of 
+Bitcoin, let's pull in some data for non-Bitcoin cryptocurrencies, 
+commonly referred to as altcoins.</p>
+<h5 id="step31definepoloniexapihelperfunctions">Step 3.1 - Define Poloniex API Helper Functions</h5>
+<p>For retrieving data on cryptocurrencies we'll be using the <a href="https://poloniex.com/support/api/">Poloniex API</a>. To assist in the altcoin data retrieval, we'll define two helper functions to download and cache JSON data from this API.</p>
+<p>First, we'll define <code>get_json_data</code>, which will download and cache JSON data from a provided URL.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">get_json_data</span><span class="token punctuation">(</span>json_url<span class="token punctuation">,</span> cache_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''Download and cache JSON data, return as a dataframe.'''</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>        
+        f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>cache_path<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span>
+        df <span class="token operator">=</span> pickle<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">)</span>   
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Loaded {} from cache'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>json_url<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> <span class="token punctuation">(</span>OSError<span class="token punctuation">,</span> IOError<span class="token punctuation">)</span> <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Downloading {}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>json_url<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_json<span class="token punctuation">(</span>json_url<span class="token punctuation">)</span>
+        df<span class="token punctuation">.</span>to_pickle<span class="token punctuation">(</span>cache_path<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Cached {} at {}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>json_url<span class="token punctuation">,</span> cache_path<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> df
+</code></pre>
+<br>
+<p>Next, we'll define a function that will generate Poloniex API HTTP requests, and will subsequently call our new <code>get_json_data</code> function to save the resulting data.</p>
+<pre class=" language-python"><code class=" language-python">base_polo_url <span class="token operator">=</span> <span class="token string">'https://poloniex.com/public?command=returnChartData&amp;currencyPair={}&amp;start={}&amp;end={}&amp;period={}'</span>
+start_date <span class="token operator">=</span> datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span><span class="token string">'2015-01-01'</span><span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d'</span><span class="token punctuation">)</span> <span class="token comment"># get data from the start of 2015</span>
+end_date <span class="token operator">=</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># up until today</span>
+pediod <span class="token operator">=</span> <span class="token number">86400</span> <span class="token comment"># pull daily data (86,400 seconds per day)</span>
+
+<span class="token keyword">def</span> <span class="token function">get_crypto_data</span><span class="token punctuation">(</span>poloniex_pair<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''Retrieve cryptocurrency data from poloniex'''</span>
+    json_url <span class="token operator">=</span> base_polo_url<span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>poloniex_pair<span class="token punctuation">,</span> start_date<span class="token punctuation">.</span>timestamp<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> end_date<span class="token punctuation">.</span>timestamp<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> pediod<span class="token punctuation">)</span>
+    data_df <span class="token operator">=</span> get_json_data<span class="token punctuation">(</span>json_url<span class="token punctuation">,</span> poloniex_pair<span class="token punctuation">)</span>
+    data_df <span class="token operator">=</span> data_df<span class="token punctuation">.</span>set_index<span class="token punctuation">(</span><span class="token string">'date'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> data_df
+</code></pre>
+<p>This function will take a cryptocurrency pair string (such as 
+'BTC_ETH') and return a dataframe containing the historical exchange 
+rate of the two currencies.</p>
+<h5 id="step32downloadtradingdatafrompoloniex">Step 3.2 - Download Trading Data From Poloniex</h5>
+<p>Most altcoins cannot be bought directly with USD; to acquire these 
+coins individuals often buy Bitcoins and then trade the Bitcoins for 
+altcoins on cryptocurrency exchanges. For this reason, we'll be 
+downloading the exchange rate to BTC for each coin, and then we'll use 
+our existing BTC pricing data to convert this value to USD.</p>
+<p>We'll download exchange data for nine of the top cryptocurrencies -<br>
+<a href="https://www.ethereum.org/">Ethereum</a>, <a href="https://litecoin.org/">Litecoin</a>, <a href="https://ripple.com/">Ripple</a>, <a href="https://ethereumclassic.github.io/">Ethereum Classic</a>, <a href="https://www.stellar.org/">Stellar</a>, <a href="https://www.dash.org/">Dash</a>, <a href="https://sia.tech/">Siacoin</a>, <a href="https://getmonero.org/">Monero</a>, and <a href="https://www.nem.io/">NEM</a>.</p>
+<pre class=" language-python"><code class=" language-python">altcoins <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'ETH'</span><span class="token punctuation">,</span><span class="token string">'LTC'</span><span class="token punctuation">,</span><span class="token string">'XRP'</span><span class="token punctuation">,</span><span class="token string">'ETC'</span><span class="token punctuation">,</span><span class="token string">'STR'</span><span class="token punctuation">,</span><span class="token string">'DASH'</span><span class="token punctuation">,</span><span class="token string">'SC'</span><span class="token punctuation">,</span><span class="token string">'XMR'</span><span class="token punctuation">,</span><span class="token string">'XEM'</span><span class="token punctuation">]</span>
+
+altcoin_data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">for</span> altcoin <span class="token keyword">in</span> altcoins<span class="token punctuation">:</span>
+    coinpair <span class="token operator">=</span> <span class="token string">'BTC_{}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>altcoin<span class="token punctuation">)</span>
+    crypto_price_df <span class="token operator">=</span> get_crypto_data<span class="token punctuation">(</span>coinpair<span class="token punctuation">)</span>
+    altcoin_data<span class="token punctuation">[</span>altcoin<span class="token punctuation">]</span> <span class="token operator">=</span> crypto_price_df
+</code></pre>
+<br>
+<p>Now we have a dictionary with 9 dataframes, each containing the 
+historical daily average exchange prices between the altcoin and 
+Bitcoin.</p>
+<p>We can preview the last few rows of the Ethereum price table to make sure it looks ok.</p>
+<pre class=" language-python"><code class=" language-python">altcoin_data<span class="token punctuation">[</span><span class="token string">'ETH'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>tail<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="dataframe">
+<table border="1">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>close</th>
+<th>high</th>
+<th>low</th>
+<th>open</th>
+<th>quoteVolume</th>
+<th>volume</th>
+<th>weightedAverage</th>
+</tr>
+<tr>
+<th>date</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2017-08-18 12:00:00</th>
+<td>0.070510</td>
+<td>0.071000</td>
+<td>0.070170</td>
+<td>0.070887</td>
+<td>17364.271529</td>
+<td>1224.762684</td>
+<td>0.070533</td>
+</tr>
+<tr>
+<th>2017-08-18 16:00:00</th>
+<td>0.071595</td>
+<td>0.072096</td>
+<td>0.070004</td>
+<td>0.070510</td>
+<td>26644.018123</td>
+<td>1893.136154</td>
+<td>0.071053</td>
+</tr>
+<tr>
+<th>2017-08-18 20:00:00</th>
+<td>0.071321</td>
+<td>0.072906</td>
+<td>0.070482</td>
+<td>0.071600</td>
+<td>39655.127825</td>
+<td>2841.549065</td>
+<td>0.071657</td>
+</tr>
+<tr>
+<th>2017-08-19 00:00:00</th>
+<td>0.071447</td>
+<td>0.071855</td>
+<td>0.070868</td>
+<td>0.071321</td>
+<td>16116.922869</td>
+<td>1150.361419</td>
+<td>0.071376</td>
+</tr>
+<tr>
+<th>2017-08-19 04:00:00</th>
+<td>0.072323</td>
+<td>0.072550</td>
+<td>0.071292</td>
+<td>0.071447</td>
+<td>14425.571894</td>
+<td>1039.596030</td>
+<td>0.072066</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="step33convertpricestousd">Step 3.3 - Convert Prices to USD</h5>
+<p>Now we can combine this BTC-altcoin exchange rate data with our 
+Bitcoin pricing index to directly calculate the historical USD values 
+for each altcoin.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Calculate USD Price as a new column in each altcoin dataframe</span>
+<span class="token keyword">for</span> altcoin <span class="token keyword">in</span> altcoin_data<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    altcoin_data<span class="token punctuation">[</span>altcoin<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'price_usd'</span><span class="token punctuation">]</span> <span class="token operator">=</span>  altcoin_data<span class="token punctuation">[</span>altcoin<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'weightedAverage'</span><span class="token punctuation">]</span> <span class="token operator">*</span> btc_usd_datasets<span class="token punctuation">[</span><span class="token string">'avg_btc_price_usd'</span><span class="token punctuation">]</span>
+</code></pre>
+<p>Here, we've created a new column in each altcoin dataframe with the USD prices for that coin.</p>
+<p>Next, we can re-use our <code>merge_dfs_on_column</code> function from earlier to create a combined dataframe of the USD price for each cryptocurrency.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Merge USD price of each altcoin into single dataframe </span>
+combined_df <span class="token operator">=</span> merge_dfs_on_column<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span>altcoin_data<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">list</span><span class="token punctuation">(</span>altcoin_data<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'price_usd'</span><span class="token punctuation">)</span>
+</code></pre>
+<br>
+<p>Easy. Now let's also add the Bitcoin prices as a final column to the combined dataframe.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Add BTC price to the dataframe</span>
+combined_df<span class="token punctuation">[</span><span class="token string">'BTC'</span><span class="token punctuation">]</span> <span class="token operator">=</span> btc_usd_datasets<span class="token punctuation">[</span><span class="token string">'avg_btc_price_usd'</span><span class="token punctuation">]</span>
+</code></pre>
+<br>
+<p>Now we should have a single dataframe containing daily USD prices for the ten cryptocurrencies that we're examining.</p>
+<p>Let's reuse our <code>df_scatter</code> function from earlier to chart all of the cryptocurrency prices against each other.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Chart all of the altocoin prices</span>
+df_scatter<span class="token punctuation">(</span>combined_df<span class="token punctuation">,</span> <span class="token string">'Cryptocurrency Prices (USD)'</span><span class="token punctuation">,</span> seperate_y_axis<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> y_axis_label<span class="token operator">=</span><span class="token string">'Coin Value (USD)'</span><span class="token punctuation">,</span> scale<span class="token operator">=</span><span class="token string">'log'</span><span class="token punctuation">)</span>
+</code></pre>
+<iframe src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/altcoin_prices_combined.html" id="imageId" class="plotly-iframe" scrolling="no" frameborder="0"></iframe>
+<p>Nice! This graph provides a pretty solid "big picture" view of how 
+the exchange rates for each currency have varied over the past few 
+years.</p>
+<blockquote>
+<p>Note that we're using a logarithmic y-axis scale in order to compare 
+all of the currencies on the same plot. You are welcome to try out 
+different parameter values here (such as <code>scale='linear'</code>) to get different perspectives on the data.</p>
+</blockquote>
+<h5 id="step34performcorrelationanalysis">Step 3.4 - Perform Correlation Analysis</h5>
+<p>You might notice is that the cryptocurrency exchange rates, despite 
+their wildly different values and volatility, look slightly correlated. 
+Especially since the spike in April 2017, even many of the smaller 
+fluctuations appear to be occurring in sync across the entire market.</p>
+<p>A visually-derived hunch is not much better than a guess until we have the stats to back it up.</p>
+<p>We can test our correlation hypothesis using the Pandas <code>corr()</code> method, which computes a Pearson correlation coefficient for each column in the dataframe against each other column.</p>
+<blockquote>
+<p>Revision Note 8/22/2017 - This section has been revised in order to 
+use the daily return percentages instead of the absolute price values in
+ calculating the correlation coefficients.</p>
+</blockquote>
+<p>Computing correlations directly on a non-stationary time series (such
+ as raw pricing data) can give biased correlation values. We will work 
+around this by first applying the <code>pct_change()</code> method, which will convert each cell in the dataframe from an absolute price value to a daily return percentage.</p>
+<p>First we'll calculate correlations for 2016.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token comment"># Calculate the pearson correlation coefficients for cryptocurrencies in 2016</span>
+combined_df_2016 <span class="token operator">=</span> combined_df<span class="token punctuation">[</span>combined_df<span class="token punctuation">.</span>index<span class="token punctuation">.</span>year <span class="token operator">==</span> <span class="token number">2016</span><span class="token punctuation">]</span>
+combined_df_2016<span class="token punctuation">.</span>pct_change<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>corr<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'pearson'</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="dataframe">
+<table border="1">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>DASH</th>
+<th>ETC</th>
+<th>ETH</th>
+<th>LTC</th>
+<th>SC</th>
+<th>STR</th>
+<th>XEM</th>
+<th>XMR</th>
+<th>XRP</th>
+<th>BTC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>DASH</th>
+<td>1.000000</td>
+<td>0.003992</td>
+<td>0.122695</td>
+<td>-0.012194</td>
+<td>0.026602</td>
+<td>0.058083</td>
+<td>0.014571</td>
+<td>0.121537</td>
+<td>0.088657</td>
+<td>-0.014040</td>
+</tr>
+<tr>
+<th>ETC</th>
+<td>0.003992</td>
+<td>1.000000</td>
+<td>-0.181991</td>
+<td>-0.131079</td>
+<td>-0.008066</td>
+<td>-0.102654</td>
+<td>-0.080938</td>
+<td>-0.105898</td>
+<td>-0.054095</td>
+<td>-0.170538</td>
+</tr>
+<tr>
+<th>ETH</th>
+<td>0.122695</td>
+<td>-0.181991</td>
+<td>1.000000</td>
+<td>-0.064652</td>
+<td>0.169642</td>
+<td>0.035093</td>
+<td>0.043205</td>
+<td>0.087216</td>
+<td>0.085630</td>
+<td>-0.006502</td>
+</tr>
+<tr>
+<th>LTC</th>
+<td>-0.012194</td>
+<td>-0.131079</td>
+<td>-0.064652</td>
+<td>1.000000</td>
+<td>0.012253</td>
+<td>0.113523</td>
+<td>0.160667</td>
+<td>0.129475</td>
+<td>0.053712</td>
+<td>0.750174</td>
+</tr>
+<tr>
+<th>SC</th>
+<td>0.026602</td>
+<td>-0.008066</td>
+<td>0.169642</td>
+<td>0.012253</td>
+<td>1.000000</td>
+<td>0.143252</td>
+<td>0.106153</td>
+<td>0.047910</td>
+<td>0.021098</td>
+<td>0.035116</td>
+</tr>
+<tr>
+<th>STR</th>
+<td>0.058083</td>
+<td>-0.102654</td>
+<td>0.035093</td>
+<td>0.113523</td>
+<td>0.143252</td>
+<td>1.000000</td>
+<td>0.225132</td>
+<td>0.027998</td>
+<td>0.320116</td>
+<td>0.079075</td>
+</tr>
+<tr>
+<th>XEM</th>
+<td>0.014571</td>
+<td>-0.080938</td>
+<td>0.043205</td>
+<td>0.160667</td>
+<td>0.106153</td>
+<td>0.225132</td>
+<td>1.000000</td>
+<td>0.016438</td>
+<td>0.101326</td>
+<td>0.227674</td>
+</tr>
+<tr>
+<th>XMR</th>
+<td>0.121537</td>
+<td>-0.105898</td>
+<td>0.087216</td>
+<td>0.129475</td>
+<td>0.047910</td>
+<td>0.027998</td>
+<td>0.016438</td>
+<td>1.000000</td>
+<td>0.027649</td>
+<td>0.127520</td>
+</tr>
+<tr>
+<th>XRP</th>
+<td>0.088657</td>
+<td>-0.054095</td>
+<td>0.085630</td>
+<td>0.053712</td>
+<td>0.021098</td>
+<td>0.320116</td>
+<td>0.101326</td>
+<td>0.027649</td>
+<td>1.000000</td>
+<td>0.044161</td>
+</tr>
+<tr>
+<th>BTC</th>
+<td>-0.014040</td>
+<td>-0.170538</td>
+<td>-0.006502</td>
+<td>0.750174</td>
+<td>0.035116</td>
+<td>0.079075</td>
+<td>0.227674</td>
+<td>0.127520</td>
+<td>0.044161</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These correlation coefficients are all over the place. Coefficients 
+close to 1 or -1 mean that the series' are strongly correlated or 
+inversely correlated respectively, and coefficients close to zero mean 
+that the values are not correlated, and fluctuate independently of each 
+other.</p>
+<p>To help visualize these results, we'll create one more helper visualization function.</p>
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">correlation_heatmap</span><span class="token punctuation">(</span>df<span class="token punctuation">,</span> title<span class="token punctuation">,</span> absolute_bounds<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''Plot a correlation heatmap for the entire dataframe'''</span>
+    heatmap <span class="token operator">=</span> go<span class="token punctuation">.</span>Heatmap<span class="token punctuation">(</span>
+        z<span class="token operator">=</span>df<span class="token punctuation">.</span>corr<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'pearson'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>as_matrix<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        x<span class="token operator">=</span>df<span class="token punctuation">.</span>columns<span class="token punctuation">,</span>
+        y<span class="token operator">=</span>df<span class="token punctuation">.</span>columns<span class="token punctuation">,</span>
+        colorbar<span class="token operator">=</span><span class="token builtin">dict</span><span class="token punctuation">(</span>title<span class="token operator">=</span><span class="token string">'Pearson Coefficient'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+    
+    layout <span class="token operator">=</span> go<span class="token punctuation">.</span>Layout<span class="token punctuation">(</span>title<span class="token operator">=</span>title<span class="token punctuation">)</span>
+    
+    <span class="token keyword">if</span> absolute_bounds<span class="token punctuation">:</span>
+        heatmap<span class="token punctuation">[</span><span class="token string">'zmax'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1.0</span>
+        heatmap<span class="token punctuation">[</span><span class="token string">'zmin'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1.0</span>
+        
+    fig <span class="token operator">=</span> go<span class="token punctuation">.</span>Figure<span class="token punctuation">(</span>data<span class="token operator">=</span><span class="token punctuation">[</span>heatmap<span class="token punctuation">]</span><span class="token punctuation">,</span> layout<span class="token operator">=</span>layout<span class="token punctuation">)</span>
+    py<span class="token punctuation">.</span>iplot<span class="token punctuation">(</span>fig<span class="token punctuation">)</span>
+</code></pre>
+<pre class=" language-python"><code class=" language-python">correlation_heatmap<span class="token punctuation">(</span>combined_df_2016<span class="token punctuation">.</span>pct_change<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"Cryptocurrency Correlations in 2016"</span><span class="token punctuation">)</span>
+</code></pre>
+<iframe src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/cryptocurrency-correlations-2016-v2.html" id="imageId" class="plotly-iframe" scrolling="no" frameborder="0"></iframe>
+<p>Here, the dark red values represent strong correlations (note that 
+each currency is, obviously, strongly correlated with itself), and the 
+dark blue values represent strong inverse correlations. All of the light
+ blue/orange/gray/tan colors in-between represent varying degrees of 
+weak/non-existent correlations.</p>
+<p>What does this chart tell us? Essentially, it shows that there was 
+little statistically significant linkage between how the prices of 
+different cryptocurrencies fluctuated during 2016.</p>
+<p>Now, to test our hypothesis that the cryptocurrencies have become 
+more correlated in recent months, let's repeat the same test using only 
+the data from 2017.</p>
+<pre class=" language-python"><code class=" language-python">combined_df_2017 <span class="token operator">=</span> combined_df<span class="token punctuation">[</span>combined_df<span class="token punctuation">.</span>index<span class="token punctuation">.</span>year <span class="token operator">==</span> <span class="token number">2017</span><span class="token punctuation">]</span>
+combined_df_2017<span class="token punctuation">.</span>pct_change<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>corr<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'pearson'</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="dataframe">
+<table border="1">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>DASH</th>
+<th>ETC</th>
+<th>ETH</th>
+<th>LTC</th>
+<th>SC</th>
+<th>STR</th>
+<th>XEM</th>
+<th>XMR</th>
+<th>XRP</th>
+<th>BTC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>DASH</th>
+<td>1.000000</td>
+<td>0.384109</td>
+<td>0.480453</td>
+<td>0.259616</td>
+<td>0.191801</td>
+<td>0.159330</td>
+<td>0.299948</td>
+<td>0.503832</td>
+<td>0.066408</td>
+<td>0.357970</td>
+</tr>
+<tr>
+<th>ETC</th>
+<td>0.384109</td>
+<td>1.000000</td>
+<td>0.602151</td>
+<td>0.420945</td>
+<td>0.255343</td>
+<td>0.146065</td>
+<td>0.303492</td>
+<td>0.465322</td>
+<td>0.053955</td>
+<td>0.469618</td>
+</tr>
+<tr>
+<th>ETH</th>
+<td>0.480453</td>
+<td>0.602151</td>
+<td>1.000000</td>
+<td>0.286121</td>
+<td>0.323716</td>
+<td>0.228648</td>
+<td>0.343530</td>
+<td>0.604572</td>
+<td>0.120227</td>
+<td>0.421786</td>
+</tr>
+<tr>
+<th>LTC</th>
+<td>0.259616</td>
+<td>0.420945</td>
+<td>0.286121</td>
+<td>1.000000</td>
+<td>0.296244</td>
+<td>0.333143</td>
+<td>0.250566</td>
+<td>0.439261</td>
+<td>0.321340</td>
+<td>0.352713</td>
+</tr>
+<tr>
+<th>SC</th>
+<td>0.191801</td>
+<td>0.255343</td>
+<td>0.323716</td>
+<td>0.296244</td>
+<td>1.000000</td>
+<td>0.417106</td>
+<td>0.287986</td>
+<td>0.374707</td>
+<td>0.248389</td>
+<td>0.377045</td>
+</tr>
+<tr>
+<th>STR</th>
+<td>0.159330</td>
+<td>0.146065</td>
+<td>0.228648</td>
+<td>0.333143</td>
+<td>0.417106</td>
+<td>1.000000</td>
+<td>0.396520</td>
+<td>0.341805</td>
+<td>0.621547</td>
+<td>0.178706</td>
+</tr>
+<tr>
+<th>XEM</th>
+<td>0.299948</td>
+<td>0.303492</td>
+<td>0.343530</td>
+<td>0.250566</td>
+<td>0.287986</td>
+<td>0.396520</td>
+<td>1.000000</td>
+<td>0.397130</td>
+<td>0.270390</td>
+<td>0.366707</td>
+</tr>
+<tr>
+<th>XMR</th>
+<td>0.503832</td>
+<td>0.465322</td>
+<td>0.604572</td>
+<td>0.439261</td>
+<td>0.374707</td>
+<td>0.341805</td>
+<td>0.397130</td>
+<td>1.000000</td>
+<td>0.213608</td>
+<td>0.510163</td>
+</tr>
+<tr>
+<th>XRP</th>
+<td>0.066408</td>
+<td>0.053955</td>
+<td>0.120227</td>
+<td>0.321340</td>
+<td>0.248389</td>
+<td>0.621547</td>
+<td>0.270390</td>
+<td>0.213608</td>
+<td>1.000000</td>
+<td>0.170070</td>
+</tr>
+<tr>
+<th>BTC</th>
+<td>0.357970</td>
+<td>0.469618</td>
+<td>0.421786</td>
+<td>0.352713</td>
+<td>0.377045</td>
+<td>0.178706</td>
+<td>0.366707</td>
+<td>0.510163</td>
+<td>0.170070</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These are somewhat more significant correlation coefficients. Strong 
+enough to use as the sole basis for an investment? Certainly not.</p>
+<p>It is notable, however, that almost all of the cryptocurrencies have become more correlated with each other across the board.</p>
+<pre class=" language-python"><code class=" language-python">correlation_heatmap<span class="token punctuation">(</span>combined_df_2017<span class="token punctuation">.</span>pct_change<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"Cryptocurrency Correlations in 2017"</span><span class="token punctuation">)</span>
+</code></pre>
+<iframe src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/cryptocurrency-correlations-2017-v2.html" id="imageId" class="plotly-iframe" scrolling="no" frameborder="0"></iframe>
+<p>Huh. That's rather interesting.</p>
+<h3 id="whyisthishappening">Why is this happening?</h3>
+<p>Good question. I'm really not sure.</p>
+<p>The most immediate explanation that comes to mind is that <strong>hedge funds have recently begun publicly trading in crypto-currency markets</strong><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.
+ These funds have vastly more capital to play with than the average 
+trader, so if a fund is hedging their bets across multiple 
+cryptocurrencies, and using similar trading strategies for each based on
+ independent variables (say, the stock market), it could make sense that
+ this trend of increasing correlations would emerge.</p>
+<h5 id="indepthxrpandstr">In-Depth - XRP and STR</h5>
+<p>For instance, one noticeable trait of the above chart is that XRP (the token for <a href="https://ripple.com/">Ripple</a>), is the least correlated cryptocurrency. The notable exception here is with STR (the token for <a href="https://www.stellar.org/">Stellar</a>, officially known as "Lumens"), which has a stronger (0.62) correlation with XRP.</p>
+<p>What is interesting here is that Stellar and Ripple are both fairly 
+similar fintech platforms aimed at reducing the friction of 
+international money transfers between banks.</p>
+<p>It is conceivable that some big-money players and hedge funds might 
+be using similar trading strategies for their investments in Stellar and
+ Ripple, due to the similarity of the blockchain services that use each 
+token. This could explain why XRP is so much more heavily correlated 
+with STR than with the other cryptocurrencies.</p>
+<blockquote>
+<p>Quick Plug - I'm a contributor to <a href="https://chippercash.com/">Chipper</a>, a (very) early-stage startup using Stellar with the aim of disrupting micro-remittances in Africa.</p>
+</blockquote>
+<h3 id="yourturn">Your Turn</h3>
+<p>This explanation is, however, largely speculative. <strong>Maybe you can do better</strong>.
+ With the foundation we've made here, there are hundreds of different 
+paths to take to continue searching for stories within the data.</p>
+<p>Here are some ideas:</p>
+<ul>
+<li>Add data from more cryptocurrencies to the analysis.</li>
+<li>Adjust the time frame and granularity of the correlation analysis, for a more fine or coarse grained view of the trends.</li>
+<li>Search for trends in trading volume and/or blockchain mining data 
+sets. The buy/sell volume ratios are likely more relevant than the raw 
+price data if you want to predict future price fluctuations.</li>
+<li>Add pricing data on stocks, commodities, and fiat currencies to 
+determine which of them correlate with cryptocurrencies (but please 
+remember the old adage that "Correlation does not imply causation").</li>
+<li>Quantify the amount of "buzz" surrounding specific cryptocurrencies using <a href="https://eventregistry.org/">Event Registry</a>, <a href="https://www.gdeltproject.org/">GDELT</a>, and <a href="https://trends.google.com/trends/">Google Trends</a>.</li>
+<li>Train a predictive machine learning model on the data to predict 
+tomorrow's prices. If you're more ambitious, you could even try doing 
+this with a recurrent neural network (RNN).</li>
+<li>Use your analysis to create an automated "Trading Bot" on a trading site such as <a href="https://poloniex.com/">Poloniex</a> or <a href="https://www.coinbase.com/dashboard">Coinbase</a>, using their respective trading APIs. Be careful: a poorly optimized trading bot is an easy way to lose your money quickly.</li>
+<li><strong>Share your findings!</strong> The best part of Bitcoin, and 
+of cryptocurrencies in general, is that their decentralized nature makes
+ them more free and democratic than virtually any other asset. Open 
+source your analysis, participate in the community, maybe write a blog 
+post about it.</li>
+</ul>
+<p>An HTML version of the Python notebook is available <a href="https://cdn.patricktriest.com/blog/images/posts/crypto-markets/Cryptocurrency-Pricing-Analysis.html">here</a>.</p>
+<p>Hopefully, now you have the skills to do your own analysis and to 
+think critically about any speculative cryptocurrency articles you might
+ read in the future, especially those written without any data to back 
+up the provided predictions.</p>
+<p>Thanks for reading, and please comment below if you have any ideas, 
+suggestions, or criticisms regarding this tutorial. If you find problems
+ with the code, you can also feel free to open an issue in the Github 
+repository <a href="https://github.com/triestpa/Cryptocurrency-Analysis-Python">here</a>.</p>
+<p>I've got second (and potentially third) part in the works, which will
+ likely be following through on some of the ideas listed above, so stay 
+tuned for more in the coming weeks.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="http://fortune.com/2017/07/26/bitcoin-cryptocurrency-hedge-fund-sequoia-andreessen-horowitz-metastable/">http://fortune.com/2017/07/26/bitcoin-cryptocurrency-hedge-fund-sequoia-andreessen-horowitz-metastable/</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a href="https://www.forbes.com/sites/laurashin/2017/07/12/crypto-boom-15-new-hedge-funds-want-in-on-84000-returns/#7946ab0d416a">https://www.forbes.com/sites/laurashin/2017/07/12/crypto-boom-15-new-hedge-funds-want-in-on-84000-returns/#7946ab0d416a</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</div>
+</section>
+<footer class="post-footer">
+<figure class="author-image">
+<a class="img" href="https://blog.patricktriest.com/author/patrick/" style="background-image: url(https://blog-images.patricktriest.com/uploads/me-1.jpg)"><span class="hidden">Patrick Triest's Picture</span></a>
+</figure>
+<section class="author">
+<h4><a href="https://blog.patricktriest.com/author/patrick/">Patrick Triest</a></h4>
+<p>Full-stack engineer, data enthusiast, insatiable learner, obsessive 
+builder. You can find me wandering on a mountain trail, pretending not 
+to be lost.</p>
+<div class="author-meta">
+<span class="author-link icon-link"><a href="https://github.com/triestpa">https://github.com/triestpa</a></span>
+</div>
+</section>
+<section class="share">
+<h4>Share this post</h4>
+<a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Analyzing%20Cryptocurrency%20Markets%20Using%20Python&amp;url=http://blog.patricktriest.com/analyzing-cryptocurrencies-python/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+<span class="hidden">Twitter</span>
+</a>
+<a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.patricktriest.com/analyzing-cryptocurrencies-python/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+<span class="hidden">Facebook</span>
+</a>
+<a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.patricktriest.com/analyzing-cryptocurrencies-python/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+<span class="hidden">Google+</span>
+</a>
+</section>
+<section class="gh-subscribe">
+<h3 class="gh-subscribe-title">Subscribe to Break | Better</h3>
+<p>Get the latest posts delivered right to your inbox.</p>
+<form method="post" action="/subscribe/" class="">
+<input class="confirm" name="confirm" type="hidden"><input class="location" name="location" value="https://blog.patricktriest.com/analyzing-cryptocurrencies-python/" type="hidden"><input class="referrer" name="referrer" value="" type="hidden">
+<div class="form-group">
+<input class="subscribe-email" name="email" placeholder="Your email address" type="email">
+</div>
+<button class="" type="submit"><span>Subscribe</span></button>
+<script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+<span class="gh-subscribe-rss">or subscribe <a href="https://blog.patricktriest.com/rss">via RSS</a></span>
+</section>
+</footer>
+<div class="article-escape-full-width" style="margin-top:24px; margin-bottom:12px;">
+<section class="featured-posts">
+<div class="featured-posts-scroll">
+<a class="read-next-story featured-post" style="background-image: url(https://blog-images.patricktriest.com/uploads/library.jpg)" href="https://blog.patricktriest.com/text-search-docker-elasticsearch/">
+<section class="featured-post-content">
+<h2>Building a Full-Text Search App Using Docker and Elasticsearch</h2>
+</section>
+</a>
+<a class="read-next-story featured-post" style="background-image: url(https://cdn.patricktriest.com/blog/images/posts/policing-data/police_header.jpg)" href="https://blog.patricktriest.com/police-data-python/">
+<section class="featured-post-content">
+<h2>Exploring United States Policing Data Using Python</h2>
+</section>
+</a>
+<a class="read-next-story featured-post" style="background-image: url(https://blog-images.patricktriest.com/uploads/painted_table.jpg)" href="https://blog.patricktriest.com/game-of-thrones-map-node-postgres-redis/">
+<section class="featured-post-content">
+<h2>Build An Interactive Game of Thrones Map (Part I) - Node.js, PostGIS, and Redis</h2>
+</section>
+</a>
+<a class="read-next-story featured-post" style="background-image: url(https://cdn.patricktriest.com/blog/images/posts/async-await/async_await_header.png)" href="https://blog.patricktriest.com/what-is-async-await-why-should-you-care/">
+<section class="featured-post-content">
+<h2>Async/Await Will Make Your Code Simpler</h2>
+</section>
+</a>
+<a class="read-next-story featured-post" style="background-image: url(https://cdn.patricktriest.com/blog/images/posts/titanic-ml/titanic.jpg)" href="https://blog.patricktriest.com/titanic-machine-learning-in-python/">
+<section class="featured-post-content">
+<h2>Would You Survive the Titanic? A Guide to Machine Learning in Python</h2>
+</section>
+</a>
+</div>
+<a href="#" class="featured-post-button" id="next-button"><i class="material-icons">navigate_next</i></a>
+<a href="#" class="featured-post-button" id="prev-button"><i class="material-icons">navigate_before</i></a>
+</section>
+</div>
+<p class="disqus-warning">Note - Disqus is a great commenting service, 
+but it also embeds a lot of Javascript analytics trackers. If you want 
+to keep your browsing data private, you can disable these trackers from 
+your "Disqus" account settings, in the Acount -&gt; Personalization 
+page.</p>
+<div id="disqus_thread"><iframe id="dsq-app9636" name="dsq-app9636" allowtransparency="true" scrolling="no" tabindex="0" title="Disqus" style="width: 1px !important; min-width: 100% !important; border: medium none !important; overflow: hidden !important; height: 8194px !important;" src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/a.html" horizontalscrolling="no" verticalscrolling="no" width="100%" frameborder="0"></iframe></div>
+<script>
+            var disqus_config = function () {
+                this.page.url = 'http://blog.patricktriest.com/analyzing-cryptocurrencies-python/';
+                this.page.identifier = 'ghost-46';
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://blog-patricktriest.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+</main>
+<aside class="read-next">
+<a class="read-next-story " style="background-image: url(https://cdn.patricktriest.com/blog/images/posts/cheap-web-hosting/webhosting-header.jpg)" href="https://blog.patricktriest.com/host-webapps-free/">
+<section class="post">
+<h2>10 Tips To Host Your Web Apps For Free</h2>
+<p>A guide to navigating of the competitive marketplace of web hosting companies and cloud service providers.</p>
+</section>
+</a>
+<a class="read-next-story prev " style="background-image: url(https://cdn.patricktriest.com/blog/images/posts/async-await/async_await_header.png)" href="https://blog.patricktriest.com/what-is-async-await-why-should-you-care/">
+<section class="post">
+<h2>Async/Await Will Make Your Code Simpler</h2>
+<p>Or How I Learned to Stop Writing Callback Functions and Love Javascript ES8.</p>
+</section>
+</a>
+</aside>
+<section class="gh-subscribe gh-subscribe-dark">
+<div>
+<h2>Get the latest posts delivered to your inbox.</h2>
+<div class="subscription-disclaimer inner">
+<p>I hate spam. I promise not to send many emails.</p>
+</div>
+<form method="post" action="/subscribe/" class="">
+<input class="confirm" name="confirm" type="hidden"><input class="location" name="location" type="hidden"><input class="referrer" name="referrer" type="hidden">
+<div class="form-group">
+<input class="subscribe-email" name="email" placeholder="Your email address" type="email">
+</div>
+<button class="" type="submit"><span>Subscribe</span></button>
+<script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+<span class="gh-subscribe-rss"><a href="https://blog.patricktriest.com/rss/">or subscribe via RSS</a></span>
+</div>
+</section>
+<footer class="site-footer clearfix">
+<section class="copyright"><a href="https://blog.patricktriest.com/">Break | Better</a> © 2018</section>
+<section class="poweredby">
+<a href="https://blog.patricktriest.com/">Home</a> |
+<a href="https://blog.patricktriest.com/resources">Resources</a> |
+<a href="https://blog.patricktriest.com/attribution">Attribution</a> |
+<a href="https://blog.patricktriest.com/contact">Contact</a>
+</section>
+</footer>
+</div>
+<script type="text/javascript" src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/jquery-1.js"></script>
+<script type="text/javascript" src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/prism.js"></script> <script src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/iframe_insert-v2.js"></script>
+<script type="text/javascript" src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/jquery.js"></script>
+<script type="text/javascript" src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/index.js"></script>
+
+
+<iframe style="display: none;"></iframe><script src="Analyzing%20Cryptocurrency%20Markets%20Using%20Python_files/plotly-1.js"></script></body></html>

@@ -1,0 +1,2230 @@
+<!DOCTYPE html>
+<html class="gr__codeproject_com" style="height: 100%;"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Introduction to Genetic Algorithms with Python - Hello World! - CodeProject</title> 
+	<link type="text/css" rel="stylesheet" href="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/Main.css">
+
+	
+<meta http-equiv="content-language" content="en-US">
+<meta charset="UTF-8">
+<meta name="Description" content="A hands-on, step-by-step introduction to machine learning with genetic algorithms using Python.; Author: Clinton Sheppard; Updated: 7 Jun 2016; Section: Algorithms &amp; Recipes; Chapter: General Programming; Updated: 7 Jun 2016">
+<meta name="Keywords" content="Dev, Beginner, Python, machine-learning, Genetic,Algorithms &amp; Recipes,General Programming,Free source code, tutorials">
+<meta name="Author" content="Clinton Sheppard">
+<meta name="Rating" content="General">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+<meta name="google-translate-customization" content="d908bb7ce7aff658-4c2f3a504525c916-g629383f736781a8a-13">
+
+<link rel="dns-prefetch" href="https://ajax.googleapis.com/"> 
+
+
+
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - All Topics" href="https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=1">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - Android" href="https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=22">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Lounge Postings" href="https://www.codeproject.com/webservices/LoungeRSS.aspx">
+<meta name="robots" content="index, follow">
+<link rel="search" type="application/opensearchdescription+xml" title="CodeProject" href="https://www.codeproject.com/info/OpenSearch.xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.codeproject.com/favicon/apple-touch-icon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.codeproject.com/favicon/favicon-32x32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.codeproject.com/favicon/favicon-16x16.png"> 
+<link rel="manifest" href="https://www.codeproject.com/favicon/manifest.json"> 
+<link rel="mask-icon" href="https://www.codeproject.com/favicon/safari-pinned-tab.svg" color="#ff9900">
+	
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "TechArticle",
+  "headline": "Introduction to Genetic Algorithms with Python - Hello World!",
+  "url": "https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel",
+  "discussionUrl": "https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel",
+  "isFamilyFriendly": "true",
+  "image": "https://codeproject.global.ssl.fastly.net/App_Themes/CodeProject/Img/Article100.png",
+  "keywords": "Python, Dev, machine-learning, Genetic",
+  "commentCount": "3",
+  "editor" : {
+    "@type" : "Person",
+    "name" : "Clinton Sheppard",
+    "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=229712"
+  },
+  "license": "http://www.opensource.org/licenses/apache2.0.php",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "CodeProject"
+  }
+  "description": "A hands-on, step-by-step introduction to machine learning with genetic algorithms using Python.",
+  "upvoteCount": "14",
+  "articleSection": "Algorithms & Recipes",
+  "author" : [{
+      "@type" : "Person",
+      "name" : "Clinton Sheppard",
+      "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=229712"
+    }],
+  "datePublished": "2016-06-06",
+  "dateCreated": "2016-06-06",
+  "dateModified": "2016-06-07",
+  "aggregateRating" : {
+    "@type" : "aggregateRating",
+    "ratingValue" : 4.43,
+    "ratingCount" : 15,
+    "bestRating" : 5,
+    "worstRating" : 1
+  },
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item" : {
+      "@id" : "/Chapters/6/General-Programming.aspx",
+      "name" : "General Programming"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item" : {
+      "@id" : "/KB/recipes/",
+      "name" : "Algorithms & Recipes"
+    }
+  }]
+}
+</script>
+	<!-- base href="https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel" -->
+	<script type="text/javascript" language="Javascript" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/jquery.js"></script><script type="text/javascript">//<![CDATA[
+if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='%2fscript%2fJS%2fjquery-2.2.4.min.js' type='text/javascript' %3E%3C/script%3E"));
+}//]]></script>
+<script type="text/javascript" language="Javascript">//<![CDATA[
+function defrm () { /* thanks twitter */ document.write = ''; window.top.location = window.self.location;  setTimeout(function() { document.body.innerHTML = ''; }, 0);  window.self.onload = function(evt) { document.body.innerHTML = ''; }; }if (window.top !== window.self) {  try {  if (window.top.location.host) { /* will throw */ } else { defrm(); /* chrome */ }  } catch (ex) { defrm(); /* everyone else */ } }if (typeof(DemoUrl)!='undefined')   document.write(unescape('%3Cme')+'ta http'+'-equiv="re'+'fresh"                  con'+'tent="1;url='+DemoUrl+unescape('"%3CE'));
+
+//]]>
+</script>
+
+	
+
+
+
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-1735123-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_setDomainName', 'www.codeproject.com']);
+	_gaq.push(['_setSessionTimeout', '1200']); 
+
+	(function () {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})(); 
+</script><script type="text/javascript" async="" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/ga.js"></script>
+
+
+<style type="text/css"></style><link type="text/css" rel="stylesheet" charset="UTF-8" href="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/translateelement.css"><script type="text/javascript" charset="UTF-8" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/main.js"></script><script type="text/javascript" charset="UTF-8" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/element_main.js"></script></head>	
+
+<body class="firefox firefox0" data-gr-c-s-loaded="true" style="position: relative; min-height: 100%; top: 0px;"><div role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc" class="cc-window cc-banner cc-type-info cc-theme-block cc-bottom cc-invisible" style="display: none;"><!--googleoff: all--><span id="cookieconsent:desc" class="cc-message">This website uses cookies to ensure you get the best experience on our website. <a aria-label="learn more about cookies" role="button" tabindex="0" class="cc-link" href="http://cookiesandyou.com/" rel="noopener noreferrer nofollow" target="_blank">Learn more</a></span><div class="cc-compliance"><a aria-label="dismiss cookie message" role="button" tabindex="0" class="cc-btn cc-dismiss">Got it!</a></div><!--googleon: all--></div>
+
+<a class="access-link" href="#Main"><img alt="Click here to Skip to main content" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/t.gif"></a>
+
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+
+	
+    <div id="ctl00_STM" class="site-top-menu fixed">
+        <div class="main-content">
+            
+
+<div class="container memberbar clearfix">
+
+	<div id="ctl00_MemberMenu_GenInfo" class="float-left">13,420,707 members (36,534 online)</div>
+
+	<div class="float-left">
+		
+	</div>
+
+	<div class="float-right">
+
+		
+
+		
+
+		
+
+			<script type="text/javascript">//<!--
+			function doSubmit(secure)
+			{
+				if (secure)
+					document.subForm.action = "https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel"
+				else
+					document.subForm.action = "https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel"
+				document.subForm.submit();
+				return true;
+			}//-->
+			</script>
+
+			<a name="SignUp"></a>
+			<span class="member-signin tooltip openable">
+				<span><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel">Sign in</a>
+                    <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/login32.png" style="vertical-align:middle;" width="16px" height="16px">
+				</span>
+
+				<div class="tooltip-flyout">
+					<form name="subForm" id="subForm" action="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel" method="post" class="tight">
+
+						
+						<input id="FormName" name="FormName" value="MenuBarForm" type="hidden">
+
+						<div>Email</div>
+						<div><input class="small-text" name="Email" id="Email" type="email"></div>
+						<div>Password</div>
+						<div><input class="small-text" name="Password" id="Password" type="password"></div>
+						<div class="action">
+							
+                                  <input id="joinBtn" class="create hidden" onclick="return Join();" value="Join" style="visibility: visible;" type="button">
+                                  <input name="fld_quicksign" value="true" type="hidden">
+                                  <script type="text/javascript">
+                                  function simpleMask(str, key) {
+                                      var result = '';
+                                      for (var i = 0; i < str.length; ++i)
+                                          result += String.fromCharCode(key ^ str.charCodeAt(i));
+                                      return result;
+                                  }
+                                  function Join() {
+                                      var url = 'https://www.codeproject.com/script/Membership/Modify.aspx';
+document.location.href=url;
+                                      return false;
+                                  }
+                                  $('#joinBtn').css('visibility', 'visible');
+                                  </script>
+							<input value="Sign in" class="signin" onclick="return doSubmit(false);" type="submit">
+						</div>
+
+						<div class="container">
+							
+							&nbsp;
+							<a id="ctl00_MemberMenu_SendPassword" class="forgot float-right" href="https://www.codeproject.com/script/Membership/SendPassword.aspx?rp=/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel">Forgot your password?</a>
+						</div>
+					</form>
+
+					<hr class="divider-dark">
+
+					Sign in with <a class="oauth" title="Sign in using Github" href="https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=GitHub"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/octicons_github.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Linkedin" href="https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=LinkedIn"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/linkedin.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Facebook" href="https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Facebook"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/facebook.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Google" href="https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Google"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/google-plus.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Microsoft" href="https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Microsoft"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/microsoft.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+
+				</div>
+            </span>
+		
+	</div>
+</div>
+        </div>
+    </div>
+
+	
+    <div id="ctl00_SH" class="site-header fixed">
+        <div class="main-content">
+            <div class="logo"><a href="https://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></div>
+            <div class="promo"><div class="msg-728x90" data-format="728x90" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="General-Programming/Algorithms-Recipes/Evolutional" data-tags="Dev, Beginner, Python, machine-learning, Genetic,rating4"><noscript><a
+ 
+href="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/General-Programming/Algorithms-Recipes/Evolutional&sz=728x90&c=873963"><img
+ 
+src="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/General-Programming/Algorithms-Recipes/Evolutional&sz=728x90&c=873963"
+  width="728px" height="90px" target="_blank"/></a></noscript></div></div>
+        </div>
+    </div>
+
+	<a href="#Main"><img alt="Click here to Skip to main content" class="access-link" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/t.gif"></a>
+
+	
+	<div id="ctl00_TPR" class="sub-headerbar clearfix fixed">
+    <div class="float-right">
+		
+
+<div class="searchbar">
+
+<form method="get" action="/search.aspx?sbo=kw" name="Search" class="tight">
+
+
+<table class="search" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td><input tabindex="2" class="search  subdue" id="sb_tb" value="Search for articles, questions, tips" name="q"></td><td><input src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/search.gif" type="image"></td></tr></tbody></table>
+
+<div class="hover-container">
+	<div id="SearchFilter" class="search-advanced small-text align-left" style="display: none;">
+	<b>Search within:<br></b>
+		
+		<input id="sb_kw" name="sbo" value="kw" checked="checked" type="radio"><label for="sb_kw">Articles</label><br>
+<input id="sb_qa" name="sbo" value="qa" type="radio"><label for="sb_qa">Quick Answers</label><br>
+<input id="sb_fm" name="sbo" value="fm" type="radio"><label for="sb_fm">Messages</label><br>
+
+
+		
+		
+
+		
+		
+	</div>
+</div>
+</form>
+
+</div>
+    </div>
+    <div class="float-left">
+		
+
+<div class="navbar clearfix">
+<ul class="navmenu openable">
+
+<li class="desktop-only"><a id="ctl00_TopNavBar_Home" href="https://www.codeproject.com/">home</a>
+
+
+</li><li class="openable"><a id="ctl00_TopNavBar_Art" class="down selected" href="https://www.codeproject.com/script/Articles/Latest.aspx">articles</a>
+
+	<ul>
+		<li class="openable"><a id="ctl00_TopNavBar_ArtTopicList" class="fly" onmouseover="navBarMenu.ShowMap(this, 'ctl00_TopNavBar_MapFlyout');" href="https://www.codeproject.com/script/Content/SiteMap.aspx">Chapters and Sections<span class="has-submenu">&gt;</span></a><ul id="ctl00_TopNavBar_MapFlyout" class="taxonomy">
+			<li>
+				<div id="siteMap"></div>
+			</li>
+			</ul>
+		</li>
+		
+		<li><a id="ctl00_TopNavBar_ArtLatestArts" class="fly" href="https://www.codeproject.com/script/Articles/Latest.aspx?at=1,3,7">Latest Articles</a></li>
+		
+		<li><a id="ctl00_TopNavBar_ArtTop" class="fly" href="https://www.codeproject.com/script/Articles/TopArticles.aspx?ta_so=5">Top Articles</a></li>
+		
+		
+		<li><a id="ctl00_TopNavBar_ArtGuide" class="fly" href="https://www.codeproject.com/info/Submit.aspx">Posting/Update Guidelines</a></li>
+		<li><a id="ctl00_TopNavBar_ArtHelpForum" class="fly" href="https://www.codeproject.com/Forums/1641/Article-Writing.aspx">Article Help Forum</a></li>
+		
+		<li><a id="ctl00_TopNavBar_ArtPostArticle" class="fly highlight1" href="https://www.codeproject.com/script/Articles/Submit.aspx">
+			<img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/write13.png" width="13px" height="13px"> Submit an article or tip
+			</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostBlog" class="fly highlight2" href="https://www.codeproject.com/script/Articles/BlogFeed.aspx">
+			<img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/write13.png" width="13px" height="13px"> Post your Blog
+			</a></li>		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+<li class="openable">
+<a id="ctl00_TopNavBar_Answers" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active">
+    <span class="desktop-only tablet-only">quick answers</span><span class="mobile-only">Q&amp;A</span>
+</a>
+	<ul>
+		<li id="ctl00_TopNavBar_AQL"><a id="ctl00_TopNavBar_ArticleQuestion" class="fly highlight1" href="#_comments">
+			<img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/write13.png" width="13px" height="13px"> Ask a Question about this 
+			article</a>
+		</li>
+
+		<li><a id="ctl00_TopNavBar_QAAsk" class="fly highlight2" href="https://www.codeproject.com/Questions/ask.aspx"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/write13.png" width="13px" height="13px"> Ask a Question</a></li>
+
+		<li><a id="ctl00_TopNavBar_QAUnanswered" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=unanswered">View Unanswered Questions</a></li>
+		<li><a id="ctl00_TopNavBar_QALatest" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active">View All Questions</a></li>
+        
+				<li><a id="ctl00_TopNavBar_QATR_ctl00_Tag" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=81" style="padding-left:30px">View C# questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl01_Tag" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=85" style="padding-left:30px">View ASP.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl02_Tag" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=842" style="padding-left:30px">View VB.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl03_Tag" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=93" style="padding-left:30px">View SQL questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl04_Tag" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=87" style="padding-left:30px">View Javascript questions</a></li>
+			
+    
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+<li class="openable"><a id="ctl00_TopNavBar_Forums" href="https://www.codeproject.com/script/Forums/List.aspx">
+        <span class="desktop-only tablet-only">discussions</span><span class="mobile-only">forums</span>
+</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_MessageBoardsAll" class="fly" href="https://www.codeproject.com/script/Forums/List.aspx">All Message Boards...</a></li>
+		<li class="openable"><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1580997/Application-Lifecycle.aspx">Application Lifecycle<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="https://www.codeproject.com/Forums/1533717/Running-a-Business.aspx">Running a Business</a></li>
+<li><a class="fly" href="https://www.codeproject.com/Forums/1533716/Sales-Marketing.aspx">Sales / Marketing</a></li>
+<li><a class="fly" href="https://www.codeproject.com/Forums/1651/Collaboration-Beta-Testing.aspx">Collaboration / Beta Testing</a></li>
+<li><a class="fly" href="https://www.codeproject.com/Forums/3304/Work-Issues.aspx">Work  Issues</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/369270/Design-and-Architecture.aspx">Design and Architecture</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/12076/ASP-NET.aspx">ASP.NET</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1580226/JavaScript.aspx">JavaScript</a>
+</li>
+<li class="openable"><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1647/C-Cplusplus-MFC.aspx">C / C++ / MFC<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="https://www.codeproject.com/Forums/4486/ATL-WTL-STL.aspx">ATL /  WTL / STL</a></li>
+<li><a class="fly" href="https://www.codeproject.com/Forums/3785/Managed-Cplusplus-CLI.aspx">Managed C++/CLI</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1649/Csharp.aspx">C#</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1627782/Free-Tools.aspx">Free Tools</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1827460/Objective-C-and-Swift.aspx">Objective-C and Swift</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1725/Database.aspx">Database</a>
+</li>
+<li class="openable"><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/186301/Hardware-Devices.aspx">Hardware &amp; Devices<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="https://www.codeproject.com/Forums/1644/System-Admin.aspx">System Admin</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1606152/Hosting-and-Servers.aspx">Hosting and Servers</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1643/Java.aspx">Java</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1650/NET-Framework.aspx">.NET Framework</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1848626/Android.aspx">Android</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1876716/iOS.aspx">iOS</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/13695/Mobile.aspx">Mobile</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1540733/SharePoint.aspx">SharePoint</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1004257/Silverlight-WPF.aspx">Silverlight / WPF</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1646/Visual-Basic.aspx">Visual Basic</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1640/Web-Development.aspx">Web Development</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/suggestions.aspx">Site Bugs / Suggestions</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1652005/Spam-and-Abuse-Watch.aspx">Spam and Abuse Watch</a>
+</li>
+
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+<li class="openable desktop-only"><a id="ctl00_TopNavBar_Features" href="https://www.codeproject.com/Feature/">features</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_Comps" class="fly" href="https://www.codeproject.com/script/Contests/CurrentCompetitions.aspx?cmpTpId=3&amp;awsac=true">Competitions</a></li>
+		<li><a id="ctl00_TopNavBar_News" class="fly" href="https://www.codeproject.com/script/News/List.aspx">News</a></li>
+		<li><a id="ctl00_TopNavBar_Insider" class="fly" href="https://www.codeproject.com/Feature/Insider/">The Insider Newsletter</a></li>
+    	<li><a id="ctl00_TopNavBar_DailyBuild" class="fly" href="https://www.codeproject.com/Feature/DailyBuild">The Daily Build Newsletter</a></li>
+		<li><a id="ctl00_TopNavBar_Newsletters" class="fly" href="https://www.codeproject.com/script/Mailouts/Archive.aspx?mtpid=1">Newsletter archive</a></li>
+		<li><a id="ctl00_TopNavBar_Surveys" class="fly" href="https://www.codeproject.com/script/Surveys/List.aspx">Surveys</a></li>
+		<li><a id="ctl00_TopNavBar_Showcase" class="fly" href="https://www.codeproject.com/KB/showcase/">Product Showcase</a></li>
+		<li><a id="ctl00_TopNavBar_Research" class="fly" href="https://www.codeproject.com/script/ResearchLibrary/Index.aspx">Research Library</a></li>
+
+		<li><a id="ctl00_TopNavBar_Stuff" class="fly" href="https://www.codeproject.com/Info/Stuff.aspx">CodeProject Stuff</a></li>
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+<li class="openable"><a id="ctl00_TopNavBar_Lounge" href="https://www.codeproject.com/Lounge.aspx">
+            <span class="desktop-only tablet-only">community</span><span class="mobile-only">lounge</span>
+</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_WhosWho" class="fly" href="https://www.codeproject.com/script/Membership/Profiles.aspx">Who's Who</a></li>
+		<li><a id="ctl00_TopNavBar_MVPs" class="fly break" href="https://www.codeproject.com/script/Contests/Winners.aspx?obtid=1&amp;cmpTpId=2&amp;cid=0">Most Valuable Professionals</a></li>
+		
+
+		<li><a id="ctl00_TopNavBar_LoungeLnk" class="fly highlight2" href="https://www.codeproject.com/Lounge.aspx">The Lounge &nbsp;</a></li>
+		<li><a id="ctl00_TopNavBar_InsiderLnk" class="fly" href="https://www.codeproject.com/Insider.aspx">The Insider News</a></li>
+		<li><a id="ctl00_TopNavBar_WeirdWonderful" class="fly" href="https://www.codeproject.com/Feature/WeirdAndWonderful.aspx">The Weird &amp; The Wonderful</a></li>
+		<li><a id="ctl00_TopNavBar_SoapBoxLnk" class="fly" href="https://www.codeproject.com/Forums/1536756/The-Soapbox.aspx">The Soapbox</a></li>
+		<li><a id="ctl00_TopNavBar_PRLnk" class="fly break" href="https://www.codeproject.com/Forums/1738007/Press-Releases.aspx">Press Releases</a></li>
+
+		
+		<li class="openable"><a class="fly" href="https://www.codeproject.com/Forums/1580229/Hindi.aspx">Non-English Language
+			<span class="has-submenu">&gt;</span></a>
+		<ul>
+		<li><a class="fly" href="https://www.codeproject.com/Forums/1580229/Hindi.aspx">General Indian Topics</a></li>
+		<li><a class="fly" href="https://www.codeproject.com/Forums/1580230/Chinese.aspx">General Chinese Topics</a></li>
+		</ul>
+		</li><li class="last"></li>
+		
+	</ul>
+
+</li>
+
+
+<li class="openable desktop-only tablet-only" style="margin-left:20px"><a id="ctl00_TopNavBar_Help" href="https://www.codeproject.com/KB/FAQs/">help</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_HelpWhatIs" class="fly" href="https://www.codeproject.com/info/guide.aspx">What is 'CodeProject'?</a></li>
+		<li><a id="ctl00_TopNavBar_HelpGeneral" class="fly break" href="https://www.codeproject.com/KB/FAQs/">General FAQ</a></li>
+		<li><a id="ctl00_TopNavBar_HelpPostQuestion" class="fly break highlight2" href="https://www.codeproject.com/Questions/ask.aspx">Ask a Question</a></li>
+		<li><a id="ctl00_TopNavBar_HelpBugs" class="fly" href="https://www.codeproject.com/suggestions.aspx">Bugs and Suggestions</a></li>
+		<li><a id="ctl00_TopNavBar_HelpArticles" class="fly" href="https://www.codeproject.com/Forums/1641/Article-Writing.aspx">Article Help Forum</a></li>
+		<li><a id="ctl00_TopNavBar_HelpSiteMap" class="fly" href="https://www.codeproject.com/script/Content/SiteMap.aspx">Site Map</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAdvertise" class="fly" href="http://developermedia.com/">Advertise with us</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAboutAds" class="fly" href="https://www.codeproject.com/info/AboutOurAds.aspx">About our Advertising</a></li>
+		<li><a id="ctl00_TopNavBar_HelpJobs" class="fly" href="https://www.codeproject.com/info/Jobs/">Employment Opportunities</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAboutUs" class="fly" href="https://www.codeproject.com/info/about.aspx">About Us</a></li>
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+</ul>
+
+</div>
+    </div>
+	<div class="sub-headerbar-divider"></div>
+	</div>		
+	
+
+	<div id="A" class="container-content-wrap fixed"> 
+	<div class="container-content">
+
+
+		<div class="clearfix">
+			<div class="container-breadcrumb float-left ">
+				<div><a href="https://www.codeproject.com/script/Content/SiteMap.aspx">Articles</a> » <a href="https://www.codeproject.com/Chapters/6/General-Programming.aspx">General Programming</a> » <a href="https://www.codeproject.com/KB/recipes/">Algorithms &amp; Recipes</a> » <a href="https://www.codeproject.com/KB/recipes/#Evolutional">Evolutional</a></div>
+			</div>
+
+            <div class="float-left">
+				
+			</div>
+
+			<div class="edit-links float-right">
+				
+
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="article-nav float-right">
+                
+				
+
+<div style="display:inline-block;position:relative;top:-5px;margin-right:20px">
+    
+</div>
+
+
+
+<span id="ctl00_ActionLinks_BookmarkMd_bookmark" data-type="bookmark" data-ref="2_1104747_6" data-size="medium" data-mode="bookmark"><span data-direction="up-right" title="" data-enabletooltip="true" data-tooltip="bookmark this (You'll need to be logged in first)" class="tooltip"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/bookmark48.png" style="width:24px;height:24px;border:none;cursor:pointer;"><div class="speech-bubble-container-up-right" style="width:150px">  <div class="speech-bubble-up-right"> bookmark this (You'll need to be logged in first)</div>  <div class="speech-bubble-pointer-up-right">    <div class="speech-bubble-pointer-up-right-inner"></div>  </div></div></span></span><a id="ctl00_ActionLinks_PrintMd" data-tooltip="Print" data-enabletooltip="true" data-width="auto" href="https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel?display=Print" class="tooltip" title="">
+	    <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/print48.png" style="border:0" width="24px" height="24px">
+    <div class="speech-bubble-container-up" style="width:auto">  <div class="speech-bubble-up"> Print</div>  <div class="speech-bubble-pointer-up">    <div class="speech-bubble-pointer-up-inner"></div>  </div></div></a>
+			</div>
+		</div>
+
+		<table class="extended container-article-parts" cellspacing="0" cellpadding="0">
+        <tbody><tr valign="top">
+		<td class="article-wing-left" width="117px">
+
+			<div id="ctl00_Nav" class="container-article-tabs stuck" style="position: fixed; top: 10px; left: 0px;">
+    			
+
+<div class="tabs">
+	<div class="selected">Article</div><div class="unselected"><a href="https://www.codeproject.com/script/Articles/ViewDownloads.aspx?aid=1104747">Browse Code</a></div><div class="unselected"><a href="https://www.codeproject.com/script/Articles/Statistics.aspx?aid=1104747">Stats</a></div><div class="unselected"><a href="https://www.codeproject.com/script/Articles/ListVersions.aspx?aid=1104747">Revisions (6)</a></div><div class="unselected"><a href="https://www.codeproject.com/script/Articles/ListAlternatives.aspx?aid=1104747">Alternatives</a></div>
+
+	<div class="unselected"><a href="https://www.codeproject.com/Articles/1104747/WebControls/#_comments" id="ctl00_ArticleTabs_CommentLink" class="anchorLink">Comments 
+        <span id="ctl00_ArticleTabs_CmtCnt">(3)</span></a>
+	</div>
+</div>	
+
+
+				<a id="ctl00_AddAlternative" title="Write a related article about upgrades or translate this into a different language." class="add-item" href="https://www.codeproject.com/script/Articles/SubmissionWizard.aspx?at=1&amp;apid=1104747">Add your own<br>alternative version</a>
+
+			    <div>
+                    <h4>Tagged as</h4>
+			        <span id="ctl00_TagList_TagWrp" class="tags vertical">
+
+	
+	
+
+	
+	<span id="ctl00_TagList_VisibleTags"><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/Dev" data-id="118">Dev</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/Beginner" data-id="152">Beginner</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/Python" data-id="268">Python</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/machine-learning" data-id="3517">machine-learning</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/Genetic" data-id="3712">Genetic</a></div></span> 
+
+	
+	
+</span>
+
+
+			    </div>
+
+                <div class="stats">
+                <h4>Stats</h4>
+                <div id="ctl00_ArtStats"><div class="stats"><div>39.2K views</div><div>794 downloads</div><div>11 bookmarked</div></div></div>
+                </div>
+
+                <div class="subdue padded-top" title="Date First posted">Posted 
+                    5 Jun 2016</div>
+
+                <div title="Licence">
+                    <a id="ctl00_LicenseLink" title="The Apache License, Version 2.0" class="license" href="http://www.opensource.org/licenses/apache2.0.php">Apache</a>
+                </div>
+
+                
+			</div>
+
+		</td>
+		<td>
+			
+			<div id="AT" class="container-article  fixed"> 
+
+				<div class="article">
+
+					<form name="aspnetForm" method="post" action="/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="Fud7aabYaR3I1Jbja5/f3mPcr2QLhrrLW/9OXjfjL7aLdVwvfFLlzazDooMvEA1235pUEo8JYoOXrto2Eo9YAdxIk007+NlMGEuwIVA7V/bb0ByKS1U3EAR5K9kgioWTMTrJyruG5rcjClT+Po3bkF93ss26JEKD9qdvKTtNEpLYnNLu7KCrU2yJKmHDamzsHw5ILizpz9EN5Yy2BNE2NLeB3K1H8r/p1VTsN0L+V+3ViKWkAQsyJgIZIPvpV2xIbnngY+cTm6sGNv9VbIkYJaow3LX5lQnRbUFxKoTATI1f8uvz9T9xMxWrHlEphOMsKLXcWvhVzpe16rGQsY9vvvWY7TlAlQOYWa2ZkLDPqF2alwa3R03OD09ep3EBhnTJ1pI1BXIxRXhVvJBev+EoycnQ+XvQR/AzmVHst5GnBvj2siGIPnlxdt37NDfXzNON97QamGVRFD/FgMRNAR88QAvAMmQPFk2kUAKonIRNWjlmH70hsk6yIuB3/fePBX84Zhe6Ziu5zpqZAgsZhFsZXCu7oswNmXQtgEsMizokyvFHYKuQE6ZdY1nYgnH1UXIJJq7d8tp2afqAULSZmsPzpJyD5kzuyIsaOM0Y/e72e3OOq2jkAN6Dyq8LKCVBni4dv3t+AeZI7/enFiZiSMjzBxlbs9Aq47l09XsSR/aqzBvracKDZblLMiIPfeySaCwcmDoynnEHoDeXEEUtnYnGAaLFQMlXei6ybzqKaBP73X8OtAz7uU+NHX6rPlkq0PYE3jkdI38JSFmibnSid2hycFDAyykMHpLb+z6lCtH7smovJPVSfcTjn0E88I3oDb/7tb0DzY6WM1yuDAkx0d5asQUajniamuXUzCWOnD4tGvgd9uUxgJ18VEPWbVKmu+c7hdDyW8/tBE1WUq50/0+DCQxqd05cULoDBirRzznids1reM6lqp//+aoZJyqF0dQA0orJ617cLbGuapbL1nTHco2cV8eMiOEGq9xBgBNSedBp166M5Qo0eQimSSoPYeV8UftANsfd5Yc4RJolfov8JwhCZqdquubKEOQH6L+3rnuY5PuBjUeLB10GrG4eP4mjFhsGd0RoKWENwVdtPrVcohL9Gzgf/oijmFVGgM0XDFSjc2AuPaK5asDGXEAFvnjJs+bth65DmNNYHUB4BgXOMLp1vYV0pLBA0j4Fiinbq+70rgaXtoTwcO/Jgag6x0t2ve741ZEsRr8X+RXp0cd6omHtn9ETcDrVrPldV+DPFNnBhEz7lJqyD1pjbeI3O/PeQmzER44LdgAcOsrR7IWhONTGZgIIFNoXrP8B0je3qnQiGc9EXYAuIPjZkETh+lhyIKP6d7G+nNbhaZRlqsN7WKSdGeTh0/LqW5f3ljk6i01slCrO4eYTEvjZ8VDiHLnZp8gFMckef0C6ycPpn6zECPIrFi2qA4q4YH3OjnH0+ALOu3P+Z6nEACTEduLpF1lz/emolF2aZd7GKjHtlvj5z4EkfqXVpx3AAYt6NH0EjVe+vsK/ZydqR++DOiITChHWLQCwzK6YWnns1mLEp6vU1YNFgeDeDOMreq0GFw3gTnV250tZiXuRueOig/Ao6kO24oAykJzgeHqHnDIhQDplerPzR+JCqAlRwlajy0EmWSp/H0CBY4CAipi2pVRAkfgmjAXjxd2f+r0i+ntQgWae9LsKu0G7Wz6VpFi5SO71H4FMQO5GbsCAMXLTO9W+0Ao+qFI+4ggVUR46e10qVfDsOQadH+RrZALdLLXBs2oJV8zBuMh+NzI6PDT/lLRDwt7RCTMaRmIDq0PuOLto+gR7RD9Kc7iVsTpZO2tp2GE+BECr0/ozx9au+DTBdwl1L/ZZRYhWUVMCEDvXjEN66LRbTRL6EKU3bazD6EqAKaOw66vtvXHVnAb4YjC4cVUG423qC2KFciL3hH7IhDp+jJ3iBhLnKqzATWlLcQvxbBXZXAKu7j/SkIx4EcRgvYj5rfTLbRfgpsi1Se3cGHL6uD8iClT0iTOtaePfviUq8Q/RDvlTSnNbROVDip+o6mQmeYSE3BB0ezWv1lPhrdZw4KIDh2pBh8nWyHtQk2hLVtyGqeZTHRn01lf593TNFjG33vnKG/yAtQGzE/zj/aRChVWS8tExtxHDxBAEIBHIopC4Ee6SOBzW4DzW/J6X5V9unYqiRajixm/tRt0UH4aSRuKm3b7enT/kLjDHtf/8AmlQre5bmqO6Uqreunbm5TXvTh1HuelsBFxUdnleYiflv9SeK2aTpmpaiqfYMGKz5SEi0mS5l5dro5kn3sRJicnyooGp/FQMXdsTUvAozV2SEx6aqy/dLpoBZSKYqfAuSwdGYhW1uQ35NEAQzKkhfvLJ2mVhw459dV6YvXWWJ4I1Sjb2en9RDr1Y00ON7lutVjF3ZR6RnkI0" type="hidden">
+</div>
+
+<div>
+
+	<input name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10C1FD69" type="hidden">
+</div>
+
+					
+					 
+					<div class="header">
+					    <a name="Main"></a>
+
+					    
+					    <a name="_articleTop" id="_articleTop"></a>
+					    <div class="title">
+					        <h1 id="ctl00_ArticleTitle">Introduction to Genetic Algorithms with Python - Hello World!</h1>
+					    </div>
+
+                        <div style="height:34px">
+					        
+					        <div class="entry float-left">
+
+                                <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/5a485ec43d4ad1632c7bbb8985e6cca8.png" id="ctl00_avatar" class="float-left avatar">
+
+                                <div class="float-left">
+                                    <div>
+						                <span class="author"><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=229712" rel="author">Clinton Sheppard</a></span>, 
+						                <span class="date" title="Date last updated">
+							            6 Jun 2016</span>
+			                        </div>
+
+                                    
+						            <div id="ctl00_RateArticleRow" class="float-left align-right" style="margin-top:5px">
+
+					                    <div id="ctl00_CurRat" class="tooltip anchorLink column" style="cursor:pointer;margin:2px 20px 0 0" name="CurRat_1104747">
+				
+							                
+
+<table id="ctl00_ArticleRating_RatingTable" class="small-text" cellspacing="0" cellpadding="0">
+	<tbody><tr>
+		<td class="nowrap">
+
+		<span id="ctl00_ArticleRating_VI">
+		<div class="nowrap rating-stars-medium" style="height:18px;width:80px;position:relative;">
+			<div class="clipped align-left float-left" style="height:16px;width:70px;">
+				<img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/stars-fill-md.png" style="border-width:0px;">
+			</div><div class="clipped" style="height:16px;width:10px;position:relative;">
+				<img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/stars-empty-md.png" style="border-width:0px;position:absolute;top:0;right:0;">
+			</div>
+		</div>
+		</span>
+
+		
+	</td>
+		<td id="ctl00_ArticleRating_VR" class="nowrap">
+		&nbsp;
+		<span id="ctl00_ArticleRating_VotesR">&nbsp;4.43 (15 votes)</span>
+		
+	</td>
+	</tr>
+</tbody></table>
+
+<span id="ctl00_ArticleRating_RatingText"></span>
+
+
+							                <div id="ctl00_RB" class="speech-bubble-container-up">
+								                <div class="speech-bubble-up" style="width:150px !important">
+									                            
+<div>
+<table class="feature" title="Voting Distribution. Recent data only" width="100%" cellspacing="0" cellpadding="0" height="50px"><tbody><tr class="chart-row"><td class="chart-column"><div class="rating-ignore-vote" title="Votes not included in score."><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/pollcol.gif" alt="1 vote, 7.1%" title="1 vote, 7.1%" width="20pxpx" height="7px" border="0px"></div><span title="0 votes">1</span></td>
+<td class="chart-column"><span title="0 votes">2</span></td>
+<td class="chart-column"><div><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/pollcol.gif" alt="2 votes, 14.3%" title="2 votes, 14.3%" width="20pxpx" height="14px" border="0px"></div><span title="2 votes">3</span></td>
+<td class="chart-column"><div><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/pollcol.gif" alt="5 votes, 35.7%" title="5 votes, 35.7%" width="20pxpx" height="35px" border="0px"></div><span title="5 votes">4</span></td>
+<td class="chart-column"><div><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/pollcol.gif" alt="7 votes, 50.0%" title="7 votes, 50.0%" width="20pxpx" height="50px" border="0px"></div><span title="7 votes">5</span></td>
+</tr></tbody></table><div class="small-text align-center">4.43/5 - 15 votes</div><div class="small-text align-center subdue">1 removed</div><div class="small-text align-center subdue">μ 4.22, σ<sub>a</sub> 1.89 [<a href="https://www.codeproject.com/KB/FAQs/RatingReputationFAQ.aspx#noisefilter">?</a>]</div>
+</div>
+								                </div>
+								                <div class="speech-bubble-pointer-up">
+									                <div class="speech-bubble-pointer-up-inner"></div>
+								                </div>
+							                </div>
+
+						                </div>
+                                        <div class="column">
+                                        <div id="ctl00_RateArticle_RateItemWrapper" class="tooltip small-text" name="RateItem_1104747">
+
+	<table class="small-text" width="100%" cellspacing="0" cellpadding="0">
+	<tbody><tr>
+		<td id="ctl00_RateArticle_VoteResultDiv" class="rating-result align-right">
+			<span class="align-right"></span>
+			<img class="loading invisible" alt="loading..." src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/loading16.gif" width="16px" height="16px"> 
+		</td>
+
+	
+		<td class="voteTbl" style="white-space:nowrap" align="right">
+			<table class="small-text">
+			<tbody><tr>
+				<td id="ctl00_RateArticle_RateText" class="rating-prompt">
+					Rate this:
+				</td>
+
+				
+				<td id="ctl00_RateArticle_VoteFormDiv" class="nowrap rating-stars-voter-medium">
+					
+
+					<span id="ctl00_RateArticle_RB" class="tooltip ajaxHist radio voting">
+						<span id="ctl00_RateArticle_VoteRBL"><input id="ctl00_RateArticle_VoteRBL_0" name="ctl00$RateArticle$VoteRBL" value="1" style="display: none;" type="radio"><input id="ctl00_RateArticle_VoteRBL_1" name="ctl00$RateArticle$VoteRBL" value="2" style="display: none;" type="radio"><input id="ctl00_RateArticle_VoteRBL_2" name="ctl00$RateArticle$VoteRBL" value="3" style="display: none;" type="radio"><input id="ctl00_RateArticle_VoteRBL_3" name="ctl00$RateArticle$VoteRBL" value="4" style="display: none;" type="radio"><input id="ctl00_RateArticle_VoteRBL_4" name="ctl00$RateArticle$VoteRBL" value="5" style="display: none;" type="radio"></span> 
+
+						
+					<div class="rating-star-block"><a href="#" rating="1" class="star outline" title="vote 1">vote 1</a><a href="#" rating="2" class="star outline" title="vote 2">vote 2</a><a href="#" rating="3" class="star outline" title="vote 3">vote 3</a><a href="#" rating="4" class="star outline" title="vote 4">vote 4</a><a href="#" rating="5" class="star outline" title="vote 5">vote 5</a></div></span>
+
+				</td>
+
+				
+				<td style="padding-left:5px">	
+					<input name="ctl00$RateArticle$SubmitRateBtn" value="Vote!" id="ctl00_RateArticle_SubmitRateBtn" class="button" style="display: none;" type="submit">
+				</td>
+			</tr>
+			</tbody></table>
+			
+		</td>
+	</tr>
+	</tbody></table>
+	<div class="hover-container">
+		
+	</div>
+    
+    <div id="ctl00_RateArticle_RSU" class="speech-bubble-container-down">
+		<div class="speech-bubble-down">
+            Please <a id="ctl00_RateArticle_SignUp" href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel">Sign up or sign in</a> to vote.
+		</div>
+		<div class="speech-bubble-pointer-down">
+			<div class="speech-bubble-pointer-down-inner"></div>
+		</div>
+	</div>    
+
+</div>
+                                        </div>
+                                    
+                                    </div>
+    						        	
+
+                                </div>
+
+    	                        	
+                                <div class="float-left" style="margin: 25px 0 0 10px;">
+	                                
+	                            </div>
+                         	    	
+    
+					        </div>
+
+                            
+
+						    
+
+                        </div>
+
+                        <div id="ctl00_description" class="summary">A hands-on, step-by-step introduction to machine learning with genetic algorithms using Python.</div><span id="ctl00_thumbnailUrl" class="date" content="https://codeproject.global.ssl.fastly.net/script/Articles/Images/article100x80.png"></span>			
+
+                    </div>
+                    
+					
+					
+
+					
+
+					
+					
+					
+
+						
+					
+
+					
+
+						
+						<div id="contentdiv" class="text">
+						
+
+
+
+<ul class="download">
+	<li><a href="https://www.codeproject.com/KB/recipes/1104747/genetic_algorithms_with_python_hello_world.zip">Download genetic_algorithms_with_python_hello_world.zip - 2.8 KB</a></li></ul>
+
+<h2 id="_chapter_1_hello_world">Hello World!</h2>
+
+<h3 id="_guess_my_number">Guess my number</h3>
+
+<p>Let’s begin by learning a little bit about genetic algorithms. Reach 
+way back in your memories to a game we played as kids. It is a simple 
+game for two people where one picks a secret number between 1 and 10 and
+ the other has to guess that number.</p>
+
+<div class="pre-action-link" id="premain153046" style="width:100%;display:block;"><span id="prehide153046" onclick="processCodeBlocks.togglePre(153046);">Hide</span>  &nbsp; <span id="copycode153046" onclick="return processCodeBlocks.copyCode(153046);">Copy Code</span></div><pre id="pre153046" style="margin-top: 0px;" class="notranslate">Is it <span class="code-digit">2</span>?  No
+
+Is it <span class="code-digit">3</span>?  No
+
+Is it <span class="code-digit">7</span>?  No
+
+Is it <span class="code-digit">1</span>?  Yes</pre>
+
+<p>That works reasonably well for 1..10 but quickly becomes frustrating 
+or boring as we increase the range to 1..100 or 1..1000. Why? Because we
+ have no way to improve our guesses. There’s no challenge. The guess is 
+either right or wrong, so it quickly becomes a mechanical process.</p>
+
+<div class="pre-action-link" id="premain36137" style="width:100%;display:block;"><span id="prehide36137" onclick="processCodeBlocks.togglePre(36137);">Hide</span>  &nbsp; <span id="copycode36137" onclick="return processCodeBlocks.copyCode(36137);">Copy Code</span></div><pre id="pre36137" style="margin-top: 0px;" class="notranslate">Is it <span class="code-digit">1</span>?  No
+
+Is it <span class="code-digit">2</span>?  No
+
+Is it <span class="code-digit">3</span>?  No
+
+Is it <span class="code-digit">4</span>?  No
+
+Is it <span class="code-digit">5</span>?  No
+
+...</pre>
+
+<p>So, to make it more interesting, instead of&nbsp;<em>no</em>&nbsp;let’s say&nbsp;<em>higher</em>&nbsp;or&nbsp;<em>lower</em>.</p>
+
+<div class="pre-action-link" id="premain276798" style="width:100%;display:block;"><span id="prehide276798" onclick="processCodeBlocks.togglePre(276798);">Hide</span>  &nbsp; <span id="copycode276798" onclick="return processCodeBlocks.copyCode(276798);">Copy Code</span></div><pre id="pre276798" style="margin-top: 0px;" class="notranslate"><span class="code-digit">1</span>?  Higher
+
+<span class="code-digit">7</span>?  Lower
+
+<span class="code-digit">6</span>?  Lower
+
+<span class="code-digit">5</span>?  Lower
+
+<span class="code-digit">4</span>?  Correct</pre>
+
+<p>That might be reasonably interesting for a while for 1..10 but soon 
+you’ll increase the range to 1..100. Because people are competitive, the
+ next revision is to see who is a better guesser by trying to find the 
+number in the fewest guesses. At this point the person who evolves the 
+most efficient guessing strategy wins.</p>
+
+<p>However, one thing we automatically do when playing the game is make use of domain knowledge. For example, after this sequence:</p>
+
+<div class="pre-action-link" id="premain575835" style="width:100%;display:block;"><span id="prehide575835" onclick="processCodeBlocks.togglePre(575835);">Hide</span>  &nbsp; <span id="copycode575835" onclick="return processCodeBlocks.copyCode(575835);">Copy Code</span></div><pre id="pre575835" style="margin-top: 0px;" class="notranslate"><span class="code-digit">1</span>?  Higher
+
+<span class="code-digit">7</span>?  Lower</pre>
+
+<p>Why wouldn’t we guess 8, 9, or 10? The reason is, of course, because we know that those numbers are not&nbsp;<em>lower</em>&nbsp;than
+ 7. Why wouldn’t we guess 1? Because we already tried it. We use our 
+memory of what we’ve tried, our successes and failures, and our&nbsp;<em>knowledge of the domain</em>, number relationships, to improve our guesses.</p>
+
+<p><br>
+A genetic algorithm does not know what&nbsp;<em>lower</em>&nbsp;means. 
+It has no intelligence. It does not learn. It will make the same 
+mistakes every time. It will only be as good at solving a problem as the
+ person who writes the code. And yet, it can be used to find solutions 
+to problems that humans would struggle to solve or could not solve at 
+all. How is that possible?When playing a card game inexperienced players
+ build a mental map using the cards in their hand and those on the 
+table. More experienced players also take advantage of their knowledge 
+of the problem space, the entire set of cards in the deck. This means 
+they may also keep track of cards that have not yet been played, and may
+ know they can win the rest of the rounds without having to play them 
+out. Highly experienced card players also know the probabilities of 
+various winning combinations. Professionals, who earn their living 
+playing the game, also pay attention to the way their competitors play…​
+ whether they bluff in certain situations, play with their chips when 
+they think they have a good hand, etc.</p>
+
+<p>Genetic algorithms use random exploration of the problem space 
+combined with evolutionary processes like mutation and crossover 
+(exchange of genetic information) to improve guesses. But also, because 
+they have no experience in the problem domain, they&nbsp;<em>try things a human would never think to try</em>.
+ Thus, a person using a genetic algorithm may learn more about the 
+problem space and potential solutions. This gives them the ability to 
+make improvements to the algorithm, in a virtuous cycle.</p>
+
+<p>What can we learn from this?</p>
+
+<p style="text-align: center"><strong>Technique: The genetic algorithm should make informed guesses.</strong></p>
+
+<h3 id="_guess_the_password">Guess the Password</h3>
+
+<p>Now let’s see how this applies to guessing a password. We’ll start by
+ randomly generating an initial sequence of letters and then 
+mutate/change one random letter at a time until the sequence of letters 
+is "Hello World!". Conceptually:</p>
+
+<p style="text-align: right"><strong><em>pseudo code</em></strong></p>
+
+<div class="pre-action-link" id="premain437943" style="width:100%;display:block;"><span id="prehide437943" onclick="processCodeBlocks.togglePre(437943);">Hide</span>  &nbsp; <span id="copycode437943" onclick="return processCodeBlocks.copyCode(437943);">Copy Code</span></div><pre id="pre437943" style="margin-top: 0px;" class="notranslate">_letters = [a..zA..Z !]
+target = <span class="code-string">"</span><span class="code-string">Hello World!"</span>
+guess = <span class="code-keyword">get</span> <span class="code-digit">12</span> random letters <span class="code-sdkkeyword">from</span> _letters
+<span class="code-keyword">while</span> guess != target:
+   index = <span class="code-keyword">get</span> random <span class="code-sdkkeyword">value</span> <span class="code-sdkkeyword">from</span> [0..length of target]
+   guess[index] = <span class="code-keyword">get</span> <span class="code-digit">1</span> random <span class="code-sdkkeyword">value</span> <span class="code-sdkkeyword">from</span> _letters</pre>
+
+<p>If you try this in your favorite programming language you’ll find 
+that it performs worse than playing the number guessing game with 
+only&nbsp;<em>yes</em>&nbsp;and&nbsp;<em>no</em>&nbsp;answers because it cannot tell when one guess is better than another.</p>
+
+<p>So, let’s help it make an informed guess by telling it how many of 
+the letters from the guess are in the correct locations. For example 
+"World!Hello?" would get 2 because only the 4th letter of each word is 
+correct. The 2 indicates how close the answer is to correct. This is 
+called the fitness value. "hello world?" would get a fitness value of 9 
+because 9 letters are correct. Only the h, w, and question mark are 
+wrong.</p>
+
+<h3 id="_first_program">First Program</h3>
+
+<p>Now we’re ready to write some Python.</p>
+
+<h4 id="_genes">Genes</h4>
+
+<p>We start off with a generic set of letters for genes and a target password:</p>
+
+<p style="text-align: right"><strong><em>guessPassword.py</em></strong></p>
+
+<div class="pre-action-link" id="premain316511" style="width:100%;display:block;"><span id="prehide316511" onclick="processCodeBlocks.togglePre(316511);">Hide</span>  &nbsp; <span id="copycode316511" onclick="return processCodeBlocks.copyCode(316511);">Copy Code</span></div><pre id="pre316511" style="margin-top: 0px;" class="notranslate" lang="python">geneSet = <span class="code-string">"</span><span class="code-string"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!."</span>
+target = <span class="code-string">"</span><span class="code-string">Hello World!"</span></pre>
+
+<h4 id="_generate_a_guess">Generate a guess</h4>
+
+<p>Next we need a way to generate a random string of letters from the gene set.</p>
+
+<div class="pre-action-link" id="premain760497" style="width:100%;display:block;"><span id="prehide760497" onclick="processCodeBlocks.togglePre(760497);">Hide</span>  &nbsp; <span id="copycode760497" onclick="return processCodeBlocks.copyCode(760497);">Copy Code</span></div><pre id="pre760497" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">import</span> random
+
+...
+
+<span class="code-keyword">def</span> generate_parent(length):
+    genes = []
+    <span class="code-keyword">while</span> len(genes) &lt; length:
+        sampleSize = min(length - len(genes), len(geneSet))
+        genes.extend(random.sample(geneSet, sampleSize))
+    <span class="code-keyword">return</span> <span class="code-string">'</span><span class="code-string">'</span>.join(genes)</pre>
+
+<p><code>random.sample</code>&nbsp;takes&nbsp;<code>sampleSize</code>&nbsp;values from the input without replacement. This means there will be no duplicates in the generated parent unless&nbsp;<code>geneSet</code>&nbsp;contains duplicates, or&nbsp;<code>length</code>&nbsp;is greater than&nbsp;<code>len(geneSet)</code>.
+ The implementation above allows us to generate a long string with a 
+small set of genes while using as many unique genes as possible.</p>
+
+<h4 id="_fitness">Fitness</h4>
+
+<p>The&nbsp;<code>fitness</code>&nbsp;value the genetic algorithm provides is the&nbsp;<strong>only&nbsp;</strong>feedback the engine gets to guide it toward a solution. In this problem our&nbsp;<code>fitness</code>&nbsp;value is the total number of letters in the guess that match the letter in the same position of the password.</p>
+
+<div class="pre-action-link" id="premain560639" style="width:100%;display:block;"><span id="prehide560639" onclick="processCodeBlocks.togglePre(560639);">Hide</span>  &nbsp; <span id="copycode560639" onclick="return processCodeBlocks.copyCode(560639);">Copy Code</span></div><pre id="pre560639" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> get_fitness(guess):
+    <span class="code-keyword">return</span> sum(<span class="code-digit">1</span> <span class="code-keyword">for</span> expected, actual <span class="code-keyword">in</span> zip(target, guess)
+               <span class="code-keyword">if</span> expected == actual)</pre>
+
+<h4 id="_mutate">Mutate</h4>
+
+<p>We also need a way to produce a new guess by mutating the current 
+one. The following implementation converts the parent string to an array
+ with&nbsp;<code>list(parent)</code>&nbsp;then replaces 1 letter in the array with a randomly selected one from&nbsp;<code>geneSet</code>, and then recombines the result into a string with&nbsp;<code>''.join(genes)</code>.</p>
+
+<div class="pre-action-link" id="premain696555" style="width:100%;display:block;"><span id="prehide696555" onclick="processCodeBlocks.togglePre(696555);">Hide</span>  &nbsp; <span id="copycode696555" onclick="return processCodeBlocks.copyCode(696555);">Copy Code</span></div><pre id="pre696555" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> mutate(parent):
+    index = random.randrange(<span class="code-digit">0</span>, len(parent))
+    childGenes = list(parent)
+    newGene, alternate = random.sample(geneSet, <span class="code-digit">2</span>)
+    childGenes[index] = alternate \ 
+        <span class="code-keyword">if</span> newGene == childGenes[index] \ 
+        <span class="code-keyword">else</span> newGene
+    <span class="code-keyword">return</span> <span class="code-string">'</span><span class="code-string">'</span>.join(childGenes)</pre>
+
+<p>This implementation uses an alternate replacement if the randomly selected&nbsp;<code>newGene</code>&nbsp;is the same as the one it is supposed to replace, which can save a significant amount of overhead.</p>
+
+<h4 id="_display">Display</h4>
+
+<p>Next, it is important to monitor what is happening, so that we can 
+stop the engine if it gets stuck. It also allows us to learn what works 
+and what does not so we can improve the algorithm.</p>
+
+<p>We’ll display a visual representation of the gene sequence, which may
+ not be the literal gene sequence, its fitness value and how much time 
+has elapsed.</p>
+
+<div class="pre-action-link" id="premain596504" style="width:100%;display:block;"><span id="prehide596504" onclick="processCodeBlocks.togglePre(596504);">Hide</span>  &nbsp; <span id="copycode596504" onclick="return processCodeBlocks.copyCode(596504);">Copy Code</span></div><pre id="pre596504" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">import</span> datetime
+
+...
+
+<span class="code-keyword">def</span> display(guess):
+    timeDiff = datetime.datetime.now() - startTime
+    fitness = get_fitness(guess)
+    <span class="code-keyword">print</span>(<span class="code-string">"</span><span class="code-string">{0}\t{1}\t{2}"</span>.format(guess, fitness, str(timeDiff)))</pre>
+
+<h4 id="_main">Main</h4>
+
+<p>Now we’re ready to write the main program. We start by initializing&nbsp;<code>bestParent</code>&nbsp;to a random sequence of letters.</p>
+
+<div class="pre-action-link" id="premain368285" style="width:100%;display:block;"><span id="prehide368285" onclick="processCodeBlocks.togglePre(368285);">Hide</span>  &nbsp; <span id="copycode368285" onclick="return processCodeBlocks.copyCode(368285);">Copy Code</span></div><pre id="pre368285" style="margin-top: 0px;" class="notranslate" lang="python">random.seed()
+startTime = datetime.datetime.now()
+bestParent = generate_parent(len(target))
+bestFitness = get_fitness(bestParent)
+display(bestParent)</pre>
+
+<p>Then we add the heart of the genetic engine. It is a loop that generates a guess, requests the&nbsp;<code>fitness</code>&nbsp;for
+ that guess, then compares it to that of the previous best guess, and 
+keeps the better of the two. This cycle repeats until all the letters 
+match those in the target.</p>
+
+<div class="pre-action-link" id="premain144531" style="width:100%;display:block;"><span id="prehide144531" onclick="processCodeBlocks.togglePre(144531);">Hide</span>  &nbsp; <span id="copycode144531" onclick="return processCodeBlocks.copyCode(144531);">Copy Code</span></div><pre id="pre144531" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">while</span> <span class="code-keyword">True</span>:
+    child = mutate(bestParent)
+    childFitness = get_fitness(child)
+
+    <span class="code-keyword">if</span> bestFitness &gt;= childFitness:
+        <span class="code-keyword">continue</span>
+    display(child)
+    <span class="code-keyword">if</span> childFitness &gt;= len(bestParent):
+        <span class="code-keyword">break</span>
+    bestFitness = childFitness
+    bestParent = child</pre>
+
+<h4 id="_run">Run</h4>
+
+<p>Now run it.</p>
+
+<p style="text-align: right"><strong><em>sample output</em></strong></p>
+
+<div class="pre-action-link" id="premain445601" style="width:100%;display:block;"><span id="prehide445601" onclick="processCodeBlocks.togglePre(445601);">Hide</span>  &nbsp; <span id="copycode445601" onclick="return processCodeBlocks.copyCode(445601);">Copy Code</span></div><pre id="pre445601" style="margin-top: 0px;" class="notranslate" lang="text">ftljCDPvhasn 1 0:00:00
+ftljC Pvhasn 2 0:00:00
+ftljC Pohasn 3 0:00:00.001000
+HtljC Pohasn 4 0:00:00.002000
+HtljC Wohasn 5 0:00:00.004000
+Htljo Wohasn 6 0:00:00.005000
+Htljo Wohas! 7 0:00:00.008000
+Htljo Wohls! 8 0:00:00.010000
+Heljo Wohls! 9 0:00:00.013000
+Hello Wohls! 10 0:00:00.013000
+Hello Wohld! 11 0:00:00.013000
+Hello World! 12 0:00:00.015000</pre>
+
+<p>Success! You’ve written a genetic algorithm in Python!</p>
+
+<h3 id="_extract_a_reusable_engine">Extract a reusable engine</h3>
+
+<p>Now that we have a working solution to this problem we will extract 
+the genetic engine code from that specific to the password problem so we
+ can reuse it to solve other problems. We’ll start by creating a new 
+file named&nbsp;<code>genetic.py</code>.</p>
+
+<p>Next we’ll move the&nbsp;<code>mutate</code>&nbsp;and&nbsp;<code>generate_parent</code>&nbsp;functions to the new file and rename them to&nbsp;<code>_mutate</code>&nbsp;and&nbsp;<code>_generate_parent</code>. This is how protected functions are named in Python. They will not be visible to users of the&nbsp;<code>genetic</code>&nbsp;library.</p>
+
+<h4 id="_generate_and_mutate">Generate and Mutate</h4>
+
+<p>Since we want to be able to customize the gene set used in future problems we need to pass it as a parameter to&nbsp;<code>_generate_parent</code></p>
+
+<div class="pre-action-link" id="premain686414" style="width:100%;display:block;"><span id="prehide686414" onclick="processCodeBlocks.togglePre(686414);">Hide</span>  &nbsp; <span id="copycode686414" onclick="return processCodeBlocks.copyCode(686414);">Copy Code</span></div><pre id="pre686414" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">import</span> random
+
+<span class="code-keyword">def</span> _generate_parent(length, geneSet):
+    genes = []
+    <span class="code-keyword">while</span> len(genes) &lt; length:
+        sampleSize = min(length - len(genes), len(geneSet))
+        genes.extend(random.sample(geneSet, sampleSize))
+    <span class="code-keyword">return</span> <span class="code-string">'</span><span class="code-string">'</span>.join(genes)</pre>
+
+<p>and&nbsp;<code>_mutate</code>.</p>
+
+<div class="pre-action-link" id="premain249664" style="width:100%;display:block;"><span id="prehide249664" onclick="processCodeBlocks.togglePre(249664);">Hide</span>  &nbsp; <span id="copycode249664" onclick="return processCodeBlocks.copyCode(249664);">Copy Code</span></div><pre id="pre249664" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> _mutate(parent, geneSet):
+    index = random.randrange(<span class="code-digit">0</span>, len(parent))
+    childGenes = list(parent)
+    newGene, alternate = random.sample(geneSet, <span class="code-digit">2</span>)
+    childGenes[index] = alternate \ 
+        <span class="code-keyword">if</span> newGene == childGenes[index] \ 
+        <span class="code-keyword">else</span> newGene
+    <span class="code-keyword">return</span> <span class="code-string">'</span><span class="code-string">'</span>.join(childGenes)</pre>
+
+<h4 id="__code_get_best_code"><code>get_best</code></h4>
+
+<p>Next we’ll move the main loop into a new function named&nbsp;<code>get_best</code>&nbsp;in the&nbsp;<code>genetic</code>&nbsp;library
+ file. Its parameters will include the functions it should use to 
+request the fitness for a guess and to display (or report) each new best
+ guess as it is found, the number of genes to use when creating a new 
+sequence, the optimal fitness, and the set of genes to use for creating 
+and mutating gene sequences.</p>
+
+<div class="pre-action-link" id="premain871850" style="width:100%;display:block;"><span id="prehide871850" onclick="processCodeBlocks.togglePre(871850);">Hide</span>  &nbsp; <span id="copycode871850" onclick="return processCodeBlocks.copyCode(871850);">Copy Code</span></div><pre id="pre871850" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> get_best(get_fitness, targetLen, optimalFitness, geneSet, display):
+    random.seed()
+    bestParent = _generate_parent(targetLen, geneSet)
+    bestFitness = get_fitness(bestParent)
+    display(bestParent)
+    <span class="code-keyword">if</span> bestFitness &gt;= optimalFitness:
+        <span class="code-keyword">return</span> bestParent
+
+    <span class="code-keyword">while</span> <span class="code-keyword">True</span>:
+        child = _mutate(bestParent, geneSet)
+        childFitness = get_fitness(child)
+
+        <span class="code-keyword">if</span> bestFitness &gt;= childFitness:
+            <span class="code-keyword">continue</span>
+        display(child)
+        <span class="code-keyword">if</span> childFitness &gt;= optimalFitness:
+            <span class="code-keyword">return</span> child
+        bestFitness = childFitness
+        bestParent = child</pre>
+
+<p>Notice that we call&nbsp;<code>display</code>&nbsp;and&nbsp;<code>get_fitness</code>&nbsp;with
+ only one parameter - the child gene sequence. This is because we do not
+ want the engine to have access to the target value, and it doesn’t care
+ whether we are timing the run or not, so those are not passed to the 
+function.</p>
+
+<p>We now have a reusable library named&nbsp;<code>genetic</code>&nbsp;that we can access in other programs via&nbsp;<code>import genetic</code>.</p>
+
+<h4 id="_use_the_code_genetic_code_library">Use the&nbsp;<code>genetic</code>&nbsp;library</h4>
+
+<p>Back in&nbsp;<code>guessPassword.py</code>&nbsp;we’ll define functions that allow us to take the candidate gene sequence passed by&nbsp;<code>genetic</code>&nbsp;as a parameter, and call the local functions with additional required parameters as necessary.</p>
+
+<p style="text-align: right"><strong><em>guessPassword.py</em></strong></p>
+
+<div class="pre-action-link" id="premain419080" style="width:100%;display:block;"><span id="prehide419080" onclick="processCodeBlocks.togglePre(419080);">Hide</span>  &nbsp; <span id="copycode419080" onclick="return processCodeBlocks.copyCode(419080);">Copy Code</span></div><pre id="pre419080" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> test_Hello_World():
+    target = <span class="code-string">"</span><span class="code-string">Hello World!"</span>
+    guess_password(target)
+
+
+<span class="code-keyword">def</span> guess_password(target):
+    geneset = <span class="code-string">"</span><span class="code-string"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!."</span>
+    startTime = datetime.datetime.now()
+
+    <span class="code-keyword">def</span> fnGetFitness(genes):
+        <span class="code-keyword">return</span> get_fitness(genes, target)
+
+    <span class="code-keyword">def</span> fnDisplay(genes):
+        display(genes, target, startTime)
+
+    optimalFitness = len(target)
+    genetic.get_best(fnGetFitness, len(target), optimalFitness, geneset, fnDisplay)</pre>
+
+<h4 id="_display_2">Display</h4>
+
+<p>Notice how&nbsp;<code>display</code>&nbsp;now takes the target 
+password as a parameter. We could leave it as a global in the algorithm 
+file but this allows us to try different passwords if we want.</p>
+
+<div class="pre-action-link" id="premain561868" style="width:100%;display:block;"><span id="prehide561868" onclick="processCodeBlocks.togglePre(561868);">Hide</span>  &nbsp; <span id="copycode561868" onclick="return processCodeBlocks.copyCode(561868);">Copy Code</span></div><pre id="pre561868" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> display(genes, target, startTime):
+    timeDiff = datetime.datetime.now() - startTime
+    fitness = get_fitness(genes, target)
+    <span class="code-keyword">print</span>(<span class="code-string">"</span><span class="code-string">{0}\t{1}\t{2}"</span>.format(genes, fitness, str(timeDiff)))</pre>
+
+<h4 id="_fitness_2">Fitness</h4>
+
+<p>We just need to add&nbsp;<code>target</code>&nbsp;as a parameter.</p>
+
+<div class="pre-action-link" id="premain839416" style="width:100%;display:block;"><span id="prehide839416" onclick="processCodeBlocks.togglePre(839416);">Hide</span>  &nbsp; <span id="copycode839416" onclick="return processCodeBlocks.copyCode(839416);">Copy Code</span></div><pre id="pre839416" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> get_fitness(genes, target):
+    <span class="code-keyword">return</span> sum(<span class="code-digit">1</span> <span class="code-keyword">for</span> expected, actual <span class="code-keyword">in</span> zip(target, genes)
+               <span class="code-keyword">if</span> expected == actual)</pre>
+
+<h4 id="_main_2">Main</h4>
+
+<p>Speaking of tests, let’s rename&nbsp;<code>guessPassword.py</code>&nbsp;to&nbsp;<code>guessPasswordTests.py</code>. We also need to import the&nbsp;<code>genetic&nbsp;</code>library.</p>
+
+<p style="text-align: right"><strong><em>guessPasswordTests.py</em></strong></p>
+
+<div class="pre-action-link" id="premain6785" style="width:100%;display:block;"><span id="prehide6785" onclick="processCodeBlocks.togglePre(6785);">Hide</span>  &nbsp; <span id="copycode6785" onclick="return processCodeBlocks.copyCode(6785);">Copy Code</span></div><pre id="pre6785" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">import</span> datetime
+<span class="code-keyword">import</span> genetic</pre>
+
+<p>Lastly, we’ll make sure that executing&nbsp;<code>guessPasswordTests&nbsp;</code>from the command line runs the test function by adding:</p>
+
+<div class="pre-action-link" id="premain12477" style="width:100%;display:block;"><span id="prehide12477" onclick="processCodeBlocks.togglePre(12477);">Hide</span>  &nbsp; <span id="copycode12477" onclick="return processCodeBlocks.copyCode(12477);">Copy Code</span></div><pre id="pre12477" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">if</span> __name__ == <span class="code-string">'</span><span class="code-string">__main__'</span>:
+    test_Hello_World()</pre>
+
+<p>If you are following along in an editor like repl.it be sure to run the test to verify your code still works.</p>
+
+<h3 id="_use_python_s_code_unittest_code_framework">Use Python’s&nbsp;<code>unittest</code>&nbsp;framework</h3>
+
+<p>Next, we’ll make&nbsp;<code>guessPasswordTests.py</code>&nbsp;compatible with Python’s built in test framework.</p>
+
+<div class="pre-action-link" id="premain188817" style="width:100%;display:block;"><span id="prehide188817" onclick="processCodeBlocks.togglePre(188817);">Hide</span>  &nbsp; <span id="copycode188817" onclick="return processCodeBlocks.copyCode(188817);">Copy Code</span></div><pre id="pre188817" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">import</span> unittest</pre>
+
+<p>To do that we have to move at least the main test function to a class that inherits from&nbsp;<code>unittest.TestCase</code>. We also need to add&nbsp;<code>self</code>&nbsp;as the first parameter of any function we want to access as an instance method because it now belongs to the test class.</p>
+
+<div class="pre-action-link" id="premain400966" style="width:100%;display:block;"><span id="prehide400966" onclick="processCodeBlocks.togglePre(400966);">Hide</span>  &nbsp; <span id="copycode400966" onclick="return processCodeBlocks.copyCode(400966);">Copy Code</span></div><pre id="pre400966" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">class</span> GuessPasswordTests(unittest.TestCase):
+    geneset = <span class="code-string">"</span><span class="code-string"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!.,"</span>
+
+    <span class="code-keyword">def</span> test_Hello_World(self):
+        target = <span class="code-string">"</span><span class="code-string">Hello World!"</span>
+        self.guess_password(target)
+
+    <span class="code-keyword">def</span> guess_password(self, target):
+...
+        optimalFitness = len(target)
+        best = genetic.get_best(fnGetFitness, len(target),
+                                optimalFitness, self.geneset,
+                                fnDisplay)
+        self.assertEqual(best.Genes, target)</pre>
+
+<p>The&nbsp;<code>unittest</code>&nbsp;library automatically executes each function whose name starts with "test", as long as we call its&nbsp;<code>main</code>&nbsp;function.</p>
+
+<div class="pre-action-link" id="premain288141" style="width:100%;display:block;"><span id="prehide288141" onclick="processCodeBlocks.togglePre(288141);">Hide</span>  &nbsp; <span id="copycode288141" onclick="return processCodeBlocks.copyCode(288141);">Copy Code</span></div><pre id="pre288141" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">if</span> __name__ == <span class="code-string">'</span><span class="code-string">__main__'</span>:
+    unittest.main()</pre>
+
+<p>This allows us to run the tests from the command line and without displaying the output.</p>
+
+<div class="pre-action-link" id="premain878836" style="width:100%;display:block;"><span id="prehide878836" onclick="processCodeBlocks.togglePre(878836);">Hide</span>  &nbsp; <span id="copycode878836" onclick="return processCodeBlocks.copyCode(878836);">Copy Code</span></div><pre id="pre878836" style="margin-top: 0px;" class="notranslate" lang="text">python -m unittest -b guessPasswordTests
+.
+----------------------------------------
+Ran 1 test in 0.020s</pre>
+
+<p>OK</p>
+
+<p>If you get an error like&nbsp;<code>'module' object has no attribute 'py'</code>&nbsp;you used the filename&nbsp;<code>guessPasswordTests.py</code>&nbsp;instead of the module name&nbsp;<code>guessPasswordTests</code>.</p>
+
+<h3>A longer password</h3>
+
+<p>"Hello World!" doesn’t sufficiently demonstrate the power of our engine. Let’s try a longer password:</p>
+
+<div class="pre-action-link" id="premain278212" style="width:100%;display:block;"><span id="prehide278212" onclick="processCodeBlocks.togglePre(278212);">Hide</span>  &nbsp; <span id="copycode278212" onclick="return processCodeBlocks.copyCode(278212);">Copy Code</span></div><pre id="pre278212" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> test_For_I_am_fearfully_and_wonderfully_made(self):
+   target = <span class="code-string">"</span><span class="code-string">For I am fearfully and wonderfully made."</span>
+   self.guess_password(target)
+</pre>
+
+<h4 id="_run_2">Run</h4>
+
+<div class="pre-action-link" id="premain851901" style="width:100%;display:block;"><span id="prehide851901" onclick="processCodeBlocks.togglePre(851901);">Hide</span>  &nbsp; <span id="copycode851901" onclick="return processCodeBlocks.copyCode(851901);">Copy Code</span></div><pre id="pre851901" style="margin-top: 0px;" class="notranslate" lang="text">...
+ForMI am feabaully and wWndNyfulll made. 33 0:00:00.047094
+For I am feabaully and wWndNyfulll made. 34 0:00:00.047094
+For I am feabfully and wWndNyfulll made. 35 0:00:00.053111
+For I am feabfully and wondNyfulll made. 36 0:00:00.064140
+For I am feabfully and wondNyfully made. 37 0:00:00.067148
+For I am feabfully and wondeyfully made. 38 0:00:00.095228
+For I am feabfully and wonderfully made. 39 0:00:00.100236
+For I am fearfully and wonderfully made. 40 0:00:00.195524</pre>
+
+<p>Outstanding.</p>
+
+<h3 id="_introduce_a_code_chromosome_code_object">Introduce a&nbsp;<code>Chromosome</code>&nbsp;object</h3>
+
+<p>Next we’ll introduce a&nbsp;<code>Chromosome</code>&nbsp;object that has&nbsp;<code>Genes</code>&nbsp;and&nbsp;<code>Fitness</code>&nbsp;attributes.</p>
+
+<p style="text-align: right"><strong><em>genetic.py</em></strong></p>
+
+<div class="pre-action-link" id="premain179971" style="width:100%;display:block;"><span id="prehide179971" onclick="processCodeBlocks.togglePre(179971);">Hide</span>  &nbsp; <span id="copycode179971" onclick="return processCodeBlocks.copyCode(179971);">Copy Code</span></div><pre id="pre179971" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">class</span> Chromosome:
+    Genes = <span class="code-keyword">None</span>
+    Fitness = <span class="code-keyword">None</span>
+
+    <span class="code-keyword">def</span> __init__(self, genes, fitness):
+        self.Genes = genes
+        self.Fitness = fitness</pre>
+
+<p>This makes it possible to pass those values around as a unit.</p>
+
+<div class="pre-action-link" id="premain104758" style="width:100%;display:block;"><span id="prehide104758" onclick="processCodeBlocks.togglePre(104758);">Hide</span>  &nbsp; <span id="copycode104758" onclick="return processCodeBlocks.copyCode(104758);">Copy Code</span></div><pre id="pre104758" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> _mutate(parent, geneSet, get_fitness):
+    index = random.randrange(<span class="code-digit">0</span>, len(parent.Genes))
+    childGenes = list(parent.Genes)
+
+...
+
+    genes = <span class="code-string">'</span><span class="code-string">'</span>.join(childGenes)
+    fitness = get_fitness(genes)
+    <span class="code-keyword">return</span> Chromosome(genes, fitness)</pre>
+
+<p lang="python">&nbsp;</p>
+
+<div class="pre-action-link" id="premain350007" style="width:100%;display:block;"><span id="prehide350007" onclick="processCodeBlocks.togglePre(350007);">Hide</span>  &nbsp; <span id="copycode350007" onclick="return processCodeBlocks.copyCode(350007);">Copy Code</span></div><pre id="pre350007" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> _generate_parent(length, geneSet, get_fitness):
+
+...
+
+    genes = <span class="code-string">'</span><span class="code-string">'</span>.join(genes)
+    fitness = get_fitness(genes)
+    <span class="code-keyword">return</span> Chromosome(genes, fitness)</pre>
+
+<p lang="python">&nbsp;</p>
+
+<div class="pre-action-link" id="premain211936" style="width:100%;display:block;"><span id="prehide211936" onclick="processCodeBlocks.togglePre(211936);">Hide</span>  &nbsp; <span id="copycode211936" onclick="return processCodeBlocks.copyCode(211936);">Copy Code</span></div><pre id="pre211936" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> get_best(get_fitness, targetLen, optimalFitness, geneSet, display):
+    random.seed()
+    bestParent = _generate_parent(targetLen, geneSet, get_fitness)
+    display(bestParent)
+    <span class="code-keyword">if</span> bestParent.Fitness &gt;= optimalFitness:
+        <span class="code-keyword">return</span> bestParent
+    <span class="code-keyword">while</span> <span class="code-keyword">True</span>:
+        child = _mutate(bestParent, geneSet, get_fitness)
+        <span class="code-keyword">if</span> bestParent.Fitness &gt;= child.Fitness:
+            <span class="code-keyword">continue</span>
+        display(child)
+        <span class="code-keyword">if</span> child.Fitness &gt;= optimalFitness:
+            <span class="code-keyword">return</span> child
+        bestParent = child</pre>
+
+<p>We also make compensating changes to the algorithm file functions.</p>
+
+<p style="text-align: right"><strong><em>guessPasswordTests.py</em></strong></p>
+
+<div class="pre-action-link" id="premain741323" style="width:100%;display:block;"><span id="prehide741323" onclick="processCodeBlocks.togglePre(741323);">Hide</span>  &nbsp; <span id="copycode741323" onclick="return processCodeBlocks.copyCode(741323);">Copy Code</span></div><pre id="pre741323" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> display(candidate, startTime):
+    timeDiff = datetime.datetime.now() - startTime
+    <span class="code-keyword">print</span>(<span class="code-string">"</span><span class="code-string">{0}\t{1}\t{2}"</span>.format(
+        candidate.Genes, candidate.Fitness, str(timeDiff)))</pre>
+
+<p>This reduces some double work in the display function.</p>
+
+<div class="pre-action-link" id="premain438413" style="width:100%;display:block;"><span id="prehide438413" onclick="processCodeBlocks.togglePre(438413);">Hide</span>  &nbsp; <span id="copycode438413" onclick="return processCodeBlocks.copyCode(438413);">Copy Code</span></div><pre id="pre438413" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">class</span> GuessPasswordTests(unittest.TestCase):
+
+...
+
+    <span class="code-keyword">def</span> guess_password(self, target):
+
+...
+
+        <span class="code-keyword">def</span> fnDisplay(candidate):
+            display(candidate, startTime)
+
+        optimalFitness = len(target)
+        best = genetic.get_best(fnGetFitness, len(target),
+                                optimalFitness, self.geneset,
+                                fnDisplay)
+        self.assertEqual(best.Genes, target)</pre>
+
+<h3 id="_benchmarking">Benchmarking</h3>
+
+<p>Next we need to add support for benchmarking to&nbsp;<code>genetic&nbsp;</code>because
+ it is useful to know how long the engine takes to find a solution on 
+average and the standard deviation. We can do that with another class as
+ follows.</p>
+
+<p style="text-align: right"><strong><em>genetic.py</em></strong></p>
+
+<div class="pre-action-link" id="premain888694" style="width:100%;display:block;"><span id="prehide888694" onclick="processCodeBlocks.togglePre(888694);">Hide</span>  &nbsp; <span id="copycode888694" onclick="return processCodeBlocks.copyCode(888694);">Copy Code</span></div><pre id="pre888694" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">class</span> Benchmark:
+    <span class="code-sdkkeyword">@staticmethod</span>
+    <span class="code-keyword">def</span> run(function):
+        timings = []
+        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> range(<span class="code-digit">100</span>):
+            startTime = time.time()
+            function()
+            seconds = time.time() - startTime
+            timings.append(seconds)
+            mean = statistics.mean(timings)
+            <span class="code-keyword">print</span>(<span class="code-string">"</span><span class="code-string">{0} {1:3.2f} {2:3.2f}"</span>.format(
+                <span class="code-digit">1</span> + i, mean,
+                statistics.stdev(timings, mean)
+                <span class="code-keyword">if</span> i &gt; <span class="code-digit">1</span> <span class="code-keyword">else</span> <span class="code-digit">0</span>))</pre>
+
+<p>That requires the following imports:</p>
+
+<p style="text-align: right"><strong><em>genetic.py</em></strong></p>
+
+<div class="pre-action-link" id="premain472000" style="width:100%;display:block;"><span id="prehide472000" onclick="processCodeBlocks.togglePre(472000);">Hide</span>  &nbsp; <span id="copycode472000" onclick="return processCodeBlocks.copyCode(472000);">Copy Code</span></div><pre id="pre472000" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">import</span> statistics
+<span class="code-keyword">import</span> time</pre>
+
+<p>You may need to install the&nbsp;<code>statistics</code>&nbsp;module on your system via:</p>
+
+<div class="pre-action-link" id="premain410529" style="width:100%;display:block;"><span id="prehide410529" onclick="processCodeBlocks.togglePre(410529);">Hide</span>  &nbsp; <span id="copycode410529" onclick="return processCodeBlocks.copyCode(410529);">Copy Code</span></div><pre data-lang-guess="HTML" id="pre410529" style="margin-top: 0px;" class="notranslate"><span class="code-keyword">&lt;</span><span class="code-leadattribute">code</span><span class="code-keyword">&gt;</span>python -m pip install statistics<span class="code-keyword">&lt;</span><span class="code-leadattribute">/code</span><span class="code-keyword">&gt;</span></pre>
+
+<p>Now we need to add a test to pass the function we want to be benchmarked.</p>
+
+<p style="text-align: right"><strong><em>guessPasswordTests.py</em></strong></p>
+
+<div class="pre-action-link" id="premain746942" style="width:100%;display:block;"><span id="prehide746942" onclick="processCodeBlocks.togglePre(746942);">Hide</span>  &nbsp; <span id="copycode746942" onclick="return processCodeBlocks.copyCode(746942);">Copy Code</span></div><pre id="pre746942" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">def</span> test_benchmark(self):
+    genetic.Benchmark.run(<span class="code-keyword">lambda</span>: self.test_For_I_am_fearfully_and_wonderfully_made())</pre>
+
+<p>This benchmark test works great but is a bit chatty because it also shows the&nbsp;<code>display</code>&nbsp;output for all 100 runs. We can fix that by redirecting output to nowhere in the benchmark function.</p>
+
+<p style="text-align: right"><strong><em>genetic.py</em></strong></p>
+
+<div class="pre-action-link" id="premain223588" style="width:100%;display:block;"><span id="prehide223588" onclick="processCodeBlocks.togglePre(223588);">Hide</span>  &nbsp; <span id="copycode223588" onclick="return processCodeBlocks.copyCode(223588);">Copy Code</span></div><pre id="pre223588" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">import</span> sys
+
+...
+
+<span class="code-keyword">class</span> Benchmark:
+    <span class="code-sdkkeyword">@staticmethod</span>
+    <span class="code-keyword">def</span> run(function):
+
+...
+
+        timings = []
+        stdout = sys.stdout
+        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> range(<span class="code-digit">100</span>):
+            sys.stdout = <span class="code-keyword">None</span>
+            startTime = time.time()
+            function()
+            seconds = time.time() - startTime
+            sys.stdout = stdout
+            timings.append(seconds)
+
+...</pre>
+
+<p>Also, we don’t need it to output every run, so how about outputting just the first ten and then every 10th one after that.</p>
+
+<p style="text-align: right"><strong><em>genetic.py</em></strong></p>
+
+<div class="pre-action-link" id="premain823714" style="width:100%;display:block;"><span id="prehide823714" onclick="processCodeBlocks.togglePre(823714);">Hide</span>  &nbsp; <span id="copycode823714" onclick="return processCodeBlocks.copyCode(823714);">Copy Code</span></div><pre id="pre823714" style="margin-top: 0px;" class="notranslate" lang="python">...
+
+            timings.append(seconds)
+            mean = statistics.mean(timings)
+            <span class="code-keyword">if</span> i &lt; <span class="code-digit">10</span> <span class="code-keyword">or</span> i % <span class="code-digit">10</span> == <span class="code-digit">9</span>:
+                <span class="code-keyword">print</span>(<span class="code-string">"</span><span class="code-string">{0} {1:3.2f} {2:3.2f}"</span>.format(
+                    <span class="code-digit">1</span> + i, mean,
+                    statistics.stdev(timings, mean)
+                    <span class="code-keyword">if</span> i &gt; <span class="code-digit">1</span> <span class="code-keyword">else</span> <span class="code-digit">0</span>))</pre>
+
+<p>Now when we run the benchmark test we get output like the following.</p>
+
+<p style="text-align: right"><strong><em>sample output</em></strong></p>
+
+<div class="pre-action-link" id="premain979869" style="width:100%;display:block;"><span id="prehide979869" onclick="processCodeBlocks.togglePre(979869);">Hide</span>  &nbsp; <span id="copycode979869" onclick="return processCodeBlocks.copyCode(979869);">Copy Code</span></div><pre id="pre979869" style="margin-top: 0px;" class="notranslate" lang="text">1 0.19 0.00
+2 0.17 0.00
+3 0.18 0.02
+
+...
+
+9 0.17 0.03
+10 0.17 0.03
+20 0.18 0.04
+
+...
+
+90 0.16 0.05
+100 0.16 0.05</pre>
+
+<p>Meaning that, averaging 100 runs, it takes .16 seconds to guess the 
+password, and 68 percent of the time (one standard deviation) it takes 
+between .11 (.16 - .05) and .21 (.16 + .05) seconds. Unfortunately that 
+is probably too fast for us to tell if a change is due to a code 
+improvement or due to something else running on the computer. So we’re 
+going to change it to a random sequence that takes 1-2 seconds. Your 
+processor likely is different from mine so adjust the length as 
+necessary.</p>
+
+<p style="text-align: right"><strong><em>guessPasswordTests.py</em></strong></p>
+
+<div class="pre-action-link" id="premain593574" style="width:100%;display:block;"><span id="prehide593574" onclick="processCodeBlocks.togglePre(593574);">Hide</span>  &nbsp; <span id="copycode593574" onclick="return processCodeBlocks.copyCode(593574);">Copy Code</span></div><pre id="pre593574" style="margin-top: 0px;" class="notranslate" lang="python"><span class="code-keyword">import</span> random
+
+...
+
+    <span class="code-keyword">def</span> test_Random(self):
+        length = <span class="code-digit">150</span>
+        target = <span class="code-string">'</span><span class="code-string">'</span>.join(random.choice(self.geneset) <span class="code-keyword">for</span> _ <span class="code-keyword">in</span> range(length))
+        self.guess_password(target)
+
+    <span class="code-keyword">def</span> test_benchmark(self):
+        genetic.Benchmark.run(<span class="code-keyword">lambda</span>: self.test_Random())</pre>
+
+<p>On my system that results in:</p>
+
+
+	<table><colgroup>		<col>		<col>	</colgroup>	<tbody>		<tr>			<td>			<p>average (seconds)</p>
+			</td>			<td>			<p>standard deviation</p>
+			</td>		</tr>		<tr>			<td>			<p style="text-align: right">1.46</p>
+			</td>			<td>			<p style="text-align: right">0.35</p>
+			</td>		</tr>	</tbody></table>
+
+<h3 id="_summary">Summary</h3>
+
+<p>We built a simple genetic engine that makes use of random mutation to
+ produce better results. This engine was able to guess a secret password
+ given only its length, a set of characters that might be in the 
+password, and a fitness function that returns a count of the number 
+characters in the guess that match the secret. This is a good benchmark 
+problem for the engine because as the target string gets longer the 
+engine wastes more and more guesses trying to change positions that are 
+already correct.&nbsp;</p>
+
+<h3 id="_final_code">Final Code</h3>
+
+<p>The final code is available in the zip file.</p>
+
+
+						</div>
+						
+
+						<div class="float-right" style="margin:20px 0 0 10px;border:1px solid #ccc">
+						<div class="msg-300x250" data-format="300x250" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="General-Programming/Algorithms-Recipes/Evolutional" data-loadonview="true" data-tags="Dev, Beginner, Python, machine-learning, Genetic,rating4"><noscript><a
+ 
+href="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/General-Programming/Algorithms-Recipes/Evolutional&sz=300x250&c=873963"><img
+ 
+src="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/General-Programming/Algorithms-Recipes/Evolutional&sz=300x250&c=873963"
+  width="300px" height="250px" target="_blank"/></a></noscript></div>
+						</div>
+                        
+                        
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.opensource.org/licenses/apache2.0.php" rel="license">The Apache License, Version 2.0</a></p></div>
+						<h2>Share</h2>
+				        <div class="share-list">
+					        
+
+<ul class="rrssb-buttons clearfix rrssb-1">
+    
+    <li id="ctl00_SocialLike_Twitter" class="twitter" style="width: 20%;" data-initwidth="20" data-size="49">
+        <!-- Replace href with your Meta and URL information  -->
+        <a href="http://twitter.com/home?status=Introduction+to+Genetic+Algorithms+with+Python+-+Hello+World!+-+CodeProject+-+https%3a%2f%2fwww.codeproject.com%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
+                    c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155
+                    C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965
+                    C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683
+                    c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851
+                    C26.275,7.229,25.39,8.196,24.253,8.756z"></path>
+                </svg>
+            </span>
+            <span class="text">twitter</span>
+        </a>
+    </li>
+
+    <li id="ctl00_SocialLike_Facebook" class="facebook small" style="width: 42px;" data-initwidth="20" data-size="63">
+        <!-- Replace with your URL. For best results, make sure you page has the proper FB Open Graph tags in header: 
+        https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/ -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.codeproject.com%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
+                        c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726
+                        c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z"></path>
+                </svg>
+            </span>
+            <span class="text">facebook</span>
+        </a>
+    </li>
+
+    
+
+    <li id="ctl00_SocialLike_LinkedIn" class="linkedin small" style="width: 42px;" data-initwidth="20" data-size="52">
+        <!-- Replace href with your meta and URL information -->
+        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.codeproject.com%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel&amp;title=Introduction+to+Genetic+Algorithms+with+Python+-+Hello+World!+-+CodeProject&amp;summary=&amp;source=codeproject.com" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <path d="M25.424,15.887v8.447h-4.896v-7.882c0-1.979-0.709-3.331-2.48-3.331c-1.354,0-2.158,0.911-2.514,1.803
+                        c-0.129,0.315-0.162,0.753-0.162,1.194v8.216h-4.899c0,0,0.066-13.349,0-14.731h4.899v2.088c-0.01,0.016-0.023,0.032-0.033,0.048
+                        h0.033V11.69c0.65-1.002,1.812-2.435,4.414-2.435C23.008,9.254,25.424,11.361,25.424,15.887z M5.348,2.501
+                        c-1.676,0-2.772,1.092-2.772,2.539c0,1.421,1.066,2.538,2.717,2.546h0.032c1.709,0,2.771-1.132,2.771-2.546
+                        C8.054,3.593,7.019,2.501,5.343,2.501H5.348z M2.867,24.334h4.897V9.603H2.867V24.334z"></path>
+                </svg>
+            </span>
+            <span class="text">linkedin</span>
+        </a>
+    </li>
+    <li id="ctl00_SocialLike_Reddit" class="reddit small" style="width: 42px;" data-initwidth="20" data-size="41">
+        <a href="http://www.reddit.com/submit?url=https%3a%2f%2fwww.codeproject.com%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel&amp;title=Introduction+to+Genetic+Algorithms+with+Python+-+Hello+World!+-+CodeProject">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve"><g>
+                <path d="M11.794 15.316c0-1.029-0.835-1.895-1.866-1.895c-1.03 0-1.893 0.865-1.893 1.895s0.863 1.9 1.9 1.9 C10.958 17.2 11.8 16.3 11.8 15.316z"></path>
+                <path d="M18.1 13.422c-1.029 0-1.895 0.864-1.895 1.895c0 1 0.9 1.9 1.9 1.865c1.031 0 1.869-0.836 1.869-1.865 C19.969 14.3 19.1 13.4 18.1 13.422z"></path>
+                <path d="M17.527 19.791c-0.678 0.678-1.826 1.006-3.514 1.006c-0.004 0-0.009 0-0.014 0c-0.004 0-0.01 0-0.015 0 
+                c-1.686 0-2.834-0.328-3.51-1.005c-0.264-0.265-0.693-0.265-0.958 0c-0.264 0.265-0.264 0.7 0 1 c0.943 0.9 2.4 1.4 
+                4.5 1.402c0.005 0 0 0 0 0c0.005 0 0 0 0 0c2.066 0 3.527-0.459 4.47-1.402 c0.265-0.264 0.265-0.693 0.002-0.958C18.221 
+                19.5 17.8 19.5 17.5 19.791z"></path><path d="M27.707 13.267c0-1.785-1.453-3.237-3.236-3.237c-0.793 0-1.518 0.287-2.082 
+                0.761c-2.039-1.295-4.646-2.069-7.438-2.219 l1.483-4.691l4.062 0.956c0.071 1.4 1.3 2.6 2.7 2.555c1.488 0 2.695-1.208 
+                2.695-2.695C25.881 3.2 24.7 2 23.2 2 c-1.059 0-1.979 0.616-2.42 1.508l-4.633-1.091c-0.344-0.081-0.693 0.118-0.803 
+                0.455l-1.793 5.7 C10.548 8.6 7.7 9.4 5.6 10.75C5.006 10.3 4.3 10 3.5 10.029c-1.785 0-3.237 1.452-3.237 3.2 c0 1.1 0.6 
+                2.1 1.4 2.69c-0.04 0.272-0.061 0.551-0.061 0.831c0 2.3 1.3 4.4 3.7 5.9 c2.299 1.5 5.3 2.3 8.6 2.325c3.228 0 6.271-0.825 
+                8.571-2.325c2.387-1.56 3.7-3.66 3.7-5.917 c0-0.26-0.016-0.514-0.051-0.768C27.088 15.5 27.7 14.4 27.7 13.267z M23.186 
+                3.355c0.74 0 1.3 0.6 1.3 1.3 c0 0.738-0.6 1.34-1.34 1.34s-1.342-0.602-1.342-1.34C21.844 4 22.4 3.4 23.2 3.355z M1.648 
+                13.3 c0-1.038 0.844-1.882 1.882-1.882c0.31 0 0.6 0.1 0.9 0.209c-1.049 0.868-1.813 1.861-2.26 2.9 C1.832 14.2 1.6 13.8 1.6 
+                13.267z M21.773 21.57c-2.082 1.357-4.863 2.105-7.831 2.105c-2.967 0-5.747-0.748-7.828-2.105 
+                c-1.991-1.301-3.088-3-3.088-4.782c0-1.784 1.097-3.484 3.088-4.784c2.081-1.358 4.861-2.106 7.828-2.106 c2.967 0 5.7 
+                0.7 7.8 2.106c1.99 1.3 3.1 3 3.1 4.784C24.859 18.6 23.8 20.3 21.8 21.57z M25.787 14.6 
+                c-0.432-1.084-1.191-2.095-2.244-2.977c0.273-0.156 0.59-0.245 0.928-0.245c1.035 0 1.9 0.8 1.9 1.9 
+                C26.354 13.8 26.1 14.3 25.8 14.605z"></path></g></svg>
+            </span>
+            <span class="text">reddit</span>
+        </a>
+    </li>
+    <li id="ctl00_SocialLike_GooglePlus" class="googleplus small" style="width: 42px;" data-initwidth="20" data-size="56">
+        <!-- Replace href with your meta and URL information.  -->
+        <a href="https://plus.google.com/share?url=https%3a%2f%2fwww.codeproject.com%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <g>
+                        <g>
+                            <path d="M14.703,15.854l-1.219-0.948c-0.372-0.308-0.88-0.715-0.88-1.459c0-0.748,0.508-1.223,0.95-1.663
+                                c1.42-1.119,2.839-2.309,2.839-4.817c0-2.58-1.621-3.937-2.399-4.581h2.097l2.202-1.383h-6.67c-1.83,0-4.467,0.433-6.398,2.027
+                                C3.768,4.287,3.059,6.018,3.059,7.576c0,2.634,2.022,5.328,5.604,5.328c0.339,0,0.71-0.033,1.083-0.068
+                                c-0.167,0.408-0.336,0.748-0.336,1.324c0,1.04,0.551,1.685,1.011,2.297c-1.524,0.104-4.37,0.273-6.467,1.562
+                                c-1.998,1.188-2.605,2.916-2.605,4.137c0,2.512,2.358,4.84,7.289,4.84c5.822,0,8.904-3.223,8.904-6.41
+                                c0.008-2.327-1.359-3.489-2.829-4.731H14.703z M10.269,11.951c-2.912,0-4.231-3.765-4.231-6.037c0-0.884,0.168-1.797,0.744-2.511
+                                c0.543-0.679,1.489-1.12,2.372-1.12c2.807,0,4.256,3.798,4.256,6.242c0,0.612-0.067,1.694-0.845,2.478
+                                c-0.537,0.55-1.438,0.948-2.295,0.951V11.951z M10.302,25.609c-3.621,0-5.957-1.732-5.957-4.142c0-2.408,2.165-3.223,2.911-3.492
+                                c1.421-0.479,3.25-0.545,3.555-0.545c0.338,0,0.52,0,0.766,0.034c2.574,1.838,3.706,2.757,3.706,4.479
+                                c-0.002,2.073-1.736,3.665-4.982,3.649L10.302,25.609z"></path>
+                            <polygon points="23.254,11.89 23.254,8.521 21.569,8.521 21.569,11.89 18.202,11.89 18.202,13.604 21.569,13.604 21.569,17.004
+                                23.254,17.004 23.254,13.604 26.653,13.604 26.653,11.89      "></polygon>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <span class="text">google+</span>
+        </a>
+    </li>
+
+    
+
+    
+
+</ul>
+<!-- Buttons end here -->
+
+				        </div> 
+    			        
+                        <h2 id="ctl00_AboutHeading">About the Author</h2>
+						    
+
+<div class="author-wrapper">
+
+    <div class="pic-wrapper"> 
+        <img id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberPhoto" class="profile-pic" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/5a485ec43d4ad1632c7bbb8985e6cca8.png" style="border-width:0px;transform:rotate(-4deg);">
+    </div>
+
+    <div class="container-member">  
+        <b><a id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberProfileLink" class="author" href="https://www.codeproject.com/Members/handcraftsman">Clinton Sheppard</a></b>
+
+        <table class="extended">
+        <tbody><tr>
+            <td rowspan="2" valign="middle" nowrap="nowrap">
+            <div id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_FollowOn" class="follow">
+	            <a href="http://www.twitter.com/gar3t"><img style="vertical-align:middle;border:0;height:24px;width:24px" alt="Twitter" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/twitter32.png"></a> 
+	            
+	            
+            </div>
+            </td>
+            <td nowrap="nowrap">
+                <div class="company">
+                    <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberJobTitle">Software Developer (Senior)</span>
+	                <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberCompany"></span>
+                </div>
+            </td>
+            <td rowspan="2" style="width:100%;padding-left:15px">
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberLocation">United States <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/US.gif" alt="United States" width="16px" height="11px"></span>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+    <div class="description">
+        I am a polyglot programmer with more than 15 years of 
+professional programming experience and author of Genetic Algorithms 
+with Python. When learning a new programming language, I start with a 
+familiar problem and try to learn enough of the new language to solve 
+it.  For me, writing a genetic engine is that familiar problem.  Why a 
+genetic engine?  For one thing, it is a project where I can explore 
+interesting puzzles, and where even a child's game like Tic-Tac-Toe can 
+be viewed on a whole new level.  Also, I can select increasingly complex
+ puzzles to drive evolution in the capabilities of the engine.  This 
+allows me to discover the expressiveness of the language, the power of 
+its tool chain, and the size of its development community as I work 
+through the idiosyncrasies of the language.
+
+        
+    </div>
+
+</div><br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						<div style="padding-top:8px">
+							
+						</div>
+
+					
+
+				    
+					</form>
+
+				</div>
+
+				
+				<div class="bottom-promo"> 
+				    <div class="msg-728x90" data-format="728x90" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="General-Programming/Algorithms-Recipes/Evolutional" data-loadonview="true" data-tags="Dev, Beginner, Python, machine-learning, Genetic,rating4,pos_bottom"><noscript><a
+ 
+href="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/General-Programming/Algorithms-Recipes/Evolutional&sz=728x90&c=873963"><img
+ 
+src="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/General-Programming/Algorithms-Recipes/Evolutional&sz=728x90&c=873963"
+  width="728px" height="90px" target="_blank"/></a></noscript></div>
+				</div>
+				
+
+                
+        <h2 id="ctl00_AlsoRead_RelatedResults_ctl00_Header" class="also-read">You may also be interested in...</h2>
+        <table class="spaced content-list also-read">
+    
+	    <tbody><tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl01_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl01_Thumbnail" href="https://www.codeproject.com/Articles/1231201/Get-Started-Turbo-Charging-Your-Applications-wit"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/article100x80.png" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl01_Link" href="https://www.codeproject.com/Articles/1231201/Get-Started-Turbo-Charging-Your-Applications-wit">Get Started Turbo-Charging Your Applications with Intel® Parallel Studio XE</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl02_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl02_Thumbnail" href="https://www.codeproject.com/Articles/28526/Introduction-to-D-DImage"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/Thumb-28526.jpg" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl02_Link" href="https://www.codeproject.com/Articles/28526/Introduction-to-D-DImage">Introduction to D3DImage</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+	    <tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl03_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl03_Thumbnail" href="https://www.codeproject.com/Articles/23/SAPrefs-Netscape-like-Preferences-Dialog"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/Thumb-23.gif" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl03_Link" href="https://www.codeproject.com/Articles/23/SAPrefs-Netscape-like-Preferences-Dialog">SAPrefs - Netscape-like Preferences Dialog</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl04_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl04_Thumbnail" href="https://www.codeproject.com/Articles/271/Creating-alternate-GUI-using-Vector-Art"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/Thumb-271.gif" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl04_Link" href="https://www.codeproject.com/Articles/271/Creating-alternate-GUI-using-Vector-Art">Creating alternate GUI using Vector Art</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+	    <tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl05_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl05_Thumbnail" href="https://www.codeproject.com/Articles/107/Window-Tabs-WndTabs-Add-In-for-DevStudio"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/Thumb-107.jpg" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl05_Link" href="https://www.codeproject.com/Articles/107/Window-Tabs-WndTabs-Add-In-for-DevStudio">Window Tabs (WndTabs) Add-In for DevStudio</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl06_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl06_Thumbnail" href="https://www.codeproject.com/Articles/1944/Guide-to-WIN-Regions"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/Thumb-1944.gif" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl06_Link" href="https://www.codeproject.com/Articles/1944/Guide-to-WIN-Regions">Guide to WIN32 Regions</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+		</tbody></table>
+	
+
+
+
+				
+				
+
+					<h2>Comments and Discussions</h2>
+					<a class="float-left" name="_comments" id="_comments">&nbsp;</a><div id="_MessageBoardctl00_MessageBoard" onclick="return forumControl16438538.SwitchMessage(event, null)">
+<table id="ForumTable" class="forum relaxed" cellspacing="0" cellpadding="0">
+<tbody><tr>
+<td class="header1"><div class="callout">
+	<b>You must <a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel%3ffid%3d1905960%26df%3d90%26mpp%3d25%26prof%3dTrue%26sort%3dPosition%26view%3dNormal%26spc%3dRelaxed">Sign In</a> to use this message board.</b>
+</div></td>
+</tr><tr>
+<td><table width="100%" cellspacing="0" cellpadding="3px" border="0">
+<tbody><tr class="header1">
+<td colspan="2" style="white-space:nowrap;"><div class="container">
+<div class="float-right">
+<form action="/Search.aspx?sbo=fm" method="get" class="searchbar">
+<input name="fid" value="1905960" type="hidden"><input name="sbo" value="fm" type="hidden"><input id="search_forumControl16438538" class="search subdue" name="qf" value="Search Comments" type="search"><input src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/search.gif" type="image">
+</form>
+</div>
+</div></td>
+</tr><tr class="header2">
+<td></td><td style="width:100%;"><div style="text-align:right;">
+<form action="/script/Forums/SetOptions.aspx?fid=1905960&amp;df=90&amp;mpp=25&amp;prof=True&amp;sort=Position&amp;view=Normal&amp;spc=Relaxed&amp;floc=%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel" method="get" style="margin:0;padding:0;">
+<input name="fid" value="1905960" type="hidden"><input name="currentQS" value="fid=1905960&amp;df=90&amp;mpp=25&amp;prof=True&amp;sort=Position&amp;view=Normal&amp;spc=Relaxed&amp;floc=%2fArticles%2f1104747%2fIntroduction-to-Genetic-Algorithms-with-Python-Hel" type="hidden"><input name="floc" value="/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel" type="hidden">Spacing<select size="1" class="dropdown" name="spc">
+<option selected="selected" value="Relaxed">Relaxed</option><option value="Compact">Compact</option><option value="Tight">Tight</option>
+</select>&nbsp;&nbsp;Layout<select size="1" class="dropdown" name="view">
+<option selected="selected" value="Normal">Normal</option><option value="Topic">Open Topics</option><option value="Expanded">Open All</option><option value="Thread">Thread View</option>
+</select>&nbsp;&nbsp;Per page<select size="1" class="dropdown" name="mpp">
+<option value="10">10</option><option selected="selected" value="25">25</option><option value="50">50</option>
+</select>&nbsp;&nbsp;&nbsp;<input value="Update" name="SetOpt" class="button" type="submit">
+</form>
+</div></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><a name="xx0xx"></a><table width="100%" cellspacing="0" cellpadding="2px" border="0">
+<tbody><tr class="navbar">
+<td></td><td style="text-align:right;width:50%;"></td><td style="text-align:right;white-space:nowrap;"><span class="nav-link disabled">First</span> <span class="nav-link disabled">Prev</span> <span class="nav-link disabled">Next</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><table class="fixed-layout blank-background" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr id="F5256805_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td class="indent" width="20px"><a name="xx5256805xx"></a><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_kudos.gif" alt="Praise" title="Praise" width="16px" height="16px" align="top"></td><td class="subject hover-container"><a class="message-link" name="5256805" parent="0" thread="5256805" href="https://www.codeproject.com/Messages/5256805/Newbie-to-commenting.aspx">Newbie to commenting</a> <a onclick="return forumControl16438538.Pin(this);" rel="nofollow" href="#" title="Click to pin message"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/pin.png" alt="Pin" width="13px" height="13px" border="0" align="top"></a><div class="mobile-only">
+	<span class="author">Herbert H Dupree II</span><span class="date">5-Jun-16  20:24</span>
+</div></td><td class="icon"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/icn-pro-16.png" title="professional" alt="professional" height="16px" border="0"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=10633962">Herbert H Dupree II</a></span></td><td class="date"><span>5-Jun-16  20:24&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5256805_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><span class="voteform vertical" ownerid="10633962" msgid="5256805" votingtype="GoodOrBad"></span></td><td class="text"><table width="100%" cellspacing="5px" cellpadding="0" border="0">
+<tbody><tr>
+<td><table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2">My apologies for only giving 3 stars. I was looking for a
+ way to back out of it, but couldn't find it. It should be 4 stars, as 
+the code was good, and the download finally worked (timing issue). 
+However, I can't recommend VS Code as either I didn't find it, or there 
+is no Run command, like repl.it (online complier). Later, will try this 
+in Notepad ++. Thanks for writing.<br>
+<div class="signature">Free your mind and the rest will follow,<br>
+Don't be colorblind, don't be so shallow!</div><br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel">Sign In</a>·<wbr><a href="https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel?fid=1905960&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=5256805" title="View&nbsp;Thread">View&nbsp;Thread</a></td><td style="text-align:right;"><a href="https://www.codeproject.com/Messages/5256805/Newbie-to-commenting.aspx" title="Get permanent link" style="border:0 !important"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/link32.png" style="width:14px;height:14px;border:0"></a>&nbsp;<span id="MVF5256805" data-ref="3_5256805" class="rating-label" name="RateItem_5256805" style="white-space:nowrap;"><span class="rating-result"><span></span></span></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5257013_h0" class="header hover-row">
+<td class="subject-line normal " width="100%"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td class="indent" width="38px"><a name="xx5257013xx"></a><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_answer.gif" alt="Answer" title="Answer" width="16px" height="16px" align="top"></td><td class="subject hover-container"><a class="message-link" name="5257013" parent="5256805" thread="5256805" href="https://www.codeproject.com/Messages/5257013/Re-Newbie-to-commenting.aspx">Re: Newbie to commenting</a> <a onclick="return forumControl16438538.Pin(this);" rel="nofollow" href="#" title="Click to pin message"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/pin.png" alt="Pin" width="13px" height="13px" border="0" align="top"></a><div class="mobile-only">
+	<span class="author">Clinton Sheppard</span><span class="date">6-Jun-16  4:18</span>
+</div></td><td class="icon"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px" border="0"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=229712">Clinton Sheppard</a></span></td><td class="date"><span>6-Jun-16  4:18&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5257013_h1" class="content selected" style="display:none;">
+<td class="normal" width="100%"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:38px;"><span class="voteform vertical" ownerid="229712" msgid="5257013" votingtype="GoodOrBad"></span></td><td class="text"><table width="100%" cellspacing="5px" cellpadding="0" border="0">
+<tbody><tr>
+<td><table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2"><div class="parent"><a rel="nofollow" onclick="return forumControl16438538.SwitchMessage(null,5256805);" href="https://www.codeproject.com/Messages/5256805/Newbie-to-commenting.aspx"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/arrow-up24.png" title="Go to Parent" style="width:16px;height:16px;border:0"></a></div>Herbert,
+ thank you for your comment. I'd appreciate if you could tell me more 
+about the timing issue you encountered so I can try to fix it for other 
+readers. You are welcome to send me an email with the details.<br>
+<br>
+I use <a href="https://www.jetbrains.com/pycharm/">JetBrains' PyCharm IDE</a>[<a href="https://www.jetbrains.com/pycharm/" target="_blank" title="JetBrains' PyCharm IDE">^</a>] to run Python but I'm glad you mentioned repl.it. For other readers who would like to use it, I've created <a href="https://repl.it/CYme/0">repl.it: Genetic algorithm - Hello world!- Final</a>[<a href="https://repl.it/CYme/0" target="_blank" title="repl.it: Genetic algorithm - Hello world!- Final">^</a>]
+ with the final code of this article adapted to run in that environment.
+ The last line in the edit pane contains the call to run the test. You 
+can change it to point at a different test or simply change the string 
+in that test.<br>
+<br>
+Enjoy!<br>
+Clinton<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel">Sign In</a>·<wbr><a href="https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel?fid=1905960&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=5256805" title="View&nbsp;Thread">View&nbsp;Thread</a></td><td style="text-align:right;"><a href="https://www.codeproject.com/Messages/5257013/Re-Newbie-to-commenting.aspx" title="Get permanent link" style="border:0 !important"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/link32.png" style="width:14px;height:14px;border:0"></a>&nbsp;<span id="MVF5257013" data-ref="3_5257013" class="rating-label" name="RateItem_5257013" style="white-space:nowrap;"><span class="rating-result"><span></span></span></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5257301_h0" class="header hover-row">
+<td class="subject-line normal " width="100%"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td class="indent" width="56px"><a name="xx5257301xx"></a><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_general.gif" alt="General" title="General" width="16px" height="16px" align="top"></td><td class="subject hover-container"><a class="message-link" name="5257301" parent="5257013" thread="5256805" href="https://www.codeproject.com/Messages/5257301/Re-Newbie-to-commenting.aspx">Re: Newbie to commenting</a> <a onclick="return forumControl16438538.Pin(this);" rel="nofollow" href="#" title="Click to pin message"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/pin.png" alt="Pin" width="13px" height="13px" border="0" align="top"></a><div class="mobile-only">
+	<span class="author">Herbert H Dupree II</span><span class="date">6-Jun-16  18:47</span>
+</div></td><td class="icon"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/icn-pro-16.png" title="professional" alt="professional" height="16px" border="0"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=10633962">Herbert H Dupree II</a></span></td><td class="date"><span>6-Jun-16  18:47&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5257301_h1" class="content selected" style="display:none;">
+<td class="normal" width="100%"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:56px;"><span class="voteform vertical" ownerid="10633962" msgid="5257301" votingtype="GoodOrBad"></span></td><td class="text"><table width="100%" cellspacing="5px" cellpadding="0" border="0">
+<tbody><tr>
+<td><table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2"><div class="parent"><a rel="nofollow" onclick="return forumControl16438538.SwitchMessage(null,5257013);" href="https://www.codeproject.com/Messages/5257013/Re-Newbie-to-commenting.aspx"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/arrow-up24.png" title="Go to Parent" style="width:16px;height:16px;border:0"></a></div>The Twitter TL feed came in and I went straight to it. Later on, the link was working fine and I downloaded the zip. <br>
+<br>
+<a href="https://onedrive.live.com/redir?resid=4A0DDE7688A0C122!19836&amp;authkey=!AL8cMHfFyMtuVmo&amp;v=3&amp;ithint=photo%2cPNG">Microsoft OneDrive - 1st Photo.</a>[<a href="https://onedrive.live.com/redir?resid=4A0DDE7688A0C122!19836&amp;authkey=!AL8cMHfFyMtuVmo&amp;v=3&amp;ithint=photo%2cPNG" target="_blank" title="New Window">^</a>]<br>
+<br>
+<a href="https://onedrive.live.com/redir?resid=4A0DDE7688A0C122!19837&amp;authkey=!AJ_ZtYK2FXOu7O8&amp;v=3&amp;ithint=photo%2cPNG">Microsoft OneDrive - 2nd Photo.</a>[<a href="https://onedrive.live.com/redir?resid=4A0DDE7688A0C122!19837&amp;authkey=!AJ_ZtYK2FXOu7O8&amp;v=3&amp;ithint=photo%2cPNG" target="_blank" title="New Window">^</a>]<br>
+<br>
+I want to like VS Code, but without a Run button or command like that in
+ repl.it or Notepad ++, I'm lost and frustrated. Bad enough having to 
+forget classic Visual Basic (never could get into the current stuff, or 
+any of the angle bracket languages) so the drama needs to be limited. 
+I'm not a kid anymore, and never was a hardcore programmer, more of a 
+super end-user and graphic manipulator {not designer or artist}. Thanks 
+for the lesson, and I will study it further to add to my beginning 
+knowledge of Python.<br>
+<div class="signature">Free your mind and the rest will follow,<br>
+Don't be colorblind, don't be so shallow!</div><br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel">Sign In</a>·<wbr><a href="https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel?fid=1905960&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=5256805" title="View&nbsp;Thread">View&nbsp;Thread</a></td><td style="text-align:right;"><a href="https://www.codeproject.com/Messages/5257301/Re-Newbie-to-commenting.aspx" title="Get permanent link" style="border:0 !important"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/link32.png" style="width:14px;height:14px;border:0"></a>&nbsp;<span id="MVF5257301" data-ref="3_5257301" class="rating-label" name="RateItem_5257301" style="white-space:nowrap;"><span class="rating-result"><span></span></span></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><table width="100%" cellspacing="0" cellpadding="2px">
+<tbody><tr class="footer">
+<td><span class="last-visit desktop-only tablet-only">Last Visit: 31-Dec-99  19:00 &nbsp; &nbsp; Last Update: 2-Mar-18  22:43</span></td><td><a rel="nofollow" href="https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel?fid=1905960&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;prof=True&amp;view=Normal">Refresh</a></td><td style="text-align:right;white-space:nowrap;"><input id="_mbnUrl" value="/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel?fid=1905960&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;prof=True&amp;view=Normal&amp;fr=4" type="hidden"><span class="nav-link selected">1</span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table>
+</div><p class="small-text"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_general.gif" alt="General" width="16px" height="16px" align="top"> General &nbsp;&nbsp; <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_news.gif" alt="News" width="16px" height="16px" align="top"> News &nbsp;&nbsp; <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_idea.gif" alt="Suggestion" width="16px" height="16px" align="top"> Suggestion &nbsp;&nbsp; <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_question.gif" alt="Question" width="16px" height="16px" align="top"> Question &nbsp;&nbsp; <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_bug.gif" alt="Bug" width="16px" height="16px" align="top"> Bug &nbsp;&nbsp; <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_answer.gif" alt="Answer" width="16px" height="16px" align="top"> Answer &nbsp;&nbsp; <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_joke.gif" alt="Joke" width="16px" height="16px" align="top"> Joke &nbsp;&nbsp; <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_kudos.gif" alt="Praise" width="16px" height="16px" align="top"> Praise &nbsp;&nbsp; <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_rant.gif" alt="Rant" width="16px" height="16px" align="top"> Rant &nbsp;&nbsp; <img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/msg_admin.gif" alt="Admin" width="16px" height="16px" align="top"> Admin &nbsp;&nbsp; </p><p class="small-text">Use Ctrl+Left/Right to switch messages, Ctrl+Up/Down to switch threads, Ctrl+Shift+Left/Right to switch pages.</p>
+				
+
+			</div>
+			
+		</td>
+		<td class="article-wing-right" width="170px">
+			<div id="ctl00_RightSideBar" class="container-article-info">
+
+                <div id="RHSticky" class="container-article-info-sticky" style="position: static; top: 234px; left: 818px;">
+        			
+
+<div class="article-summary">
+
+    
+
+    
+
+</div>
+
+				    <div id="ctl00_SectionSponsor" class="padded-top" style="width:160px;margin:auto 10px">
+					    <div class="msg-160x200" data-format="160x200" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="General-Programming/Algorithms-Recipes/Evolutional" data-tags="Dev, Beginner, Python, machine-learning, Genetic,rating4"><noscript><a
+ 
+href="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/General-Programming/Algorithms-Recipes/Evolutional&sz=160x200&c=36432"><img
+ 
+src="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/General-Programming/Algorithms-Recipes/Evolutional&sz=160x200&c=36432"
+  width="160px" height="200px" target="_blank"/></a></noscript></div>
+				    </div>
+
+				    <div style="width:160px;margin: 10px auto;">
+					    <div class="msg-160x600" data-format="160x600" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="General-Programming/Algorithms-Recipes/Evolutional" data-tags="Dev, Beginner, Python, machine-learning, Genetic,rating4"><noscript><a
+ 
+href="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/General-Programming/Algorithms-Recipes/Evolutional&sz=160x600&c=36432"><img
+ 
+src="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/General-Programming/Algorithms-Recipes/Evolutional&sz=160x600&c=36432"
+  width="160px" height="600px" target="_blank"/></a></noscript></div>
+				    </div>
+
+                    
+
+				    
+
+				    
+
+                    <div class="anchorLink gototop" id="gototop">
+                        <a id="ctl00_GoToTop" href="https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel#_articleTop">Go to top</a>
+                    </div>
+
+				</div>
+
+			</div>
+		</td>
+		</tr></tbody></table>
+
+		
+		<div class="theme1-background" style="height: 2px;" id="stickyStop"></div>
+
+		<div class="extended tiny-text">
+			<div class="row">
+				<div class="float-left">
+					<a id="ctl00_PermaLink" href="https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel">Permalink</a> | 
+					<a id="ctl00_AdvertiseLink" href="http://developermedia.com/">Advertise </a> |
+					<a id="ctl00_PrivacyLink" href="https://www.codeproject.com/info/privacy.aspx">Privacy</a> |
+                    <a id="ctl00_TermsOfUseLink" href="https://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a> |
+					<a id="ctl00_Mobile">Mobile</a>
+					<br>
+								
+					
+					Web04-2016 |
+					2.8.180302.2 |
+					Last Updated 7 Jun 2016								
+				</div>
+
+                <div id="ctl00_GoogleTranslate" class="translate float-left"><div class="skiptranslate goog-te-gadget" dir="ltr" style=""><div id=":0.targetLanguage" style="white-space: nowrap;" class="goog-te-gadget-simple"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/cleardot.gif" class="goog-te-gadget-icon" alt="" style="background-image: url(&quot;https://translate.googleapis.com/translate_static/img/te_ctrl3.gif&quot;); background-position: -65px 0px;"><span style="vertical-align: middle;"><a aria-haspopup="true" class="goog-te-menu-value" href="javascript:void(0)"><span>Select Language</span><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/cleardot.gif" alt="" width="1" height="1"><span style="border-left: 1px solid rgb(187, 187, 187);">​</span><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/cleardot.gif" alt="" width="1" height="1"><span style="color: rgb(118, 118, 118);" aria-hidden="true">▼</span></a></span></div></div></div>      
+
+				<div class="float-right align-right">
+					Article Copyright 2016 by Clinton Sheppard<br>Everything else
+					Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2018 <br>
+				</div>
+
+				
+
+
+<div class="page-width">
+Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel?PageFlow=FixedWidth">fixed</a>
+|
+<a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="https://www.codeproject.com/Articles/1104747/Introduction-to-Genetic-Algorithms-with-Python-Hel?PageFlow=Fluid">fluid</a>
+</div>
+
+
+
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript" language="Javascript" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/article.js"></script>
+<script type="text/javascript" language="Javascript" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/element.js"></script>
+<script type="text/javascript" language="Javascript" src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/MemberProfilePopup.js"></script>
+<script type="text/javascript" language="Javascript">//<![CDATA[
+$(document).ready(function () { 
+processCodeBlocks.Initialise('#contentdiv'); });
+cookieconsent.initialise({
+                           enabled : false,
+                           cookie  : { 'domain': 'codeproject.com' }
+                       });
+function googleTranslateElementInit() {  new 
+google.translate.TranslateElement({   pageLanguage: 'en',   layout: 
+google.translate.TranslateElement.InlineLayout.SIMPLE,   autoDisplay: 
+false,   gaTrack: true,   gaId: 'UA-1735123-1'},  
+'ctl00_GoogleTranslate');}
+$(document).ready(function() { anchorAnimate();
+$('#RHSticky').sticky($('#stickyStop'));
+$('#ctl00_Nav').sticky($('#stickyStop'));
+});
+$(document).ready(function(){
+    $('#__EVENTVALIDATION').attr('autocomplete', 'off');
+});
+$(function ()
+                {
+                    $('.oauth').click(function () {
+                        $this = $(this);
+                        href = $this.attr('href');
+                        var myWindow = window.open(href, 'popup',
+                                    
+'width=800,height=600,location=0,menubar=0,resizeable=0,scrollbars=0,toolbar=0');
+
+                        myWindow.focus();
+                        var timer = setInterval(function () {
+                                        if (myWindow.closed) {
+                                            clearInterval(timer);
+                                            // window.location.reload();
+ // May do a POST reload, shows a warning
+                                            window.location = 
+window.location; // force a GET reload
+                                        }
+                                    }, 200);
+                        return false;
+                    });
+                });
+var retrievalService=function(n){var t=!1;n=n||{};var 
+r=n.RetrievalServiceUrl||"/script/content/webservices/RetrieveContent.aspx/GetContent",u=n.RetrievalServiceRetries||3,f=n.RetrievalServiceTimeout||5e3,e=function(){t||(t=!0,$(window).bind("resize
+ scroll",i),i())},i=function(){if(typeof DMAds=="undefined"){var 
+n=$('[data-type="ad"]');n.each(function(){var 
+n=$(this),u=n.attr("data-format")||"",f=n.attr("data-publisher")||"",e=n.attr("data-zone")||"",t=n.attr("data-loadonview"),i=n.attr("data-noadx"),h=n.attr("data-tags")||"",c=n.find("iframe").length!==0||n.find("img").length!==0,r=n.attr("data-processed");t=typeof
+ t=="string"&&t.toLowerCase()==="true";i=typeof 
+i=="string"&&i.toLowerCase()==="true";r=typeof 
+r=="string"&&r.toLowerCase()==="true";r||c||t&&!s(this)||(o(n,u,f,e,i,h),n.attr("data-processed","true"))})}},o=function(n,t,i,e,o,s){var
+ h=new 
+$.Deferred,c=JSON.stringify({format:t,publisherCode:i,zone:e,noAdX:o,keywords:s});$.ajax({url:r,cache:!1,type:"POST",data:c,contentType:"application/json;
+ 
+charset=utf-8",dataType:"json",tryCount:0,retryLimit:u,timeout:f}).done(function(t){var
+ i=t?t.d:null;h.resolve(i); i && i.html && 
+n.html(i.html)}).fail(function(n,t){h.reject(t)})},s=function(n){var 
+t,f,e,o;if(!h(n))return!1;var 
+u=!1,i=0,r=0;try{t=n.getBoundingClientRect();typeof 
+innerWidth=="number"?(i=window.innerWidth,r=window.innerHeight):document.documentElement&&(document.documentElement.clientWidth||document.documentElement.clientHeight)?(i=document.documentElement.clientWidth,r=document.documentElement.clientHeight):document.body&&(document.body.clientWidth||document.body.clientHeight)&&(i=document.body.clientWidth,r=document.body.clientHeight);f=-200;t.top===t.bottom&&(f+=n.height*-1);e=t.top>=0&&t.top-200<=r||t.top<=0&&t.top>=f;o=i>t.left&&t.right>=0;u=e&&o}catch(s){u=!0}return
+ u},h=function(n){var t=!1,i;return 
+n&&n.style.position!=="fixed"&&n.offsetParent?t=!0:n&&n.style.position==="fixed"&&(i=window.getComputedStyle(n),t=i&&i.display!=="none"),t&&c()},c=function(){var
+ t=!0,n="";return typeof document.hidden!="undefined"?n="hidden":typeof 
+document.mozHidden!="undefined"?n="mozHidden":typeof 
+document.msHidden!="undefined"?n="msHidden":typeof 
+document.webkitHidden!="undefined"&&(n="webkitHidden"),n!==null&&document[n]&&(t=!1),t};return{init:e}};$(document).ready(function(){var
+ n=window.XMLHttpRequest?new XMLHttpRequest:new 
+ActiveXObject("MSXML2.XMLHTTP"),t;n.onreadystatechange=function(){try{if(n.readyState==4)if(n.status==200){var
+ 
+t=document.createElement("script");t.type="text/javascript";t.innerHTML=n.responseText;document.getElementsByTagName("body")[0].appendChild(t)}else(new
+ retrievalService).init()}catch(i){(new 
+retrievalService).init()}};try{t=('https:' == document.location.protocol
+ ? 'https://' : 'http://') + 
+'cdn2.developermedia.com/a.min.js';n.open("GET",t,!0);n.send()}catch(i){(new
+ retrievalService).init()}});
+var oSrchFlt = false, oSrchBox=false,srchBoxFoc=false;
+$(document).ready(function() {
+ if(InitWatermark)InitWatermark('sb_tb', 'Search for articles, 
+questions, tips');
+ var sbar = $('#sb_tb'); 
+ var sfilter = $('#SearchFilter');
+ if (sbar && sfilter) {
+  sfilter.removeClass('popup'); sfilter.hide(); 
+sfilter.removeClass('open');
+  sbar.blur(function() {
+ if (!oSrchFlt) {sfilter.hide(); sfilter.removeClass('open');}
+ srchBoxFoc=false;
+ });
+  sbar.focus(function() {
+ oSrchFlt=false; srchBoxFoc=true;
+ sfilter.show(); sfilter.addClass('open');
+ });
+  sbar.mouseleave(function() { oSrchBox=false; });
+  sbar.mouseover(function() { oSrchBox=true; });
+  sfilter.mouseleave(function() { oSrchFlt=false; if 
+(!srchBoxFoc&&!oSrchBox) { sfilter.hide(); sfilter.removeClass('open'); 
+}});
+  sfilter.mouseover(function() { oSrchFlt=true; });
+ }
+});
+
+var bookmark;
+$(function() {
+   bookmark = new 
+Bookmark('[data-type="bookmark"]','https://codeproject.global.ssl.fastly.net/App_Themes/CodeProject/Img/','/script/Bookmarks/Ajax/Add.aspx?obrfgd=%5bObjectRefGuid%5d&bis=medium',false,false);
+
+   bookmark.Initialise();
+});
+$('#clear-rate_ctl00_RateArticle_RSU').click(function () {    
+$('#ctl00_RateArticle_RSU').hide(); return 
+false;});$("#ctl00_RateArticle_RateItemWrapper")   
+.removeClass("container-rating")   .hover( function() { 
+$('#ctl00_RateArticle_RSU').fadeIn('fast'); },            function() { 
+$('#ctl00_RateArticle_RSU').fadeOut('fast'); } );
+function PostBack_ctl00_RateArticle_RateItemWrapper() {
+  return rateItem(null, 1104747,2,1,true,true,0,'MediumStars', null, 0);
+}
+
+                        function getVotesHistogram(objectId, 
+objectTypeId, containerId, loadingId) {
+                            if (!$('#' + 
+containerId).attr('alreadyRequested')){
+                                $.ajax({
+                                    url: 
+'/script/Ratings/Ajax/Histogram.aspx?obid=' + objectId + 
+'&obtid='+objectTypeId,
+                                    success: function (data) {
+                                        $('#' + containerId).html(data);
+                                        $('#' + loadingId).hide();
+                                    }
+                                });
+                                $('#' + 
+containerId).attr('alreadyRequested', 'true');
+                            }
+                        }
+$(document).ready(function() {
+  new starRating('#ctl00_RateArticle_RateItemWrapper', 
+PostBack_ctl00_RateArticle_RateItemWrapper,'ctl00_RateArticle');
+  $('#ctl00_RateArticle_RB').mouseenter(function() {     
+getVotesHistogram(1104747,2   
+,'ctl00_RateArticle_Histogram','ctl00_RateArticle_Loading');
+  });
+})
+
+$(document).ready(function() {
+  $('#ctl00_RateArticle_SubmitRateBtn').hide();
+});
+
+$(document).ready(function() {
+  $('#ctl00_RateArticle_SubmitRateBtn').hide();
+});
+function ChkRtctl00_RateArticle(){}
+
+var config16438538 = {
+    objectName          : 'forumControl16438538',
+    messageTypeId       : 3,
+    searchPrompt        : 'Search Comments',
+    smoothScroll        : false,
+    allowReporting      : false,
+    allowRating         : false,
+    allowRatingDisplay  : true,
+    forumDir            : '/script/Forums/',
+    staticServer        : 'https://codeproject.global.ssl.fastly.net',
+    switchMsgCallback   : null,
+    getVoteFormMethod   : getVoteFormHtml,
+    getReportFormMethod : getReportFormHtml,
+    voteHiThreshold     : 5 - 0.5,
+    getRatingUrl        : '/script/Ratings/Ajax/GetRatings.aspx',
+    getRatingRefKey     : 'obrs',
+    reportOptions       : [
+       { reportTypeId : 19, name : 'Abusive / Trolling'},
+       { reportTypeId : 20, name : 'Inappropriate'},
+       { reportTypeId : 5, name : 'Spam'},
+    ],
+};
+var forumControl16438538 = new ForumControl(config16438538, -1);
+$(document).ready(function() {
+    forumControl16438538.Initialise();
+});
+
+var subscriptionConfig = {
+ ParentId      : 'ctl00_MessageBoard_SubscribeDiv',
+ NewId         : 'ctl00_MessageBoard_SubscribeNew',
+ ReplyId       : 'ctl00_MessageBoard_SubscribeReplies',
+ InstantId     : 'ctl00_MessageBoard_SubscribeInstant',
+ DailyId       : 'ctl00_MessageBoard_SubscribeDaily',
+ GetInfoUrl    : 
+'/script/Forums/WebServices/ForumSubscriptionServices.aspx/GetSubscriptions',
+
+ UpdateInfoUrl : 
+'/script/Forums/WebServices/ForumSubscriptionServices.aspx/UpdateSubscription',
+
+ ForumId       : 1905960,
+};
+var subscriptions_ctl00_MessageBoard;
+$(function() {
+   subscriptions_ctl00_MessageBoard = new 
+Subscriptions(subscriptionConfig);
+   subscriptions_ctl00_MessageBoard.initialise();
+});
+
+
+//]]>
+</script>
+
+
+
+<canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><div id="MemberProfilePopupDiv" class="raised box" style="display: none; position: absolute;"></div><div id="MemberProfilePopupDiv" class="raised box" style="display: none; position: absolute;"></div><div id="MemberProfilePopupDiv" class="raised box" style="display: none; position: absolute;"></div><style type="text/css">.copied::after
+ {  position: absolute;  display: inline-block;  content: 'copied'; 
+color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 
+3px; opacity: 0;  will-change: opacity, transform; animation: showcopied
+ 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; transform: 
+translateX(-100%); } 70% { opacity: 1; transform: translateX(0); } 100% {
+ opacity: 0; } } </style><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="Introduction%20to%20Genetic%20Algorithms%20with%20Python%20-%20Hello%20World!%20-%20CodeProject_files/translate_24dp.png" alt="Google Translate" width="20" height="20"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Original text</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Contribute a better translation</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><style type="text/css">.copied::after
+ {  position: absolute;  display: inline-block;  content: 'copied'; 
+color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 
+3px; opacity: 0;  will-change: opacity, transform; animation: showcopied
+ 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; transform: 
+translateX(-100%); } 70% { opacity: 1; transform: translateX(0); } 100% {
+ opacity: 0; } } </style><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div><iframe class="goog-te-menu-frame skiptranslate" title="Language Translate Widget" style="visibility: visible; box-sizing: content-box; width: 0px; height: 0px; display: none;" frameborder="0"></iframe></body></html>

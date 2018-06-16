@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html class="gr__cleverhans_io" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Is attacking machine learning easier than defending it?</title>
+  <meta name="description" content="by Ian Goodfellow and Nicolas Papernot">
+
+  <link rel="stylesheet" href="Is%20attacking%20machine%20learning%20easier%20than%20defending%20it%3F_files/main.css">
+  <link rel="canonical" href="http://cleverhans.io/security/privacy/ml/2017/02/15/why-attacking-machine-learning-is-easier-than-defending-it.html">
+  <link rel="alternate" type="application/rss+xml" title="cleverhans-blog" href="http://www.cleverhans.io/feed.xml">
+  
+  
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+
+  <body data-gr-c-s-loaded="true"><div id="MathJax_Message" style="display: none;"></div>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="http://www.cleverhans.io/">cleverhans-blog</a>
+  
+    
+      <nav class="site-nav">
+        <input id="nav-trigger" class="nav-trigger" type="checkbox">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+            <a class="page-link" href="http://www.cleverhans.io/about/">About</a>
+            
+          
+            
+            
+            <a class="page-link" href="http://www.cleverhans.io/">Welcome to the cleverhans blog</a>
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+
+<!--
+  Begin modification from minima theme default by Ian.
+  This enables MathJax so that LaTeX actually renders. -->
+<script src="Is%20attacking%20machine%20learning%20easier%20than%20defending%20it%3F_files/MathJax.js" id=""></script>
+<!-- End modification from minima theme default. -->
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Is attacking machine learning easier than defending it?</h1>
+    <p class="post-meta"><time datetime="2017-02-15T09:57:46+00:00" itemprop="datePublished">Feb 15, 2017</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><em>by Ian Goodfellow and Nicolas Papernot</em></p>
+
+<p>In our <a href="http://www.cleverhans.io/security/privacy/ml/2016/12/15/breaking-things-is-easy.html">first
+post</a>,
+we presented a few ways that an attacker can break current machine learning
+systems, such as by poisoning the data used by the learning algorithm [BNL12],
+or crafting adversarial examples to directly force models to make erroneous
+predictions [SZS13]. In this post, we’ll take adversarial examples as an
+illustration of why attacking machine learning seems easier than defending it. In
+other words, we cover in detail some of the reasons why we do not yet have
+completely effective defenses against adversarial examples,
+and we speculate about whether we can ever expect such a defense.</p>
+
+<p>An adversarial example is an input to a machine learning model that is
+intentionally designed by an attacker to fool the model into producing an
+incorrect output. For example, we might start with an image of a panda and add
+a small perturbation that has been calculated to make the image be recognized
+as a gibbon with high confidence [GSS14]:</p>
+
+<div style="text-align:center; margin-bottom:30px;"><img src="Is%20attacking%20machine%20learning%20easier%20than%20defending%20it%3F_files/adversarial-example.png" width="75%"></div>
+
+<p>So far, it is much easier to design tricks like this that fool a model than it
+is to design models that can’t be fooled.</p>
+
+<h3 id="how-have-we-tried-to-make-ml-models-more-robust-to-adversarial-examples">How have we tried to make ML models more robust to adversarial examples?</h3>
+
+<p>Let’s
+take a look at two defense techniques, adversarial training and defensive
+distillation, as examples of how a defender can attempt to make a machine
+learning model more robust and mitigate adversarial examples.</p>
+
+<p><strong>Adversarial training</strong> seeks to improve the generalization of a model when
+presented with adversarial examples at test time by proactively generating
+adversarial examples as part of the training procedure. This idea was first
+introduced by Szegedy et al. [SZS13] but was not yet practical because of the
+high computation cost of generating adversarial examples. Goodfellow et al.
+showed how to generate adversarial examples inexpensively with the fast
+gradient sign method and made it computationally efficient to generate large
+batches of adversarial examples during the training process [GSS14]. The model
+is then trained to assign the same label to the adversarial example as to the
+original example—for example, we might take a picture of a cat, and
+adversarially perturb it to fool the model into thinking it is a vulture, then
+tell the model it should learn that this picture is still a cat. An open-source
+implementation of adversarial training is available in the
+<a href="https://github.com/openai/cleverhans">cleverhans</a> library and its use
+illustrated in the following
+<a href="https://github.com/openai/cleverhans/blob/master/tutorials/mnist_tutorial_tf.md">tutorial</a>.</p>
+
+<p><strong>Defensive distillation</strong> smooths the model’s decision surface in adversarial
+directions exploited by the adversary. Distillation is a training procedure
+where one model is trained to predict the probabilities output by another model
+that was trained earlier. Distillation was first introduced by Hinton et al. in
+[HVD15], where the goal was for a small model to mimic a large, computationally
+expensive model. <a href="https://arxiv.org/abs/1511.04508">Defensive distillation</a>
+has a different goal of simply making
+the final model’s responses more smooth, so it works even if both models are
+the same size. It may seem counterintuitive to train one model to predict the
+output of another model that has the same architecture. The reason it works is
+that the first model is trained with “hard” labels (100% probability that an
+image is a dog rather than a cat) and then provides “soft” labels (95%
+probability that an image is a dog rather than a cat) used to train the second
+model. The second <em>distilled</em> model is more robust to attacks such as the fast
+gradient sign method [PM16] or the Jacobian-based saliency map approach
+[PMW16]. Implementations of these two attacks are also available on
+<a href="https://github.com/openai/cleverhans">cleverhans</a>, respectively
+<a href="https://github.com/openai/cleverhans/blob/master/tutorials/mnist_tutorial_tf.md">here</a>
+and
+<a href="https://github.com/openai/cleverhans/blob/master/tutorials/mnist_tutorial_jsma.md">here</a>.</p>
+
+<h3 id="a-failed-defense-gradient-masking">A failed defense: “gradient masking”</h3>
+
+<p>Most adversarial example construction
+techniques use the gradient of the model to make an attack. In other words,
+they look at a picture of an airplane, they test which direction in picture
+space makes the probability of the “cat” class increase, and then they give a
+little push (in other words, they perturb the input) in that direction. The
+new, modified image is mis-recognized as a cat.</p>
+
+<p>But what if there were no gradient—what if an infinitesimal modification to
+the image caused no change in the output of the model? This seems to provide
+some defense because the attacker does not know which way to “push” the image.</p>
+
+<p>We can easily imagine some very trivial ways to get rid of the gradient. For
+example, most image classification models can be run in two modes: one mode
+where they output just the identity of the most likely class, and one mode
+where they output probabilities. If the model’s output is “99.9% airplane, 0.1%
+cat”, then a little tiny change to the input gives a little tiny change to the
+output, and the gradient tells us which changes will increase the probability
+of the “cat” class. If we run the model in a mode where the output is just
+“airplane”, then a little tiny change to the input will not change the output
+at all, and the gradient does not tell us anything. Let’s run a thought
+experiment to see how well we could defend our model against adversarial
+examples by running it in “most likely class” mode instead of “probability
+mode.” The attacker no longer knows where to go to find inputs that will be
+classified as cats, so we might have some defense. Unfortunately, every image
+that was classified as a cat before is still classified as a cat now. If the
+attacker can guess which points are adversarial examples, those points will
+still be misclassified. We haven’t made the model more robust; we have just
+given the attacker fewer clues to figure out where the holes in the models
+defense are. Even more unfortunately, it turns out that the attacker has a very
+good strategy for guessing where the holes in the defense are. The attacker can
+train their own model, a smooth model that has a gradient, make adversarial
+examples for their model, and then deploy those adversarial examples against
+our non-smooth model. Very often, our model will misclassify these examples
+too. In the end, our thought experiment reveals that hiding the gradient didn’t
+get us anywhere.</p>
+
+<p>Hence, we call this flawed defense strategy <strong>gradient masking</strong>, a term
+introduced in [PMG16]. The defense strategies that perform gradient masking
+typically result in a model that is very smooth in specific directions and
+neighborhoods of training points, which makes it harder for the adversary to
+find gradients indicating good candidate directions to perturb the input in a
+damaging way for the model. However, the adversary can train a <em>substitute</em>
+model: a copy that imitates the defended model by observing the labels that the
+defended model assigns to inputs chosen carefully by the adversary. A procedure
+for performing such a model extraction attack was introduced in [PMG16]. The
+adversary can then use the substitute model’s gradients to find adversarial
+examples that are misclassified by the defended model as well. In the figure
+below, reproduced from the discussion of gradient masking found in [PMS16], we
+illustrate this attack strategy with a one-dimensional ML problem. The gradient
+masking phenomenon would be exacerbated for higher dimensionality problems, but
+harder to depict.</p>
+
+<div style="text-align:center; margin-bottom:30px;"><img src="Is%20attacking%20machine%20learning%20easier%20than%20defending%20it%3F_files/gradient-masking.png" width="75%"></div>
+
+<p>Surprisingly, we find that both adversarial training and defensive distillation
+accidentally perform a kind of gradient masking. If we transfer adversarial
+examples from one model to another model trained with one of these defenses,
+the attack often succeeds, even when a direct attack on the second model would
+fail [PMG16]. This suggests that both training techniques do more to flatten
+out the model and remove the gradient than to make sure it classifies more
+points correctly.</p>
+
+<h3 id="playing-a-game-of-whack-a-mole">Playing a game of “whack-a-mole”</h3>
+
+<p>In the game of “hide the gradient,” we saw that gradient masking was not a very
+good defense. It defends against an attacker who uses the gradient, but if the
+attacker knows we are using that defense, they can just switch to a
+transferability attack. In security terminology, this means that gradient
+masking is not an <strong>adaptive</strong> defense.</p>
+
+<p>Most defenses against adversarial examples that have been proposed so far just
+do not work very well at all, but the ones that do work are not adaptive. This
+means it is like they are playing a game of whack-a-mole: they close some
+vulnerabilities, but leave others open.</p>
+
+<p>Adversarial training requires choosing an algorithm to generate adversarial
+examples. Usually, the model is trained to resist cheap adversarial examples
+that are generated in a single step, like with the fast gradient sign method.
+After training to resist these cheap adversarial examples, the model is usually
+successfully able to resist new instances of the same kind of cheap adversarial
+example. If we then use expensive, iterative adversarial examples, like those
+in [SZS13], the model is usually fooled.</p>
+
+<p>Guaranteeing adaptiveness is challenging. Inspiration may be taken from the
+framework of <a href="https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf">differential
+privacy</a>, which
+offers a formal guarantee that a randomized algorithm does not expose
+individual users’ privacy. This guarantee holds without making assumptions
+about the adversary’s knowledge or capabilities, and as such holds in the face
+of future hypothetical attacks engineered by adversaries.</p>
+
+<h3 id="why-is-it-hard-to-defend-against-adversarial-examples">Why is it hard to defend against adversarial examples?</h3>
+
+<p>Adversarial examples are hard to defend against because it is hard to construct
+a theoretical model of the adversarial example crafting process. Adversarial
+examples are solutions to an optimization problem that is non-linear and
+non-convex for many ML models, including neural networks. Because we don’t have
+good theoretical tools for describing the solutions to these complicated
+optimization problems, it is very hard to make any kind of theoretical argument
+that a defense will rule out a set of adversarial examples.</p>
+
+<p>From another point of view, adversarial examples are hard to defend against
+because they require machine learning models to produce good outputs <em>for every
+possible input</em>. Most of the time, machine learning models work very well but
+only work on a very small amount of all the many possible inputs they might
+encounter.</p>
+
+<p>Because of the massive amount of possible inputs, it is very hard to design a
+defense that is truly adaptive.</p>
+
+<h3 id="other-attack-and-defense-scenarios">Other attack and defense scenarios</h3>
+
+<p>Several other kinds of attacks against machine learning are difficult to defend
+against. In this post, we have focused on test-time inputs intended to confuse
+a machine learning model, but many other kinds of attacks are possible, such as
+attacks based on surreptitiously modifying the training data to cause the model
+to learn to behave the way the attacker wishes it to behave.</p>
+
+<p>One bright spot in adversarial machine learning is differential privacy, where
+we actually have theoretical arguments that certain training algorithms can
+prevent attackers from recovering sensitive information about the training set
+from a trained model.</p>
+
+<p>It is interesting to compare machine learning to other scenarios where attacks
+and defenses are both possible.</p>
+
+<p>In cryptography, the defender seems to have the advantage. Given a set of
+reasonable assumptions, such as that the cryptographic algorithm is implemented
+correctly, the defender can reliably send a message that the attacker cannot
+decrypt.</p>
+
+<p>In physical conflict, attackers seem to have the advantage. It is much easier
+to build a nuclear bomb than to build a city that is able to withstand a
+nuclear explosion. The second law of thermodynamics seems to imply that, if
+defending requires maintaining entropy below some threshold, then the defender
+must eventually lose as entropy increases over time, even if there is no
+explicit adversary intentionally causing this increase in entropy.</p>
+
+<p>The no free lunch theorem for supervised learning [W96] says that, averaged over
+all possible datasets, no machine learning algorithm does better on new
+points at test time than any other algorithm.
+At first glance, this seems to suggest that all algorithms are equally vulnerable
+to adversarial examples.
+However, the no free lunch theorem applies only when we make no assumption about
+the structure of the problem.
+When we study adversarial examples, we assume that small perturbations of the input
+should not change the output class, so the no free lunch theorem in its typical
+form does not apply.</p>
+
+<p>Formally exposing the tension between robustness to adversaries and
+model performance on clean data remains an active research question.
+In [PMS16], a first no free lunch theorem for adversarial examples in machine learning
+shows that such a tension exists when learning from limited data. The
+result shows that defenders can thwart adversarial examples by moving
+to richer hypothesis classes. However, the tension stems from challenges faced
+when the
+appropriate data and learning algorithms are not available to learn models
+with high fidelity.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>The study of adversarial examples is exciting because many of the most
+important problems remain open, both in terms of theory and in terms of
+applications. On the theoretical side, no one yet knows whether defending
+against adversarial examples is a theoretically hopeless endeavor (like trying
+to find a universal machine learning algorithm) or if an optimal strategy would
+give the defender the upper ground (like in cryptography and differential
+privacy). On the applied side, no one has yet designed a truly powerful defense
+algorithm that can resist a wide variety of adversarial example attack
+algorithms. We hope our readers will be inspired to solve some of these
+problems.</p>
+
+<h3 id="references">References</h3>
+
+<p>[BNL12] Biggio, B., Nelson, B., &amp; Laskov, P. (2012). Poisoning 
+attacks against support vector machines. arXiv preprint arXiv:1206.6389.</p>
+
+<p>[GSS14] Goodfellow, I. J., Shlens, J., &amp; Szegedy, C. (2014). 
+Explaining and harnessing adversarial examples. arXiv preprint 
+arXiv:1412.6572.</p>
+
+<p>[HVD15] Hinton, Geoffrey, Oriol Vinyals, and Jeff Dean. “Distilling 
+the knowledge in a neural network.” arXiv preprint arXiv:1503.02531 
+(2015).</p>
+
+<p>[PM16] Papernot, N., &amp; McDaniel, P. (2016). On the effectiveness of defensive distillation. arXiv preprint arXiv:1607.05113.</p>
+
+<p>[PMG16] Papernot, N., McDaniel, P., Goodfellow, I., Jha, S., Berkay 
+Celik, Z., &amp; Swami, A. (2016). Practical Black-Box Attacks against 
+Deep Learning Systems using Adversarial Examples. arXiv preprint 
+arXiv:1602.02697.</p>
+
+<p>[PMS16] Papernot, N., McDaniel, P., Sinha, A., &amp; Wellman, M. 
+(2016). Towards the Science of Security and Privacy in Machine Learning.
+ arXiv preprint arXiv:1611.03814.</p>
+
+<p>[PMW16] Papernot, N., McDaniel, P., Wu, X., Jha, S., &amp; Swami, A. 
+(2016, May). Distillation as a defense to adversarial perturbations 
+against deep neural networks. In the 2016 IEEE Symposium on Security and
+ Privacy (pp. 582-597).</p>
+
+<p>[SZS13] Szegedy, C., Zaremba, W., Sutskever, I., Bruna, J., Erhan, 
+D., Goodfellow, I., &amp; Fergus, R. (2013). Intriguing properties of 
+neural networks. arXiv preprint arXiv:1312.6199.</p>
+
+<p>[W96] Wolpert, David H. (1996). The lack of <i>a priori</i> distinction between learning algorithms. <i>Neural Computation</i></p>
+
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cleverhans-blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              cleverhans-blog
+            
+            </li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Jekyll blog associated with cleverhans</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  
+
+
+</body></html>

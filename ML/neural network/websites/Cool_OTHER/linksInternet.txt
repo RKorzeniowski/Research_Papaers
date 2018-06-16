@@ -1,0 +1,25 @@
+I'm a PhD student in Natural Language Processing and a research scientist at AYLIEN. I blog about Machine Learning, Deep Learning, NLP, and startups [Sebastian Ruder]
+
+http://ruder.io/deep-learning-optimization-2017/index.html#fnref:17
+http://ruder.io/optimizing-gradient-descent/
+___________________________________________________________________________________________________
+Types of Optimization Algorithms used in Neural Networks and Ways to Optimize Gradient Descent
+
+https://towardsdatascience.com/types-of-optimization-algorithms-used-in-neural-networks-and-ways-to-optimize-gradient-95ae5d39529f
+___________________________________________________________________________________________________
+Book about deep learning by  Michael Nielsen 
+"Using neural nets to recognize handwritten digits"
+http://neuralnetworksanddeeplearning.com/chap1.html
+___________________________________________________________________________________________________
+37 Reasons why your Neural Network is not working
+
+https://blog.slavv.com/37-reasons-why-your-neural-network-is-not-working-4020854bd607
+___________________________________________________________________________________________________
+Generative Models. This post describes four projects 
+
+https://blog.openai.com/generative-models/
+___________________________________________________________________________________________________
+Conditional generative adversarial networks for face generation 
+
+http://www.foldl.me/2015/conditional-gans-face-generation/
+___________________________________________________________________________________________________

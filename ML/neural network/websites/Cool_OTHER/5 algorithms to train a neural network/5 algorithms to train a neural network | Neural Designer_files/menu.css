@@ -1,0 +1,566 @@
+@import url("font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
+
+	/* Header menu */
+	body {
+		margin:0;
+	}
+	
+	ul.topnav {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: #333;
+	}
+
+	ul.topnav li {
+		float: right;
+	}
+
+	ul.topnav li a {
+		display: block;
+		color: #f2f2f2;
+		text-align: center;
+		padding: 12px 14px;
+		text-decoration: none;
+		transition: 0.3s;
+		font-size: 17px;
+	}
+
+	ul.topnav li a:hover {
+		background-color: #555;
+	}
+
+	ul.topnav li.icon {
+		display: none;
+	}
+
+	@media screen and (max-width:900px) {
+		ul.topnav li:not(:first-child) {
+			display: none;
+			line-height: 15px;
+		}
+	
+		ul.topnav li.icon {
+			float: right;
+			display: inline-block;
+			line-height: 15px;
+		}
+	}
+	
+	
+	/* CODIGO NUEVO ------------------------------------*/
+	
+			ul.topnav li ul {
+				display:none;
+				position:absolute;
+				min-width:140px;
+			}
+			
+			ul.topnav li:hover > ul {
+				display:block;
+			}
+			
+	/* CODIGO NUEVO ------------------------------------*/
+
+	@media screen and (max-width:900px) {
+		ul.topnav.responsive {
+			position: relative;
+			line-height: 15px;
+		}
+		
+		ul.topnav.responsive li.icon {
+			position: absolute;
+			right: 0;
+			top: 0;
+			line-height: 15px;
+		}
+		
+		ul.topnav.responsive li {
+			float: none;
+			display: inline;
+			line-height: 15px;
+		}
+		
+		ul.topnav.responsive li a {
+			display: block;
+			text-align: left;
+			line-height: 15px;
+		}
+	}
+	
+	@media all and (max-width: 900px) and (min-width: 1px) {
+		#mainTitle {
+			margin-top: 10%;
+		}
+	}
+	
+	/* Images responsive */
+	@media all and (max-width: 1000000px) {
+		.content .x700{display:block;}
+		.content .x490{display:none;}
+		.content .x290{display:none;}
+	}
+
+	@media all and (max-width: 800px) {
+		.content .x700{display:none;}
+		.content .x490{display:block;}
+		.content .x290{display:none;}
+	}
+		
+	@media all and (max-width: 560px) {
+		.content .x700{display:none;}
+		.content .x490{display:none;}
+		.content .x290{display:block;}
+	}
+	
+	/* Hide logo for small devices. */
+	@media all and (max-width: 900px) and (min-width: 1px) {
+		#hideLogo {
+			display: none;
+		}
+	}
+	
+	#centerLogo {
+		padding-left: 1.35%; 
+		position: relative; 
+		top: 50%; 
+		transform: translateY(23%);
+	}
+	
+	/* Top right side bar */
+	#mainTop {
+		margin: 0px;
+		padding: 0px;
+		display: -webkit-flex;
+		display:         flex;
+		-webkit-flex-flow: row;
+		flex-flow: row;
+	}
+
+	#leftTop {
+		margin: 4px;
+		padding-right: 5%;
+		-webkit-flex: 2 2 30%;
+		flex: 2 2 65%;
+		-webkit-order: 2;
+		order: 2;
+		text-align: justify;
+	}
+
+	#rightTop {
+		padding-top: 2%;
+		padding-left: 5%;
+		padding-bottom: 2%;
+		-webkit-flex: 2 2 30%;
+		flex: 2 2 35%;
+		-webkit-order: 3;
+		order: 3;
+	}
+
+	@media all and (max-width: 900px) {
+	
+		#mainTop {
+		
+			-webkit-flex-flow: column;
+			flex-flow: column;
+		}
+
+		#leftTop, #rightTop {
+
+			-webkit-order: 0;
+			order: 0;
+		}
+	}
+	
+	/* Bottom bar */	
+	#mainBottom {
+		margin: 0px;
+		padding: 0px;
+		display: -webkit-flex;
+		display:         flex;
+		-webkit-flex-flow: row;
+		flex-flow: row;
+	}
+
+	#leftBottom {
+		-webkit-flex: 2 2 30%;
+		flex: 2 2 0%;
+		-webkit-order: 2;
+		order: 2;
+	}
+
+	#rightBottom {
+		-webkit-flex: 2 2 30%;
+		flex: 2 2 100%;
+		-webkit-order: 3;
+		order: 3;
+	}
+
+	@media all and (max-width: 900px) {
+	
+		#mainBottom {
+		
+			-webkit-flex-flow: column;
+			flex-flow: column;
+			
+		}
+
+		#leftBottom, #rightBottom {
+		
+			-webkit-order: 0;
+			order: 0;
+		}
+	}
+	
+	/* Hide top right side bar 	*/
+	
+	@media all and (max-width: 900px) and (min-width: 1px) {
+	
+		#mainBottom, #leftBottom, #rightBottom {
+		
+			display: none;
+		}
+	}
+	
+	/* Top right side bar Videos*/
+	#mainTopVideos {
+		margin: 0px;
+		padding: 0px;
+		display: -webkit-flex;
+		display:         flex;
+		-webkit-flex-flow: row;
+		flex-flow: row;
+	}
+
+	#leftTopVideos {
+		margin: 4px;
+		padding-right: 2%;
+		-webkit-flex: 2 2 30%;
+		flex: 2 2 50%;
+		-webkit-order: 2;
+		order: 2;
+		text-align: justify;
+	}
+
+	#rightTopVideos {
+		padding-top: 0%;
+		padding-left: 5%;
+		padding-bottom: 2%;
+		-webkit-flex: 2 2 30%;
+		flex: 2 2 50%;
+		-webkit-order: 3;
+		order: 3;
+		text-align: justify;
+	}
+
+	@media all and (max-width: 900px) {
+	
+		#mainTopVideos {
+		
+			-webkit-flex-flow: column;
+			flex-flow: column;
+		}
+
+		#leftTopVideos, #rightTopVideos {
+
+			-webkit-order: 0;
+			order: 0;
+		}
+	}
+	
+	/* Products and new Index pages*/
+
+	/* Products landing */
+	body.productsLanding #page-wrapper {
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://www.neuraldesigner.com/images/products/productsbanner.jpg");
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://www.neuraldesigner.com/images/products/productsbanner.jpg");
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://www.neuraldesigner.com/images/products/productsbanner.jpg");
+		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://www.neuraldesigner.com/images/products/productsbanner.jpg");
+		background-attachment: fixed;                                                                                                 
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding-top: 0;
+	}
+
+	body.productsLanding #footer {
+		background-color: rgba(29, 36, 42, 0.9);
+	}
+
+	body.is-mobile.productsLanding #page-wrapper {
+		background: none;
+	}
+
+	body.is-mobile.productsLanding #productsBanner,
+	body.is-mobile.productsLanding .wrapper.style4 {
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://www.neuraldesigner.com/images/products/productsbanner.jpg");
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://www.neuraldesigner.com/images/products/productsbanner.jpg");
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://www.neuraldesigner.com/images/products/productsbanner.jpg");
+		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://www.neuraldesigner.com/images/products/productsbanner.jpg");
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	body.is-mobile.productsLanding #footer {
+		background-color: #1d242a;
+	}
+	
+
+	/* Products banner */
+	#productsBanner {
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		-moz-flex-direction: column;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-moz-justify-content: center;
+		-webkit-justify-content: center;
+		-ms-justify-content: center;
+		justify-content: center;
+		cursor: default;
+		height: 70vh;
+		min-height: 10em;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+	}
+		
+	@media screen and (max-width: 736px) {
+
+		#productsBanner {
+			padding: 7em 3em 5em 3em ;
+			height: auto;
+			min-height: 0;
+		}
+	
+		#productsBanner h2 {
+			font-size: 1.25em;
+		}
+
+		#productsBanner br {
+			display: none;
+		}
+
+		#productsBanner .more {
+			display: none;
+		}
+	}
+		
+	#productsBanner header {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background: #212121;
+		background: rgba(27, 27, 27, 0.80);
+		padding: 1.5em 0;
+		border: solid #000000 0em;
+	}
+
+	#productsBanner header .btn {
+		 vertical-align: middle;
+		 margin-left: 0em;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		 border-radius: 0px;
+		 color: #ffffff;
+		 font-size: 20px;
+		 background: rgba(27, 27, 27, transparent);
+		 padding-bottom: 6%;
+		 padding-top: 6%;
+		 padding-left: 35%;
+		 padding-right: 35%;
+		 border: solid #ffffff 0px;
+		 text-decoration: none;
+	}
+	
+	#productsBanner header .btn:hover {
+		  background: rgba(27, 27, 27, 0.80);
+		  text-decoration: none;
+	}
+					
+	body.is-loading #productsBanner h2 {
+		-moz-transform: scale(0.95);
+		-webkit-transform: scale(0.95);
+		-ms-transform: scale(0.95);
+		transform: scale(0.95);
+		opacity: 0;
+	}
+
+	body.is-loading #productsBanner h2:before, body.is-loading #productsBanner h2:after {
+		width: 0;
+	}
+
+	body.is-loading #productsBanner .more {
+		-moz-transform: translateY(8.5em);
+		-webkit-transform: translateY(8.5em);
+		-ms-transform: translateY(8.5em);
+		transform: translateY(8.5em);
+		opacity: 0;
+	}
+
+	body.is-loading #productsBanner:after {
+		opacity: 1;
+	}
+	
+	/* Prices table */
+	* {
+		box-sizing: border-box;
+	}
+
+	/* Create three columns of equal width */
+	
+	.columns {
+		float: left;
+		width: 33.3%;
+		padding: 8px;
+	}
+
+	/* Style the list */
+	.price {
+		list-style-type: none;
+		border: 1px solid #eee;
+		margin: 0;
+		padding: 0;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+	}
+
+	/* Pricing header */
+	.price .header {
+		background-color: #111;
+		color: white;
+		font-size: 25px;
+	}
+
+	/* List items */
+	.price li {
+		border-bottom: 1px solid #eee;
+		padding: 20px;
+		text-align: center;
+	}
+
+	/* Grey list item */
+	.price .grey {
+		background-color: #eee;
+		font-size: 20px;
+	}
+
+	/* Change the width of the three columns to 100% 
+	(to stack horizontally on small screens) */
+	@media only screen and (max-width: 600px) {
+		.columns {
+			width: 100%;
+		}
+	}
+
+	/* Start page banner */
+
+	#banner3 header {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background: #212121;
+		background: rgba(27, 27, 27, 0.80);
+		padding: 1.5em 0;
+		border: solid #000000 0em;
+	}
+
+		
+	#banner3 header .btn {
+			 vertical-align: middle;
+			 margin-left: 0em;
+			-webkit-border-radius: 0;
+			-moz-border-radius: 0;
+			 border-radius: 0px;
+			 color: #ffffff;
+			 font-size: 20px;
+			 background: rgba(27, 27, 27, transparent);
+			 padding-bottom: 6%;
+			 padding-top: 6%;
+			 padding-left: 35%;
+			 padding-right: 35%;
+			 border: solid #ffffff 0px;
+			 text-decoration: none;
+	}
+	
+	#banner3 header .btn:hover {
+			  background: rgba(27, 27, 27, 0.80);
+			  text-decoration: none;
+	}
+
+	/* Resize banner buttons */
+	
+	#mainButtonsIndex {
+		margin: 0px;
+		padding: 0px;
+		display: -webkit-flex;
+		display:         flex;
+		-webkit-flex-flow: row;
+		flex-flow: row;
+	}
+
+	#buttonsBannerIndex {
+		margin: 4px;
+		padding: 50px;
+		-webkit-flex: 2 2 30%;
+		flex: 2 2 30%;
+		-webkit-order: 2;
+		order: 2;
+	}
+
+	#asideButtonsIndex {
+		margin: 4px;
+		-webkit-flex: 2 2 30%;
+		flex: 2 2 30%;
+		-webkit-order: 3;
+		order: 3;
+	}
+
+	/* Too narrow to support three columns */
+	@media all and (max-width: 736px) {
+		#mainButtonsIndex {
+			-webkit-flex-flow: column;
+			flex-flow: column;
+		}
+
+		#buttonsBannerIndex, #asideButtonsIndex{
+			/* Return them to document order */
+			-webkit-flex-flow: column;
+			flex-flow: column;
+		}
+	}
+				
+	/* Ampliar imagenes */
+	
+	#img-contenedor {
+		-webkit-transition:all .9s ease; /* Safari y Chrome */
+		-moz-transition:all .9s ease; /* Firefox */
+		-o-transition:all .9s ease; /* IE 9 */
+		-ms-transition:all .9s ease; /* Opera */
+		width:100%;
+	}
+	#img-contenedor:hover img {
+		-webkit-transform:scale(1.02);
+		-moz-transform:scale(1.02);
+		-ms-transform:scale(1.02);
+		-o-transform:scale(1.02);
+		transform:scale(1.02);
+	}
+	#img-contenedor {/*Ancho y altura son modificables al requerimiento de cada uno*/
+		/*width: 300px;
+		height:240px;*/
+		max-width: 100%;
+		overflow:hidden;
+	}
+	
+			
+			
+		

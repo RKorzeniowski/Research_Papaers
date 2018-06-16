@@ -1,0 +1,5 @@
+var DISQUSWIDGETS;
+
+if (typeof DISQUSWIDGETS != 'undefined') {
+    DISQUSWIDGETS.displayCount({"text":{"and":"and","comments":{"zero":"0 Comments","multiple":"{num} Comments","one":"1 Comment"}},"counts":[{"id":"\/posts\/2014-07-NLP-RNNs-Representations\/disqussion-34","comments":73},{"id":"\/posts\/2014-07-NLP-RNNs-Representations\/disqussion-35","comments":0},{"id":"\/posts\/2014-07-NLP-RNNs-Representations\/disqussion-30","comments":2},{"id":"\/posts\/2014-07-NLP-RNNs-Representations\/disqussion-31","comments":0},{"id":"\/posts\/2014-07-NLP-RNNs-Representations\/disqussion-32","comments":0},{"id":"\/posts\/2014-07-NLP-RNNs-Representations\/disqussion-33","comments":1},{"id":"\/posts\/2014-07-NLP-RNNs-Representations\/disqussion-29","comments":0},{"id":"\/posts\/2014-07-NLP-RNNs-Representations\/disqussion-28","comments":0},{"id":"\/posts\/2014-07-NLP-RNNs-Representations\/disqussion-27","comments":2},{"id":"\/posts\/2014-07-NLP-RNNs-Representations\/disqussion-3","comments":0}]});
+}

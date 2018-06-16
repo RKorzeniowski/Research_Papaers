@@ -1,0 +1,139 @@
+﻿ .topLeft {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    position:fixed;
+    z-index:100000;
+    width:280px;
+}
+
+.topRight {
+    position: absolute;
+    top: 50px;
+    right: 40px;
+    position:fixed;
+    z-index:100000;
+    width:280px;
+}
+
+.bottomRight {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    position:fixed;
+    z-index:100000;
+    width:280px;
+}
+
+.bottomLeft {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    position: fixed;
+    z-index: 100000;
+    width:280px;
+}
+
+ .mobile-topLeft {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    position:fixed;
+    z-index:100000;
+    width:280px;
+}
+
+.mobile-topRight {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    position:fixed;
+    z-index:100000;
+    width:280px;
+}
+
+.mobile-bottomRight {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    position:fixed;
+    z-index:100000;
+    width:280px;
+}
+
+.mobile-bottomLeft {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    position: fixed;
+    z-index: 100000;
+    width:280px;
+}
+
+
+.mobile-widget{
+    vertical-align: text-bottom;
+    top: 0px;
+    left: 0px;
+    width: 100% !important;
+    height: 100% !important;
+    position: fixed;
+    z-index: 16000003;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    display: block;
+    opacity: 1;
+    transform: translateY(0%);
+    background-color: #fff;
+}
+
+.show{
+    display:block;
+}
+
+.hide{
+    display:none;
+}
+
+.mobile-body {
+    overflow: hidden !important;
+}
+
+/*-- tab UI -- */
+
+ .tab-topLeft {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    position:fixed;
+    z-index:100000;
+}
+
+.tab-topRight {
+    position: absolute;
+    top: 0px;
+    right: 40px;
+    position:fixed;
+    z-index:100000;
+}
+
+.tab-bottomRight {
+    position: absolute;
+    bottom: 0px;
+    right: 40px;
+    position:fixed;
+    z-index:100000;
+}
+
+.tab-bottomLeft {
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+    position: fixed;
+    z-index: 100000;
+}
+
+
+/*-- tab UI -- */

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html class="gr__neuraldesigner_com" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>5 algorithms to train a neural network | Neural Designer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="copyright" content="Neural Designer is a registered trademark of Artificial Intelligence Techniques, S.L.">
+	<meta name="description" content="The procedure to perform the learning process in a neural network is the training algorithm. 5 machine learning algorithms for training a neural network.">
+	<meta name="keywords" content="Advanced analytics blog, predictive analytics blog, machine learning blog, predictive analytics news, data mining news">
+	<link rel="stylesheet" href="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/main.css">
+	<link rel="shortcut icon" type="image/x-icon" href="https://www.neuraldesigner.com/images/fav.ico">
+	<!--[if lte IE 8]><link rel="stylesheet" href="https://www.neuraldesigner.com/assets/css/ie8.css" /><![endif]-->
+	<!--[if lte IE 9]><link rel="stylesheet" href="https://www.neuraldesigner.com/assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><script src="https://www.neuraldesigner.com/assets/js/ie/html5shiv.js"></script><![endif]-->
+
+	<!-- Google analytics -->
+	<script async="" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/analytics.js"></script><script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-71015125-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	
+		<!-- Hotjar Tracking Code for https://www.neuraldesigner.com/ -->
+	<script>
+		(function(h,o,t,j,a,r){
+			h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+			h._hjSettings={hjid:513097,hjsv:5};
+			a=o.getElementsByTagName('head')[0];
+			r=o.createElement('script');r.async=1;
+			r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+			a.appendChild(r);
+		})(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+	</script><script async="" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/hotjar-513097.js"></script>
+
+	<!-- For text inside pre label -->
+	<style>
+		pre {
+			white-space: pre-wrap;       /* Since CSS 2.1 */
+			white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+			white-space: -pre-wrap;      /* Opera 4-6 */
+			white-space: -o-pre-wrap;    /* Opera 7 */
+			word-wrap: break-word;       /* Internet Explorer 5.5+ */
+		}
+	</style>
+	
+	<!-- Menu - CSS -->
+	<link rel="stylesheet" href="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/menu.css">
+
+	<!-- Menu - script -->
+	<script>
+		function myFunction() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+				x.className += " responsive";
+			} else {
+				x.className = "topnav";
+			}
+		}
+	</script>	
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></head>
+<body class="landing" style="font-family: Roboto;" data-gr-c-s-loaded="true">
+	<div style="padding-top: 5%; padding-left: 10%; padding-right: 10%; padding-bottom: 5%;">
+		<!-- Menu -->
+		<script src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/header.js"></script>		<header id="header" class="alt">			<ul class="topnav" id="myTopnav" style="padding-right:1%;">				<a id="hideLogo" href="https://www.neuraldesigner.com/"><img id="centerLogo" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/logo_grey_big.png"></a>				<li class="icon"><a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a></li>				<li><a href="https://www.neuraldesigner.com/user"><b style="color: #55a1c8;">My account</b></a></li>				<li><a href="https://www.neuraldesigner.com/learning"><b style="color: #55a1c8;">Learning</b></a></li>				<li><a href="https://www.neuraldesigner.com/download"><b style="color: #55a1c8;">Download</b></a></li>				<li><a href="https://www.neuraldesigner.com/products"><b style="color: #55a1c8;">Products</b></a></li>				<li><a href="https://www.neuraldesigner.com/blog"><b style="color: #55a1c8;">Blog</b></a></li>				<li><a href="https://www.neuraldesigner.com/"><b style="color: #55a1c8;">Home</b></a></li>			</ul>		</header>
+		<!-- Main -->
+		<div id="mainTop" style="padding-top: 5%; padding-bottom: 5%;">
+			<div id="leftTop">
+				<h1 id="mainTitle">5 algorithms to train a neural network</h1>
+				<h5>By Alberto Quesada, <a href="https://www.artelnics.com/" target="_blank"><font color="#55a1c8">Artelnics</font></a>.</h5><br>
+				<div style="float:right; padding-left:50px; max-width:100%">
+					<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/icon_algorithm.jpg" alt="algorithm picture">
+				</div>
+				<p>
+				The procedure used to carry out the learning process in a neural network is called the training algorithm. 
+				There are many different training algorithms, with different characteristics and performance.
+				</p>
+
+				<h3>Problem formulation</h3>
+
+				<p>
+				The learning problem in neural networks is formulated in terms of 
+the minimization of a loss function, f.
+				This function is in general, composed of an error and a 
+regularization terms.
+				The error term evaluates how a neural network fits the data set.
+				On the other hand, the regularization term is used to prevent 
+overfitting, by controlling the effective complexity of the neural 
+network. 
+				</p>
+				 
+				<p>
+				The loss function depends on the adaptative parameters (biases and synaptic weights) in the neural network.
+				We can conveniently group them together into a single n-dimensional weight vector w.
+				The picture below represents the loss function f(w).
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/loss_function_image_big.png" alt="Neural network loss function picture">		
+				  </center>	
+
+				<p></p>	
+
+				<p>
+				As we can see in the previous picture, the point w* is minima of the loss function.
+				At any point A, we can calculate the first and second derivatives of the loss function. 
+				The first derivatives are grouped in the gradient vector, whose elements can be written as
+
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				 ᐁ<sub>i</sub>f(w) = df/dw<sub>i</sub>  (i = 1,...,n)
+				</span>
+				</center>
+				<br>
+				Similarly, the second derivatives of the loss function can be grouped in the Hessian matrix, 
+				<br>
+				<br>
+				<center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				H<sub>i,j</sub>f(w) = d<sup>2</sup>f/dw<sub>i</sub>·dw<sub>j</sub>  (i,j = 1,...,n)
+				</span>
+				</center>
+				<p></p>	
+
+				<p>
+				The problem of minimizing continuous and differentiable functions of many variables has been widely studied.
+				Many of the conventional approaches to this problem are directly applicable to that of training neural networks.
+				</p>
+
+				<div style="clear:left; padding-bottom:15px;"></div>
+
+
+				<h3>One-dimensional optimization</h3>
+
+				<p>
+				Although the loss function depends on many parameters, one-dimensional optimization methods are of great importance here. 
+				Indeed, they are very often used in the training process of a neural network.
+				</p>
+
+				<p>
+				Certainly, many training algorithms first compute a training 
+direction d and then a training rate η that minimizes the loss in that 
+direction, f(η). 
+				The next picture illustrates this one-dimensional function.
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/one_dimension_graph_big.png" alt="one-dimensional function picture">		
+				  </center>	
+				<p></p>
+
+
+				<p>
+				The points η<sub>1</sub> and η<sub>2</sub> define an interval that contains the minimum of f, η*.                          
+				</p>
+
+				<p>
+				In this regard, one-dimensional optimization methods search for the 
+minimum of a given one-dimensional function. 
+				Some of the algorithms which are widely used are the golden section 
+method and Brent's method. 
+				Both reduce the bracket of a minimum until the distance between the 
+two outer points in the bracket is less than a defined tolerance.
+				</p>
+
+				<div style="clear:left; padding-bottom:15px;"></div>
+
+				<h3>Multidimensional optimization</h3>
+
+				<p>
+				The learning problem for neural networks is formulated as searching of a parameter vector w<sup>*</sup>
+ at which the loss function f takes a minimum value.
+				The necessary condition states that if the neural network is at a 
+minimum of the loss function, then the gradient is the zero vector.
+				</p>
+
+				<p>
+				The loss function is, in general, a non-linear function of the parameters.
+				As a consequence, it is not possible to find closed training algorithms for the minima.
+				Instead, we consider a search through the parameter space consisting of a succession of steps.
+				At each step, the loss will decrease by adjusting the neural network parameters.
+				</p>
+
+				<p>
+				In this way, to train a neural network we start with some parameter vector (often chosen at random).
+				Then, we generate a sequence of parameters, so that the loss function is reduced at each iteration of the algorithm.
+				The change of loss between two steps is called the loss decrement. 
+				The training algorithm stops when a specified condition, or stopping criterion, is satisfied.
+				</p>
+
+				<p>
+				Now, we are going to describe the most important training algorithms for neural networks.
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/algorithms_big.png" alt="Neural networks algorithm types">		
+				  </center>	
+				<p></p>
+				<br>
+
+				<h4>1. Gradient descent</h4>
+
+				<p>
+				Gradient descent, also known as steepest descent, is the simplest training algorithm.
+				It requires information from the gradient vector, and hence it is a first order method.
+				</p>
+
+				<p>
+				Let denote f(w<sub>i</sub>) = f<sub>i</sub> and ᐁf(w<sub>i</sub>) = g<sub>i</sub>. 
+				The method begins at a point w<sub>0</sub> and, until a stopping criterion is satisfied, moves from w<sub>i</sub> to w<sub>i+1</sub> in the training direction d<sub>i</sub> = -g<sub>i</sub>.
+				Therefore, the gradient descent method iterates in the following way:
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				w<sub>i+1</sub> = w<sub>i</sub> - g<sub>i</sub>·η<sub>i</sub>, &nbsp; i=0,1,...
+				</span>
+				</center>
+				<p></p>
+
+				<p>
+				The parameter η is the training rate.
+				This value can either set to a fixed value or found by 
+one-dimensional optimization along the training direction at each step.
+				An optimal value for the training rate obtained by line minimization
+ at each successive step is generally preferable.
+				However, there are still many software tools that only use a fixed 
+value for the training rate. 
+				</p>
+
+				<p>
+				The next picture is an activity diagram of the training process with gradient descent.
+				As we can see, the parameter vector is improved in two steps: 
+				First, the gradient descent training direction is computed. 
+				Second, a suitable training rate is found. 
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/gradient_descent_algorithm_big.png" alt="Gradient descent diagram">		
+				  </center>	
+				<p></p>
+
+				<p>
+				The gradient descent training algorithm has the severe drawback of 
+requiring many iterations for functions which have long, narrow valley 
+structures.
+				Indeed, the downhill gradient is the direction in which the loss 
+function decreases most rapidly, but this does not necessarily produce 
+the fastest convergence.
+				The following picture illustrates this issue. 
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/gradient_descent_graph_big.png" alt="Gradient descent picture">			
+				  </center>	
+				<p></p>
+				<p>
+				Gradient descent is the recommended algorithm when we have very big neural networks, with many thousand parameters. 
+				The reason is that this method only stores the gradient vector (size n), and it does not store the Hessian matrix (size n<sup>2</sup>).
+				</p>
+
+
+				<div style="clear:left; padding-bottom:15px;"></div>
+
+				<h4>2. Newton's method</h4>
+
+				<p>
+				The Newton's method is a second order algorithm because it makes use of the Hessian matrix.
+				The objective of this method is to find better training directions by using the second derivatives of the loss function. 
+				</p>
+
+				<p>
+				Let denote f(w<sub>i</sub>) = f<sub>i</sub>, ᐁf(w<sub>i</sub>) = g<sub>i</sub> and Hf(w<sub>i</sub>) = H<sub>i</sub>.
+				Consider the quadratic approximation of f at w<sub>0</sub> using the Taylor's series expansion
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				f = f<sub>0</sub> + g<sub>0</sub> · (w - w<sub>0</sub>) + 0.5 · (w - w<sub>0</sub>)<sup>2</sup> · H<sub>0</sub>
+				</span>
+				</center>
+				<p></p>
+
+				<p>
+				H<sub>0</sub> is the Hessian matrix of f evaluated at the point w<sub>0</sub>.
+				By setting g equal to 0 for the minimum of f(w), we obtain the next equation
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				g = g<sub>0</sub> + H<sub>0</sub> · (w - w<sub>0</sub>) = 0
+				</span>
+				</center>
+				<p></p>
+
+				<p>
+				Therefore, starting from a parameter vector w<sub>0</sub>, Newton's method iterates as follows
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				w<sub>i+1</sub> = w<sub>i</sub> - H<sub>i</sub><sup>-1</sup>·g<sub>i</sub>, &nbsp; i=0,1,...
+				</span>
+				</center>
+				<p></p>
+
+				<p>
+				The vector H<sub>i</sub><sup>-1</sup>·g<sub>i</sub> is known as the Newton's step. 
+				Note that this change for the parameters may move towards a maximum rather than a minimum.
+				This occurs if the Hessian matrix is not positive definite.
+				Thus, the function evaluation is not guaranteed to be reduced at each iteration.
+				In order to prevent such troubles, the Newton's method equation is usually modified as:
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				w<sub>i+1</sub> = w<sub>i</sub> - (H<sub>i</sub><sup>-1</sup>·g<sub>i</sub>)·η<sub>i</sub>, &nbsp; i=0,1,...
+				</span>
+				</center>
+				<p></p>
+
+				<p>
+				The training rate, η, can either be set to a fixed value or found by line minimization.
+				The vector d = H<sub>i</sub><sup>-1</sup>·g<sub>i</sub> is now called the Newton's training direction.
+				</p>
+
+				<p>
+				The state diagram for the training process with the Newton's method 
+is depicted in the next figure.
+				Here improvement of the parameters is performed by obtaining first 
+the Newton's training direction and then a suitable training rate.
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/newton_algorithm_big.png" alt="Newton's method diagram">		
+				  </center>	
+				<p></p>
+				<p>
+				The picture below illustrates the performance of this method. 
+				As we can see, the Newton's method requires less steps than gradient
+ descent to find the minimum value of the loss function. 
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/newton_graph_big.png" alt="Newton's method graph">		
+				  </center>	
+				<p></p>
+
+				<p>
+				However, the Newton's method has the difficulty that the exact 
+evaluation of the Hessian and its inverse are quite expensive in 
+computational terms.
+				</p>
+				<br>
+
+				<h4>3. Conjugate gradient</h4>
+
+				<p>
+				The conjugate gradient method can be regarded as something 
+intermediate between gradient descent and Newton's method.
+				It is motivated by the desire to accelerate the typically slow 
+convergence associated with gradient descent.
+				This method also avoids the information requirements associated with
+ the evaluation, storage, and inversion of the Hessian matrix, as 
+required by the Newton's method.
+				</p>
+
+				<p>
+				In the conjugate gradient training algorithm, the search is 
+performed along conjugate directions which produces generally faster 
+convergence than gradient descent directions.
+				These training directions are conjugated with respect to the Hessian
+ matrix.
+				</p>
+
+				<p>
+				Let denote d the training direction vector. 
+				Then, starting with an initial parameter vector w<sub>0</sub> and an initial training direction vector d<sub>0</sub> = -g<sub>0</sub>, the conjugate gradient method constructs a sequence of training directions as:
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				d<sub>i+1</sub> = g<sub>i+1</sub> + d<sub>i</sub>·γ<sub>i</sub>, &nbsp; i=0,1,...
+				</span>
+				</center>
+				<p></p>
+
+				<p>
+				Here γ is called the conjugate parameter, and there are different ways to calculate it. 
+				Two of the most used are due to Fletcher and Reeves and to Polak and Ribiere. 
+				For all conjugate gradient algorithms, the training direction is periodically reset to the negative of the gradient.
+				</p>
+
+				<p>
+				The parameters are then improved according to the next expression.
+				The training rate, η, is usually found by line minimization.
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				w<sub>i+1</sub> = w<sub>i</sub> + d<sub>i</sub>·η<sub>i</sub>, &nbsp; i=0,1,...
+				</span>
+				</center>
+				<p></p>
+
+
+				<p>
+				The picture below depicts an activity diagram for the training 
+process with the conjugate gradient. 
+				Here improvement of the parameters is done by first computing the 
+conjugate gradient training direction and then suitable training rate in
+ that direction.
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/conjugate_gradient_algorithm_big.png" alt="Conjugate gradient diagram">		
+				  </center>	
+				<p></p>
+
+
+				<p>
+				This method has proved to be more effective than gradient descent in training neural networks.
+				Since it does not require the Hessian matrix, conjugate gradient is also recommended when we have very big neural networks.
+				</p>
+				<br>
+
+				<h4>4. Quasi-Newton method</h4>
+
+				<p>
+				Application of the Newton's method is computationally expensive, 
+since it requires many operations to evaluate the Hessian matrix and 
+compute its inverse.
+				Alternative approaches, known as quasi-Newton or variable metrix 
+methods, are developed to solve that drawback.
+				These methods, instead of calculating the Hessian directly and then 
+evaluating its inverse, build up an approximation to the inverse Hessian
+ at each iteration of the algorithm. 
+				This approximation is computed using only information on the first 
+derivatives of the loss function.
+				</p>
+
+				<p>
+				The Hessian matrix is composed of the second partial derivatives of 
+the loss function.
+				The main idea behind the quasi-Newton method is to approximate the 
+inverse Hessian by another matrix G, using only the first partial 
+derivatives of the loss function.
+				Then, the quasi-Newton formula can be expressed as:
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				w<sub>i+1</sub> = w<sub>i</sub> - (G<sub>i</sub>·g<sub>i</sub>)·η<sub>i</sub>, &nbsp; i=0,1,...
+				</span>
+				</center>
+				<p></p>
+
+				<p>
+				The training rate η can either be set to a fixed value or found by line minimization.
+				The inverse Hessian approximation G has different flavours. 
+				Two of the most used are the Davidon–Fletcher–Powell formula (DFP) and the Broyden–Fletcher–Goldfarb–Shanno formula (BFGS).
+				</p>
+
+				<p>
+				The activity diagram of the quasi-Newton training process is 
+illustrated bellow.
+				Improvement of the parameters is performed by first obtaining the 
+quasi-Newton training direction and then finding a satisfactory training
+ rate.
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/quasi-newton_algorithm_big.png" alt="Quasi newton algorithm diagram">		
+				  </center>	
+				<p></p>
+
+				<p>
+				This is the default method to use in most cases:
+				It is faster than gradient descent and conjugate gradient, and the exact Hessian does not need to be computed and inverted. 
+				</p>
+				<br>
+
+				<h4>5. Levenberg-Marquardt algorithm</h4>
+				<p>
+				The Levenberg-Marquardt algorithm, also known as the damped 
+least-squares method, has been designed to work specifically with loss 
+functions which take the form of a sum of squared errors.
+				It works without computing the exact Hessian matrix. 
+				Instead, it works with the gradient vector and the Jacobian matrix.
+				</p>
+
+				<p>
+				Consider a loss function which can be expressed as a sum of squared errors of the form
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				f = ∑ e<sub>i</sub><sup>2</sup>, &nbsp; i=0,...,m
+				</span>
+				</center>
+				<br>
+				Here m is the number of instances in the data set.
+				<p></p>
+
+				<p>
+				We can define the Jacobian matrix of the loss function as that 
+containing the derivatives of the errors with respect to the parameters,
+ 
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				J<sub>i,j</sub>f(w) = de<sub>i</sub>/dw<sub>j</sub>  (i = 1,...,m &amp; j = 1,...,n)
+				</span>
+				</center>
+				<br>
+				Where m is the number of instances in the data set and n is the number of parameters in the neural network.
+				Note that the size of the Jacobian matrix is m·n.
+				<p></p>
+
+				<p>
+				The gradient vector of the loss function can be computed as:
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				ᐁf = 2 J<sup>T</sup>·e
+				</span>
+				</center>
+				<br>
+				Here e is the vector of all error terms. 
+				<p></p>
+
+				<p>
+				Finally, we can approximate the Hessian matrix with the following expression.
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				Hf ≈ 2 J<sup>T</sup>·J + λI
+				</span>
+				</center>
+				<br>
+				Where λ is a damping factor that ensures the positiveness of the Hessian and I is the identity matrix. 
+				<p></p>
+
+				<p>
+				The next expression defines the parameters improvement process with the Levenberg-Marquardt algorithm
+				</p><center>
+				<span style="border-image: initial; border: 2px solid #BDBDBD; padding: 5px;">
+				w<sub>i+1</sub> = w<sub>i</sub> - (J<sub>i</sub><sup>T</sup>·J<sub>i</sub>+λ<sub>i</sub>I)<sup>-1</sup>·(2 J<sub>i</sub><sup>T</sup>·e<sub>i</sub>), &nbsp; i=0,1,...
+				</span>
+				</center>
+				<p></p>
+
+				<p>
+				When the damping parameter λ is zero, this is just Newton's method, using the approximate Hessian matrix.
+				On the other hand, when λ is large, this becomes gradient descent with a small training rate.
+				</p>
+
+				<p>
+				The parameter λ is initialized to be large so that first updates are small steps in the gradient descent direction. 
+				If any iteration happens to result in a failure, then λ is increased by some factor.
+				Otherwise, as the loss decreases, λ is decreased, so that the Levenberg-Marquardt algorithm approaches the Newton method. 
+				This process typically accelerates the convergence to the minimum.
+				</p>
+
+				<p>
+				The picture below represents a state diagram for the training 
+process of a neural network with the Levenberg-Marquardt algorithm.
+				The first step is to calculate the loss, the gradient and the 
+Hessian approximation. 
+				Then the damping parameter is adjusted so as to reduce the loss at 
+each iteration. 
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/levenberg_algorithm_big.png" alt="Levenberg-Marquardt algorithm diagram">		
+				  </center>	
+
+				<p></p>
+
+				<p>
+				As we have seen the Levenberg-Marquardt algorithm is a method 
+tailored for functions of the type sum-of-squared-error. 
+				That makes it to be very fast when training neural networks measured
+ on that kind of errors. 
+				However, this algorithm has some drawbacks. 
+				The first one is that it cannnot be applied to functions such as the
+ root mean squared error or the cross entropy error. 
+				Also, it is not compatible with regularization terms. 
+				Finally, for very big data sets and neural networks, the Jacobian 
+matrix becomes huge, and therefore it requires a lot of memory. 
+				Therefore, the Levenberg-Marquardt algorithm is not recommended when
+ we have big data sets and/or neural networks.
+				</p>
+
+				<br>
+
+				<h3>Memory and speed comparison</h3>
+
+				<p>
+				The next graph depicts the computational speed and the memory 
+requirements of the training algorithms discussed in this post.
+				As we can see, the slowest training algorithm is usually gradient 
+descent, but it is the one requiring less memory. 
+				On the contrary, the fastest one might be the Levenberg-Marquardt 
+algorithm, but usually requires a lot of memory. 
+				A good compromise might be the quasi-Newton method. 
+				  </p><center>
+								<img style="max-width:100%" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/algorithms_table_big.png" alt="Performance comparison between algorithms">		
+				  </center>	
+				<p></p>
+
+				<p>
+				To conclude, if our neural networks has many thousands of parameters
+ we can use gradient descent or conjugate gradient, in order to save 
+memory. 
+				If we have many neural networks to train with just a few thousands 
+of instances and a few hundreds of parameters, the best choice might be 
+the Levenberg-Marquardt algorithm. 
+				In the rest of situations, the quasi-Newton method will work well.  
+				</p>
+				<!-- Bottom bar -->
+				<div id="mainBottom">
+					<div id="leftBottom">
+					</div>
+					<div id="rightBottom">
+						<script src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/bottomSideBar.js"></script><dl>	<div style="display: inline-block;">		<p><a href="https://www.artelnics.com/"><img src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/bottomSideAdvertisingBanner.png" alt="Artelnics banner" rel="nofollow" style="max-width: 100%;"></a></p>	</div></dl>
+					</div>
+				</div>
+			</div>
+			<div id="rightTop">
+				<script src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/blogRightSideBar.js"></script>	<div style="margin-top: 10%;">		<center><a href="https://www.neuraldesigner.com/blog"><img src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/index_button.png" alt="advanced analytics blog index" style="max-width: 100%;"></a></center><br>		<hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 5%;">		<p>			<a href="https://www.neuraldesigner.com/download"><img src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/rightSideAdvertisingBanner.png" alt="Neural Designer banner" style="max-width: 100%;"></a>		</p>		<hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 5%;">		<center><p style="font-size: 24px;"><b>Latest posts</b></p></center>		<a href="https://www.neuraldesigner.com/blog/principal-components-analysis">			<img style="max-width:100%;" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/principal_components_logo.png" alt="Principal component analysis image" width="210px" height="130px">		</a><br>		<a style="font-size:20px;" href="https://www.neuraldesigner.com/blog/principal-components-analysis"><font color="#55a1c8">Principal components analysis</font></a>		<br><br><br>		<a href="https://www.neuraldesigner.com/blog/market-basket-analysis-using-R-Neural-Designer">			<img style="max-width:100%;" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/market_basket.png" alt="Principal component analysis image" width="210px" height="130px">		</a><br>		<a style="font-size:20px;" href="https://www.neuraldesigner.com/blog/market-basket-analysis-using-R-Neural-Designer"><font color="#55a1c8">Market Basket Analysis using R and Neural Designer</font></a>		<br><br><br>		<a href="https://www.neuraldesigner.com/blog/electricity_demand_forecasting">			<img style="max-width:100%;" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/city_demand.jpg" alt="Principal component analysis image" width="210px" height="130px">		</a><br>		<a style="font-size:20px;" href="https://www.neuraldesigner.com/blog/electricity_demand_forecasting"><font color="#55a1c8">Electricity demand forecasting</font></a>		<br><br>		<hr style="display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 5%;">		<center><p style="font-size: 24px;"><b>Most shared</b></p></center>		<br>		<a href="https://www.neuraldesigner.com/blog/3_methods_to_deal_with_outliers">			<img style="max-width:100%;" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/outlier.jpg" alt="Principal component analysis image" width="210px" height="130px">		</a><br>		<a style="font-size:20px;" href="https://www.neuraldesigner.com/blog/3_methods_to_deal_with_outliers"><font color="#55a1c8">3 methods to deal with outliers</font></a>		<br><br><br>		<a href="https://www.neuraldesigner.com/blog/genetic_algorithms_for_feature_selection">			<img style="max-width:100%;" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/natural_selection.png" alt="Principal component analysis image" width="210px" height="130px">		</a><br>		<a style="font-size:20px;" href="https://www.neuraldesigner.com/blog/genetic_algorithms_for_feature_selection"><font color="#55a1c8">Genetic algorithms for feature selection in Data Analytics</font></a>		<br><br><br>		<a href="https://www.neuraldesigner.com/blog/market-basket-analysis-using-R-Neural-Designer">			<img style="max-width:100%;" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/market_basket.png" alt="Principal component analysis image" width="210px" height="130px">		</a><br>		<a style="font-size:20px;" href="https://www.neuraldesigner.com/blog/market-basket-analysis-using-R-Neural-Designer"><font color="#55a1c8">Market Basket Analysis using R and Neural Designer</font></a>		<br><br><br>	</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<script src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/footerLite.js"></script>	<footer id="footer" style="font-size: 18px; text-align: center;">			<div style="display:inline-block; padding-right: 20%;">				<p style="font-size: 12px; color: #ffffff;">Do you need help? 					<a href="https://www.neuraldesigner.com/contactus" style="color: #55a1c8;">Contact us</a> | 					<a href="https://www.neuraldesigner.com/legalnotice" style="color: #55a1c8;">Legal notice</a> | 					© 2017, <a href="https://www.artelnics.com/" target="blank" style="color: #55a1c8;">Artificial Intelligence Techniques, Ltd.</a>				</p>			</div>			<div style="display:inline-block; position: relative; top: 50%; transform: translateY(23%);">				<a href="https://www.neuraldesigner.com/blog"><img src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/blog.png" alt="blog-icon" width="30" height="30"></a>			</div>			<div style="display:inline-block; position: relative; top: 50%; transform: translateY(23%);">				<a href="https://www.linkedin.com/company/neuraldesigner" target="_blank"><img src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/linkedin.png" alt="linkedin-icon" width="30" height="30"></a>			</div>			<div style="display:inline-block; position: relative; top: 50%; transform: translateY(23%);">				<a href="https://twitter.com/artelnics" target="_blank"><img src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/twitter.png" alt="twitter-icon" width="30" height="30"></a>			</div>			<div style="display:inline-block; position: relative; top: 50%; transform: translateY(23%);">				<a href="https://google.com/+Artelnics" target="_blank"><img src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/google-plus.png" alt="google+-icon" width="30" height="30"></a>			</div>	</footer><script id="zupScript" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/ChatWidget.js"></script><link rel="stylesheet" type="text/css" href="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/position.css"><div id="zd-chat-container"><iframe src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/baseWidget.html" style="background-color: transparent; height: 62px; width: 62px;" id="chatFrame" class="bottomRight show" frameborder="0"></iframe></div>
+	<!-- Go to www.addthis.com/dashboard to customize your tools - Sidebar --> 
+	<script type="text/javascript" src="5%20algorithms%20to%20train%20a%20neural%20network%20|%20Neural%20Designer_files/addthis_widget.js"></script>
+
+
+</body></html>

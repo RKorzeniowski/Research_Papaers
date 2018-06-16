@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js gr__foldl_me" prefix="og: http://ogp.me/ns#" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="generator" content="GitHub Pages">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <!-- identity stuff -->
+	<meta http-equiv="X-XRDS-Location" content="http://hansengel.myopenid.com/xrds?username=hansengel.myopenid.com">
+	<meta name="microid" content="mailto+http:sha1:2b2811bc3da814ad4210e829e422c443f4b9d1e0">
+	<link rel="openid.server" href="http://www.myopenid.com/server">
+	<link rel="openid.delegate" href="http://hansengel.myopenid.com/">
+	<link rel="openid2.provider" href="http://www.myopenid.com/server">
+	<link rel="openid2.local_id" href="http://hansengel.myopenid.com/">
+
+  <title>Conditional generative adversarial networks for face generation - foldl</title>
+
+  
+  <meta name="title" content="Conditional generative adversarial networks for face generation">
+  <meta property="og:title" content="Conditional generative adversarial networks for face generation">
+  <meta name="description" content="I describe a recent project using generative adversarial nets to learn to draw human faces.">
+  <meta property="og:description" content="I describe a recent project using generative adversarial nets to learn to draw human faces.">
+  <meta property="og:site_name" content="foldl">
+  <meta property="og:image" content="/uploads/2015/conditional-gans-face-generation/axis_incremental.png">
+  
+  <meta name="author" content="Jon Gauthier">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/jquery.css">
+
+  <link rel="stylesheet" type="text/css" href="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/style.css">
+  <link rel="stylesheet" type="text/css" href="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/syntax.css"><!-- syntax highlighting -->
+  <!--[if IE]>
+      <link rel="stylesheet" type="text/css" href="/css/ie.css" />
+  <![endif]-->
+
+  <script type="text/javascript" async="" src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/dc.js"></script><script src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/modernizr-2.js"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Blank; src: url('about:blank')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body data-gr-c-s-loaded="true"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px none; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+
+  <div id="container">
+    <aside id="topbar">
+      <div class="inner">
+        <h1><a href="http://www.foldl.me/">foldl</a></h1>
+
+        <ul id="quick-links">
+          <li><a href="http://www.foldl.me/">home</a></li>
+          <li><a href="http://www.foldl.me/posts">blog</a></li>
+          <li><a href="http://www.foldl.me/contact">contact</a></li>
+          <li><a href="http://feeds.feedburner.com/foldl/rss">feed</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section id="main" role="main">
+      
+<section id="single-image">
+  <img src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/axis_incremental.png" alt="">
+</section>
+
+
+<article id="single" class="hentry">
+  <header class="inner">
+    <h1 class="entry-title">
+      
+        Conditional generative adversarial networks for face generation
+      
+    </h1>
+    <time datetime="2015-03-17T00:00:00+00:00">
+      17 March 2015
+    </time>
+  </header>
+
+  <div class="entry-content">
+    <p>This week marks the end of the winter quarter at Stanford, and with it ends the
+class <a href="http://cs231n.stanford.edu/index.html">CS 231N: Convolutional Neural Networks for Visual Recognition</a>. The
+teaching team, led by <a href="http://cs.stanford.edu/people/karpathy/">Andrej Karpathy</a> and <a href="http://vision.stanford.edu/feifeili/">Fei-Fei Li</a>, did an
+outstanding job putting together a course on neural networks and CNNs from
+scratch.</p>
+
+<p>This post is a high-level overview of the project I submitted for the course,
+titled <em>Conditional generative adversarial networks for convolutional face
+generation</em>. For those interested in a technical deep dive, check out
+<a href="http://www.foldl.me/uploads/2015/conditional-gans-face-generation/paper.pdf">my full paper</a> and the <a href="https://github.com/hans/adversarial">code on GitHub</a>.</p>
+
+<p style="text-align:center;font-size:88%">(jump to: <a href="#introduction">introduction</a>, <a href="#model">model</a>)</p>
+
+<figure class="image"><a href="http://www.foldl.me/uploads/2015/conditional-gans-face-generation/axis_incremental.png"><img src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/axis_incremental_002.png" alt="Example of faces sampled from the generative model. We draw random faces in the first row. In the second row we ask the model to 'age' the faces, and in the third row we ask the model to add a smile."></a><figcaption>Example
+ of faces sampled from the generative model. We draw random faces in the
+ first row. In the second row we ask the model to 'age' the faces, and 
+in the third row we ask the model to add a smile.</figcaption></figure>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>A major task in machine learning is to learn <a href="http://en.wikipedia.org/wiki/Probability_density_function"><em>density models</em></a> of
+particular distributions. Ideally, we want to have a machine that accepts
+arbitrary inputs and says either “Yes, that’s an <em>x</em>,” or “No, that’s not an
+<em>x</em>.” We might name this density model mathematically as <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 2.457em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.895em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.489em, 1001.8em, 2.748em, -1000em); top: -2.369em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math; font-style: italic;">p</span><span class="mo" id="MathJax-Span-4" style="font-family: MathJax_Main;">(</span><span class="texatom" id="MathJax-Span-5"><span class="mrow" id="MathJax-Span-6"><span class="mi" id="MathJax-Span-7" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span><span class="mo" id="MathJax-Span-8" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.369em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.378em; border-left: 0px solid; width: 0px; height: 1.401em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><mo stretchy="false">(</mo><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-1">p(\mathbf{x})</script>,
+where <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-9" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.455em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-10"><span class="texatom" id="MathJax-Span-11"><span class="mrow" id="MathJax-Span-12"><span class="mi" id="MathJax-Span-13" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.056em; border-left: 0px solid; width: 0px; height: 0.684em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-2">\mathbf{x}</script> is the data we’re interested in modeling.</p>
+
+<p>In this project, we learn a density model of <strong>human faces</strong>. Given some image
+<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-14" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.455em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-15"><span class="texatom" id="MathJax-Span-16"><span class="mrow" id="MathJax-Span-17"><span class="mi" id="MathJax-Span-18" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.056em; border-left: 0px solid; width: 0px; height: 0.684em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-3">\mathbf{x}</script>, our precise task here is to determine whether <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-19" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.455em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-20"><span class="texatom" id="MathJax-Span-21"><span class="mrow" id="MathJax-Span-22"><span class="mi" id="MathJax-Span-23" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.056em; border-left: 0px solid; width: 0px; height: 0.684em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-4">\mathbf{x}</script>
+is a picture of a face or not. Every seeing human has such a model in her brain,
+and uses it effortlessly every day. Like many tasks in computer vision and
+artificial intelligence, what is ridiculously simple for humans turns out to be
+notoriously difficult for computers to crack.</p>
+
+<p>There are two important extensions in this project:</p>
+
+<ul>
+  <li>We want to be able to <em>sample</em> from the model — to ask it to “imagine” new
+faces that we haven’t ever showed it. (Again, this is something that humans
+can do easily.)</li>
+  <li>We want the model to <em>condition</em> on external data. This means that we should
+be able to specify particular facial attributes as we sample. (Once again,
+this is trivial for humans. Imagining an old white male with a mustache takes
+little apparent cognitive effort.)</li>
+</ul>
+
+<p>Images are traditionally represented in digital form as large matrices of
+numbers. Our density model in particular is expected to deal with images with
+3072 different dimensions of variation.<sup id="fnref:2"><a href="#fn:2" class="footnote" data-hasqtip="0">1</a></sup> Our task, then, (as is the task in
+much of <a href="http://en.wikipedia.org/wiki/Unsupervised_learning">unsupervised learning</a>) is to find and exploit structure in the
+data that help us reason efficiently and accurately about what is and isn’t a
+face.</p>
+
+<h3 id="the-project">The project</h3>
+
+<p>We train on human face images like these:</p>
+
+<p style="text-align:center">
+<img style="width: 100px; display: inline;" src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/Akbar_Al_Baker_0001.jpg">
+<img style="width: 100px; display: inline;" src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/Catherine_Zeta-Jones_0004.jpg">
+<img style="width: 100px; display: inline;" src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/Igor_Ivanov_0005.jpg">
+<img style="width: 100px; display: inline;" src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/Milo_Maestrecampo_0001.jpg">
+</p>
+
+<p>The above images are samples from a dataset called
+<a href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>, which contains about 13,000 images of random
+people in uncontrollled settings.<sup id="fnref:1"><a href="#fn:1" class="footnote" data-hasqtip="1">2</a></sup></p>
+
+<p>As mentioned before, we intend to build a density model in this project that is
+<em>conditional</em>. Rather than answering the question “Is this an <em>x</em>,” we now
+answer “Is this an <em>x</em> given <em>y</em>?” Formally, we build a density model
+<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;mo&gt;&amp;#x2223;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;y&lt;/mi&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-24" style="width: 4.309em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.316em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.489em, 1003.22em, 2.748em, -1000em); top: -2.369em; left: 0em;"><span class="mrow" id="MathJax-Span-25"><span class="mi" id="MathJax-Span-26" style="font-family: MathJax_Math; font-style: italic;">p</span><span class="mo" id="MathJax-Span-27" style="font-family: MathJax_Main;">(</span><span class="texatom" id="MathJax-Span-28"><span class="mrow" id="MathJax-Span-29"><span class="mi" id="MathJax-Span-30" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span><span class="mo" id="MathJax-Span-31" style="font-family: MathJax_Main; padding-left: 0.278em;">∣</span><span class="texatom" id="MathJax-Span-32" style="padding-left: 0.278em;"><span class="mrow" id="MathJax-Span-33"><span class="mi" id="MathJax-Span-34" style="font-family: MathJax_Main; font-weight: bold;">y</span></span></span><span class="mo" id="MathJax-Span-35" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.369em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.378em; border-left: 0px solid; width: 0px; height: 1.401em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><mo stretchy="false">(</mo><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow><mo>∣</mo><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">y</mi></mrow><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-5">p(\mathbf{x} \mid \mathbf{y})</script>. <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;y&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-36" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.655em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-37"><span class="texatom" id="MathJax-Span-38"><span class="mrow" id="MathJax-Span-39"><span class="mi" id="MathJax-Span-40" style="font-family: MathJax_Main; font-weight: bold;">y</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.314em; border-left: 0px solid; width: 0px; height: 0.942em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">y</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-6">\mathbf{y}</script> is the “conditional
+information” — any external information that might cue us on what we should be
+looking for in the provided data <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-41" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.455em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-42"><span class="texatom" id="MathJax-Span-43"><span class="mrow" id="MathJax-Span-44"><span class="mi" id="MathJax-Span-45" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.056em; border-left: 0px solid; width: 0px; height: 0.684em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-7">\mathbf{x}</script>.</p>
+
+<p>Concretely, in this project <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;y&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-46" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.655em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-47"><span class="texatom" id="MathJax-Span-48"><span class="mrow" id="MathJax-Span-49"><span class="mi" id="MathJax-Span-50" style="font-family: MathJax_Main; font-weight: bold;">y</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.314em; border-left: 0px solid; width: 0px; height: 0.942em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">y</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-8">\mathbf{y}</script> specifies facial attributes, such
+as the following:</p>
+
+<ul>
+  <li>Age: baby, youth, middle-aged, senior, …</li>
+  <li>Emotion: frowning, smiling, …</li>
+  <li>Race: Asian, Indian, black, white, …</li>
+</ul>
+
+<p>Informally, when we ask about <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;mo&gt;&amp;#x2223;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;y&lt;/mi&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-51" style="width: 4.309em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.316em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.489em, 1003.22em, 2.748em, -1000em); top: -2.369em; left: 0em;"><span class="mrow" id="MathJax-Span-52"><span class="mi" id="MathJax-Span-53" style="font-family: MathJax_Math; font-style: italic;">p</span><span class="mo" id="MathJax-Span-54" style="font-family: MathJax_Main;">(</span><span class="texatom" id="MathJax-Span-55"><span class="mrow" id="MathJax-Span-56"><span class="mi" id="MathJax-Span-57" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span><span class="mo" id="MathJax-Span-58" style="font-family: MathJax_Main; padding-left: 0.278em;">∣</span><span class="texatom" id="MathJax-Span-59" style="padding-left: 0.278em;"><span class="mrow" id="MathJax-Span-60"><span class="mi" id="MathJax-Span-61" style="font-family: MathJax_Main; font-weight: bold;">y</span></span></span><span class="mo" id="MathJax-Span-62" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.369em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.378em; border-left: 0px solid; width: 0px; height: 1.401em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><mo stretchy="false">(</mo><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow><mo>∣</mo><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">y</mi></mrow><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-9">p(\mathbf{x} \mid \mathbf{y})</script> in this
+setting, we ask the question: If we’re looking for faces of type
+<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-10-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;y&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-63" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.655em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-64"><span class="texatom" id="MathJax-Span-65"><span class="mrow" id="MathJax-Span-66"><span class="mi" id="MathJax-Span-67" style="font-family: MathJax_Main; font-weight: bold;">y</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.314em; border-left: 0px solid; width: 0px; height: 0.942em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">y</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-10">\mathbf{y}</script> (e.g. frowning people with mustaches), should we accept
+<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-11-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-68" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.455em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-69"><span class="texatom" id="MathJax-Span-70"><span class="mrow" id="MathJax-Span-71"><span class="mi" id="MathJax-Span-72" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.056em; border-left: 0px solid; width: 0px; height: 0.684em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-11">\mathbf{x}</script> as a good example or not?</p>
+
+<h3 id="why-is-this-interesting">Why is this interesting?</h3>
+
+<p>Good question! Recall that we’re learning a <em>generative</em> model of faces while we
+do this density modeling. The interesting implication is that we can <strong>sample
+brand-new faces</strong> from the learned density model. Like these ones:</p>
+
+<figure class="image"><img src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/samples_cgan_fixed.png" alt=""><figcaption></figcaption></figure>
+
+<p>The faces above are created by the model from scratch. These faces are entirely
+new, and don’t resemble faces in the training data provided to the model. That’s
+right — once our model learns what a face looks like, it can <strong>learn to draw
+new ones</strong>.</p>
+
+<p>Hooked? Let’s get into the model.</p>
+
+<h2 id="model">Model</h2>
+
+<p>The model used in this project is an extension of the <em>generative adversarial
+network</em>, proposed by <a href="http://www-etud.iro.umontreal.ca/~goodfeli/">Ian Goodfellow</a> and colleagues (see their <a href="http://papers.nips.cc/paper/5423-generative-adversarial-nets">paper</a>
+and associated <a href="https://github.com/goodfeli/adversarial">GitHub repo</a>). Here’s the basic pitch:</p>
+
+<p>Suppose you want to build a generative model of some dataset with data points
+called <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-12-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-73" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.455em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-74"><span class="texatom" id="MathJax-Span-75"><span class="mrow" id="MathJax-Span-76"><span class="mi" id="MathJax-Span-77" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.056em; border-left: 0px solid; width: 0px; height: 0.684em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-12">\mathbf{x}</script>. Let’s create two players and set them against each
+other in an adversarial game:</p>
+
+<ul>
+  <li>A <strong>discriminator</strong> – call it <em>D</em>. <em>D</em>’s job is to accept an input
+<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-13-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-78" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.455em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-79"><span class="texatom" id="MathJax-Span-80"><span class="mrow" id="MathJax-Span-81"><span class="mi" id="MathJax-Span-82" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.056em; border-left: 0px solid; width: 0px; height: 0.684em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-13">\mathbf{x}</script> and determine whether the input came from the dataset, or
+whether it was simply made up. <em>D</em> wins points when he detects real
+dataset values correctly, and loses points when he approves fake values or
+denies real dataset values.</li>
+  <li>A <strong>generator</strong> – call it <em>G</em>. <em>G</em>’s job is to <em>make up</em> new values
+<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-14-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-83" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.455em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-84"><span class="texatom" id="MathJax-Span-85"><span class="mrow" id="MathJax-Span-86"><span class="mi" id="MathJax-Span-87" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.056em; border-left: 0px solid; width: 0px; height: 0.684em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">x</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-14">\mathbf{x}</script>. <em>G</em> wins points when he tricks <em>D</em> into thinking that his
+made-up values are real.</li>
+</ul>
+
+<p>We now let <em>D</em> and <em>G</em> take turns in the game, and teach both how to correct
+their mistakes after each turn. Here’s what we expect to happen:</p>
+
+<ol>
+  <li><em>G</em> begins as a completely stupid generator. He outputs some random noise in
+a weak attempt to trick <em>D</em>.</li>
+  <li><em>D</em> quickly learns to make a lazy distinction between <em>G</em>’s random noise and
+things that look like human faces. But <em>D</em> trains only long enough to make a
+basic distinction — to look for a skin tone, for example.</li>
+  <li><em>G</em> learns from its mistakes and starts producing images with skin tone color
+in them.</li>
+  <li><em>D</em> picks up on basic facial structure, and uses this to distinguish between
+real face images and <em>G</em>’s fake data.</li>
+  <li><em>G</em> follows <em>D</em>’s cue, and learns to draw face shapes (and perhaps some basic
+features like noses and eye-holes).</li>
+  <li><em>D</em> notices other features in the real face images that distinguish them from
+<em>G</em>’s data.</li>
+</ol>
+
+<p>This process continues on forever, with <em>D</em> learning new discriminative features
+and <em>G</em> promptly learning to copy them.</p>
+
+<p>What we end up with (after several hours of training on GPUs) is a <strong>generative
+model</strong> <em>G</em> which can make convincing images of human faces like the ones
+presented earlier. Ideally, this model <em>G</em> can also serve as a generative
+density model as described earlier.</p>
+
+<h3 id="conditional-data">Conditional data</h3>
+
+<p>But there’s more! I mentioned earlier that our key extension is to add a
+<em>conditioning</em> feature. In the setting of face images, this means we can specify
+particular facial attributes. Both the generator <em>G</em> and the discriminator <em>D</em>
+learn to operate in certain <em>modes</em>. For example, with a particular conditional
+information input <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-15-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;y&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-88" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.655em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-89"><span class="texatom" id="MathJax-Span-90"><span class="mrow" id="MathJax-Span-91"><span class="mi" id="MathJax-Span-92" style="font-family: MathJax_Main; font-weight: bold;">y</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.314em; border-left: 0px solid; width: 0px; height: 0.942em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">y</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-15">\mathbf{y}</script>, we might ask the generator <em>G</em> to generate a
+face with a smile, and likewise ask the discriminator <em>D</em> whether a particular
+image contains a face with a smile.</p>
+
+<figure class="image"><a href="http://www.foldl.me/uploads/2015/conditional-gans-face-generation/axis_incremental.png"><img src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/axis_incremental_002.png" alt="Demonstration of deterministic control of image samples. We tweak conditional information to first make the sampled faces age, then again to make them smile."></a><figcaption>Demonstration
+ of deterministic control of image samples. We tweak conditional 
+information to first make the sampled faces age, then again to make them
+ smile.</figcaption></figure>
+
+<p>The final consequence of all of this is that we can directly control the output
+of the generator <em>G</em>. The image above shows a figure from the paper. We begin
+with a random row of faces sampled from the model. (Note that these are not
+faces from the training data.) We then tweak <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-16-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;y&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-93" style="width: 0.777em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.603em; height: 0px; font-size: 129%;"><span style="position: absolute; clip: rect(1.752em, 1000.58em, 2.655em, -1000em); top: -2.326em; left: 0em;"><span class="mrow" id="MathJax-Span-94"><span class="texatom" id="MathJax-Span-95"><span class="mrow" id="MathJax-Span-96"><span class="mi" id="MathJax-Span-97" style="font-family: MathJax_Main; font-weight: bold;">y</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.326em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.314em; border-left: 0px solid; width: 0px; height: 0.942em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="bold">y</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-16">\mathbf{y}</script> in two ways:
+first, along an axis that corresponds to old age, and second, along an axis that
+corresponds to smiling. You can see in the second and third rows that the
+subjects first grow older and then put on a smile.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I’ll end my brief overview here. There’s much more to say — for example, on
+training dynamics, on evaluation, and on the role of convolution in both <em>G</em> and
+<em>D</em> — and if you’ve reached this far in the blog post you would probably enjoy
+reading <a href="http://www.foldl.me/uploads/2015/conditional-gans-face-generation/paper.pdf">the paper</a> in full.</p>
+
+<p>It is still early days for generative models, and I’m excited to explore both
+new architectures and new possibilities in model applications. Watch this space
+for more soon, and let me know if you’re working on similar ideas!</p>
+
+<h3 id="acknowledgements">Acknowledgements</h3>
+
+<p>Thanks to my colleagues <a href="http://keenon.github.io/">Keenon Werling</a> and <a href="http://cs.stanford.edu/~danqi">Danqi Chen</a>, who put up with
+persistent requests for advice on the project throughout the quarter. None of
+this would have happened without <a href="http://cs.stanford.edu/people/karpathy/">Andrej’s</a> advice at the start of the
+quarter, which set me off in the right direction.</p>
+
+<p>This project would have taken twice as long were it not for the developers of
+<a href="http://deeplearning.net/software/pylearn2/">Pylearn2</a> and <a href="http://deeplearning.net/software/theano/">Theano</a>. This kind of machine learning framework
+development is certain to accelerate the progress of the field — exciting
+stuff! Of course, <a href="http://www-etud.iro.umontreal.ca/~goodfeli/">Ian Goodfellow</a> deserve credit for the original
+generative adversarial net code, published with their NIPS ‘14 paper.</p>
+
+<script src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/MathJax.js" id=""></script>
+
+<script type="text/javascript">
+MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } } });
+</script>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:2">
+      <p>3072 = 32 by 32 by 3. Our images are 32 by 32, with three RGB color channels.&nbsp;<a href="#fnref:2" class="reversefootnote">↩</a></p>
+    </li>
+    <li id="fn:1">
+      <p>These images were cropped by <a href="http://conradsanderson.id.au/lfwcrop/">Conrad Sanderson</a> at NICTA.&nbsp;<a href="#fnref:1" class="reversefootnote">↩</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqusLoaded = false;
+  window.onscroll = function() {
+    if ( disqusLoaded ) return;
+
+    disqusLoaded = true;
+    window.onscroll = null;
+
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = 'http://foldl.disqus.com/embed.js';
+    document.body.appendChild(dsq);
+  };
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+      <footer>
+          <div id="hcard-Jon-Gauthier" class="vcard">
+          <a class="email fn n" href="http://www.foldl.me/contact/">
+              <span class="given-name">Jon</span>
+              <span class="family-name">Gauthier</span>
+          </a> — <span class="adr">
+              <span class="locality">Cambridge</span>, <span class="region">Massachusetts</span>
+          </span>
+          </div>
+      </footer>
+    </section>
+  </div>
+
+  <script type="text/javascript" src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/jquery-1.js"></script>
+  <script type="text/javascript" src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/jquery.js"></script>
+  <script type="text/javascript" src="Conditional%20generative%20adversarial%20networks%20for%20face%20generation%20-%20foldl_files/script.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33380670-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px none; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px none; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-size-adjust: none; font-family: MathJax_Size4, sans-serif;"></div></div></body></html>

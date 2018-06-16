@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html class="gr__technologyreview_com" lang="en"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# video: http://ogp.me/ns/video#">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Metadata -->
+	<title>Artificial Intelligence Can Now Design Realistic Video and Game Imagery - MIT Technology Review</title>
+	<meta name="description" content="A remarkable machine-learning trick that cleans up pixelated videos and photographs can automatically generate high-quality computer-game graphics."><meta name="news_keywords" content="Magic Pony, Machine Learning, Deep Learning, Unsupervised Learning, Nvidia, Computer Games, Videos, Graphics, Compression, Imperial College, Games">
+
+	<meta name="author" content="Will Knight">
+
+	
+
+	<!-- Open Graph -->
+	<meta property="og:url" content="https://www.technologyreview.com/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/"><meta property="og:title" content="This artificial-intelligence algorithm can clean up pixelated video to make it look more realistic"><meta property="og:type" content="article"><meta property="og:updated_time" content="2016-05-09T11:44:47-04:00"><meta property="og:image" content="https://cdn.technologyreview.com/i/images/improving.video.1x1700.jpg?cx=0&amp;cy=0&amp;cw=1700&amp;ch=956&amp;sw=1200">
+	<meta property="og:image:url" content="https://cdn.technologyreview.com/i/images/improving.video.1x1700.jpg?cx=0&amp;cy=0&amp;cw=1700&amp;ch=956&amp;sw=1200">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1700">
+	<meta property="og:image:height" content="959">
+	<meta property="og:description" content="A remarkable machine-learning trick that cleans up pixelated videos and photographs can automatically generate high-quality computer-game graphics."><meta property="og:site_name" content="MIT Technology Review">
+
+	<!-- Twitter -->
+	
+		<meta name="twitter:card" content="summary_large_image">
+		
+		<meta name="twitter:site" content="@techreview">
+		
+		<meta name="twitter:description" content="A remarkable machine-learning trick that cleans up pixelated videos and photographs can automatically generate high-quality computer-game graphics.">
+		
+		<meta name="twitter:title" content="This artificial-intelligence algorithm can clean up pixelated video to make it look more realistic">
+		
+		<meta name="twitter:image" content="https://www.technologyreview.com/i/images/improving.video.1x1700.jpg?sw=560&amp;cx=0&amp;cy=0&amp;cw=1700&amp;ch=956">
+		
+
+	<!-- Schema.org -->
+	<script async="" type="text/javascript" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/gpt.js"></script><script async="" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/gtm.js"></script><script type="application/ld+json" id="NewsArticle">{"@context":"http://schema.org","@type":"NewsArticle","headline":"Artificial Intelligence Can Now Design Realistic Video and Game Imagery","description":"A remarkable machine-learning trick that cleans up pixelated videos and photographs can automatically generate high-quality computer-game graphics.","url":"https://www.technologyreview.com/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/","dateCreated":"2016-04-14T15:08:00-04:00","datePublished":"2016-04-14T15:08:00-04:00","dateModified":"2016-05-09T11:44:47-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/"},"creator":"Will Knight","author":{"@type":"Person","name":"Will Knight"},"publisher":{"@type":"Organization","name":"MIT Technology Review","logo":{"@type":"ImageObject","url":"https://cdn.technologyreview.com/_/img/stacked-logo.svg","width":184,"height":90}},"keywords":["NVIDIA","machine learning","deep learning","EmTech Digital 2016","Magic Pony","unsupervised learning","computer games","videos","graphics","compression","Imperial College","games"],"thumbnailUrl":"https://cdn.technologyreview.com/i/images/improving.video.1x1700.jpg?sw=1700","image":{"@type":"ImageObject","url":"https://cdn.technologyreview.com/i/images/improving.video.1x1700.jpg?sw=1700","height":1700,"width":959},"articleSection":"Intelligent Machines"}</script><script type="application/ld+json" id="Organization">{"@context":"schema.org","@type":"Organization","name":"MIT Technology Review","address":{"@type":"PostalAddress","addressLocality":"Cambridge, MA, USA","postalCode":"02142","streetAddress":"1 Main Street"}}</script><script type="application/ld+json" id="searchBox">{"@context":"http://schema.org","@type":"WebSite","url":"https://www.technologyreview.com","potentialAction":{"@type":"SearchAction","target":"https://www.technologyreview.com/search/?s={s}","query-input":"required name=s"}}</script><script type="application/ld+json" id="searchBreadcrumbs">{"@context":"http://schema.org","@type":"WebSite","name":"MIT Technology Review","alternateName":"Technologyreview.com","url":"https://www.technologyreview.com"}</script>
+
+	
+	<link rel="canonical" href="https://www.technologyreview.com/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/">
+	
+
+	
+	<link rel="amphtml" href="https://www.technologyreview.com/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/amp/">
+	
+
+	
+
+	<!-- Google Sign-in -->
+	<meta name="google-signin-client_id" content="420520515534.apps.googleusercontent.com">
+
+	<!-- Facebook Instant Articles -->
+	<meta property="fb:pages" content="17043549797">
+
+	
+<link rel="stylesheet" href="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/article.css">
+
+
+	<!-- Stylesheets -->
+	
+
+	<!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.5/es5-shim.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<![endif]-->
+
+	<!-- Google Tag Manager Data Layer-->
+	
+	<script>
+	dataLayer = [{"ABTest":"site speed - control","Contributor":"Will Knight","PageType":"News","Pubdate":"2016-04-14","WordCount":"00500","DelayPageview":"true","EntryID":601258,"Topic":"Intelligent Machines","ABTestVariant":"body"}];
+	</script>
+	
+
+	
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-TRBQMN');</script>
+	
+
+	
+	<script src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/count-data.js"></script></head>
+<body class="logged-out" data-model="master" rv-class-js-mobile-nav-is-open="mobileNav.open" rv-class-js-mobile-nav-is-fixed="mobileNav.fixed" rv-class-js-nav-is-open="nav.open" rv-class-js-nav-is-fixed="nav.fixed" rv-class-js-search-is-open="search.open" data-gr-c-s-loaded="true">
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TRBQMN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+
+
+	
+		
+<div id="fullpage-interstitial-overlay">
+	<div id="fullpage-interstitial-container">
+		<div id="subscriber-roadblock" class="adunit display-none" data-adunit="__subscriber/__roadblock" data-size-mapping="subscriber-roadblock" data-active="true" style=""></div>
+	</div>
+</div>
+
+	
+
+	
+	<section class="incognito-wall">
+	<div class="incognito-wall__wrapper">
+		<a href="https://www.technologyreview.com/"><img class="incognito-wall__logo" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/stacked-logo.svg" alt="MIT Technology Review"></a>
+		<div class="incognito-wall__intro">
+			<p>Hello,</p>
+			<p>We noticed you're browsing in private or incognito mode.</p>
+		</div>
+		<div class="incognito-wall__body">
+			<p>To continue reading this article, please exit incognito mode
+				or <a href="https://www.technologyreview.com/login/?redirectTo=%2Fs%2F601258%2Fartificial-intelligence-can-now-design-realistic-video-and-game-imagery%2F">log in</a>.</p>
+			<p>Not an Insider? Subscribe now for unlimited access to online articles.</p>
+			<a href="https://www.technologyreview.com/insider/pricing/" class="btn btn--primary--transparent incognito-wall__subscribe-btn">
+				<span class="txt">Subscribe today</span>
+				<span class="btn--primary--transparent__icon">
+<svg class="btn__icon--angle-arrow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 10.1 10.1" enable-background="new 0 0 10.1 10.1" xml:space="preserve">
+	<polygon fill="#FFFFFF" points="0.9,0 0.9,2.5 5.9,2.5 0,8.4 1.8,10.1 7.6,4.3 7.6,9.2 10.1,9.2 10.1,0 "></polygon>
+</svg>
+</span>
+			</a>
+		</div>
+		<div class="incognito-wall__footer">
+			<h4>Why we made this change</h4>
+			<p>Visitors are allowed 3 free articles per month (without a 
+subscription), and private browsing prevents us from counting how many 
+stories you've read. We hope you understand, and consider <a href="https://www.technologyreview.com/insider/pricing/">subscribing</a> for unlimited online access.</p>
+			<div><a href="https://www.technologyreview.com/">Back to MIT Technology Review home</a></div>
+			<div><a href="https://www.technologyreview.com/help/contact/">Contact customer service</a> if you are seeing this message in error.</div>
+		</div>
+	</div>
+</section>
+
+	
+
+	
+
+	
+		<!-- Site Header / Nav -->
+		
+	
+
+<header id="header" role="banner">
+	<nav class="navbar">
+		<div class="navbar__width">
+			<a class="navbar__logo-mod" href="https://www.technologyreview.com/">
+				<img class="navbar__logo" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/stacked-logo.svg" alt="MIT Technology Review">
+			</a><!-- header-logo -->
+
+			
+				<button class="navbar__mobile-menu" data-mobile-menu="toggle">Menu</button>
+			
+
+			
+			
+
+			<div class="navbar__navigation">
+				<ul class="navbar--primary">
+
+					
+
+					<li class="navbar__item--primary navbar__item--expandable navbar__item--primary--topics">
+						<span class="navbar__item__link navbar__item__link--primary navbar__item__link--expandable">Topics<span class="navbar__item__link--expandable__plus"></span></span>
+						<ul class="navbar__dropdown">
+							<li class="navbar__topics__section-container">
+								<ul class="navbar__topics__section--topics">
+									<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/topic/business-impact/">Business Impact</a></li>
+									<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/topic/connectivity/">Connectivity</a></li>
+									<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/topic/intelligent-machines/">Intelligent Machines</a></li>
+									<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/topic/rewriting-life/">Rewriting Life</a></li>
+									<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/topic/sustainable-energy/">Sustainable Energy</a></li>
+								</ul>
+							</li>
+							<li class="navbar__topics__section-container">
+								<ul class="navbar__topics__section--lists">
+									<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/lists/technologies/">10 Breakthrough Technologies</a></li>
+									<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/lists/innovators-under-35/">35 Innovators Under 35</a></li>
+									<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/lists/companies/">50 Smartest Companies</a></li>
+								</ul>
+							</li>
+							<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/views/">Views</a></li>
+							<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/views-from-the-marketplace/">Views from the Marketplace</a></li>
+						</ul>
+					</li>
+
+					<li class="navbar__item--primary"><a class="navbar__item__link navbar__item__link--primary" href="https://www.technologyreview.com/the-download/">The Download</a></li>
+					<li class="navbar__item--primary"><a class="navbar__item__link navbar__item__link--primary" href="https://www.technologyreview.com/magazine/">Magazine</a></li>
+					<li class="navbar__item--primary"><a class="navbar__item__link navbar__item__link--primary" href="http://events.technologyreview.com/">Events</a></li>
+
+					<li class="navbar__item--primary navbar__item--expandable navbar__item--primary--more">
+						<span class="navbar__item__link navbar__item__link--primary navbar__item__link--expandable">More<span class="navbar__item__link--expandable__plus"></span></span>
+						<ul class="navbar__dropdown">
+							<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/videos/">Video</a></li>
+							<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/magazine/special-publications/">Special Publications</a></li>
+							<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/mit-news/">MIT News Magazine</a></li>
+							<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/newsletters/">Newsletters</a></li>
+							<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://www.technologyreview.com/help/">Help/Support</a></li>
+							<li class="navbar__dropdown__item"><a class="navbar__dropdown__item-link" href="https://mediakit.technologyreview.com/">Advertise with Us</a></li>
+						</ul>
+					</li>
+
+					<!-- Redundent account menu implementation for devices -->
+					
+					<li class="navbar__item--primary navbar__item--primary--account navbar__item--phone">
+						<a href="https://www.technologyreview.com/login/?redirectTo=%2Fs%2F601258%2Fartificial-intelligence-can-now-design-realistic-video-and-game-imagery%2F" class="navbar__item__link navbar__item__link--primary" rel="nofollow">Log in / Create and account</a>
+					</li>
+					
+				</ul><!-- primary nav -->
+
+				
+				<ul class="navbar--tertiary">
+					
+					<li class="navbar__item--tertiary navbar__item--tertiary--subscribe"><a href="https://www.technologyreview.com/subscribe/" class="navbar__item__link navbar__item__link--tertiary btn btn--primary">
+						<span class="txt">Subscribe</span>
+						<span class="btn--primary__icon"></span>
+					</a></li>
+					
+				</ul><!-- tertiary nav -->
+				
+
+				<!-- Secondary Navbar -->
+				<ul class="navbar--secondary">
+					
+					<li class="navbar__item--secondary navbar__item--secondary--login"><a href="https://www.technologyreview.com/login/?redirectTo=%2Fs%2F601258%2Fartificial-intelligence-can-now-design-realistic-video-and-game-imagery%2F" class="navbar__item__link navbar__item__link--secondary" rel="nofollow">Log in</a> / <a href="https://www.technologyreview.com/login/?redirectTo=%2Fs%2F601258%2Fartificial-intelligence-can-now-design-realistic-video-and-game-imagery%2F" class="navbar__item__link navbar__item__link--secondary" rel="nofollow">Create an account</a></li>
+					
+					<!-- rivets: unless entries.searchpage --><a data-toggle="search-form">
+						<li class="navbar__item--secondary navbar__item--search dropdown-nav__item">
+								<span class="navbar__desktop-search--text"><span rv-text="search.menuLabel">Search</span><i class="search-icon"></i></span>
+						</li>
+					</a>
+				</ul><!-- secondary nav -->
+				<ul class="navbar--search">
+					<li class="navbar__item--search">
+						<form id="search-form" class="navbar__mobile-search" action="/search/">
+							<a class="navbar__mobile-search__close" data-search="close"></a>
+							<input class="navbar__mobile-search__input" data-search="search-terms" name="s" autocomplete="off" placeholder="Search" rv-value="entries.params.query" type="text">
+							<input class="navbar__mobile-search__button" data-search="submit" value="" type="submit">
+							<!-- rivets: if entries -->
+						</form>
+					</li>
+				</ul>
+			</div><!-- header-navbar -->
+		</div>
+	</nav><!-- .navbar -->
+</header>
+
+		<!-- Leaderboard -->
+		<div class="adunit ad--leaderboard display-none" data-adunit="__site/__leaderboard" data-size-mapping="leaderboard" data-active="true" id="__site___leaderboard-auto-gen-id-1"></div>
+	
+
+
+
+	<!-- Ribbon -->
+	
+
+	
+
+	<!-- Main -->
+	<main class="site-content" role="main">
+		<section data-entry-parent="">
+			<article data-entry-id="601258" data-type="article" class="article ">
+				<div class="article-body">
+					
+	
+
+<!-- Article Topper: Standard (text only topper) -->
+<div class="l-article-topper l-article-topper--standard" data-topper-layout="standard" data-topper-type="standard">
+
+	<div class="article-topper__header-wrap">
+
+		<div class="article-topper__hgroup">
+			
+
+	
+		<h3 class="article-topper__topic">
+			
+			<a href="https://www.technologyreview.com/topic/intelligent-machines/" class="entry__term">Intelligent Machines</a>
+			
+
+			
+
+		</h3>
+	
+
+
+
+
+			<h1 class="article-topper__title">Artificial Intelligence Can Now Design Realistic Video and Game Imagery</h1>
+
+			<h2 class="article-topper__subtitle">A remarkable machine-learning 
+trick that cleans up pixelated videos and photographs can automatically 
+generate high-quality computer-game graphics.</h2>
+
+			
+			<ul class="article-topper__meta-info">
+			
+
+				
+
+				
+				<li class="article-topper__meta-item">
+					by <!-- Article Topper: Byline -->
+
+	
+		<a href="https://www.technologyreview.com/profile/will-knight/">Will Knight</a>
+	
+
+
+				</li>
+				
+
+				
+					<li class="article-topper__meta-item">April 14, 2016</li>
+				
+			</ul>
+
+			
+
+		</div>
+
+		
+
+		<div class="article-social-list article-social-list--mobile">
+		
+<ul class="social-list addthis_toolbox" data-share-id="601258" addthis:url="https://www.technologyreview.com/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/" addthis:title="This artificial-intelligence algorithm can clean up pixelated video to make it look more realistic"><li class="disqus-container social-list__item">
+		<a href="#disqus_thread" class="scroll-to-comments social-list__comment-link">2</a>
+	</li><li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_facebook" data-event-category="addthis-custom" data-event-action="click" data-event-label="facebook"><i class="ion-social-facebook"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_twitter" data-event-category="addthis-custom" data-event-action="click" data-event-label="twitter"><i class="ion-social-twitter"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_reddit" data-event-category="addthis-custom" data-event-action="click" data-event-label="reddit"><i class="ion-social-reddit"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_linkedin" data-event-category="addthis-custom" data-event-action="click" data-event-label="linkedin"><i class="ion-social-linkedin"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_whatsapp" data-event-category="addthis-custom" data-event-action="click" data-event-label="whatsapp"><i class="ion-social-whatsapp"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_email" data-event-category="addthis-custom" data-event-action="click" data-event-label="email"><i class="ion-ios-email"></i></a>
+	</li>
+	
+</ul>
+
+
+		</div>
+
+	</div>
+
+	<div class="adunit ad--right-rail display-none" data-adunit="__site/__square-rectangle" data-size-mapping="square--desktop" data-active="true" id="__site___square_rectangle-auto-gen-id-2"></div>
+
+</div>
+
+	
+<div class="article-social-list article-social-list--body">
+
+<ul class="social-list addthis_toolbox" data-share-id="601258" addthis:url="https://www.technologyreview.com/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/" addthis:title="This artificial-intelligence algorithm can clean up pixelated video to make it look more realistic"><li class="disqus-container social-list__item">
+		<a href="#disqus_thread" class="scroll-to-comments social-list__comment-link">2</a>
+	</li><li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_facebook" data-event-category="addthis-custom" data-event-action="click" data-event-label="facebook"><i class="ion-social-facebook"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_twitter" data-event-category="addthis-custom" data-event-action="click" data-event-label="twitter"><i class="ion-social-twitter"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_reddit" data-event-category="addthis-custom" data-event-action="click" data-event-label="reddit"><i class="ion-social-reddit"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_linkedin" data-event-category="addthis-custom" data-event-action="click" data-event-label="linkedin"><i class="ion-social-linkedin"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_whatsapp" data-event-category="addthis-custom" data-event-action="click" data-event-label="whatsapp"><i class="ion-social-whatsapp"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_email" data-event-category="addthis-custom" data-event-action="click" data-event-label="email"><i class="ion-ios-email"></i></a>
+	</li>
+	
+</ul>
+
+
+</div>
+
+
+<div class="article-body__content">
+
+	
+
+		<p>If you close your eyes and imagine a brick wall, you can probably 
+come up with a pretty good mental image. After seeing many such walls, 
+your brain knows what one should look like.</p>
+
+		<p>A startup in the U.K. is using machine learning to enable computers
+ and smartphones to model visual information in a similar way. A 
+computer could use these visual models for various tasks, from improving
+ video streaming to automatically generating elements of a realistic 
+virtual world.</p><div class="adunit ad--square-only ad--article-body display-none" data-adunit="__site/__square-rectangle" data-size-mapping="square-rectangle--mobile" data-active="true" id="__site___square_rectangle-auto-gen-id-3" style=""></div>
+
+		<p><a href="http://www.magicpony.technology/" target="_blank">Magic Pony Technology</a>,
+ created by graduates of Imperial College London with expertise in 
+statistics, computer vision, and neuroscience, trains large neural 
+networks to process visual information.</p>
+
+		
+
+
+	
+
+
+<figure class="l-article-img l-article-img--text-col" data-widget-type="imageset" data-widget-layout="text-col">
+
+	
+
+	
+		
+
+		
+			
+	<picture class="video-wrapper">
+    <video autoplay="autoplay" loop="" muted="muted" playsinline="" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/improving.mp4" class="article-img article-img--text-col"></video>
+	</picture>
+
+		
+
+		
+
+	
+
+	
+		<figcaption class="article-cap article-cap--text-col">
+			
+			Live video-game feed shows how the system can sharpen up blurred footage in real time.
+			
+			
+		</figcaption>
+		
+</figure>
+
+
+		<p>The company has developed a way to create high-quality videos or 
+images from low-resolution ones. It feeds example images to a computer, 
+which converts them to a lower resolution and then learns the difference
+ between the two. Others have demonstrated the feat before, but the 
+company is able to do it on an ordinary graphics processor, which could 
+open up applications. One example it’s demonstrated uses the technique 
+to improve a live gaming feed in real time.</p>
+
+		
+
+
+	
+
+
+<figure class="l-article-img l-article-img--3col" data-widget-type="imageset" data-widget-layout="3col">
+
+	
+
+	
+		
+
+		
+			
+
+
+<picture class=" " data-iesrc="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=280&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616">
+			
+				<source media="(min-width: 1024px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=280&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 1x,https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=560&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 2x">
+			
+		
+			
+				<source media="(min-width: 850px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=1024&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 1x,https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=2048&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 2x">
+			
+		
+			
+				<source media="(min-width: 550px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=850&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 1x,https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=1700&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 2x">
+			
+				<source media="(min-width: 401px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=550&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 1x,https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=1100&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 2x">
+			
+		
+			
+				<source media="(min-width: 0px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=401&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 1x,https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=802&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 2x">
+			
+		
+
+		
+			<img class="article-img article-img--3col" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/improving_003.jpg" srcset="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=280&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 1x,https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=560&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 2x">
+			<div class="article-enlarge"></div></picture>
+
+		
+
+		
+
+	
+
+	
+		<figcaption class="article-cap article-cap--3col">
+			
+			Magic Pony’s algorithms can sharpen up a pixelated character.
+			
+			
+		</figcaption>
+		
+</figure>
+
+
+		<p><a href="http://www.rob-bishop.com/" target="_blank">Rob Bishop</a>,
+ a cofounder, says Magic Pony is currently in talks with several large 
+companies interested in licensing the technology. “Online 
+video-streaming businesses rely heavily on video compression,” Bishop 
+says. “Our first product demonstrates that image quality can be greatly 
+enhanced using deep learning, and fast mobile GPUs now allow us to 
+deploy it anywhere.”</p>
+
+		<p>Bishop adds that the technology could improve the quality of images
+ captured on smartphones with low-resolution cameras or in low light. 
+The company is looking at other applications, including converting 
+pixelated computer graphics into high-resolution ones or automatically 
+generating miles of realistic-looking terrain and textures from earlier 
+examples for games or virtual-reality environments.</p>
+
+		<p>What’s unusual about the company’s approach to processing video 
+footage is that it does not need manually labeled examples. Instead, it 
+recognizes statistical patterns in high-resolution and low-resolution 
+examples and then teaches itself what edges, textures, straight lines, 
+and other features should look like.</p>
+
+		<p>This type of learning could be important to the future of artificial intelligence (see “<a href="https://www.technologyreview.com/s/600819/the-missing-link-of-artificial-intelligence/" target="_blank">The Missing Link of Artificial Intelligence</a>”).
+ To date, deep learning has mostly been applied as a way of recognizing 
+high-level objects such as particular faces in images and video, a feat 
+accomplished by processing many labeled examples (see “<a href="https://www.technologyreview.com/s/513696/deep-learning/" target="_blank">10 Breakthrough Technologies 2013: Deep Learning</a>”).</p>
+
+		
+
+
+	
+
+
+<figure class="l-article-img l-article-img--2x4--right" data-widget-type="imageset" data-widget-layout="2x4--right">
+
+	
+
+	
+		
+
+		
+			
+
+
+<picture class=" " data-iesrc="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=400&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999">
+			
+				<source media="(min-width: 1024px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=400&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 1x,https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=800&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 2x">
+			
+		
+			
+				<source media="(min-width: 850px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=1024&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 1x,https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=2048&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 2x">
+			
+		
+			
+				<source media="(min-width: 550px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=850&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 1x,https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=1700&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 2x">
+			
+				<source media="(min-width: 401px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=550&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 1x,https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=1100&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 2x">
+			
+		
+			
+				<source media="(min-width: 0px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=401&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 1x,https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=802&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 2x">
+			
+		
+
+		
+			<img class="article-img article-img--2x4--right" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/improving_002.jpg" srcset="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=400&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 1x,https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=800&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 2x">
+			<div class="article-enlarge"></div></picture>
+
+		
+
+		
+
+	
+		
+
+		
+			
+
+
+<picture class=" " data-iesrc="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=400&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512">
+			
+				<source media="(min-width: 1024px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=400&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 1x,https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=800&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 2x">
+			
+		
+			
+				<source media="(min-width: 850px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=1024&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 1x,https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=2048&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 2x">
+			
+		
+			
+				<source media="(min-width: 550px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=850&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 1x,https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=1700&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 2x">
+			
+				<source media="(min-width: 401px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=550&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 1x,https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=1100&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 2x">
+			
+		
+			
+				<source media="(min-width: 0px)" srcset="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=401&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 1x,https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=802&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 2x">
+			
+		
+
+		
+			<img class="article-img article-img--2x4--right" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/improving.jpg" srcset="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=400&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 1x,https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=800&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 2x">
+			<div class="article-enlarge"></div></picture>
+
+		
+
+		
+
+	
+
+	
+		<figcaption class="article-cap article-cap--2x4--right">
+			
+			The system can automatically generate complex textures, such as a distressed brick wall.
+			
+			
+		</figcaption>
+		
+</figure>
+
+
+		<p>Researchers from Magic Pony will present a paper at a computer 
+vision conference later this year. But Bishop says that since the paper 
+was written, his team has “significantly improved” the technology to 
+make it even more efficient.</p>
+
+		<p>Bishop explains that Magic Pony’s name comes from a meeting in 
+which the earliest investor described the technology as a “magic pony” 
+because no one would believe it without seeing it.</p>
+	
+		<div class="callout--tagged-event-promo" desc="in-story-promo-emtech-digital-reg">
+			<p class="callout__copy">Time is running out to register for EmTech Digital. You don’t want to miss expert discussions on deep learning.</p>
+			
+			<a href="https://events.technologyreview.com/emtech/digital/18/?utm_medium=trsite&amp;utm_source=instory&amp;utm_campaign=emtch_dig_18&amp;utm_term=conference&amp;utm_content=learn_about_topic&amp;discount=LEARN#section-register" class="callout__link" data-event-category="promoTracking" data-event-action="click" data-event-label="in-story-promo-emtech-digital-reg">Learn more and register <span class="callout__cta-icon"></span></a><br>
+			
+		</div>
+	
+</div>
+
+<div class="article-enlarge__modal">
+
+
+
+
+
+<!-- Widget: Slideshow -->
+<div data-widget-type="slideshow" class="article-img-enlarge-gallery-container swiper-container">
+	<div class="swiper-wrapper-outer">
+		<div class="article-img-enlarge-gallery-wrapper swiper-wrapper">
+						
+
+
+
+
+
+
+
+
+
+
+
+
+					
+						
+
+
+	
+
+
+
+
+
+
+
+<div class="swiper-slide">
+	<div class="swiper-slide__wrapper">
+		
+		<picture>
+			
+<source media="(min-width: 850px)" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?cx=0&amp;cy=0&amp;cw=254&amp;ch=616&amp;sw=1180 1x, https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?cx=0&amp;cy=0&amp;cw=254&amp;ch=616&amp;sw=2360 2x">
+
+			
+<source media="(min-width: 550px)" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?cx=0&amp;cy=0&amp;cw=254&amp;ch=616&amp;sw=850 1x, https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?cx=0&amp;cy=0&amp;cw=254&amp;ch=616&amp;sw=1700 2x">
+
+			
+<source media="(min-width: 401px)" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?cx=0&amp;cy=0&amp;cw=254&amp;ch=616&amp;sw=550 1x, https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?cx=0&amp;cy=0&amp;cw=254&amp;ch=616&amp;sw=1100 2x">
+
+			<img class="article-img article-img--enlarge" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=401&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 1x, https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=802&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616 2x" alt="" real-src="https://cdn.technologyreview.com/i/images/improving.video.2x254.jpg?sw=802&amp;cx=0&amp;cy=0&amp;cw=254&amp;ch=616">
+			<div class="enlarge-close"></div>
+		</picture>
+
+		
+
+		<figcaption class="article-cap">
+			Magic Pony’s algorithms can sharpen up a pixelated character.
+			
+		</figcaption>
+	</div>
+</div>
+
+
+
+					
+						
+
+
+	
+
+
+
+
+
+
+
+<div class="swiper-slide">
+	<div class="swiper-slide__wrapper">
+		
+		<picture>
+			
+<source media="(min-width: 850px)" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?cx=0&amp;cy=0&amp;cw=999&amp;ch=999&amp;sw=1180 1x, https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?cx=0&amp;cy=0&amp;cw=999&amp;ch=999&amp;sw=2360 2x">
+
+			
+<source media="(min-width: 550px)" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?cx=0&amp;cy=0&amp;cw=999&amp;ch=999&amp;sw=850 1x, https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?cx=0&amp;cy=0&amp;cw=999&amp;ch=999&amp;sw=1700 2x">
+
+			
+<source media="(min-width: 401px)" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?cx=0&amp;cy=0&amp;cw=999&amp;ch=999&amp;sw=550 1x, https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?cx=0&amp;cy=0&amp;cw=999&amp;ch=999&amp;sw=1100 2x">
+
+			<img class="article-img article-img--enlarge" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=401&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 1x, https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=802&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999 2x" alt="" real-src="https://cdn.technologyreview.com/i/images/improving.video.3bx1000.jpg?sw=802&amp;cx=0&amp;cy=0&amp;cw=999&amp;ch=999">
+			<div class="enlarge-close"></div>
+		</picture>
+
+		
+
+		<figcaption class="article-cap">
+			The system can automatically generate complex textures, such as a distressed brick wall.
+			
+		</figcaption>
+	</div>
+</div>
+
+
+
+					
+						
+
+
+	
+
+
+
+
+
+
+
+<div class="swiper-slide">
+	<div class="swiper-slide__wrapper">
+		
+		<picture>
+			
+<source media="(min-width: 850px)" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?cx=0&amp;cy=0&amp;cw=512&amp;ch=512&amp;sw=1180 1x, https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?cx=0&amp;cy=0&amp;cw=512&amp;ch=512&amp;sw=2360 2x">
+
+			
+<source media="(min-width: 550px)" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?cx=0&amp;cy=0&amp;cw=512&amp;ch=512&amp;sw=850 1x, https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?cx=0&amp;cy=0&amp;cw=512&amp;ch=512&amp;sw=1700 2x">
+
+			
+<source media="(min-width: 401px)" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?cx=0&amp;cy=0&amp;cw=512&amp;ch=512&amp;sw=550 1x, https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?cx=0&amp;cy=0&amp;cw=512&amp;ch=512&amp;sw=1100 2x">
+
+			<img class="article-img article-img--enlarge" real-srcset="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=401&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 1x, https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=802&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512 2x" alt="" real-src="https://cdn.technologyreview.com/i/images/improving.video.3ax512.jpg?sw=802&amp;cx=0&amp;cy=0&amp;cw=512&amp;ch=512">
+			<div class="enlarge-close"></div>
+		</picture>
+
+		
+
+		<figcaption class="article-cap">
+			The system can automatically generate complex textures, such as a distressed brick wall.
+			
+		</figcaption>
+	</div>
+</div>
+
+
+
+					
+
+			
+
+			
+		</div>		
+	</div>
+	
+	<div class="enlarge-gallery-controls__container">
+		<button class="enlarge-gallery-swiper-button enlarge-gallery-swiper-button-prev"></button>
+		<div class="enlarge-gallery-swiper-index-back"><div class="enlarge-gallery-swiper-index-front"><div class="enlarge-swiper-pagination-fraction"></div></div></div>
+		<button class="enlarge-gallery-swiper-button enlarge-gallery-swiper-button-next"></button>
+	</div>
+</div><!-- // end [data-widget-type="slideshow"] -->
+			<svg class="enlarge-loader" style="z-index: 100;fill:red; position:absolute; top: 50%; left: 50%;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="85" height="85" fill="white">
+				<path opacity=".25" d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"></path>
+				<path d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z" transform="rotate(290.988 16 16)">
+					<animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="0.8s" repeatCount="indefinite"></animateTransform>
+				</path>
+			</svg>
+		</div>
+
+
+
+
+	<footer class="article-footer"><aside class="article-sponsored-content-list">
+	<div class="article-sponsored-content-list__wrapper" style="display: none;">
+		<div class="article-sponsored-content-list__title">From Our Advertisers</div>
+		<ul class="article-sponsored-content-list__list">
+			
+			<li class="article-sponsored-content-list__item">
+				<a href="https://www.technologyreview.com/s/609097/the-customer-engagement-revolution/" class="article-sponsored-content-list__item__link" data-event-category="ad_sales" data-event-action="click" data-event-label="article_link_list">
+					
+					<p class="article-sponsored-content-list__item__sponsor">
+						
+							In partnership with
+						
+						<strong class="article-sponsored-content-list__item__sponsor__name">Couchbase</strong>
+					</p>
+					
+					<div class="article-sponsored-content-list__item__hed">The Customer Engagement Revolution</div>
+				</a>
+			</li>
+			
+			<li class="article-sponsored-content-list__item">
+				<a href="https://www.technologyreview.com/s/609928/nanomicro-3-d-printing-is-capable-of-generating-complex-minute-components/" class="article-sponsored-content-list__item__link" data-event-category="ad_sales" data-event-action="click" data-event-label="article_link_list">
+					
+					<p class="article-sponsored-content-list__item__sponsor">
+						
+							In partnership with
+						
+						<strong class="article-sponsored-content-list__item__sponsor__name">BMF</strong>
+					</p>
+					
+					<div class="article-sponsored-content-list__item__hed">A New Dimension: How a Startup Company Reshaped Precision Manufacturing</div>
+				</a>
+			</li>
+			
+			<li class="article-sponsored-content-list__item">
+				<a href="https://www.technologyreview.com/s/608773/network-virtualization-the-bridge-to-digital-transformation/" class="article-sponsored-content-list__item__link" data-event-category="ad_sales" data-event-action="click" data-event-label="article_link_list">
+					
+					<p class="article-sponsored-content-list__item__sponsor">
+						
+							Sponsored by
+						
+						<strong class="article-sponsored-content-list__item__sponsor__name">VMware</strong>
+					</p>
+					
+					<div class="article-sponsored-content-list__item__hed">Network Virtualization: The Bridge to Digital Transformation</div>
+				</a>
+			</li>
+			
+			<li class="article-sponsored-content-list__item">
+				<a href="https://www.technologyreview.com/hub/the-bridge-to-digital-transformation/?utm_medium=sponsored-content-widget&amp;utm_source=trsite&amp;utm_campaign=vmware&amp;utm_content=content-hub" class="article-sponsored-content-list__item__link" data-event-category="ad_sales" data-event-action="click" data-event-label="article_link_list">
+					
+					<p class="article-sponsored-content-list__item__sponsor">
+						
+							Presented in partnership with
+						
+						<strong class="article-sponsored-content-list__item__sponsor__name">VMware</strong>
+					</p>
+					
+					<div class="article-sponsored-content-list__item__hed">The Bridge to Digital Transformation: The Move to a Software-Based Network Strategy</div>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+</aside>
+
+	
+	<div class="article-footer__ad">
+		<div class="adunit ad--square-only display-none" data-adunit="__site/__square-only" data-size-mapping="footer" data-active="true" id="__site___square_only-auto-gen-id-4"></div>
+	</div>
+	
+
+	<div class="article-footer__main">
+		<div class="article-footer__group article-footer__terms">
+			<div class="sharing--footer">
+				<h3 class="article-footer__term-title">Share</h3>
+			
+<ul class="social-list addthis_toolbox" data-share-id="601258" addthis:url="https://www.technologyreview.com/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/" addthis:title="This artificial-intelligence algorithm can clean up pixelated video to make it look more realistic"><li class="disqus-container social-list__item">
+		<a href="#disqus_thread" class="scroll-to-comments social-list__comment-link">2</a>
+	</li><li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_facebook" data-event-category="addthis-custom" data-event-action="click" data-event-label="facebook"><i class="ion-social-facebook"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_twitter" data-event-category="addthis-custom" data-event-action="click" data-event-label="twitter"><i class="ion-social-twitter"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_reddit" data-event-category="addthis-custom" data-event-action="click" data-event-label="reddit"><i class="ion-social-reddit"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_linkedin" data-event-category="addthis-custom" data-event-action="click" data-event-label="linkedin"><i class="ion-social-linkedin"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_whatsapp" data-event-category="addthis-custom" data-event-action="click" data-event-label="whatsapp"><i class="ion-social-whatsapp"></i></a>
+	</li>
+	<li class="social-list__item">
+		<a href="#" class="social-list__link addthis_button_email" data-event-category="addthis-custom" data-event-action="click" data-event-label="email"><i class="ion-ios-email"></i></a>
+	</li>
+	
+</ul>
+
+
+			</div>
+
+			
+			<div class="article-footer__taxonomy">
+				<h3 class="article-footer__term-title">Tagged</h3>
+				<p class="article-footer__term-text">
+					
+					<a href="https://www.technologyreview.com/g/nvidia/" class="article-footer__term-link">NVIDIA</a>, 
+					
+					<a href="https://www.technologyreview.com/g/machine-learning/" class="article-footer__term-link">machine learning</a>, 
+					
+					<a href="https://www.technologyreview.com/g/deep-learning/" class="article-footer__term-link">deep learning</a>, 
+					
+					<a href="https://www.technologyreview.com/g/emtech-digital-2016/" class="article-footer__term-link">EmTech Digital 2016</a>, 
+					
+					<a href="https://www.technologyreview.com/g/magic-pony/" class="article-footer__term-link">Magic Pony</a>, 
+					
+					<a href="https://www.technologyreview.com/g/unsupervised-learning/" class="article-footer__term-link">unsupervised learning</a>, 
+					
+					<a href="https://www.technologyreview.com/g/computer-games/" class="article-footer__term-link">computer games</a>, 
+					
+					<a href="https://www.technologyreview.com/g/videos/" class="article-footer__term-link">videos</a>, 
+					
+					<a href="https://www.technologyreview.com/g/graphics/" class="article-footer__term-link">graphics</a>, 
+					
+					<a href="https://www.technologyreview.com/g/compression/" class="article-footer__term-link">compression</a>, 
+					
+					<a href="https://www.technologyreview.com/g/imperial-college/" class="article-footer__term-link">Imperial College</a>, 
+					
+					<a href="https://www.technologyreview.com/g/games/" class="article-footer__term-link">games</a>
+					
+				</p>
+			</div>
+			
+
+			
+			<div class="article-footer__taxonomy">
+				<h3 class="article-footer__term-title">Credit</h3>
+				<p class="article-footer__term-text">Images courtesy of Magic Pony Technology</p>
+			</div>
+			
+		</div><!-- // end .article-footer__terms -->
+
+		
+		<div class="article-footer__group article-footer__author">
+
+			
+			<div class="article-footer__author__portrait-mod">
+				<img class="article-footer__author__portrait" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/will_knight.png" alt="Will Knight">
+			</div>
+			
+
+			<div class="article-footer__author__text article-footer__author__text-with-avatar">
+				<p class="article-footer__author__name"><a href="https://www.technologyreview.com/profile/will-knight/">Will Knight</a> <span class="article-footer__author__title">Senior Editor, AI</span></p>
+				
+				<p class="article-footer__author_bio">I am the senior editor for AI at <i>MIT Technology Review</i>.
+ I mainly cover machine intelligence, robots, and automation, but I’m 
+interested in most aspects of computing. I grew up in south London, and I
+ wrote my first line of code (a spell-binding<span class="truncate__trigger">… <a href="#" data-truncate="trigger">More</a></span><span data-truncate="extended" class="truncate__extended"> infinite loop) on a mighty Sinclair ZX Spectrum. Before joining this publication, I worked as the online editor at <i>New Scientist</i> magazine. If you’d like to get in touch, please send an e-mail to <a href="mailto:will.knight@technologyreview.com">will.knight@technologyreview.com</a>.</span></p>
+				
+			</div>
+		</div><!-- // end .article-footer__author -->
+		<div class="l-load-comments-btn">
+			<a class="load-comments-btn" href="#" alt="Toggle showing or hidding comments.">
+				READ <span class="disqus-comment-count" data-disqus-identifier="nid_601258">2</span> COMMENTS
+			</a>
+			<p class="commenting-guidelines">
+				Please read our <a href="https://www.technologyreview.com/about/commenting-guidelines/">commenting guidelines.</a>
+			</p>
+		</div>
+		<div id="disqus_thread"></div>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<script id="dsq-count-scr" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/count.js" defer="defer"></script></div><!-- // end .article-footer -->
+</footer>
+
+				</div>
+			</article>
+
+			<section class="paywall"></section>
+
+			<section class="l-fullwidth-interstitial-ad">
+				<div class="adunit ad--large display-none" data-adunit="__site/__fullwidth-interstitial" data-size-mapping="fullwidth-interstitial" data-active="true" id="__site___fullwidth_interstitial-auto-gen-id-5"></div>
+			</section>
+
+			<!-- Related Videos -->
+			
+
+<section class="l-related-videos">
+
+	<header class="related-videos__header">
+		<h3 class="related-videos__header__title">Related Video</h3>
+		<p class="related-videos__header__link"><a href="https://www.technologyreview.com/videos/">More videos</a></p>
+	</header>
+
+	<div class="l-related-videos__container">
+	
+		
+		<div class="related-video">
+			
+			<a class="related-video__image-link" href="https://www.technologyreview.com/video/609445/big-problems-big-data-solutions/" data-event-category="relatedvideo" data-event-action="click" data-event-label="/video/609445/big-problems-big-data-solutions/">
+				<div class="related-video__image-wrapper">
+					<span class="related-video__play-border">
+						<span class="related-video__play-button"></span>
+					</span>
+					
+
+
+<picture class="related-video__image lozad" data-iesrc="https://cdn.technologyreview.com/i/ooyala/1rNGFiZDE6-vbYllOKacK5PyTHL1Z0yu.jpg?sw=512" data-loaded="true"><img class="related-video__image lozad" data-src="https://cdn.technologyreview.com/i/ooyala/1rNGFiZDE6-vbYllOKacK5PyTHL1Z0yu.jpg?sw=512" data-srcset="https://cdn.technologyreview.com/i/ooyala/1rNGFiZDE6-vbYllOKacK5PyTHL1Z0yu.jpg?sw=512 1x,https://cdn.technologyreview.com/i/ooyala/1rNGFiZDE6-vbYllOKacK5PyTHL1Z0yu.jpg?sw=1024 2x" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/1rNGFiZDE6-vbYllOKacK5PyTHL1Z0yu.jpg" srcset="https://cdn.technologyreview.com/i/ooyala/1rNGFiZDE6-vbYllOKacK5PyTHL1Z0yu.jpg?sw=512 1x,https://cdn.technologyreview.com/i/ooyala/1rNGFiZDE6-vbYllOKacK5PyTHL1Z0yu.jpg?sw=1024 2x" data-loaded="true"><img></picture>
+
+				</div>
+			</a>
+			
+			<p class="related-video__topic">
+				
+					Intelligent Machines
+				
+			</p>
+
+			<a href="https://www.technologyreview.com/video/609445/big-problems-big-data-solutions/"><div class="related-video__title">Big Problems, Big Data Solutions <span class="related-video__duration">26:21</span></div></a>
+		</div>
+		
+	
+		
+		<div class="related-video">
+			
+			<a class="related-video__image-link" href="https://www.technologyreview.com/video/609417/robots-in-everyday-life/" data-event-category="relatedvideo" data-event-action="click" data-event-label="/video/609417/robots-in-everyday-life/">
+				<div class="related-video__image-wrapper">
+					<span class="related-video__play-border">
+						<span class="related-video__play-button"></span>
+					</span>
+					
+
+
+<picture class="related-video__image lozad" data-iesrc="https://cdn.technologyreview.com/i/ooyala/hreTRiZDE6eSQnPnpdsyIhtfyacwTZQ2.jpg?sw=512" data-loaded="true"><img class="related-video__image lozad" data-src="https://cdn.technologyreview.com/i/ooyala/hreTRiZDE6eSQnPnpdsyIhtfyacwTZQ2.jpg?sw=512" data-srcset="https://cdn.technologyreview.com/i/ooyala/hreTRiZDE6eSQnPnpdsyIhtfyacwTZQ2.jpg?sw=512 1x,https://cdn.technologyreview.com/i/ooyala/hreTRiZDE6eSQnPnpdsyIhtfyacwTZQ2.jpg?sw=1024 2x" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/hreTRiZDE6eSQnPnpdsyIhtfyacwTZQ2.jpg" srcset="https://cdn.technologyreview.com/i/ooyala/hreTRiZDE6eSQnPnpdsyIhtfyacwTZQ2.jpg?sw=512 1x,https://cdn.technologyreview.com/i/ooyala/hreTRiZDE6eSQnPnpdsyIhtfyacwTZQ2.jpg?sw=1024 2x" data-loaded="true"><img></picture>
+
+				</div>
+			</a>
+			
+			<p class="related-video__topic">
+				
+					Intelligent Machines
+				
+			</p>
+
+			<a href="https://www.technologyreview.com/video/609417/robots-in-everyday-life/"><div class="related-video__title">Robots in Everyday Life <span class="related-video__duration">24:22</span></div></a>
+		</div>
+		
+	
+		
+		<div class="related-video">
+			
+			<a class="related-video__image-link" href="https://www.technologyreview.com/video/609412/robots-in-everyday-life/" data-event-category="relatedvideo" data-event-action="click" data-event-label="/video/609412/robots-in-everyday-life/">
+				<div class="related-video__image-wrapper">
+					<span class="related-video__play-border">
+						<span class="related-video__play-button"></span>
+					</span>
+					
+
+
+<picture class="related-video__image lozad" data-iesrc="https://cdn.technologyreview.com/i/ooyala/lteTRiZDE6H872Y-fQTN6mPvVhaHx0KU.jpg?sw=512" data-loaded="true"><img class="related-video__image lozad" data-src="https://cdn.technologyreview.com/i/ooyala/lteTRiZDE6H872Y-fQTN6mPvVhaHx0KU.jpg?sw=512" data-srcset="https://cdn.technologyreview.com/i/ooyala/lteTRiZDE6H872Y-fQTN6mPvVhaHx0KU.jpg?sw=512 1x,https://cdn.technologyreview.com/i/ooyala/lteTRiZDE6H872Y-fQTN6mPvVhaHx0KU.jpg?sw=1024 2x" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/lteTRiZDE6H872Y-fQTN6mPvVhaHx0KU.jpg" srcset="https://cdn.technologyreview.com/i/ooyala/lteTRiZDE6H872Y-fQTN6mPvVhaHx0KU.jpg?sw=512 1x,https://cdn.technologyreview.com/i/ooyala/lteTRiZDE6H872Y-fQTN6mPvVhaHx0KU.jpg?sw=1024 2x" data-loaded="true"><img></picture>
+
+				</div>
+			</a>
+			
+			<p class="related-video__topic">
+				
+					Intelligent Machines
+				
+			</p>
+
+			<a href="https://www.technologyreview.com/video/609412/robots-in-everyday-life/"><div class="related-video__title">Robots in Everyday Life <span class="related-video__duration">13:11</span></div></a>
+		</div>
+		
+	
+		
+		<div class="related-video">
+			
+			<a class="related-video__image-link" href="https://www.technologyreview.com/video/609388/ais-language-problem/" data-event-category="relatedvideo" data-event-action="click" data-event-label="/video/609388/ais-language-problem/">
+				<div class="related-video__image-wrapper">
+					<span class="related-video__play-border">
+						<span class="related-video__play-button"></span>
+					</span>
+					
+
+
+<picture class="related-video__image lozad" data-iesrc="https://cdn.technologyreview.com/i/ooyala/pzYXRhZDE6Ndeg_vptnPoHzmDYqBhlAg.jpg?sw=512" data-loaded="true"><img class="related-video__image lozad" data-src="https://cdn.technologyreview.com/i/ooyala/pzYXRhZDE6Ndeg_vptnPoHzmDYqBhlAg.jpg?sw=512" data-srcset="https://cdn.technologyreview.com/i/ooyala/pzYXRhZDE6Ndeg_vptnPoHzmDYqBhlAg.jpg?sw=512 1x,https://cdn.technologyreview.com/i/ooyala/pzYXRhZDE6Ndeg_vptnPoHzmDYqBhlAg.jpg?sw=1024 2x" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/pzYXRhZDE6Ndeg_vptnPoHzmDYqBhlAg.jpg" srcset="https://cdn.technologyreview.com/i/ooyala/pzYXRhZDE6Ndeg_vptnPoHzmDYqBhlAg.jpg?sw=512 1x,https://cdn.technologyreview.com/i/ooyala/pzYXRhZDE6Ndeg_vptnPoHzmDYqBhlAg.jpg?sw=1024 2x" data-loaded="true"><img></picture>
+
+				</div>
+			</a>
+			
+			<p class="related-video__topic">
+				
+					Intelligent Machines
+				
+			</p>
+
+			<a href="https://www.technologyreview.com/video/609388/ais-language-problem/"><div class="related-video__title">AI’s Language Problem <span class="related-video__duration">21:26</span></div></a>
+		</div>
+		
+	
+	</div>
+
+</section>
+
+
+
+			
+
+		</section>
+	</main>
+
+	<!-- Read More -->
+	
+
+<section class="rm" data-type="">
+
+	<header class="rm__header">
+
+		<div class="rm__header__heading">More from Intelligent Machines</div>
+		
+
+		
+		<p class="rm__header__subheading">Artificial intelligence and robots are transforming how we work and live.</p><p>
+		
+
+		
+
+	</p></header>
+
+	<ul class="rm__articles-list" data-entryset-value="">
+
+	
+		
+
+		<li class="rm__article rm__article--img">
+
+			<div class="rm__article__text">
+
+				<a href="https://www.technologyreview.com/s/610377/a-new-data-trove-could-teach-computers-to-tell-blind-people-what-they-need-to-know/" data-event-category="readnext" data-event-action="click" data-event-label="item_1" data-entryset-link=""><div class="rm__article__text__title">A new data trove could teach computers to tell blind people what they need to know</div></a>
+
+				<p class="rm__article__text__dek">Its creators pose a challenge to machine vision researchers: use the information to make assistive technology better.</p>
+
+				
+				<p class="rm__article__text__byline">by 
+	
+		
+			Emerging Technology from the arXiv
+		
+	
+</p>
+				
+
+			</div>
+
+			
+			<div class="l-rm__article__thumbnail"><a href="https://www.technologyreview.com/s/610377/a-new-data-trove-could-teach-computers-to-tell-blind-people-what-they-need-to-know/" data-event-category="readnext" data-event-action="click" data-event-label="item_1" data-entryset-link="">
+
+
+<picture class="rm__article__thumbnail lozad" data-iesrc="https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=320&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308">
+			
+				<source media="(min-width: 1024px)" srcset="https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=320&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308 1x,https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=640&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308 2x">
+			
+		
+			
+				<source media="(min-width: 850px)" srcset="https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=320&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308 1x,https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=640&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308 2x">
+			
+		
+			
+				<source media="(min-width: 550px)" srcset="https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=320&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308 1x,https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=640&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308 2x">
+			
+				<source media="(min-width: 401px)" srcset="https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=320&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308 1x,https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=640&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308 2x">
+			
+		
+			
+				<source media="(min-width: 0px)" srcset="https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=320&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308 1x,https://cdn.technologyreview.com/i/images/vizwiz-questions.png?sw=640&amp;cx=0&amp;cy=167&amp;cw=549&amp;ch=308 2x">
+			
+		
+
+		</picture>
+</a></div>
+			
+		</li>
+
+	
+		
+
+		<li class="rm__article rm__article--img">
+
+			<div class="rm__article__text">
+
+				<a href="https://www.technologyreview.com/s/610275/meet-the-woman-who-searches-out-search-engines-bias-against-women-and-minorities/" data-event-category="readnext" data-event-action="click" data-event-label="item_2" data-entryset-link=""><div class="rm__article__text__title">Bias already exists in search engine results, and it’s only going to get worse</div></a>
+
+				<p class="rm__article__text__dek">The way search engines work is far from unprejudiced, a new book argues.</p>
+
+				
+				<p class="rm__article__text__byline">by 
+	
+		
+			Jackie Snow
+		
+	
+</p>
+				
+
+			</div>
+
+			
+			<div class="l-rm__article__thumbnail"><a href="https://www.technologyreview.com/s/610275/meet-the-woman-who-searches-out-search-engines-bias-against-women-and-minorities/" data-event-category="readnext" data-event-action="click" data-event-label="item_2" data-entryset-link="">
+
+
+<picture class="rm__article__thumbnail lozad" data-iesrc="https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=320&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438">
+			
+				<source media="(min-width: 1024px)" srcset="https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=320&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438 1x,https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=640&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438 2x">
+			
+		
+			
+				<source media="(min-width: 850px)" srcset="https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=320&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438 1x,https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=640&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438 2x">
+			
+		
+			
+				<source media="(min-width: 550px)" srcset="https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=320&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438 1x,https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=640&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438 2x">
+			
+				<source media="(min-width: 401px)" srcset="https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=320&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438 1x,https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=640&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438 2x">
+			
+		
+			
+				<source media="(min-width: 0px)" srcset="https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=320&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438 1x,https://cdn.technologyreview.com/i/images/algorithmsofopression.png?sw=640&amp;cx=2&amp;cy=0&amp;cw=778&amp;ch=438 2x">
+			
+		
+
+		</picture>
+</a></div>
+			
+		</li>
+
+	
+		
+
+		<li class="rm__article rm__article--img">
+
+			<div class="rm__article__text">
+
+				<a href="https://www.technologyreview.com/s/610181/what-it-felt-like-to-visit-the-most-tech-centric-olympics-ever/" data-event-category="readnext" data-event-action="click" data-event-label="item_3" data-entryset-link=""><div class="rm__article__text__title">What it felt like to visit the most tech-centric Olympics ever</div></a>
+
+				<p class="rm__article__text__dek">I tried out 5G wireless networks, AI translation robots, and self-driving buses in Pyeongchang.</p>
+
+				
+				<p class="rm__article__text__byline">by 
+	
+		
+			Yoochul Kim
+		
+	
+</p>
+				
+
+			</div>
+
+			
+			<div class="l-rm__article__thumbnail--faux-crop"><a href="https://www.technologyreview.com/s/610181/what-it-felt-like-to-visit-the-most-tech-centric-olympics-ever/" data-event-category="readnext" data-event-action="click" data-event-label="item_3" data-entryset-link="">
+	<picture class="video-wrapper">
+  	
+	
+		
+	
+	<video autoplay="autoplay" loop="" muted="muted" playsinline="" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/olympics5ganimation_0.mp4" class="rm__article__thumbnail"></video>
+	</picture>
+</a></div>
+			
+		</li>
+
+	
+
+	</ul>
+
+	
+	
+	<footer class="rm__footer">
+		<p class="rm__footer__link"><a href="https://www.technologyreview.com/topic/intelligent-machines/" data-event-category="readnext" data-event-action="click" data-event-label="more">More from Intelligent Machines</a></p>
+	</footer>
+	
+
+</section>
+
+
+
+
+	
+
+
+
+
+	
+		<!-- Insider promo -->
+		
+		
+		
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+<div class="l-pricing l-pricing--menu-only" data-abtest-variant="online only">
+
+	
+
+	
+	<div class="pricing__heading">
+		Want more award-winning journalism?
+		
+			Subscribe to Insider Online Only.
+		
+	</div>
+	
+
+	<div id="pricing">
+
+		
+
+		<div class="l-pricing__menu l-pricing__menu--menu-only">
+			<ul class="pricing__menu">
+				
+				
+					
+				
+					
+				
+					
+					<li class="pricing__menu__tier pricing__menu__tier--online" data-tier="online">
+						<div class="pricing__menu__tier__heading">
+							Insider Online Only
+							<span class="pricing__menu__tier__price" data-onload="fadein">$9.99/3 months<!-- rivets: if insider.diffIntlPrice.online --></span>
+							
+						</div>
+						<p class="pricing__menu__tier__pricing-label" rv-show="insider.display.menuOptionsLabel" data-onload="fadein" style="display: none;">
+							
+						</p>
+						<p class="pricing__menu__tier__description" data-onload="fadein">
+							Unlimited online access including articles and video, plus The 
+Download with the top tech stories delivered daily to your inbox.
+						</p>
+
+						<div class="pricing__menu__tier__cta-block" data-onload="fadein">
+							<a rv-href="insider.buttons.online.buttonURL" class="btn btn--primary--transparent pricing__menu__tier__cta" rv-class-btn--activated="insider.buttons.online.buttonClassActivated" rv-class-btn--group-activated="insider.buttons.online.buttonClassGroupActivated" data-event-category="story-footer-insider-promo" data-event-action="click" data-event-label="online only" href="https://www.technologyreview.com/insider/subscribe/online/?shipping=us&amp;utm_campaign=internal&amp;utm_source=insider_article_footer&amp;utm_medium=online_button">Subscribe<span class="btn--primary--transparent__icon">
+<svg class="btn__icon--angle-arrow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 10.1 10.1" enable-background="new 0 0 10.1 10.1" xml:space="preserve">
+	<polygon fill="#FFFFFF" points="0.9,0 0.9,2.5 5.9,2.5 0,8.4 1.8,10.1 7.6,4.3 7.6,9.2 10.1,9.2 10.1,0 "></polygon>
+</svg>
+</span></a>
+						</div>
+
+						<div class="pricing__menu__tier__detail-toggle">See details+</div>
+
+						<div class="pricing__menu__tier__benefits">
+							<p class="pricing__menu__tier__benefit__heading">What's Included</p>
+							
+								
+									<p class="pricing__menu__tier__benefit">Unlimited 24/7 access to <i>MIT Technology Review</i>’s website</p>
+								
+							
+								
+									<p class="pricing__menu__tier__benefit"><strong>The Download:</strong> our daily newsletter of what's important in technology and innovation</p>
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+						</div>
+					</li>
+					
+				
+			</ul>
+
+			<div class="pricing__menu__options">
+				<p class="pricing__menu__options__label" data-onload="fadein">
+					<span class="asterisk">*</span>
+					Prices are for U.S. residents only
+				</p>
+				<p class="pricing__menu__option pricing__menu__option--shipping--us">
+					<a href="" data-action="updateShipping" data-shipping="intl" class="pricing__menu__option__link ">See international prices</a>
+				</p>
+				<p class="pricing__menu__option pricing__menu__option--shipping--intl">
+					<a href="" data-action="updateShipping" data-shipping="us" class="pricing__menu__option__link ">See U.S. prices</a>
+				</p>
+				<p class="pricing__menu__option pricing__menu__option--pricing--mitef">
+					<a href="" data-action="updatePricing" data-pricing="mitef" class="pricing__menu__option__link ">Revert to MIT Enterprise Forum pricing</a>
+				</p>
+				<p class="pricing__menu__option pricing__menu__option--pricing">
+					<a href="" data-action="updatePricing" data-pricing="standard" class="pricing__menu__option__link ">Revert to standard pricing</a>
+				</p>
+			</div>
+
+		</div>
+
+		
+
+	</div>
+
+
+	
+
+</div>
+
+	
+
+	<!-- Slider -->
+	
+		
+<div id="slider" class="l-adunit">
+	<div class="adunit ad--slider display-none" data-adunit="__site/__slider" data-size-mapping="slider" data-active="true" id="__site___slider-auto-gen-id-7" style=""></div>
+	<div id="slider-close">
+		<div class="slider-close-icon"></div>
+	</div>
+</div>
+
+	
+
+	<!-- Article Footer -->
+	
+<footer class="footer">
+	<div class="footer-width">
+		
+		<div class="footer__newsletter-bar">
+			<form class="footer__newsletter-form" data-list-name="algorithm">
+				<label class="footer__newsletter-bar-text"><strong class="footer__newsletter-bar-text__download">The Algorithm</strong> News and views on the latest in artificial intelligence</label>
+				<input name="email" class="footer__newsletter-input" placeholder="Enter your email. Get the newsletter." type="email">
+				<input class="footer__newsletter-input__submit" value="Sign Up" type="submit">
+			</form>
+			<div class="footer__social">
+				<p class="footer__newsletter-bar-text">Follow us</p>
+				<span class="footer__social-icons">
+					<a href="https://twitter.com/techreview"><span class="footer__social__text">Twitter</span><i class="footer__social--twitter"></i></a>
+					<a href="https://www.facebook.com/technologyreview"><span class="footer__social__text">Facebook</span><i class="footer__social--facebook"></i></a>
+					<a href="https://www.technologyreview.com/rss/"><span class="footer__social__text">RSS</span><i class="footer__social--rss"></i></a>
+				</span>
+			</div>
+			<p class="footer__newsletter-form-error">&nbsp;</p>
+		</div>
+		
+	</div><!-- newsletter bar -->
+
+	<div class="footer__wrapper">
+		<div class="footer-width">
+
+			<div class="footer__header">
+				<div class="footer__icon"></div>
+				<div class="footer__intro">
+					<div class="footer__logo-mod">
+						<img class="footer__logo" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/horizontal-logo--white.svg" alt="MIT Technology Review">
+					</div>
+					<p class="footer__intro__text">The mission of MIT Technology Review is to equip its audiences with the intelligence to understand a world shaped by technology.</p>
+				</div>
+
+				<a href="https://www.technologyreview.com/editions/" class="footer__international-editions">
+					<p class="footer__international-editions__text">Browse<br>International<br>Editions</p>
+					<span class="footer__international-editions__icon"></span>
+				</a>
+			</div><!-- footer-main header -->
+
+			<ul class="footer__subnav">
+				<li class="footer__subnav__list-title"><span class="footer__subnav__list-title-span">Company</span>
+				<ul class="footer__subnav__list">
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/about/">About Us</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/careers/">Careers</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/media/">Advertise with Us</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/s/603603/mit-technology-review-custom-content-showcase/">Insights</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/about/permissions/">Reuse, Permissions, and Licensing</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/press-room/">Press Room</a></li>
+				</ul>
+				</li>
+				<li class="footer__subnav__list-title"><span class="footer__subnav__list-title-span">Your Account</span>
+				<ul class="footer__subnav__list">
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/login/" rel="nofollow">Log In / Create Account</a></li>
+					
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/activate/" rel="nofollow">Activate Account</a></li>
+					
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/newsletters/">Newsletters</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/account/" rel="nofollow">Manage Account</a></li>
+					
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://subscribe.technologyreview.com/ecom/mtr/app/live/subcustserv?pagemode=start&amp;org=MTR&amp;publ=TR&amp;php=Y">Manage Subscription</a></li>
+					
+				</ul>
+				</li>
+				<li class="footer__subnav__list-title"><span class="footer__subnav__list-title-span">Customer Support</span>
+				<ul class="footer__subnav__list">
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/help/">Help/FAQs</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/help/contact/">Contact Us</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/help/contact/">Feedback</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/sitemap/">Sitemap</a></li>
+				</ul>
+				</li>
+				<li class="footer__subnav__list-title"><span class="footer__subnav__list-title-span">More</span>
+				<ul class="footer__subnav__list">
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/events/">Events</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="http://www.mitef.org/">MIT Enterprise Forum</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/mit-news/">MIT News</a></li>
+				</ul>
+				</li>
+				<li class="footer__subnav__list-title"><span class="footer__subnav__list-title-span">Policies</span>
+				<ul class="footer__subnav__list">
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/about/ethics-statement/">Ethics Statement</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/about/terms-of-service/">Terms of Service</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/about/privacy/">Privacy</a></li>
+					<li class="footer__subnav__list-item"><a class="footer__subnav__list-item__link" href="https://www.technologyreview.com/about/commenting-guidelines/">Commenting Guidelines</a></li>
+				</ul>
+				</li>
+			</ul><!-- footer-main-navbar -->
+
+			<p class="footer-copyright">
+				<span class="footer-copyright--main"><a href="https://www.technologyreview.com/about/terms-of-service/">MIT Technology Review © 2018</a></span>
+				<span class="footer-version">v.|e<sup>iπ</sup>|</span>
+			</p>
+		</div><!-- footer wrapper -->
+	</div>
+</footer>
+
+
+	<!-- Reading Meter -->
+	<div class="meter" rv-show="meter.open" style="display: none;">
+	<div class="meter__numbers">
+		<span rv-text="meter.usage"></span>/3
+	</div>
+
+	<div class="meter__inner">
+		<div class="meter__copy">
+
+			<span rv-show="meter.visible" style="display: none;">	
+				
+				<span rv-show="meter.loggedIn.1" style="display: none;">
+					<span class="meter__copy__line">
+						You've read
+						<span rv-text="meter.usageWord"></span> of three
+						free articles this month. 
+						<a class="meter__subscribe__link" href="https://www.technologyreview.com/insider/pricing/">Subscribe now</a> for unlimited online access.
+					</span>
+				</span>
+
+				<span rv-show="meter.loggedIn.2" style="display: none;">
+					<span class="visibility--phablet">
+						You've read
+						<span rv-text="meter.usageWord"></span> of three
+						free articles this month. 
+					</span>
+					<span class="meter__copy__line">
+						<a class="meter__subscribe__link" href="https://www.technologyreview.com/insider/pricing/">Subscribe now</a> for unlimited online access.
+					</span>
+				</span>
+
+				<span rv-show="meter.loggedIn.3" style="display: none;">
+					<span class="visibility--phablet">
+						This is your last free article this month. 
+					</span>
+					<span class="meter__copy__line">
+						<a class="meter__subscribe__link" href="https://www.technologyreview.com/insider/pricing/">Subscribe now</a> for unlimited online access.
+					</span>
+				</span>
+
+				<span rv-show="meter.loggedIn.3b" style="display: none;">
+					<span class="visibility--phablet">
+						You've read all your free articles this month.
+					</span>
+					<span class="meter__copy__line">
+						<a class="meter__subscribe__link" href="https://www.technologyreview.com/insider/pricing/">Subscribe now</a> for unlimited online access.
+					</span>
+				</span>				
+
+				<span rv-show="meter.loggedOut.1a" style="display: none;">					
+					<span class="visibility--phablet">
+						You've read
+						<span rv-text="meter.usageWord"></span> of three
+						free articles this month. 
+					</span>
+					<span class="meter__copy__line">
+						<a class="meter__subscribe__link" href="https://www.technologyreview.com/login/?redirectTo=%2Fs%2F601258%2Fartificial-intelligence-can-now-design-realistic-video-and-game-imagery%2F" rel="nofollow">Log in</a> for more, or <a class="meter__subscribe__link" href="https://www.technologyreview.com/insider/pricing/">subscribe now</a> for unlimited online access.
+					</span>
+				</span>
+
+				<span rv-show="meter.loggedOut.1b" style="display: none;">
+					<span class="meter__copy__line">
+						<a class="meter__subscribe__link" href="https://www.technologyreview.com/login/?redirectTo=%2Fs%2F601258%2Fartificial-intelligence-can-now-design-realistic-video-and-game-imagery%2F" rel="nofollow">Log in</a> for two more free articles, or <a class="meter__subscribe__link" href="https://www.technologyreview.com/insider/pricing/">subscribe now</a>						
+					</span>
+					<span class="visibility--phablet">
+						for unlimited online access.
+					</span>
+				</span>				
+
+			</span>
+		</div>
+
+		<a class="meter__toggle" onclick="model.meter.open = false"><span class="meter__close"></span></a>
+	</div>
+</div>
+
+
+	<!-- Group subscription bar -->
+	
+
+	
+
+
+
+
+<script>
+serverData = 
+{"userData":{"tier":"","pricing":"","shipping":""},"prices":{"standard":{"online":{"us":"$9.99/3
+ months","intl":"$9.99/3 
+months"},"basic":{"us":"$29.95/year","intl":"$39.95/year"},"plus":{"us":"$79.95/year","intl":"$89.95/year"},"premium":{"us":"$179.95/year","intl":"$199.95/year"}},"alum":{"online":{"us":"Included
+ in Basic","intl":"Included in 
+Basic"},"basic":{"us":"Free","intl":"Free"},"plus":{"us":"$29.95/year","intl":"$39.95/year"},"premium":{"us":"$99.95/year","intl":"$119.95/year"}},"mitef":{"online":{"us":"Unavailable","intl":"Unavailable"},"basic":{"us":"$14.95/year","intl":"$19.95/year"},"plus":{"us":"$29.95/year","intl":"$39.95/year"},"premium":{"us":"$99.95/year","intl":"$119.95/year"}}},"insiderButtonCampaign":"insider_article_footer","articleData":{},"recaptchaSiteKey":"6Ld7EwoUAAAAAAsArADB7O-2iwPym46rsReGoEZd","env":{"label":"prod","rhinoUrl":"https://cms.technologyreview.com","cdnHost":"https://cdn.technologyreview.com","originHost":"https://www.technologyreview.com"},"url":"https://www.technologyreview.com/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/","path":"/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/","loginRedirectTo":"/s/601258/artificial-intelligence-can-now-design-realistic-video-and-game-imagery/","debug":false,"analytics":{"dataLayer":{"ABTest":"site
+ speed - control","Contributor":"Will 
+Knight","PageType":"News","Pubdate":"2016-04-14","WordCount":"00500","DelayPageview":"true","EntryID":601258,"Topic":"Intelligent
+ 
+Machines","ABTestVariant":"body"},"dfpTargeting":{"page_id":"tr_www_601258","channel":"robotics","topic":"intelligent
+ machines"}}};
+</script>
+
+
+<script src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/jquery.js" defer="defer"></script>
+<script src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/default.js" defer="defer"></script>
+
+
+<!-- AddThis Config -->
+<script>
+addthis_config = {
+	data_track_addressbar: false,
+	data_track_clickback: false,
+	pubid: 'ra-4df12eda07a410ab',
+	ui_use_css : false,
+};
+addthis_share = {
+	passthrough : {
+		twitter: {
+			text: "This artificial-intelligence algorithm can clean up pixelated video to make it look more realistic - via @techreview",
+		}
+	},
+	url_transforms: {
+		add: {
+			utm_campaign: 'add_this',
+			utm_source: '{{code}}',
+			utm_medium: 'post',
+		}
+	}
+};
+</script>
+
+<script type="text/javascript" src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/addthis_widget.js" defer="defer"></script>
+
+
+<script src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/article-subscription-stumps.js" defer="defer"></script>
+
+<script src="Artificial%20Intelligence%20Can%20Now%20Design%20Realistic%20Video%20and%20Game%20Imagery%20-%20MIT%20Technology%20Review_files/article.js" defer="defer"></script><!-- Disqus Config -->
+<script id="disqus-config">
+	var disqus_config = function () {
+		
+		this.page.identifier = "nid_601258";
+		this.page.api_key = 
+"XejkhkAhfJ7vBfgvQwYWaaztZ9oeooMbLept0qBFC5ILlWwwGbEieGlmOEXQUZs0";
+
+		this.sso = {
+			name: "MIT Technology Review",
+			button: 
+"https://cdn.technologyreview.com/_/img/disqus-sso-login-button.png",
+			icon: "https://www.technologyreview.com/favicon.ico",
+			url: 
+"https://www.technologyreview.com/login/?popup&redirectTo=%2Fs%2F601258%2Fartificial-intelligence-can-now-design-realistic-video-and-game-imagery%2F%23comments",
+
+			logout: 
+"https://www.technologyreview.com/logout/?redirectTo=%2Fs%2F601258%2Fartificial-intelligence-can-now-design-realistic-video-and-game-imagery%2F%23comments",
+
+			width: "800",
+			height: "650"
+		};
+
+		this.callbacks.onNewComment = [function() {
+			window.dataLayer = window.dataLayer || [];
+			window.dataLayer.push({
+				event: 'disqus_comment',
+			});
+		}];
+	};
+</script>
+
+
+
+<style>
+    .lozad {
+      opacity: 0;
+			transition: opacity 0.2s ease 0.2s;
+    }
+    .lozad[data-loaded='true'] {
+      opacity: 1;
+    }
+    .lozad img {
+      max-width: 100%;
+    }
+</style></body></html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html><head><title>algorithme génétique – Medium</title><meta name="description" content="algorithme génétique"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!-- base href="https://blog.sicara.com/media/a75dd93bd5f68133d2d5d011fe257f9f?postId=81ffa1dd72f9" --><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="a75dd93bd5f68133d2d5d011fe257f9f_data/1a3050bfe04d86280417a7f6103563b1.js" charset="utf-8"></script><link rel="stylesheet" href="c3bbfa196e42ec158b3501b5f872afe6_data/gist-embed-357067cd85e7.css"><div id="gist75081542" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-selectbreeders-py" class="file">
+    
+
+  <div itemprop="text" class="blob-wrapper data type-python">
+      <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-selectbreeders-py-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-selectbreeders-py-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> operator</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-selectbreeders-py-LC2" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> random</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-selectbreeders-py-LC3" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-selectbreeders-py-LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">computePerfPopulation</span>(<span class="pl-smi">population</span>, <span class="pl-smi">password</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-selectbreeders-py-LC5" class="blob-code blob-code-inner js-file-line">	populationPerf <span class="pl-k">=</span> {}</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-selectbreeders-py-LC6" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">for</span> individual <span class="pl-k">in</span> population:</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-selectbreeders-py-LC7" class="blob-code blob-code-inner js-file-line">		populationPerf[individual] <span class="pl-k">=</span> fitness(password, individual)</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-selectbreeders-py-LC8" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">return</span> <span class="pl-c1">sorted</span>(populationPerf.items(), <span class="pl-v">key</span> <span class="pl-k">=</span> operator.itemgetter(<span class="pl-c1">1</span>), <span class="pl-v">reverse</span><span class="pl-k">=</span><span class="pl-c1">True</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-selectbreeders-py-LC9" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-selectbreeders-py-LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">selectFromPopulation</span>(<span class="pl-smi">populationSorted</span>, <span class="pl-smi">best_sample</span>, <span class="pl-smi">lucky_few</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-selectbreeders-py-LC11" class="blob-code blob-code-inner js-file-line">	nextGeneration <span class="pl-k">=</span> []</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-selectbreeders-py-LC12" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(best_sample):</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-selectbreeders-py-LC13" class="blob-code blob-code-inner js-file-line">		nextGeneration.append(populationSorted[i][<span class="pl-c1">0</span>])</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-selectbreeders-py-LC14" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(lucky_few):</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-selectbreeders-py-LC15" class="blob-code blob-code-inner js-file-line">		nextGeneration.append(random.choice(populationSorted)[<span class="pl-c1">0</span>])</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-selectbreeders-py-LC16" class="blob-code blob-code-inner js-file-line">	random.shuffle(nextGeneration)</td>
+      </tr>
+      <tr>
+        <td id="file-selectbreeders-py-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-selectbreeders-py-LC17" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">return</span> nextGeneration</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+  
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/NicolleLouis/1a3050bfe04d86280417a7f6103563b1/raw/2d55f3677bb79c7f13b82153742c2a95a32ec12e/SelectBreeders.py" style="float:right">view raw</a>
+        <a href="https://gist.github.com/NicolleLouis/1a3050bfe04d86280417a7f6103563b1#file-selectbreeders-py">SelectBreeders.py</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200;function notifyResize(height)
+ {height = height ? height : document.documentElement.offsetHeight; var 
+resized = false; if (window.donkey && donkey.resize) 
+{donkey.resize(height); resized = true;}if (parent && 
+parent._resizeIframe) {var obj = {iframe: window.frameElement, height: 
+height}; parent._resizeIframe(obj); resized = true;}if (window.location 
+&& window.location.hash === "#amp=1" && window.parent && 
+window.parent.postMessage) {window.parent.postMessage({sentinel: "amp", 
+type: "embed-size", height: height}, "*");}if (window.webkit && 
+window.webkit.messageHandlers && window.webkit.messageHandlers.resize) 
+{window.webkit.messageHandlers.resize.postMessage(height); resized = 
+true;}return resized;}function maybeResize() {if 
+(document.documentElement.offsetHeight != height && notifyResize()) 
+{height = document.documentElement.offsetHeight;}delayMs = 
+Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, 
+delayMs);}maybeResize();</script></body></html>

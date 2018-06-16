@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <script id="facebook-jssdk" src="baseWidget_data/sdk.js"></script><script type="text/javascript">
+
+        (function (open) {
+
+            XMLHttpRequest.prototype.open = function (method, url, async, user, pass) {
+
+                if (!String.prototype.endsWith) {
+                    String.prototype.endsWith = function (searchString, position) {
+                        var subjectString = this.toString();
+                        if (typeof position !== 'number' || !isFinite(position) || Math.floor(position) !== position || position > subjectString.length) {
+                            position = subjectString.length;
+                        }
+                        position -= searchString.length;
+                        var lastIndex = subjectString.indexOf(searchString, position);
+                        return lastIndex !== -1 && lastIndex === position;
+                    };
+                }
+                if (url.endsWith('.js') || url.endsWith('.css')|| url.endsWith('.html')) {
+                    url = url.concat('?v=1.0.0.3869')
+                }
+                open.call(this, method, url, async, user, pass);
+            };
+
+        })(XMLHttpRequest.prototype.open);
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=9,10,11">
+    
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async="" src="baseWidget_data/js.js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82772130-2', {'custom_map': {'dimension2': 'widgetInstalled'}});
+</script>
+
+    <script src="baseWidget_data/jquery-2.js"></script>
+    <script src="baseWidget_data/config"></script>
+    <script src="baseWidget_data/core.js"></script>
+    <script src="baseWidget_data/md5.js"></script>
+    <script src="baseWidget_data/evpkdf.js"></script>
+    <script src="baseWidget_data/enc-base64.js"></script>
+    <script src="baseWidget_data/cipher-core.js"></script>
+    <script src="baseWidget_data/aes-min.js"></script>
+    <script src="baseWidget_data/bootstrap.js"></script>
+    <script src="baseWidget_data/jquery.js"></script>
+    <script src="baseWidget_data/chatWidgetFunctions.js"></script>
+    <script src="baseWidget_data/chatWidgetStyles.js"></script>
+    <script src="baseWidget_data/hubs.js"></script>
+    <script src="baseWidget_data/chatWidgetSignalr.js"></script>
+    <script src="baseWidget_data/moment.js"></script>
+    <script src="baseWidget_data/moment-timezone-with-data.js"></script>
+    <link href="baseWidget_data/font-awesome.css" rel="stylesheet">
+    <link href="baseWidget_data/animate.css" rel="stylesheet">
+    <link href="baseWidget_data/loaderstyle.css" rel="stylesheet">
+    <link href="baseWidget_data/bootstrap.css" rel="stylesheet">
+    <link href="baseWidget_data/widget_spinner.css" rel="stylesheet">
+    
+
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_customer_chat_bounce_in{animation-duration:250ms;animation-name:fb_bounce_in}.fb_customer_chat_bounce_out{animation-duration:250ms;animation-name:fb_fade_out}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{height:100%;overflow:hidden;position:fixed;width:100%}@keyframes fb_fade_out{from{opacity:1}to{opacity:0}}@keyframes fb_bounce_in{0%{opacity:0;transform:scale(.8, .8);transform-origin:100% 100%}10%{opacity:.1}20%{opacity:.2}30%{opacity:.3}40%{opacity:.4}50%{opacity:.5}60%{opacity:.6}70%{opacity:.7}80%{opacity:.8;transform:scale(1.03, 1.03)}90{opacity:.9}100%{opacity:1;transform:scale(1, 1)}}</style></head>
+<body style="background-color:transparent">
+    <div id="zupportchat"><link href="baseWidget_data/widget-t-01.css" rel="stylesheet">
+
+<style>
+	.topLeft {
+		position: absolute;
+		top: 15px;
+		position: fixed;
+		z-index: 100000;
+	}
+
+	.topRight {
+		position: absolute;
+		top: 15px;
+		right: 0px;
+		position: fixed;
+		z-index: 100000;
+	}
+
+	.bottomRight {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		position: fixed;
+		z-index: 100000;
+	}
+
+	.bottomLeft {
+		position: absolute;
+		bottom: 0px;
+		position: fixed;
+		z-index: 100000;
+	}
+</style>
+<!-- custom widget color container -->
+<div class="custom-style-container"></div>
+<div id="sound"></div>
+<!-- / custom widget color container -->
+<div class="chatwindow chat-btn-bottom-right">
+	<!-- Start Chat -->
+	<div id="startchat" class="chat-widget-panel" style="display: none;">
+		<div id="searching_spinner_center" class="loadercontainer" style="display:none;">
+			<div class="loader chat-widget-loader"></div>
+		</div>
+		<div class="chat-button-normal" style="background-color: rgb(46, 172, 213);"><a></a> </div>
+		<div class="chat-header collapsed" data-toggle="collapse" href="#collapseOne" style="background-color: rgb(46, 172, 213); display: none;" aria-expanded="false">
+			<div class="headerrow">
+				<div class="chat-cust-headeritems">
+					<div class="widget-90p">
+						<div id="startchatTitle" class="title mt-10 ml-10">Chat With Us!</div>
+					</div>
+					<div class="widget-10p">
+						<div class="collapsebtn"><i class="fa fa-angle-down chaticon2 pt-10" aria-hidden="true"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="chat-img-bubble" style="display: none;"><img class="chat-bubble-image"></div>
+		<div id="collapseOne" class="popup-box panelCollapse" style="border-color:#2eacd5 !important" aria-expanded="false">
+			<div class="popup-box-header-user" style="background-color: rgb(46, 172, 213);">
+				<img src="baseWidget_data/chat-user-first.png">
+				<div class="chat-collapse" style="display: none;">
+					<a><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				</div>
+			</div>
+			<div id="startchatdetails" class="popup-box-inner">
+				<div class="popup-box-signup-header" id="lblintro"></div>
+				<div class="popup-box-signup">
+					<div id="nameGroup" style="display: none;">
+						<span class="popup-box-signup-lable-1">
+							<lable for="chat-name" id="labelName">Enter your name here</lable>
+						</span>
+						<input name="txtname" id="txtname" placeholder="" required="" type="text">
+						<div class="popup-box-signup-lable-2">
+							<label id="nameError" for="chat-name"></label>Please Enter Your Name
+						</div>
+					</div>
+					<div id="emailGroup" style="display: none;">
+						<span class="popup-box-signup-lable-1">
+							<lable for="chat-email" id="labelEmail">Enter your email here</lable>
+						</span>
+						<input name="txtemails" id="txtemails" placeholder="" required="" type="email">
+						<div class="popup-box-signup-lable-2">
+							<label id="emailError" for="chat-email"></label><!--Please Enter Valid Email-->
+						</div>
+					</div>
+					<div id="departmentGroup" style="display: none;">
+						<span class="popup-box-signup-lable-1">
+							<lable id="labelDepartment" for="chat-department">Select the department</lable>
+						</span>
+						<div id="departmentGroup">
+							<select class="departmentcombo"></select>
+						</div>
+						<div class="popup-box-signup-lable-2">
+							<label id="departmentError" for="chat-department"></label><!--Please Select Your Industry-->
+						</div>
+					</div>
+
+					<!-- phone group -->
+					<!--<div id="phoneGroup">
+						<span class="popup-box-signup-lable-1">
+							<lable for="chat-phone" id="labelphone"></lable>
+						</span>
+						<div class="phone-number-control">
+							<span class="pn-country-code" id="CallerCode"></span>
+							<input type="text" id="txtphone" onkeypress="validateNumber()" class="form-controlx pn-number">
+							<span class="pn-flag"><img id="countryFlag" src="" /></span>
+							<div class="clr-bth"></div>
+						</div>
+						<div class="popup-box-signup-lable-2">
+							<label id="phoneError" for="chat-name"></label>
+						</div>
+					</div>-->
+					<!-- / phone group -->
+
+					<div id="phoneGroup" style="display: none;">
+						<span class="popup-box-signup-lable-1">
+							<lable for="chat-phone" id="labelphone"></lable>
+						</span>
+						<div class="input-group form-group">
+							<span class="input-group-addon" id="CallerCode">+48</span>
+							<input id="txtphone" onkeypress="validateNumber()" class="form-control" type="text">
+							<span class="input-group-addon"><img id="countryFlag" src="baseWidget_data/PL_16.png"></span>
+						</div>
+						<div class="popup-box-signup-lable-2">
+							<label id="phoneError" for="chat-name"></label>
+						</div>
+					</div>
+
+
+					<div id="questionGroup">
+						<span class="popup-box-signup-lable-1">
+							<lable for="chat-message" id="labelQuestion">Enter your question</lable>
+						</span>
+						<textarea type="textarea" id="txtquestion" placeholder="" required=""></textarea>
+						<div class="popup-box-signup-lable-2">
+							<label id="questionError" for="chat-message"></label><!--Please Enter Message-->
+						</div>
+					</div>
+					<input class="popup-box-submit btnsendreq" id="SendRequest" value="Send Request" style="background-color: rgb(46, 172, 213);" type="submit">
+				</div>
+			</div>
+			<div class="widget-footer">
+				<div class="footer-options">
+					<!--<div class="social-div"></div-->
+					<div class="sound-notification"></div>
+				</div>
+				<a class="popup-powered-by poweredby pull-right" onclick="theFunction();">Artelnics</a>
+			</div>
+		</div>
+	</div>
+	<!-- Start Chat -->
+	<!-- No Operator -->
+	<div id="Nooperator" class="chat-widget-panel">
+		<div class="chat-header collapsed" data-toggle="collapse" href="#collapseTwo" style="background-color: rgb(46, 172, 213); display: none;" aria-expanded="false">
+			<div class="headerrow">
+				<div class="chat-cust-headeritems">
+					<div class="widget-90p">
+						<div id="noophead" class="title mt-10 ml-10">No operators available</div>
+					</div>
+					<div class="widget-10p">
+						<div class="collapsebtn"><i class="fa fa-angle-down chaticon2 pt-10" aria-hidden="true"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="chat-button-noop chat-button-normal" style="background-color: rgb(46, 172, 213);"><a></a> </div>
+		<div class="chat-img-bubble" style="display: none;"><img class="chat-bubble-image"></div>
+		<div id="collapseTwo" class="popup-box panelCollapse" style="border-color:#2eacd5 !important" aria-expanded="false">
+			<div class="popup-box-header-user" style="background-color: rgb(46, 172, 213);">
+				<img src="baseWidget_data/chat-user-unhappy.png">
+				<div class="chat-collapse" style="display: none;">
+					<a><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				</div>
+			</div>
+			<div class="popup-box-inner">
+				<div class="popup-box-signup-header error" id="noOpIntro">Any questions? Send us an email!</div>
+				<div class="popup-box-signup">
+					<div id="noOpEmail">
+						<span class="popup-box-signup-lable-1">
+							<lable for="chat-name" id="noopname">Enter your name here</lable>
+						</span>
+						<input name="txtNoOpName" id="txtNoOpName" required="" type="text">
+						<div class="popup-box-signup-lable-2">
+							<label id="txtNoOpNameError" for="chat-name"></label>
+						</div>
+						<span class="popup-box-signup-lable-1">
+							<lable for="chat-email" id="noopemails">Enter your email here</lable>
+						</span>
+						<input name="txtNoOpEmail" id="txtNoOpEmail" required="" type="email">
+						<div class="popup-box-signup-lable-2">
+							<label id="txtNoOpEmailError" for="chat-email"></label>
+						</div>
+						<span class="popup-box-signup-lable-1">
+							<lable for="chat-message" id="noopquestion">What can we help with?</lable>
+						</span>
+						<textarea type="textarea" id="txtNoOpQuestion" required=""></textarea>
+						<div class="popup-box-signup-lable-2">
+							<label id="txtNoOpQuestionError" for="chat-message"></label>
+						</div>
+						<input id="btnsendemail" class="popup-box-submit trk_kiss_widget_send_email" value="Send Email" style="background-color: rgb(46, 172, 213);" type="button">
+					</div>
+				</div>
+			</div>
+			<div class="widget-footer">
+				<div class="footer-options">
+					<!--<div class="social-div"></div-->
+					<div class="sound-notification"></div>
+				</div>
+				<a class="popup-powered-by poweredby pull-right" onclick="theFunction();">Artelnics</a>
+			</div>
+		</div>
+	</div>
+	<!-- / No Operator -->
+	<!-- No Operator Sent -->
+	<div id="NooperatorSent" class="chat-widget-panel" style="display: none;">
+		<div class="chat-button-noop chat-button-normal" style="background-color: rgb(46, 172, 213);"><a></a> </div>
+		<div class="chat-header collapsed" data-toggle="collapse" href="#collapseThree" style="background-color: rgb(46, 172, 213); display: none;" aria-expanded="false">
+			<div class="headerrow">
+				<div class="chat-cust-headeritems">
+					<div class="widget-90p">
+						<div id="noopheadSuccess" class="title mt-10 ml-10">No operators available</div>
+					</div>
+					<div class="widget-10p">
+						<div class="collapsebtn"><i class="fa fa-angle-down chaticon2 pt-10" aria-hidden="true"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="chat-img-bubble" style="display: none;"><img class="chat-bubble-image"></div>
+		<div id="collapseThree" class="popup-box panelCollapse" style="border-color:#2eacd5 !important" aria-expanded="false">
+			<div class="popup-box-header" style="background-color: rgb(46, 172, 213);">
+				<p></p>
+				<div class="chat-collapse" style="display: none;"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></div>
+			</div>
+			<div class="popup-box-inner">
+				<div id="lblemailSent" class="popup-box-signup-messege">Email is sent! Our team will reply you shortly.</div>
+				<div class="popup-box-signup-img ">
+					<img src="baseWidget_data/chat-user-happy.png">
+				</div>
+			</div>
+			<div class="widget-footer">
+				<div class="footer-options">
+					<!--<div class="social-div"></div-->
+					<div class="sound-notification"></div>
+				</div>
+				<a class="popup-powered-by poweredby pull-right" onclick="theFunction();">Artelnics</a>
+			</div>
+		</div>
+	</div>
+	<!-- / No Operator Sent -->
+	<!-- ===== In Chat ===== -->
+	<div id="inchat" class="chat-widget-panel" style="display: none;">
+		<div class="chat-button-normal" style="background-color: rgb(46, 172, 213);"><a></a></div>
+		<!-- chat header -->
+		<div class="chat-header collapsed" data-toggle="collapse" href="#collapseFour" style="background-color: rgb(46, 172, 213); display: none;" aria-expanded="false">
+			<div class="headerrow">
+				<div class="chat-cust-headeritems">
+					<div class="widget-90p">
+						<div id="inchathead" class="title mt-10 ml-10">Chat with us!</div>
+					</div>
+					<div class="widget-10p">
+						<div class="collapsebtn"><i class="fa fa-angle-down chaticon2 pt-10" aria-hidden="true"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- / chat header -->
+		<!-- chat image bubble -->
+		<div class="chat-img-bubble" style="display: none;"><img class="chat-bubble-image"></div>
+		<!-- / chat image bubble -->
+		<!-- chat popup -->
+		<div id="collapseFour" class="popup-box panelCollapse widget-popup-box" style="border-color:#2eacd5 !important" aria-expanded="false">
+
+			<!-- popup header -->
+			<div class="popup-box-header-user chat-tab-top" style="background-color: rgb(46, 172, 213);">
+				<div id="transcript" class="chat-header-message" style="display: none;"></div>
+				<div class="chat-header-user"><img class="opimg" id="" src="baseWidget_data/def-op-f.png"> </div>
+				<div class="chat-collapse" style="display: none;"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></div>
+				<div class="chat-header-vote">
+					<div id="thumbsupInchat" class="up" aria-hidden="true"></div>
+					<div id="thumbsDownInchat" class="down" aria-hidden="true"></div>
+				</div>
+			</div>
+			<!-- / popup header -->
+			<!-- popup body -->
+			<div class="chat-popup messagearea"></div>
+			<!-- / popup header -->
+
+			<div id="typing" class="usertyping"></div>
+
+			<!-- popup footer -->
+			<div class="chat-footer">
+				<div class="typearea">
+					<div>
+						<textarea id="sendmsgtext" class="chat-message-box textfield" maxlength="1000" placeholder="Enter your message and press Enter to send"></textarea>
+					</div>
+					<a class="inactive" id="chatfileupload">
+						<div class="chat-attach"></div>
+					</a>
+					<input id="my_file" style="display:none" type="file">
+				</div>
+			</div>
+			<!-- / popup footer -->
+			<!-- during chat footer -->
+			<div class="during-widget-footer">
+				<div class="footer-options">
+					<!--<div class="social-div"><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-colorscheme="light" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div></div>-->
+					<div class="sound-notification">
+						<i id="volumeBtnUp" class="fa fa-volume-up widget-vol-up" aria-hidden="true" style="display: none;"></i>
+						<i id="volumeBtnOff" class="fa fa-volume-off widget-vol-off" aria-hidden="true" style="display: none;"></i>
+					</div>
+				</div>
+				<a class="popup-powered-by poweredby pull-right" onclick="theFunction();">Artelnics</a>
+			</div>
+			<!-- / during chat footer -->
+		</div>
+		<!-- / chat popup -->
+	</div>
+	<!-- ===== / In Chat ===== -->
+	<!-- Close Chat -->
+	<div id="closechat" class="chat-widget-panel" style="display: none;">
+		<div class="chat-button-normal" style="background-color: rgb(46, 172, 213);"><a></a> </div>
+		<div class="chat-header collapsed" data-toggle="collapse" href="#collapseFive" style="background-color: rgb(46, 172, 213); display: none;" aria-expanded="false">
+			<div class="headerrow">
+				<div class="chat-cust-headeritems">
+					<div class="widget-90p">
+						<div id="closeTitle" class="title mt-10 ml-10">Chat closed</div>
+					</div>
+					<div class="widget-10p">
+						<div class="collapsebtn"><i class="fa fa-angle-down chaticon2 pt-10" aria-hidden="true"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="chat-img-bubble" style="display: none;"><img class="chat-bubble-image"></div>
+		<div id="collapseFive" class="popup-box panelCollapse" style="border-color:#2eacd5 !important" aria-expanded="false">
+			<div class="popup-box-header-user" style="background-color: rgb(46, 172, 213);">
+				<div id="closeTranscript" class="chat-header-message" style="display: none;"></div>
+				<div id="emailSentClose" class="chat-header-message-sent" style="display:none;"></div>
+				<img src="baseWidget_data/chat-user-unhappy.png">
+				<div class="chat-collapse" style="display: none;"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></div>
+			</div>
+			<div class="popup-box-inner">
+				<div class="popup-box-signup-header inactive" id="closeIntro">Thanks for chatting. Please rate how you feel about the chat session:</div>
+				<div id="ratings" class="popup-rating">
+					<div id="closeThumbsUp" class="rate-up thumpsupicon" src="https://cp.zupportdesk.com/Content/custom/images/thumbsupicon.png"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+					<div id="closeThumbsDown" class="rate-down thumpsdownicon" src="https://cp.zupportdesk.com/Content/custom/images/thumbsdownicon.png"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div>
+				</div>
+			</div>
+			<div class="widget-footer">
+				<div class="footer-options">
+					<!--<div class="social-div"></div-->
+					<div class="sound-notification"></div>
+				</div>
+				<a class="popup-powered-by poweredby pull-right" onclick="theFunction();">Artelnics</a>
+			</div>
+		</div>
+	</div>
+	<!-- / Close Chat -->
+	<!-- Banned IP Request -->
+	<div id="BannedIPRequest" class="chat-widget-panel" style="display: none;">
+		<div class="chat-button-normal" style="background-color: rgb(46, 172, 213);"><a></a> </div>
+		<div class="chat-header  collapsed" data-toggle="collapse" href="#collapseSix" style="background-color: rgb(46, 172, 213); display: none;" aria-expanded="false">
+			<div class="headerrow">
+				<div class="chat-cust-headeritems">
+					<div class="widget-90p">
+						<div class="title mt-10 ml-10 bannedIPhead" style="background-color: rgb(46, 172, 213);">Banned IP</div>
+					</div>
+					<div class="widget-10p">
+						<div class="collapsebtn"><i class="fa fa-angle-down chaticon2 pt-10" aria-hidden="true"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="chat-img-bubble" style="display: none;"><img class="chat-bubble-image"></div>
+		<div id="collapseSix" class="popup-box panelCollapse" style="border-color:#2eacd5 !important" aria-expanded="false">
+			<div class="popup-box-header" id="bannedReqTitle" style="background-color: rgb(46, 172, 213);">
+				<p class="bannedIPhead chat-header-msg" style="background-color: rgb(46, 172, 213);">Banned IP</p>
+				<div class="chat-collapse" style="display: none;"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></div>
+			</div>
+			<div class="popup-box-inner">
+				<div id="bannedMessage" class="popup-box-signup-messege">Your IP address is blacklisted, For more information contact administrator,please click below.</div>
+				<div class="popup-box-signup">
+					<input id="bannedIPReq" class="popup-box-submit widgetRequestButton submit_btn" value="Contact Admin" style="background-color: rgb(46, 172, 213);" type="button">
+				</div>
+			</div>
+			<div class="widget-footer">
+				<div class="footer-options">
+					<!--<div class="social-div"></div-->
+					<div class="sound-notification"></div>
+				</div>
+				<a class="popup-powered-by poweredby pull-right" onclick="theFunction();">Artelnics</a>
+			</div>
+		</div>
+	</div>
+	<!-- / Banned IP Request -->
+	<!-- Banned IP -->
+	<div id="BannedIP" class="chat-widget-panel" style="display: none;">
+		<div class="chat-button-normal" style="background-color: rgb(46, 172, 213);"><a></a> </div>
+		<div class="chat-header  collapsed" data-toggle="collapse" href="#collapseSeven" style="background-color: rgb(46, 172, 213); display: none;" aria-expanded="false">
+			<div class="headerrow">
+				<div class="chat-cust-headeritems">
+					<div class="widget-90p">
+						<div class="title mt-10 ml-10 bannedIPhead" style="background-color: rgb(46, 172, 213);">Banned IP</div>
+					</div>
+					<div class="widget-10p">
+						<div class="collapsebtn"><i class="fa fa-angle-down chaticon2 pt-10" aria-hidden="true"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="chat-img-bubble" style="display: none;"><img class="chat-bubble-image"></div>
+		<div id="collapseSeven" class="popup-box panelCollapse" style="border-color:#2eacd5 !important" aria-expanded="false">
+			<div class="popup-box-header" style="background-color: rgb(46, 172, 213);">
+				<p class="bannedIPhead chat-header-msg" style="background-color: rgb(46, 172, 213);">Banned IP</p>
+				<div class="chat-collapse" style="display: none;"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></div>
+			</div>
+			<div class="popup-box-inner">
+				<div class="popup-box-signup">
+					<span class="popup-box-signup-lable-1">
+						<lable id="bannedname" for="chat-name">enter your name</lable>
+					</span>
+					<input name="txtBannedName" id="txtBannedName" required="" type="text">
+					<div class="popup-box-signup-lable-2">
+						<label id="bannedNameError" for="chat-name"></label>
+					</div>
+					<span class="popup-box-signup-lable-1">
+						<lable id="bannedemails" for="chat-email">enter your email</lable>
+					</span>
+					<input name="txtBannedEmail" id="txtBannedEmail" required="" type="email">
+					<div class="popup-box-signup-lable-2">
+						<label id="bannedEmailError" for="chat-email"></label>
+					</div>
+					<span class="popup-box-signup-lable-1">
+						<lable id="bannedquestion" for="chat-message">what can we help with?</lable>
+					</span>
+					<textarea type="textarea" id="txtBannedQuestion" required=""></textarea>
+					<div class="popup-box-signup-lable-2">
+						<label id="bannedQuestionError" for="chat-message"></label>
+					</div>
+					<input class="popup-box-submit widgetRequestButton submit_btn" id="btnSendBannedEmail" value="Send Email" style="background-color: rgb(46, 172, 213);" type="button">
+				</div>
+			</div>
+			<div class="widget-footer">
+				<div class="footer-options">
+					<!--<div class="social-div"></div-->
+					<div class="sound-notification"></div>
+				</div>
+				<a class="popup-powered-by poweredby pull-right" onclick="theFunction();">Artelnics</a>
+			</div>
+		</div>
+	</div>
+	<!-- / Banned IP -->
+	<!-- Banned IP Sent -->
+	<div id="BannedIPSent" class="chat-widget-panel" style="display: none;">
+		<div class="chat-button-normal" style="background-color: rgb(46, 172, 213);"><a></a> </div>
+		<div class="chat-header  collapsed" data-toggle="collapse" href="#collapseEight" style="background-color: rgb(46, 172, 213); display: none;" aria-expanded="false">
+			<div class="headerrow">
+				<div class="chat-cust-headeritems">
+					<div class="widget-90p">
+						<div class="title mt-10 ml-10 bannedIPhead" style="background-color: rgb(46, 172, 213);">Banned IP</div>
+					</div>
+					<div class="widget-10p">
+						<div class="collapsebtn"><i class="fa fa-angle-down chaticon2 pt-10" aria-hidden="true"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="chat-img-bubble" style="display: none;"><img class="chat-bubble-image"></div>
+		<div id="collapseEight" class="popup-box panelCollapse" style="border-color:#2eacd5 !important" aria-expanded="false">
+			<div class="popup-box-header" style="background-color: rgb(46, 172, 213);">
+				<p class="bannedIPhead chat-header-msg" style="background-color: rgb(46, 172, 213);">Banned IP</p>
+				<div class="chat-collapse" style="display: none;"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></div>
+			</div>
+			<div class="popup-box-inner">
+				<div class="popup-box-signup-messege" id="lblbannedemailSent">email is sent and should go back to the initial page waiting for new chat sessions.</div>
+				<div class="popup-box-signup-img ">
+					<img src="baseWidget_data/chat-user-happy.png">
+				</div>
+			</div>
+			<div class="widget-footer">
+				<div class="footer-options">
+					<!--<div class="social-div"></div-->
+					<div class="sound-notification"></div>
+				</div>
+				<a class="popup-powered-by poweredby pull-right" onclick="theFunction();">Artelnics</a>
+			</div>
+		</div>
+	</div>
+	<!-- / Banned IP Sent -->
+
+	<div id="spinnerRegion" class="global-spinner" style="display: none;">
+		<div class="spinner-loader" style="top: 45%; left: 50%;">
+		</div>
+	</div>
+</div>
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" style="border: medium none;" src="baseWidget_data/Nh1oH0K63yz.html" frameborder="0"></iframe></div></div></div>
+<script>
+	(function (d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script></div>
+
+
+</body></html>

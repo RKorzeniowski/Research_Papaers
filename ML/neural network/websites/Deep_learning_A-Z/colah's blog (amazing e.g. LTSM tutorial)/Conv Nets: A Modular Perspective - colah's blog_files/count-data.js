@@ -1,0 +1,5 @@
+var DISQUSWIDGETS;
+
+if (typeof DISQUSWIDGETS != 'undefined') {
+    DISQUSWIDGETS.displayCount({"text":{"and":"and","comments":{"zero":"0 Comments","multiple":"{num} Comments","one":"1 Comment"}},"counts":[{"id":"\/posts\/2014-07-Conv-Nets-Modular\/disqussion-3","comments":1},{"id":"\/posts\/2014-07-Conv-Nets-Modular\/disqussion-34","comments":0},{"id":"\/posts\/2014-07-Conv-Nets-Modular\/disqussion-35","comments":0},{"id":"\/posts\/2014-07-Conv-Nets-Modular\/disqussion-30","comments":0},{"id":"\/posts\/2014-07-Conv-Nets-Modular\/disqussion-31","comments":0},{"id":"\/posts\/2014-07-Conv-Nets-Modular\/disqussion-32","comments":1},{"id":"\/posts\/2014-07-Conv-Nets-Modular\/disqussion-33","comments":0},{"id":"\/posts\/2014-07-Conv-Nets-Modular\/disqussion-27","comments":2},{"id":"\/posts\/2014-07-Conv-Nets-Modular\/disqussion-29","comments":0},{"id":"\/posts\/2014-07-Conv-Nets-Modular\/disqussion-28","comments":0}]});
+}

@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html class="js no-touchevents cssanimations csspointerevents csstransforms supports csstransforms3d preserve3d csstransitions gr__jungle-ml_com" prefix="og: http://ogp.me/ns#" style="" lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Get Started with Machine Learning - JungleML</title>
+<link rel="pingback" href="http://www.jungle-ml.com/xmlrpc.php"><link rel="shortcut icon" href="http://avatars1.githubusercontent.com/u/13232148?v=4&amp;s=460">				<script id="twitter-wjs" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/widgets.js"></script><script async="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/analytics.js"></script><script>
+								</script>
+			
+<!-- This site is optimized with the Yoast SEO plugin v5.6 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Get Started with Machine Learning - JungleML">
+<meta property="og:description" content="Welcome back! Now before we start, I’m going to briefly list out the math stuff since I wasn’t specific enough on the previous post.&nbsp;If you want a specific guideline to learn the math part really well, then message me or leave a comment and I will reply. short answer: know how to take gradients (derivatives) in vector calculus. Learn about ...">
+<meta property="og:url" content="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/">
+<meta property="og:site_name" content="JungleML">
+<meta property="article:tag" content="career">
+<meta property="article:tag" content="Data Science">
+<meta property="article:tag" content="machine learning">
+<meta property="article:tag" content="switch">
+<meta property="article:section" content="General">
+<meta property="article:published_time" content="2017-09-12T07:02:19+00:00">
+<meta property="article:modified_time" content="2017-09-22T01:30:18+00:00">
+<meta property="og:updated_time" content="2017-09-22T01:30:18+00:00">
+<meta property="og:image" content="http://www.jungle-ml.com/wp-content/uploads/2017/09/getstartedwithML.png">
+<meta property="og:image:width" content="4812">
+<meta property="og:image:height" content="1821">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Welcome back! Now before we start, I’m going to briefly list out the math stuff since I wasn’t specific enough on the previous post.&nbsp;If you want a specific guideline to learn the math part really well, then message me or leave a comment and I will reply. short answer: know how to take gradients (derivatives) in vector calculus. Learn about ...">
+<meta name="twitter:title" content="How to Get Started with Machine Learning - JungleML">
+<meta name="twitter:image" content="http://www.jungle-ml.com/wp-content/uploads/2017/09/getstartedwithML.png">
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"WebSite","@id":"#website","url":"http:\/\/www.jungle-ml.com\/","name":"jungleML","potentialAction":{"@type":"SearchAction","target":"http:\/\/www.jungle-ml.com\/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Person","url":"http:\/\/www.jungle-ml.com\/2017\/09\/12\/switching-into-machine-learning\/","sameAs":[],"@id":"#person","name":"Faisal Mohammad"}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="http://w.sharethis.com/">
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="JungleML » Feed" href="http://www.jungle-ml.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="JungleML » Comments Feed" href="http://www.jungle-ml.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="JungleML » How to Get Started with Machine Learning Comments Feed" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/feed/">
+<!-- This site uses the Google Analytics by MonsterInsights plugin v6.2.4 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+		var disableStr = 'ga-disable-UA-105737675-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-105737675-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('require', 'displayfeatures');
+	__gaTracker('require', 'linkid', 'linkid.js');
+	__gaTracker('send','pageview');
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.jungle-ml.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.3"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/wp-emoji-release.js" type="text/javascript" defer="defer"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="pdrp_styles-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/public.css" type="text/css" media="all">
+<link rel="stylesheet" id="dashicons-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/dashicons.css" type="text/css" media="all">
+<link rel="stylesheet" id="admin-bar-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/admin-bar.css" type="text/css" media="all">
+<link rel="stylesheet" id="SFSImainCss-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/sfsi-style.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-polls-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/polls-css.css" type="text/css" media="all">
+<style id="wp-polls-inline-css" type="text/css">
+.wp-polls .pollbar {
+	margin: 1px;
+	font-size: 6px;
+	line-height: 8px;
+	height: 8px;
+	background-image: url('http://www.jungle-ml.com/wp-content/plugins/wp-polls/images/default/pollbg.gif');
+	border: 1px solid #c8c8c8;
+}
+
+</style>
+<link rel="stylesheet" id="wpProQuiz_front_style-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/wpProQuiz_front.css" type="text/css" media="all">
+<link rel="stylesheet" id="yoast-seo-adminbar-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/adminbar-560.css" type="text/css" media="all">
+<link rel="stylesheet" id="x-stack-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/ethos_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="x-cranium-migration-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/ethos_003.css" type="text/css" media="all">
+<link rel="stylesheet" id="x-child-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="x-buddypress-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/ethos.css" type="text/css" media="all">
+<link rel="stylesheet" id="x-google-fonts-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="codecolorer-css" href="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/codecolorer.css" type="text/css" media="screen">
+<script type="text/javascript">
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","is_debug_mode":"false","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"","home_url":"http:\/\/www.jungle-ml.com","track_download_as":"event","internal_label":"int","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/frontend.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/jquery_002.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/jquery-migrate.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var BP_Confirm = {"are_you_sure":"Are you sure?"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/confirm.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/x-head.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/widget-members.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/jquery-query.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/jquery-cookie.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/jquery-scroll-to.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var BP_DTheme = {"accepted":"Accepted","close":"Close","comments":"comments","leave_group_confirm":"Are you sure you want to leave this group?","mark_as_fav":"Favorite","my_favs":"My Favorites","rejected":"Rejected","remove_fav":"Remove Favorite","show_all":"Show all","show_all_comments":"Show all comments for this thread","show_x_comments":"Show all %d comments","unsaved_changes":"Your profile has unsaved changes. If you leave the page, the changes will be lost.","view":"View","x_show":"Show: "};
+/* ]]> */
+</script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/x-buddypress.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/cs-head.js"></script>
+<script id="st_insights_js" type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/st_insights.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/hoverIntent.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/x-head_002.js"></script>
+<link rel="https://api.w.org/" href="http://www.jungle-ml.com/wp-json/">
+<link rel="shortlink" href="http://www.jungle-ml.com/?p=543">
+<link rel="alternate" type="application/json+oembed" href="http://www.jungle-ml.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.jungle-ml.com%2F2017%2F09%2F12%2Fswitching-into-machine-learning%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.jungle-ml.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.jungle-ml.com%2F2017%2F09%2F12%2Fswitching-into-machine-learning%2F&amp;format=xml">
+
+	<script type="text/javascript">var ajaxurl = 'http://www.jungle-ml.com/wp-admin/admin-ajax.php';</script>
+
+<style id="tco-email-forms-styles" type="text/css">
+
+.tco-subscribe-form fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.tco-subscribe-form {
+  position: relative;
+}
+
+.tco-subscribe-form h1 {
+  font-size: 1.75em;
+  margin: 0 0 0.5em;
+}
+
+.tco-subscribe-form label {
+  margin: 0 0 0.375em;
+  font-size: 0.85em;
+  line-height: 1;
+}
+
+.tco-subscribe-form label > span {
+  position: relative;
+}
+
+.tco-subscribe-form label .required {
+  position: absolute;
+  top: -0.1em;
+  font-size: 1.5em;
+}
+
+.tco-subscribe-form select,
+.tco-subscribe-form input[type="text"],
+.tco-subscribe-form input[type="email"] {
+  width: 100%;
+  margin-bottom: 1.25em;
+  font-size: inherit;
+}
+
+.tco-subscribe-form input[type="submit"] {
+  display: inline-block;
+  width: 100%;
+  margin-top: 0.25em;
+  font-size: inherit;
+}
+
+.tco-subscribe-form input[type="submit"]:focus {
+  outline: 0;
+}
+
+.tco-subscribe-form .tco-subscribe-form-alert-wrap {
+  margin-top: 1.25em;
+  font-size: inherit;
+}
+
+.tco-alert{
+  margin:0;border-left:4px solid #f6dca7;padding:0.915em 2.25em 1.15em 1.15em;font-size:14px;line-height:1.6;color:#c09853;background-color:#fcf8e3;border-radius:3px;
+}
+.tco-alert.tco-alert-block{
+  padding:0.915em 1.15em 1.15em
+}
+.tco-alert .h-alert{
+  margin:0 0 0.5em;padding:0;font-size:18px;letter-spacing:-0.05em;line-height:1.3;text-transform:none;color:inherit;clear:none;
+}
+.tco-alert .close{
+  float:right;position:relative;top:-10px;right:-26px;border:0;padding:0;font-size:18px;line-height:1;text-decoration:none;color:#c09853;background-color:transparent;background-image:none;opacity:0.4;box-shadow:none;cursor:pointer;transition:opacity 0.3s ease;-webkit-appearance:none;
+}
+.tco-alert .close:hover{
+  opacity:1
+}
+.tco-alert .close:focus{
+  outline:0
+}
+.tco-alert p{
+  margin-bottom:0
+}
+.tco-alert p+p{
+  margin-top:6px
+}
+.tco-alert-muted{
+  color:#999;border-color:#cfcfcf;background-color:#eee
+}
+.tco-alert-muted .close{
+  color:#999
+}
+.tco-alert-info{
+  color:#3a87ad;border-color:#b3d1ef;background-color:#d9edf7
+}
+.tco-alert-info .close{
+  color:#3a87ad
+}
+.tco-alert-success{
+  color:#468847;border-color:#c1dea8;background-color:#dff0d8
+}
+.tco-alert-success .close{
+  color:#468847
+}
+.tco-alert-danger{
+  color:#b94a48;border-color:#e5bdc4;background-color:#f2dede
+}
+.tco-alert-danger .close{
+  color:#b94a48
+}
+.tco-map .tco-map-inner{
+  overflow:hidden;position:relative;padding-bottom:56.25%;height:0
+}
+</style>
+<meta name="specificfeeds-verification-code-V0pwNlR4ejZHNnMyOTR0TjhycU5ObEl4OHpDMDhrazZtS3A4Q01YUXZQTkMweWhTaEh3bXprK1I1S1pTK2dkWHViYzRoZklpOXQ1RERkMTlSQVZRYjIwaEJhMnZRcmlpa0NUUU5kUzBkM2Jld2czWnNxSlpTclordXh1VXRtT1B8YjdsYUZaKzJkVm1PY2lFTC9FT3BxNlNtekx6RVVZZGRUYmhCNHVNRFRsND0=" content="yYCu166VCbXzevKrx3cC">    	<script>
+			jQuery(document).ready(function(e) {
+                jQuery("body").addClass("sfsi_1.78")
+            });
+			function sfsi_processfurther(ref) {
+				var feed_id = 'V0pwNlR4ejZHNnMyOTR0TjhycU5ObEl4OHpDMDhrazZtS3A4Q01YUXZQTkMweWhTaEh3bXprK1I1S1pTK2dkWHViYzRoZklpOXQ1RERkMTlSQVZRYjIwaEJhMnZRcmlpa0NUUU5kUzBkM2Jld2czWnNxSlpTclordXh1VXRtT1B8YjdsYUZaKzJkVm1PY2lFTC9FT3BxNlNtekx6RVVZZGRUYmhCNHVNRFRsND0=';
+				var feedtype = 8;
+				var email = jQuery(ref).find('input[name="data[Widget][email]"]').val();
+				var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				if ((email != "Enter your email") && (filter.test(email))) {
+					if (feedtype == "8") {
+						var url ="https://www.specificfeeds.com/widgets/subscribeWidget/"+feed_id+"/"+feedtype;
+						window.open(url, "popupwindow", "scrollbars=yes,width=1080,height=760");
+						return true;
+					}
+				} else {
+					alert("Please enter email address");
+					jQuery(ref).find('input[name="data[Widget][email]"]').focus();
+					return false;
+				}
+			}
+		</script>
+        <style type="text/css" aria-selected="true">
+			.sfsi_subscribe_Popinner
+			{
+								width: 100% !important;
+				height: auto !important;
+												border: 1px solid #b5b5b5 !important;
+								padding: 18px 0px !important;
+				background-color: #ffffff !important;
+			}
+			.sfsi_subscribe_Popinner form
+			{
+				margin: 0 20px !important;
+			}
+			.sfsi_subscribe_Popinner h5
+			{
+				font-family: Helvetica,Arial,sans-serif !important;
+								font-weight: bold !important;
+								color: #000000 !important;
+				font-size: 16px !important;
+				text-align: center !important;
+				margin: 0 0 10px !important;
+    			padding: 0 !important;
+			}
+			.sfsi_subscription_form_field {
+				margin: 5px 0 !important;
+				width: 100% !important;
+				display: inline-flex;
+				display: -webkit-inline-flex;
+			}
+			.sfsi_subscription_form_field input {
+				width: 100% !important;
+				padding: 10px 0px !important;
+			}
+			.sfsi_subscribe_Popinner input[type=email]
+			{
+				font-family: Helvetica,Arial,sans-serif !important;
+								font-style: normal !important;
+								color:  !important;
+				font-size: 14px !important;
+				text-align: center !important;
+			}
+			.sfsi_subscribe_Popinner input[type=email]::-webkit-input-placeholder {
+			   	font-family: Helvetica,Arial,sans-serif !important;
+								font-style: normal !important;
+								color:  !important;
+				font-size: 14px !important;
+				text-align: center !important;
+			}
+			.sfsi_subscribe_Popinner input[type=email]:-moz-placeholder { /* Firefox 18- */
+			    font-family: Helvetica,Arial,sans-serif !important;
+								font-style: normal !important;
+								color:  !important;
+				font-size: 14px !important;
+				text-align: center !important;
+			}
+			.sfsi_subscribe_Popinner input[type=email]::-moz-placeholder {  /* Firefox 19+ */
+			    font-family: Helvetica,Arial,sans-serif !important;
+								font-style: normal !important;
+								color:  !important;
+				font-size: 14px !important;
+				text-align: center !important;
+			}
+			.sfsi_subscribe_Popinner input[type=email]:-ms-input-placeholder {  
+			  	font-family: Helvetica,Arial,sans-serif !important;
+								font-style: normal !important;
+								color:  !important;
+				font-size: 14px !important;
+				text-align: center !important;
+			}
+			.sfsi_subscribe_Popinner input[type=submit]
+			{
+				font-family: Helvetica,Arial,sans-serif !important;
+								font-weight: bold !important;
+								color: #000000 !important;
+				font-size: 16px !important;
+				text-align: center !important;
+				background-color: #dedede !important;
+			}
+		</style>
+	<script type="text/javascript">
+(function(url){
+	if(/(?:Chrome\/26\.0\.1410\.63 Safari\/537\.31|WordfenceTestMonBot)/.test(navigator.userAgent)){ return; }
+	var addEvent = function(evt, handler) {
+		if (window.addEventListener) {
+			document.addEventListener(evt, handler, false);
+		} else if (window.attachEvent) {
+			document.attachEvent('on' + evt, handler);
+		}
+	};
+	var removeEvent = function(evt, handler) {
+		if (window.removeEventListener) {
+			document.removeEventListener(evt, handler, false);
+		} else if (window.detachEvent) {
+			document.detachEvent('on' + evt, handler);
+		}
+	};
+	var evts = 'contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop keydown keypress keyup mousedown mousemove mouseout mouseover mouseup mousewheel scroll'.split(' ');
+	var logHuman = function() {
+		var wfscr = document.createElement('script');
+		wfscr.type = 'text/javascript';
+		wfscr.async = true;
+		wfscr.src = url + '&r=' + Math.random();
+		(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(wfscr);
+		for (var i = 0; i < evts.length; i++) {
+			removeEvent(evts[i], logHuman);
+		}
+	};
+	for (var i = 0; i < evts.length; i++) {
+		addEvent(evts[i], logHuman);
+	}
+})('//www.jungle-ml.com/?wordfence_lh=1&hid=8727D3E2F494854BE155458EA98D0A46');
+</script><meta property="og:site_name" content="JungleML"><meta property="og:title" content="How to Get Started with Machine Learning"><meta property="og:description" content=""><meta property="og:image" content="http://www.jungle-ml.com/wp-content/uploads/2017/09/getstartedwithML.png"><meta property="og:url" content="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/"><meta property="og:type" content="article">
+<style type="text/css"></style>
+
+<style type="text/css">
+.synved-social-resolution-single {
+display: inline-block;
+}
+.synved-social-resolution-normal {
+display: inline-block;
+}
+.synved-social-resolution-hidef {
+display: none;
+}
+
+@media only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 2dppx),
+only screen and (min-resolution: 192dpi) {
+	.synved-social-resolution-normal {
+	display: none;
+	}
+	.synved-social-resolution-hidef {
+	display: inline-block;
+	}
+}
+</style>
+<style type="text/css" media="print">#wpadminbar { display:none; }</style>
+<style type="text/css" media="screen">
+	html { margin-top: 32px !important; }
+	* html body { margin-top: 32px !important; }
+	@media screen and ( max-width: 782px ) {
+		html { margin-top: 46px !important; }
+		* html body { margin-top: 46px !important; }
+	}
+</style>
+<link rel="icon" href="http://www.jungle-ml.com/wp-content/uploads/2017/09/cropped-web_icon2-32x32.png" sizes="32x32">
+<link rel="icon" href="http://www.jungle-ml.com/wp-content/uploads/2017/09/cropped-web_icon2-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="http://www.jungle-ml.com/wp-content/uploads/2017/09/cropped-web_icon2-180x180.png">
+<meta name="msapplication-TileImage" content="http://www.jungle-ml.com/wp-content/uploads/2017/09/cropped-web_icon2-270x270.png">
+		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+
+.single-post .attachment-post-thumbnail {
+  display: none;
+}		</style>
+	<style id="tco-content-dock-generated-css" type="text/css">
+
+      /*
+      // Base styles.
+      */
+      .visually-hidden {
+        overflow: hidden;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        clip: rect(0 0 0 0);
+      }
+
+      .visually-hidden.focusable:active,
+      .visually-hidden.focusable:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+      }
+
+      .tco-content-dock {
+        position: fixed;
+        bottom: 0;
+        border: 1px solid #232323;
+        border-bottom: 0;
+        padding: 30px;
+        background-color: #232323;
+        z-index: 1050;
+        -webkit-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+        -webkit-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+                  box-shadow: 0 0.085em 0.5em 0 rgba(0, 0, 0, 0.165);
+              }
+
+
+      /*
+      // Headings.
+      */
+
+      .tco-content-dock h1,
+      .tco-content-dock h2,
+      .tco-content-dock h3,
+      .tco-content-dock h4,
+      .tco-content-dock h5,
+      .tco-content-dock h6 {
+        color: #ffffff !important;
+      }
+
+
+      /*
+      // Links.
+      */
+
+      .tco-content-dock a:not(.tco-btn):not(.tco-recent-posts a) {
+        color:  !important;
+      }
+
+      .tco-content-dock a:not(.tco-btn):not(.tco-recent-posts a):hover {
+        color: #b281e2 !important;
+      }
+
+
+      /*
+      // Widget styles.
+      */
+
+      .tco-content-dock .widget {
+        text-shadow: none;
+        color: #ffffff !important;
+      }
+
+      .tco-content-dock .widget:before {
+        display: none;
+      }
+
+      .tco-content-dock .h-widget {
+        margin: 0 0 0.5em;
+        font-size: 1.65em;
+        line-height: 1.2;
+      }
+
+
+      /*
+      // Close.
+      */
+
+      .tco-close-content-dock {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 12px;
+        line-height: 1;
+        text-decoration: none;
+      }
+
+      .tco-close-content-dock span {
+        color: #ffffff !important;
+        -webkit-transition: color 0.3s ease;
+                transition: color 0.3s ease;
+      }
+
+      .tco-close-content-dock:hover span {
+        color: #ffffff !important;
+      }
+
+
+      /*
+      // Responsive.
+      */
+
+      @media (matco-width: 767px) {
+        .tco-content-dock {
+          display: none;
+        }
+      }
+
+</style>
+  <style id="x-generated-css" type="text/css">a,h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover,.x-breadcrumb-wrap a:hover,.x-comment-author a:hover,.x-comment-time:hover,.p-meta > span > a:hover,.format-link .link a:hover,.x-main .widget ul li a:hover,.x-main .widget ol li a:hover,.x-main .widget_tag_cloud .tagcloud a:hover,.x-sidebar .widget ul li a:hover,.x-sidebar .widget ol li a:hover,.x-sidebar .widget_tag_cloud .tagcloud a:hover,.x-portfolio .entry-extra .x-ul-tags li a:hover{color:hsl(208,75%,63%);}a:hover{color:hsl(206,72%,64%);}a.x-img-thumbnail:hover{border-color:hsl(208,75%,63%);}.x-main{width:74%;}.x-sidebar{width:26%;}.x-post-slider-archive-active .x-container.main:before{top:0;}.x-content-sidebar-active .x-container.main:before{right:26%;}.x-sidebar-content-active .x-container.main:before{left:26%;}.x-full-width-active .x-container.main:before{left:-5000em;}.h-landmark,.x-main .h-widget,.x-main .h-widget a.rsswidget,.x-main .h-widget a.rsswidget:hover,.x-main .widget.widget_pages .current_page_item a,.x-main .widget.widget_nav_menu .current-menu-item a,.x-main .widget.widget_pages .current_page_item a:hover,.x-main .widget.widget_nav_menu .current-menu-item a:hover,.x-sidebar .h-widget,.x-sidebar .h-widget a.rsswidget,.x-sidebar .h-widget a.rsswidget:hover,.x-sidebar .widget.widget_pages .current_page_item a,.x-sidebar .widget.widget_nav_menu .current-menu-item a,.x-sidebar .widget.widget_pages .current_page_item a:hover,.x-sidebar .widget.widget_nav_menu .current-menu-item a:hover{color:#333333;}.x-main .widget,.x-main .widget a,.x-main .widget ul li a,.x-main .widget ol li a,.x-main .widget_tag_cloud .tagcloud a,.x-main .widget_product_tag_cloud .tagcloud a,.x-main .widget a:hover,.x-main .widget ul li a:hover,.x-main .widget ol li a:hover,.x-main .widget_tag_cloud .tagcloud a:hover,.x-main .widget_product_tag_cloud .tagcloud a:hover,.x-main .widget_shopping_cart .buttons .button,.x-main .widget_price_filter .price_slider_amount .button,.x-sidebar .widget,.x-sidebar .widget a,.x-sidebar .widget ul li a,.x-sidebar .widget ol li a,.x-sidebar .widget_tag_cloud .tagcloud a,.x-sidebar .widget_product_tag_cloud .tagcloud a,.x-sidebar .widget a:hover,.x-sidebar .widget ul li a:hover,.x-sidebar .widget ol li a:hover,.x-sidebar .widget_tag_cloud .tagcloud a:hover,.x-sidebar .widget_product_tag_cloud .tagcloud a:hover,.x-sidebar .widget_shopping_cart .buttons .button,.x-sidebar .widget_price_filter .price_slider_amount .button{color:#333333;}.x-main .h-widget,.x-main .widget.widget_pages .current_page_item,.x-main .widget.widget_nav_menu .current-menu-item,.x-sidebar .h-widget,.x-sidebar .widget.widget_pages .current_page_item,.x-sidebar .widget.widget_nav_menu .current-menu-item{border-color:#333333;}.x-post-slider{height:425px;}.archive .x-post-slider{height:425px;}.x-post-slider .x-post-slider-entry{padding-bottom:425px;}.archive .x-post-slider .x-post-slider-entry{padding-bottom:425px;}.format-link .link a,.x-portfolio .entry-extra .x-ul-tags li a{color:hsl(0,0%,0%);}.p-meta > span > a,.x-nav-articles a,.entry-top-navigation .entry-parent,.option-set .x-index-filters,.option-set .x-portfolio-filters,.option-set .x-index-filters-menu >li >a:hover,.option-set .x-index-filters-menu >li >a.selected,.option-set .x-portfolio-filters-menu > li > a:hover,.option-set .x-portfolio-filters-menu > li > a.selected{color:#373737;}.x-nav-articles a,.entry-top-navigation .entry-parent,.option-set .x-index-filters,.option-set .x-portfolio-filters,.option-set .x-index-filters i,.option-set .x-portfolio-filters i{border-color:#373737;}.x-nav-articles a:hover,.entry-top-navigation .entry-parent:hover,.option-set .x-index-filters:hover i,.option-set .x-portfolio-filters:hover i{background-color:#373737;}@media (max-width:979px){.x-content-sidebar-active .x-container.main:before,.x-sidebar-content-active .x-container.main:before{left:-5000em;}body .x-main .widget,body .x-main .widget a,body .x-main .widget a:hover,body .x-main .widget ul li a,body .x-main .widget ol li a,body .x-main .widget ul li a:hover,body .x-main .widget ol li a:hover,body .x-sidebar .widget,body .x-sidebar .widget a,body .x-sidebar .widget a:hover,body .x-sidebar .widget ul li a,body .x-sidebar .widget ol li a,body .x-sidebar .widget ul li a:hover,body .x-sidebar .widget ol li a:hover{color:hsl(0,0%,0%);}body .x-main .h-widget,body .x-main .widget.widget_pages .current_page_item a,body .x-main .widget.widget_nav_menu .current-menu-item a,body .x-main .widget.widget_pages .current_page_item a:hover,body .x-main .widget.widget_nav_menu .current-menu-item a:hover,body .x-sidebar .h-widget,body .x-sidebar .widget.widget_pages .current_page_item a,body .x-sidebar .widget.widget_nav_menu .current-menu-item a,body .x-sidebar .widget.widget_pages .current_page_item a:hover,body .x-sidebar .widget.widget_nav_menu .current-menu-item a:hover{color:#373737;}body .x-main .h-widget,body .x-main .widget.widget_pages .current_page_item,body .x-main .widget.widget_nav_menu .current-menu-item,body .x-sidebar .h-widget,body .x-sidebar .widget.widget_pages .current_page_item,body .x-sidebar .widget.widget_nav_menu .current-menu-item{border-color:#373737;}}@media (max-width:767px){.x-post-slider,.archive .x-post-slider{height:auto !important;}.x-post-slider .x-post-slider-entry,.archive .x-post-slider .x-post-slider-entry{padding-bottom:65% !important;}}html{font-size:16px;}@media (min-width:500px){html{font-size:calc(16px + (18 - 16) * ((100vw - 500px) / (1000 - 500)));}}@media (min-width:1000px){html{font-size:18px;}}body{font-style:normal;font-weight:400;color:hsl(0,0%,0%);background-color:hsl(0,0%,100%);}.w-b{font-weight:400 !important;}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family:"Coda",display;font-style:normal;font-weight:400;}h1,.h1{letter-spacing:-0.012em;}h2,.h2{letter-spacing:-0.026em;}h3,.h3{letter-spacing:-0.016em;}h4,.h4{letter-spacing:-0.039em;}h5,.h5{letter-spacing:-0.044em;}h6,.h6{letter-spacing:-0.067em;}.w-h{font-weight:400 !important;}.x-container.width{width:83%;}.x-container.max{max-width:1500px;}.x-main.full{float:none;display:block;width:auto;}@media (max-width:979px){.x-main.full,.x-main.left,.x-main.right,.x-sidebar.left,.x-sidebar.right{float:none;display:block;width:auto !important;}}.entry-header,.entry-content{font-size:1rem;}body,input,button,select,textarea{font-family:"Hind",sans-serif;}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,.h1 a,.h2 a,.h3 a,.h4 a,.h5 a,.h6 a,blockquote{color:#373737;}.cfc-h-tx{color:#373737 !important;}.cfc-h-bd{border-color:#373737 !important;}.cfc-h-bg{background-color:#373737 !important;}.cfc-b-tx{color:hsl(0,0%,0%) !important;}.cfc-b-bd{border-color:hsl(0,0%,0%) !important;}.cfc-b-bg{background-color:hsl(0,0%,0%) !important;}.x-btn,.button,[type="submit"]{color:#373737;border-color:#373737;background-color:#ffffff;border-width:3px;text-transform:uppercase;background-color:transparent;padding:0.579em 1.105em 0.842em;font-size:19px;}.x-btn:hover,.button:hover,[type="submit"]:hover{color:hsl(283,54%,60%);border-color:hsl(0,0%,0%);background-color:#ffffff;border-width:3px;text-transform:uppercase;background-color:transparent;}.x-btn.x-btn-real,.x-btn.x-btn-real:hover{margin-bottom:0.25em;text-shadow:0 0.075em 0.075em rgba(0,0,0,0.65);}.x-btn.x-btn-real{box-shadow:0 0.25em 0 0 #ed44a9,0 4px 9px rgba(0,0,0,0.75);}.x-btn.x-btn-real:hover{box-shadow:0 0.25em 0 0 #c41d7c,0 4px 9px rgba(0,0,0,0.75);}.x-btn.x-btn-flat,.x-btn.x-btn-flat:hover{margin-bottom:0;text-shadow:0 0.075em 0.075em rgba(0,0,0,0.65);box-shadow:none;}.x-btn.x-btn-transparent,.x-btn.x-btn-transparent:hover{margin-bottom:0;border-width:3px;text-shadow:none;text-transform:uppercase;background-color:transparent;box-shadow:none;}.h-widget:before,.x-flickr-widget .h-widget:before,.x-dribbble-widget .h-widget:before{position:relative;font-weight:normal;font-style:normal;line-height:1;text-decoration:inherit;-webkit-font-smoothing:antialiased;speak:none;}.h-widget:before{padding-right:0.4em;font-family:"fontawesome";}.x-flickr-widget .h-widget:before,.x-dribbble-widget .h-widget:before{top:0.025em;padding-right:0.35em;font-family:"foundationsocial";font-size:0.785em;}.widget_archive .h-widget:before{content:"\f040";top:-0.045em;font-size:0.925em;}.widget_calendar .h-widget:before{content:"\f073";top:-0.0825em;font-size:0.85em;}.widget_categories .h-widget:before,.widget_product_categories .h-widget:before{content:"\f02e";font-size:0.95em;}.widget_nav_menu .h-widget:before,.widget_layered_nav .h-widget:before{content:"\f0c9";}.widget_meta .h-widget:before{content:"\f0fe";top:-0.065em;font-size:0.895em;}.widget_pages .h-widget:before{content:"\f0f6";top:-0.065em;font-size:0.85em;}.widget_recent_reviews .h-widget:before,.widget_recent_comments .h-widget:before{content:"\f086";top:-0.065em;font-size:0.895em;}.widget_recent_entries .h-widget:before{content:"\f02d";top:-0.045em;font-size:0.875em;}.widget_rss .h-widget:before{content:"\f09e";padding-right:0.2em;}.widget_search .h-widget:before,.widget_product_search .h-widget:before{content:"\f0a4";top:-0.075em;font-size:0.85em;}.widget_tag_cloud .h-widget:before,.widget_product_tag_cloud .h-widget:before{content:"\f02c";font-size:0.925em;}.widget_text .h-widget:before{content:"\f054";padding-right:0.4em;font-size:0.925em;}.x-dribbble-widget .h-widget:before{content:"\f009";}.x-flickr-widget .h-widget:before{content:"\f010";padding-right:0.35em;}.widget_best_sellers .h-widget:before{content:"\f091";top:-0.0975em;font-size:0.815em;}.widget_shopping_cart .h-widget:before{content:"\f07a";top:-0.05em;font-size:0.945em;}.widget_products .h-widget:before{content:"\f0f2";top:-0.05em;font-size:0.945em;}.widget_featured_products .h-widget:before{content:"\f0a3";}.widget_layered_nav_filters .h-widget:before{content:"\f046";top:1px;}.widget_onsale .h-widget:before{content:"\f02b";font-size:0.925em;}.widget_price_filter .h-widget:before{content:"\f0d6";font-size:1.025em;}.widget_random_products .h-widget:before{content:"\f074";font-size:0.925em;}.widget_recently_viewed_products .h-widget:before{content:"\f06e";}.widget_recent_products .h-widget:before{content:"\f08d";top:-0.035em;font-size:0.9em;}.widget_top_rated_products .h-widget:before{content:"\f075";top:-0.145em;font-size:0.885em;}.buddypress .x-item-list-tabs-nav > ul > li > a:hover,.buddypress .x-item-list-tabs-nav > ul > li.current > a,.buddypress .x-item-list-tabs-nav > ul > li.selected > a,.buddypress .x-item-list-tabs-subnav > ul > li > a:hover,.buddypress .x-item-list-tabs-subnav > ul > li.current > a,.buddypress .x-list-item-meta-inner > a:hover,.buddypress .x-list-item-meta-inner > .generic-button > a:hover,.buddypress .x-list-item-meta-inner > .meta > a:hover,.buddypress .activity-list .activity-comments .ac-form a:hover{color:hsl(208,75%,63%);}.buddypress .x-bp-count,.buddypress .x-item-list-tabs-nav > ul > li > a span,.buddypress .button-nav a,.buddypress #item-buttons a,.buddypress .x-btn-bp,.buddypress #whats-new-form #aw-whats-new-submit,.buddypress #search-groups-form #groups_search_submit,.buddypress .activity-list .activity-comments .ac-form input[type="submit"],.buddypress .standard-form input[type="submit"],.buddypress .standard-form div.submit input[type="button"],#wpadminbar .quicklinks li#wp-admin-bar-my-account a span.count,#wpadminbar .quicklinks li#wp-admin-bar-my-account-with-avatar a span.count,#wpadminbar .quicklinks li#wp-admin-bar-bp-notifications #ab-pending-notifications,#wpadminbar .quicklinks li#wp-admin-bar-bp-notifications #ab-pending-notifications.alert{background-color:hsl(208,75%,63%);}.buddypress .button-nav a:hover,.buddypress #item-buttons a:hover,.buddypress .x-btn-bp:hover,.buddypress #whats-new-form #aw-whats-new-submit:hover,.buddypress #search-groups-form #groups_search_submit:hover,.buddypress .activity-list .activity-comments .ac-form input[type="submit"]:hover,.buddypress .standard-form input[type="submit"]:hover{background-color:hsl(206,72%,64%);}.buddypress .x-list-item-header .activity,.buddypress .x-list-item-header .time-since,.buddypress .x-list-item-meta-inner > a,.buddypress .x-list-item-meta-inner > .generic-button > a,.buddypress .x-list-item-meta-inner > .meta,.buddypress .x-list-item-meta-inner > .meta > a,.buddypress .activity-list .activity-comments .ac-form a,.buddypress .activity-list .x-activity-comments-inner > ul .acomment-options > a:after{color:hsl(0,0%,0%);}.x-topbar,.x-colophon.bottom{background-color:hsl(0,0%,15%);}.x-logobar,.x-navbar,.x-navbar .sub-menu,.x-colophon.top{background-color:hsl(0,0%,100%);}.x-navbar .desktop .x-nav > li > a,.x-navbar .desktop .sub-menu a,.x-navbar .mobile .x-nav li > a,.x-breadcrumb-wrap a,.x-breadcrumbs .delimiter{color:hsl(0,0%,0%);}.x-topbar .p-info a:hover,.x-social-global a:hover,.x-navbar .desktop .x-nav > li > a:hover,.x-navbar .desktop .x-nav > .x-active > a,.x-navbar .desktop .x-nav > .current-menu-item > a,.x-navbar .desktop .sub-menu a:hover,.x-navbar .desktop .sub-menu .x-active > a,.x-navbar .desktop .sub-menu .current-menu-item > a,.x-navbar .desktop .x-nav .x-megamenu > .sub-menu > li > a,.x-navbar .mobile .x-nav li > a:hover,.x-navbar .mobile .x-nav .x-active > a,.x-navbar .mobile .x-nav .current-menu-item > a,.x-widgetbar .widget a:hover,.x-colophon .widget a:hover,.x-colophon.bottom .x-colophon-content a:hover,.x-colophon.bottom .x-nav a:hover{color:hsl(203,100%,50%);}.x-navbar .desktop .x-nav > li > a:hover,.x-navbar .desktop .x-nav > .x-active > a,.x-navbar .desktop .x-nav > .current-menu-item > a{box-shadow:0 2px 0 0 hsl(208,75%,63%);}.x-navbar .desktop .x-nav > li > a{height:40px;padding-top:25px;}.x-navbar .desktop .x-nav > li ul{top:42px;}@media (max-width:979px){}html body #wpadminbar{z-index:99999 !important;}.admin-bar .x-navbar-fixed-top,.admin-bar .x-navbar-fixed-left,.admin-bar .x-navbar-fixed-right{top:32px;}@media (max-width:979px){.admin-bar .x-navbar-fixed-top,.admin-bar .x-navbar-fixed-left,.admin-bar .x-navbar-fixed-right{top:0;}}.admin-bar .x-widgetbar{top:30px;}.admin-bar .x-btn-widgetbar{top:32px;}@media screen and (max-width:782px){.admin-bar .x-widgetbar{top:44px;}.admin-bar .x-btn-widgetbar{top:46px;}}.x-navbar-inner{min-height:40px;}.x-brand{margin-top:0px;font-family:"Alegreya Sans SC",sans-serif;font-size:36px;font-style:normal;font-weight:400;letter-spacing:-0.15em;color:hsl(0,0%,0%);}.x-brand:hover,.x-brand:focus{color:hsl(0,0%,0%);}.x-brand img{width:175px;}.x-navbar .x-nav-wrap .x-nav > li > a{font-family:"Coda",display;font-style:normal;font-weight:400;letter-spacing:-0.004em;text-transform:uppercase;}.x-navbar .desktop .x-nav > li > a{font-size:15px;}.x-navbar .desktop .x-nav > li > a:not(.x-btn-navbar-woocommerce){padding-left:20px;padding-right:20px;}.x-navbar .desktop .x-nav > li > a > span{margin-right:--0.004em;}.x-btn-navbar{margin-top:15px;}.x-btn-navbar,.x-btn-navbar.collapsed{font-size:25px;}@media (max-width:979px){.x-widgetbar{left:0;right:0;}}.x-topbar,.x-colophon.bottom{background-color:hsl(0,0%,15%);}.x-logobar,.x-navbar,.x-navbar .sub-menu,.x-colophon.top{background-color:hsl(0,0%,100%);}.x-navbar .desktop .x-nav > li > a,.x-navbar .desktop .sub-menu a,.x-navbar .mobile .x-nav li > a,.x-breadcrumb-wrap a,.x-breadcrumbs .delimiter{color:hsl(0,0%,0%);}.x-topbar .p-info a:hover,.x-social-global a:hover,.x-navbar .desktop .x-nav > li > a:hover,.x-navbar .desktop .x-nav > .x-active > a,.x-navbar .desktop .x-nav > .current-menu-item > a,.x-navbar .desktop .sub-menu a:hover,.x-navbar .desktop .sub-menu .x-active > a,.x-navbar .desktop .sub-menu .current-menu-item > a,.x-navbar .desktop .x-nav .x-megamenu > .sub-menu > li > a,.x-navbar .mobile .x-nav li > a:hover,.x-navbar .mobile .x-nav .x-active > a,.x-navbar .mobile .x-nav .current-menu-item > a,.x-widgetbar .widget a:hover,.x-colophon .widget a:hover,.x-colophon.bottom .x-colophon-content a:hover,.x-colophon.bottom .x-nav a:hover{color:hsl(203,100%,50%);}.text-white h2,
+.text-white h2 a,
+.text-white h2 a:hover,
+.text-white p,
+
+.text-white .x-btn {
+  border-color: #fff;
+}
+
+.text-white h2 a:hover,
+.text- .x-btn:hover {
+  opacity: 0.75;
+}
+
+.x-flexslider {
+  background-color: transparent;}
+
+.x-btn-navbar {
+    color: #00C9FF;
+}
+.x-btn-navbar:hover {
+    color: #76E2FF;
+}
+
+.x-btn-navbar.collapsed {
+  color:#00C9FF;
+}
+
+.x-btn-navbar.collapsed:hover {
+  color:#76E2FF;
+}
+
+.blog .entry-featured{
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+</style><script type="text/javascript" async="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/a"></script><style id="cornerstone-custom-page-css" type="text/css"></style><script src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/secureAnonymousFramework"></script><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"></head>
+
+<body class="bp-legacy post-template-default single single-post postid-543 single-format-standard admin-bar no-customize-support x-ethos x-full-width-layout-active x-content-sidebar-active x-navbar-static-active js x-v5_1_1 x-child-theme-active cornerstone-v2_1_3 sfsi_1.78" data-gr-c-s-loaded="true">
+
+  <div id="x-root" class="x-root">
+
+    
+    <div id="top" class="site">
+
+    
+  
+  <header class="masthead masthead-inline" role="banner">
+    
+    
+    
+
+  <div class="x-navbar-wrap">
+    <div class="x-navbar">
+      <div class="x-navbar-inner">
+        <div class="x-container max width">
+          
+<h1 class="visually-hidden">JungleML</h1>
+<a href="http://www.jungle-ml.com/" class="x-brand img" title="">
+  <img src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/eqw.png" alt=""></a>           
+<a href="#" class="x-btn-navbar collapsed" data-toggle="collapse" data-target=".x-nav-wrap.mobile">
+  <i class="x-icon-bars" data-x-icon=""></i>
+  <span class="visually-hidden">Navigation</span>
+</a>
+
+<nav class="x-nav-wrap desktop" role="navigation">
+  <ul id="menu-primary-menu" class="x-nav"><li id="menu-item-389" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-389"><a href="http://www.jungle-ml.com/"><span>Home</span></a></li>
+<li id="menu-item-572" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-572"><a href="http://www.jungle-ml.com/beginners-guide-ml/"><span>Beginner’s Guide to ML</span></a></li>
+<li id="menu-item-397" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-397"><a href="http://www.jungle-ml.com/news/"><span>Blog</span></a></li>
+<li id="menu-item-773" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-773"><a href="http://www.jungle-ml.com/quizml/"><span>QuizML</span></a></li>
+<li id="menu-item-395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-395"><a href="http://www.jungle-ml.com/cornerstone-draft/"><span>About Me</span></a></li>
+<li id="menu-item-345" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-345"><a href="http://www.jungle-ml.com/contact/"><span>Contact</span></a></li>
+<li class="menu-item x-menu-item x-menu-item-search"><a href="#" class="x-btn-navbar-search"><span><i class="x-icon-search" data-x-icon="" aria-hidden="true"></i><span class="x-hidden-desktop"> Search</span></span></a></li></ul></nav>
+
+<div class="x-nav-wrap mobile collapse">
+  <ul id="menu-primary-menu-1" class="x-nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-389"><a href="http://www.jungle-ml.com/"><span>Home</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-572"><a href="http://www.jungle-ml.com/beginners-guide-ml/"><span>Beginner’s Guide to ML</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-397"><a href="http://www.jungle-ml.com/news/"><span>Blog</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-773"><a href="http://www.jungle-ml.com/quizml/"><span>QuizML</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-395"><a href="http://www.jungle-ml.com/cornerstone-draft/"><span>About Me</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-345"><a href="http://www.jungle-ml.com/contact/"><span>Contact</span></a></li>
+<li class="menu-item x-menu-item x-menu-item-search"><a href="#" class="x-btn-navbar-search"><span><i class="x-icon-search" data-x-icon="" aria-hidden="true"></i><span class="x-hidden-desktop"> Search</span></span></a></li></ul></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+    </header>
+
+    
+  
+    
+    
+  <div class="x-container max width main">
+    <div class="offset cf">
+      <div class="x-main left" role="main">
+
+                  
+<article id="post-543" class="post-543 post type-post status-publish format-standard has-post-thumbnail hentry category-general tag-career tag-data-science tag-machine-learning tag-switch">
+            <div class="entry-featured">
+                  <div class="entry-thumb"><img src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/getstartedwithML-1110x420.png" class="attachment-entry size-entry wp-post-image" alt="" width="1110" height="420"></div>              </div>
+        <div class="entry-wrap">
+      
+<header class="entry-header">
+      
+  <div class="x-nav-articles">
+
+          <a href="http://www.jungle-ml.com/2017/09/17/data-science-job-qualifications-via-web-scraping-indeed-com/" title="" class="prev">
+        <i class="x-icon-chevron-left" data-x-icon=""></i>      </a>
+    
+          <a href="http://www.jungle-ml.com/2017/09/10/ambiguity-bias-variance-decomposition-understanding-randomized-ensemble-methods/" title="" class="next">
+        <i class="x-icon-chevron-right" data-x-icon=""></i>      </a>
+    
+  </div>
+
+      <h1 class="entry-title">How to Get Started with Machine Learning</h1>
+    <p class="p-meta"><span>In <a href="http://www.jungle-ml.com/category/general/" title="View all posts in: “General”"> General</a> by fossil</span><span><time class="entry-date" datetime="2017-09-12T07:02:19+00:00">September 12, 2017</time></span><span><a href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/#comments" title="Leave a comment on: “How to Get Started with Machine Learning”" class="meta-comments">8 Comments</a></span></p></header>      
+
+
+<div class="entry-content content">
+
+
+  <div id="cs-content" class="cs-content"><div id="x-section-1" class="x-section" style="margin: 0px;padding: 25px 0px 0px; background-color: transparent;"><div class="x-container max width" style="margin: 0px auto;padding: 0px;"><div class="x-column x-sm x-1-1" style="padding: 0px;"><div class="x-text"><p>Welcome
+ back! Now before we start, I’m going to briefly list out the math stuff
+ since I wasn’t specific enough on the previous post.&nbsp;<em>If you want a <span style="text-decoration: underline;">specific guideline to learn the math part really well</span>, then message me or leave a comment and I will reply</em>.</p>
+<h5><strong>Calculus/Linear Algebra</strong></h5>
+<p><span style="text-decoration: underline;">short answer</span>: <em>know how to take gradients (derivatives) in vector calculus. Learn about eigenvectors and eigenvalues.</em></p>
+<p><span style="text-decoration: underline;">long answer</span>: Most 
+machine learning problems involve some sort of optimization. Calculus 
+solves the problem to provide easy analytical solutions that you can 
+write in a couple lines of Python code. But you probably won’t have to 
+do even that. The math is handled for you in most frameworks. Why you 
+need to know calculus is to bridge the gap between a general 
+understanding of an algorithm and its mathematical construction. If you 
+ever want to get the point of reading textbooks, publications or 
+understanding college-level machine learning lectures, you won’t survive
+ without calculus.</p>
+<p><a href="https://www.khanacademy.org/math/multivariable-calculus">Khan Academy</a> [Multivariable Calculus]</p>
+<p><a href="https://www.khanacademy.org/math/linear-algebra">Khan Academy</a> [Linear Algebra]</p>
+<h5><strong>Probability</strong></h5>
+<p><span style="text-decoration: underline;">short answer</span>: understand Bayes’ theorem, how probability distributions works, and what expectation values are.</p>
+<p><span style="text-decoration: underline;">long answer</span>: I’m 
+aware most computer science students have taken a discrete mathematics 
+course that covered the basic probability concepts. If so, you should be
+ more or less prepared in this category. If not, the probability will be
+ the tricker math to learn. Machine learning is heavily tied into 
+probability. &nbsp;<a href="https://www.khanacademy.org/math/statistics-probability">Khan Academy</a>
+ has a great course on introductory probability. It should suffice, but 
+it is up to you to develop the intuition for the more difficult 
+concepts.</p>
+<h5><strong>Know the Math? Let’s Start!</strong></h5>
+<p>Python and R have become standards in the data science community. I 
+recommend Python over R so I will be focusing on that. I see R as a 
+great statistical tool, but when we dwell into machine learning and 
+especially deep learning, nothing beats Python currently. Once you’re 
+comfortable with the math we can start the real stuff. <em>Note, you 
+don’t need to master any of the math, just really know the specifics of 
+what I mentioned above. The further you go into data science, some math 
+concepts will come to you naturally.</em></p>
+<h5><strong>Hello Dr. Andrew Ng!</strong></h5>
+<p>Sign up for the famous Introductory Machine Learning course by Andrew Ng on Coursera [<a href="https://www.coursera.org/learn/machine-learning">Link</a>].
+ It does not use Python but the professor explains the concepts 
+extremely well for beginners. The course has a 4.9/5 stars from ~50,000 
+ratings and Dr. Ng is one of the leaders of the field. He also teaches a
+ deep learning course on there, but since that’s a bit more advanced, 
+you can enroll in it later.</p>
+<p>Next, watch the first 15 lectures of the <a href="https://www.youtube.com/watch?v=UzxYlbK2c7E&amp;t=2s">Stanford Machine Learning Course</a>
+ on Youtube (the rest cover reinforcement learning). This will fortify 
+the mathematical concepts and expose you the in-depth theory and 
+classical algorithms in machine learning. <strong>This part is very important</strong>. Think of it as a thorough expansion of his Coursera course.</p>
+<p><iframe src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/UzxYlbK2c7E.html" allowfullscreen="" wmode="Opaque" width="500" height="375" frameborder="0"></iframe></p>
+<h5><strong>Read and Code!</strong></h5>
+<p>Since you’re going to need to learn some hands-ons implementation, grab a copy of <a href="https://www.amazon.com/Python-Machine-Learning-Sebastian-Raschka/dp/1783555130">Python Machine Learning</a>
+ off of Amazon. The book can be finished off in less than two weeks if 
+you commit one hour a day to it. You will learn all the tricks and tips 
+to using the main Python data science frameworks, including pandas, 
+scikit-learn, numpy, Keras, etc. I’ve written a <a href="http://www.jungle-ml.com/2017/09/08/the-data-science-tech-stack-for-python-programmers/">detailed post on the technical stack a typical machine learning </a>beginner should adapt to, feel free to check it out.</p>
+<p></p><div style="max-width: 166px" class="wp-caption alignright"><a href="https://www.amazon.com/Python-Machine-Learning-Sebastian-Raschka/dp/1783555130"><img class="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/51a9LUynLL.jpg" alt="" width="156" height="192"></a><p class="wp-caption-text">Photo credit and rights to Amazon.com</p></div><p></p>
+<p>Grab a copy of <a href="https://www.amazon.com/Deep-Learning-Adaptive-Computation-Machine/dp/0262035618">Deep Learning by Ian Goodfellow</a>. This will serve as your reference text but I <em>highly recommend</em>
+ you to read the first 7 chapters before you put it on the shelf. The 
+authors place a higher emphasis on implementation concepts which is 
+great! If you’re head is still woozy from everything before, the first 4
+ chapters serve as refreshers to linear algebra, probability and 
+optimization. For avid mathematical readers, the book frequently cites 
+papers in their texts just in case you want to dabble in proofs. If you 
+do not wish to purchase the book, they have an online directory site 
+dedicated to the book that you can keep on your Favorites tab [<a href="http://www.deeplearningbook.org/">Link</a>].</p>
+<p></p><div style="max-width: 187px" class="wp-caption alignright"><a href="https://www.amazon.com/Deep-Learning-Adaptive-Computation-Machine/dp/0262035618/ref=sr_1_1?ie=UTF8&amp;qid=1505454975&amp;sr=8-1&amp;keywords=deep+learning"><img src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/61fim5QqaqL.jpg" alt="" width="177" height="235"></a><p class="wp-caption-text">Photo credit and rights to Amazon.com</p></div><p></p>
+<p>They covers the basic ML algorithms in literally one chapter and then
+ dedicate the rest of the book to design, implementation and practices 
+to deep learning. The book does require a strong understanding of math, 
+so you’re going to find yourself re-reading chapters several time. But 
+that is something you should always expect. This field ain’t easy.</p>
+<h5>We’re not quite done yet…</h5>
+<p>Watch Dr. Yaser Abu-Mostafa’s famous <a href="https://www.youtube.com/watch?v=KlP0DpiM7Lw">Learning From Data</a> Caltech lectures on YouTube. It’s actually quite introductory but it will <em>solidify the theoretical framework of statistical learning for you.</em> I personally loved this course. The professor is probably my favorite to listen to amongst these lecture videos.</p>
+<p><iframe src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/KlP0DpiM7Lw.html" allowfullscreen="" wmode="Opaque" width="500" height="281" frameborder="0"></iframe></p>
+<h5>More Coding with Udemy!</h5>
+<p>LazyProgrammer on Udemy offers AMAZING Python courses in machine learning including <em>deep learning</em>.
+ Deep learning is a sensational buzz right now in most industries, so it
+ is important you start playing with frameworks that can perform deep 
+learning. I’ll cover deep learning frameworks in a separate post; you 
+need to learn the conceptual basics first with Goodfellow’s book. 
+Unfortunately each of LazyProgrammer’s course will cost ~ $10 if you buy
+ them at the right time during sales. But I still HIGHLY recommend them –
+ <a href="https://www.udemy.com/user/lazy-programmer/">Link</a>. If you would like to know specifics on which course is worth taking, message me.</p>
+<h4>Now learn how evil robots are made…</h4>
+<h4>Reinforcement Learning</h4>
+<p>Watch DeepMind’s Dr. David Silver’s <a href="https://www.youtube.com/watch?v=2pWv7GOvuf0">course on introductory reinforcement learning</a>&nbsp;on
+ Youtube. Reinforcement learning is a branch of machine learning that is
+ separate from what you have learned. It has wide and open ended 
+applications and is used more often than you think. It’s the math behind
+ creating intelligent AI’s to play a board game, or robots that learn 
+how to navigate or balance an object.</p>
+<p><iframe src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/2pWv7GOvuf0.html" allowfullscreen="" wmode="Opaque" width="500" height="281" frameborder="0"></iframe></p>
+<p>The classic book on reinforcement learning by Sutton and Barto is available free online and is not a difficult read. [<a href="http://people.inf.elte.hu/lorincz/Files/RL_2006/SuttonBook.pdf">Link</a>] The lectures by David Silver go hand in hand with them somewhat, so read and watch concurrently.</p>
+<p><strong>And possibly the BEST resource of all things reinforcement learning is this repository on GitHub</strong> [<a href="https://github.com/dennybritz/reinforcement-learning">Link</a>].
+ It provides detailed Python examples for virtually every core RL 
+algorithm as well as summarized notes and links to lectures and talks. 
+Keep it on your favorites tab.</p>
+<h5>Conclusion</h5>
+<p>Phew! Well that is it. If you do even 80% of what I listed in this 
+guide, you should be ready for an entry-level data science position. 
+That is assuming your also practicing writing code for ML projects as 
+well. Note I did not cover statistics because I wanted to make a 
+separate post on that. For interviews, you may find yourself answering 
+questions that are geared towards model performance and evaluation which
+ require lot of statistical jargon.</p>
+<p>Competition is tough; many data scientist and machine learning 
+engineer new-hires are being recruited from Masters/PhD programs. This 
+means you will need to make yourself known. Since you’re a coder, you 
+should create a GitHub and post your machine learning projects on there.
+ Then fill your LinkedIn and resume with your new projects and data 
+science technical stack.</p>
+<p>As my knowledge about the data science/ML/AI industry grows, I will 
+probably continue to make updates to this post. But for now, here you 
+have it.</p>
+<p>Good Luck!</p>
+</div></div></div></div></div>
+  
+
+</div>
+
+    </div>
+  </article>          
+      
+
+
+<div id="comments" class="x-comments-area">
+
+  
+    <h2 class="h-comments-title"><span>Comments</span></h2>
+    <ol class="x-comments-list">
+          <li id="li-comment-14" itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment even thread-even depth-1">
+      <article id="comment-14" class="comment">
+        <div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/60a8e5700ffc975119e8054175c5b93f.jpeg" srcset="http://0.gravatar.com/avatar/60a8e5700ffc975119e8054175c5b93f?s=240&amp;d=mm&amp;r=g 2x" class="avatar avatar-120 photo" width="120" height="120"></span> </div>        <div class="x-comment-content-wrap">
+          <header class="x-comment-header">
+            <div class="x-comment-meta">
+              <a href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/#comment-14" class="x-comment-time"><time itemprop="datePublished" datetime="2017-09-22T04:37:21+00:00">September 22, 2017</time></a>                              <a rel="nofollow" class="comment-reply-link" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/?replytocom=14#respond" onclick='return addComment.moveForm( "comment-14", "14", "respond", "543" )' aria-label="Reply to Eden Hazard">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a>                                        </div>
+            <cite class="x-comment-author" itemprop="author">Eden Hazard</cite>                      </header>
+                    <section class="x-comment-content" itemprop="description">
+            <p>This is awesome. Thanks for the effort you put into this.</p>
+          </section>
+        </div>
+      </article>
+    </li><!-- #comment-## -->
+    <li id="li-comment-18" itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment odd alt thread-odd thread-alt depth-1">
+      <article id="comment-18" class="comment">
+        <div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/21c73234bbc95c960cbde44d2ae2a7c6.jpeg" srcset="http://2.gravatar.com/avatar/21c73234bbc95c960cbde44d2ae2a7c6?s=240&amp;d=mm&amp;r=g 2x" class="avatar avatar-120 photo" width="120" height="120"></span> </div>        <div class="x-comment-content-wrap">
+          <header class="x-comment-header">
+            <div class="x-comment-meta">
+              <a href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/#comment-18" class="x-comment-time"><time itemprop="datePublished" datetime="2017-09-24T17:25:36+00:00">September 24, 2017</time></a>                              <a rel="nofollow" class="comment-reply-link" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/?replytocom=18#respond" onclick='return addComment.moveForm( "comment-18", "18", "respond", "543" )' aria-label="Reply to Matthew Sutherland">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a>                                        </div>
+            <cite class="x-comment-author" itemprop="author"><a href="http://www.dyingfordata.com/" rel="external nofollow" class="url">Matthew Sutherland</a></cite>                      </header>
+                    <section class="x-comment-content" itemprop="description">
+            <p>Terrific post. You’ve inspired me to start my first calculus course!</p>
+          </section>
+        </div>
+      </article>
+    <ol class="children">
+    <li id="li-comment-19" itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment byuser comment-author-fossil bypostauthor even depth-2">
+      <article id="comment-19" class="comment">
+        <div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/2b5f6acbfe74df44869548a19192cd1c.png" srcset="//www.gravatar.com/avatar/2b5f6acbfe74df44869548a19192cd1c?s=120&amp;r=g&amp;d=mm 2x" class="avatar avatar-120 photo" width="120" height="120"></span> <span class="bypostauthor">Author</span></div>        <div class="x-comment-content-wrap">
+          <header class="x-comment-header">
+            <div class="x-comment-meta">
+              <a href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/#comment-19" class="x-comment-time"><time itemprop="datePublished" datetime="2017-09-24T17:29:15+00:00">September 24, 2017</time></a>                              <a rel="nofollow" class="comment-reply-link" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/?replytocom=19#respond" onclick='return addComment.moveForm( "comment-19", "19", "respond", "543" )' aria-label="Reply to fossil">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a>                                        </div>
+            <cite class="x-comment-author" itemprop="author"><a href="http://www.jungle-ml.com/members/fossil/" rel="external nofollow" class="url">fossil</a></cite>                      </header>
+                    <section class="x-comment-content" itemprop="description">
+            <p>Thank you! i’m actually making a post on math preliminaries for ML <img draggable="false" class="emoji" alt="🙂" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/1f642.svg"></p>
+          </section>
+        </div>
+      </article>
+    </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li id="li-comment-23" itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment odd alt thread-even depth-1">
+      <article id="comment-23" class="comment">
+        <div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/72f349dc3535a618971a2ab03ab7edf5.jpeg" srcset="http://1.gravatar.com/avatar/72f349dc3535a618971a2ab03ab7edf5?s=240&amp;d=mm&amp;r=g 2x" class="avatar avatar-120 photo" width="120" height="120"></span> </div>        <div class="x-comment-content-wrap">
+          <header class="x-comment-header">
+            <div class="x-comment-meta">
+              <a href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/#comment-23" class="x-comment-time"><time itemprop="datePublished" datetime="2017-10-02T07:33:26+00:00">October 2, 2017</time></a>                              <a rel="nofollow" class="comment-reply-link" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/?replytocom=23#respond" onclick='return addComment.moveForm( "comment-23", "23", "respond", "543" )' aria-label="Reply to Almost Kala Kid">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a>                                        </div>
+            <cite class="x-comment-author" itemprop="author">Almost Kala Kid</cite>                      </header>
+                    <section class="x-comment-content" itemprop="description">
+            <p>Definitely a good guide to know where to get started for ML!</p>
+          </section>
+        </div>
+      </article>
+    </li><!-- #comment-## -->
+    <li id="li-comment-43" itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment even thread-odd thread-alt depth-1">
+      <article id="comment-43" class="comment">
+        <div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/bf32b903fbd1598d3b9a3b8a57f68d97.jpeg" srcset="http://2.gravatar.com/avatar/bf32b903fbd1598d3b9a3b8a57f68d97?s=240&amp;d=mm&amp;r=g 2x" class="avatar avatar-120 photo" width="120" height="120"></span> </div>        <div class="x-comment-content-wrap">
+          <header class="x-comment-header">
+            <div class="x-comment-meta">
+              <a href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/#comment-43" class="x-comment-time"><time itemprop="datePublished" datetime="2017-10-31T07:30:21+00:00">October 31, 2017</time></a>                              <a rel="nofollow" class="comment-reply-link" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/?replytocom=43#respond" onclick='return addComment.moveForm( "comment-43", "43", "respond", "543" )' aria-label="Reply to MathyPants">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a>                                        </div>
+            <cite class="x-comment-author" itemprop="author">MathyPants</cite>                      </header>
+                    <section class="x-comment-content" itemprop="description">
+            <p>The Python Machine Learning book is 454 pages long and 
+quite dense. How could anyone possibly read it in 14 hours (1 hour a day
+ for 2 weeks)?</p>
+          </section>
+        </div>
+      </article>
+    <ol class="children">
+    <li id="li-comment-44" itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment byuser comment-author-fossil bypostauthor odd alt depth-2">
+      <article id="comment-44" class="comment">
+        <div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/2b5f6acbfe74df44869548a19192cd1c.png" srcset="//www.gravatar.com/avatar/2b5f6acbfe74df44869548a19192cd1c?s=120&amp;r=g&amp;d=mm 2x" class="avatar avatar-120 photo" width="120" height="120"></span> <span class="bypostauthor">Author</span></div>        <div class="x-comment-content-wrap">
+          <header class="x-comment-header">
+            <div class="x-comment-meta">
+              <a href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/#comment-44" class="x-comment-time"><time itemprop="datePublished" datetime="2017-11-02T04:44:54+00:00">November 2, 2017</time></a>                              <a rel="nofollow" class="comment-reply-link" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/?replytocom=44#respond" onclick='return addComment.moveForm( "comment-44", "44", "respond", "543" )' aria-label="Reply to fossil">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a>                                        </div>
+            <cite class="x-comment-author" itemprop="author"><a href="http://www.jungle-ml.com/members/fossil/" rel="external nofollow" class="url">fossil</a></cite>                      </header>
+                    <section class="x-comment-content" itemprop="description">
+            <p>A giant chunk of the book is full of plots and scripts. 
+Hence, you can actually get through the theory pretty quick if you pace 
+yourself <img draggable="false" class="emoji" alt="🙂" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/1f642.svg"></p>
+          </section>
+        </div>
+      </article>
+    </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li id="li-comment-126" itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment even thread-even depth-1">
+      <article id="comment-126" class="comment">
+        <div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/e7ebf4fd486f8268db8febe53f3eccd9.jpeg" srcset="http://2.gravatar.com/avatar/e7ebf4fd486f8268db8febe53f3eccd9?s=240&amp;d=mm&amp;r=g 2x" class="avatar avatar-120 photo" width="120" height="120"></span> </div>        <div class="x-comment-content-wrap">
+          <header class="x-comment-header">
+            <div class="x-comment-meta">
+              <a href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/#comment-126" class="x-comment-time"><time itemprop="datePublished" datetime="2018-01-25T06:28:13+00:00">January 25, 2018</time></a>                              <a rel="nofollow" class="comment-reply-link" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/?replytocom=126#respond" onclick='return addComment.moveForm( "comment-126", "126", "respond", "543" )' aria-label="Reply to Alan">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a>                                        </div>
+            <cite class="x-comment-author" itemprop="author">Alan</cite>                      </header>
+                    <section class="x-comment-content" itemprop="description">
+            <p>Any updates on the specific guideline to learn the math part?</p>
+          </section>
+        </div>
+      </article>
+    <ol class="children">
+    <li id="li-comment-136" itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment byuser comment-author-fossil bypostauthor odd alt depth-2">
+      <article id="comment-136" class="comment">
+        <div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/2b5f6acbfe74df44869548a19192cd1c.png" srcset="//www.gravatar.com/avatar/2b5f6acbfe74df44869548a19192cd1c?s=120&amp;r=g&amp;d=mm 2x" class="avatar avatar-120 photo" width="120" height="120"></span> <span class="bypostauthor">Author</span></div>        <div class="x-comment-content-wrap">
+          <header class="x-comment-header">
+            <div class="x-comment-meta">
+              <a href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/#comment-136" class="x-comment-time"><time itemprop="datePublished" datetime="2018-02-08T08:54:58+00:00">February 8, 2018</time></a>                              <a rel="nofollow" class="comment-reply-link" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/?replytocom=136#respond" onclick='return addComment.moveForm( "comment-136", "136", "respond", "543" )' aria-label="Reply to fossil">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a>                                        </div>
+            <cite class="x-comment-author" itemprop="author"><a href="http://www.jungle-ml.com/members/fossil/" rel="external nofollow" class="url">fossil</a></cite>                      </header>
+                    <section class="x-comment-content" itemprop="description">
+            <p>Will be uploading some notes I made on basic calculus and linear alg <img draggable="false" class="emoji" alt="🙂" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/1f642.svg"></p>
+          </section>
+        </div>
+      </article>
+    </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    </ol>
+
+    
+    
+  
+  	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><span>Leave a Comment</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.jungle-ml.com/2017/09/12/switching-into-machine-learning/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="http://www.jungle-ml.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" placeholder="Your Comment *"></textarea></p><p class="comment-form-author"><label for="author">Name </label> <input id="author" name="author" placeholder="Your Name " size="30" type="text"></p>
+<p class="comment-form-email"><label for="email">Email </label> <input id="email" name="email" placeholder="Your Email " size="30" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" placeholder="Your Website" size="30" type="text"></p>
+<p class="form-submit"><input name="submit" id="entry-comment-submit" class="submit" value="Submit" type="submit"> <input name="comment_post_ID" value="543" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="2453753eac" type="hidden"></p><p style="display: none;"></p>			<input id="ak_js" name="ak_js" value="1520068395598" type="hidden"></form>
+			</div><!-- #respond -->
+	
+</div>          
+      </div>
+
+              
+
+
+  <aside class="x-sidebar right" role="complementary">
+          <div id="text-6" class="widget widget_text">			<div class="textwidget"><p><script async="" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/adsbygoogle.js"></script><br>
+<!-- wef --><br>
+<ins class="adsbygoogle" style="display: block;" data-ad-client="ca-pub-9126321203505936" data-ad-slot="7237482224" data-ad-format="auto"></ins><br>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+		</div>      </aside>
+
+      
+    </div>
+  </div>
+
+
+
+
+  
+
+  
+    <footer class="x-colophon bottom" role="contentinfo">
+      <div class="x-container max width">
+
+        
+                  
+<ul id="menu-primary-menu-2" class="x-nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-389"><a href="http://www.jungle-ml.com/">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-572"><a href="http://www.jungle-ml.com/beginners-guide-ml/">Beginner’s Guide to ML</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-397"><a href="http://www.jungle-ml.com/news/">Blog</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-773"><a href="http://www.jungle-ml.com/quizml/">QuizML</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-395"><a href="http://www.jungle-ml.com/cornerstone-draft/">About Me</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-345"><a href="http://www.jungle-ml.com/contact/">Contact</a></li>
+</ul>        
+        
+      </div>
+    </footer>
+
+  
+
+    
+      <div class="x-searchform-overlay">
+        <div class="x-searchform-overlay-inner">
+          <div class="x-container max width">
+            <form method="get" id="searchform" class="form-search center-text" action="http://www.jungle-ml.com/">
+              <label for="s" class="cfc-h-tx tt-upper">Type and Press “enter” to Search</label>
+              <input id="s" class="search-query cfc-h-tx center-text tt-upper" name="s" type="text">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      
+    </div> <!-- END .x-site -->
+
+    
+  </div> <!-- END .x-root -->
+
+	
+       <!-- linkedIn share and  follow js -->
+        <script src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/in.js" type="text/javascript">lang: en_US</script>
+			<!-- twitter JS End -->
+		<script>!function(d,s,id){var 
+js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
+	     <script>
+	    jQuery( document ).scroll(function( $ )
+		{
+	    	var y = jQuery(this).scrollTop();
+	      	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+			{	 
+			   if(jQuery(window).scrollTop() + jQuery(window).height() >= jQuery(document).height()-100)
+			   {
+				  jQuery('.sfsi_outr_div').css({'z-index':'9996',opacity:1,top:jQuery(window).scrollTop()+"px",position:"absolute"});
+				  jQuery('.sfsi_outr_div').fadeIn(200);
+				  jQuery('.sfsi_FrntInner_chg').fadeIn(200);
+			   }
+			   else{
+				   jQuery('.sfsi_outr_div').fadeOut();
+				   jQuery('.sfsi_FrntInner_chg').fadeOut();
+			   }
+		  }
+		  else
+		  {
+			   if(jQuery(window).scrollTop() + jQuery(window).height() >= jQuery(document).height()-3)
+			   {
+					jQuery('.sfsi_outr_div').css({'z-index':'9996',opacity:1,top:jQuery(window).scrollTop()+200+"px",position:"absolute"});
+					jQuery('.sfsi_outr_div').fadeIn(200);
+					jQuery('.sfsi_FrntInner_chg').fadeIn(200);
+		  	   }
+	 		   else
+			   {
+				 jQuery('.sfsi_outr_div').fadeOut();
+				 jQuery('.sfsi_FrntInner_chg').fadeOut();
+			   }
+	 	  } 
+		});
+     </script>
+     <script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/admin-bar.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/comment-reply.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpcf7 = 
+{"apiSettings":{"root":"http:\/\/www.jungle-ml.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please
+ verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/scripts.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/shortcodes.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var email_forms = {"ajax_url":"http:\/\/www.jungle-ml.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/main.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/core.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/modernizr.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/jquery.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/random-shuffle-min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var ajax_object = 
+{"ajax_url":"http:\/\/www.jungle-ml.com\/wp-admin\/admin-ajax.php"};
+var ajax_object = 
+{"ajax_url":"http:\/\/www.jungle-ml.com\/wp-admin\/admin-ajax.php","plugin_url":"http:\/\/www.jungle-ml.com\/wp-content\/plugins\/ultimate-social-media-icons\/"};
+/*
+ ]]> */
+</script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/custom.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var pollsL10n = 
+{"ajax_url":"http:\/\/www.jungle-ml.com\/wp-admin\/admin-ajax.php","text_wait":"Your
+ last request is still being processed. Please wait a while 
+...","text_valid":"Please choose a valid poll 
+answer.","text_multiple":"Maximum number of choices allowed: 
+","show_loading":"1","show_fading":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/polls-js.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/x-body.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/cs-body.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/x-body_002.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/wp-embed.js"></script>
+<script type="text/javascript" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/form.js"></script>
+		<div id="wpadminbar" class="">
+							<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">Skip to toolbar</a>
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar" tabindex="0">
+				<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+		<li id="wp-admin-bar-wp-logo" class="menupop"><div class="ab-item ab-empty-item" tabindex="0" aria-haspopup="true"><span class="ab-icon"></span><span class="screen-reader-text">About WordPress</span></div><div class="ab-sub-wrapper"><ul id="wp-admin-bar-wp-logo-external" class="ab-sub-secondary ab-submenu">
+		<li id="wp-admin-bar-wporg"><a class="ab-item" href="https://wordpress.org/">WordPress.org</a>		</li>
+		<li id="wp-admin-bar-documentation"><a class="ab-item" href="https://codex.wordpress.org/">Documentation</a>		</li>
+		<li id="wp-admin-bar-support-forums"><a class="ab-item" href="https://wordpress.org/support/">Support Forums</a>		</li>
+		<li id="wp-admin-bar-feedback"><a class="ab-item" href="https://wordpress.org/support/forum/requests-and-feedback">Feedback</a>		</li></ul></div>		</li>
+		<li id="wp-admin-bar-bp-login"><a class="ab-item" href="http://www.jungle-ml.com/wp-login.php?redirect_to=http%3A%2F%2Fwww.jungle-ml.com%2F2017%2F09%2F12%2Fswitching-into-machine-learning%2F">Log in</a>		</li></ul><ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+		<li id="wp-admin-bar-search" class="admin-bar-search"><div class="ab-item ab-empty-item" tabindex="-1"><form action="http://www.jungle-ml.com/" method="get" id="adminbarsearch"><input class="adminbar-input" name="s" id="adminbar-search" maxlength="150" type="text"><label for="adminbar-search" class="screen-reader-text">Search</label><input class="adminbar-button" value="Search" type="submit"></form></div>		</li></ul>			</div>
+					</div>
+
+		
+  
+  
+
+<iframe scrolling="no" allowtransparency="true" src="How%20to%20Get%20Started%20with%20Machine%20Learning%20-%20JungleML_files/widget_iframe.html" style="display: none;" frameborder="0"></iframe><iframe id="rufous-sandbox" scrolling="no" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" title="Twitter analytics iframe" frameborder="0"></iframe></body></html>

@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html class="no-hovermq no-backdropfilter backgroundcliptext cssmask gr__blog_openai_com"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Generative Models</title>
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" href="https://blog.openai.com/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://blog.openai.com/generative-models/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="OpenAI Blog">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Generative Models">
+    <meta property="og:description" content="This post describes four projects that share a common theme of enhancing or using generative models, a branch of unsupervised learning techniques in machine learning. In addition to describing our work, this post will tell you a bit more about generative models: what they are, why they are important, and">
+    <meta property="og:url" content="https://blog.openai.com/generative-models/">
+    <meta property="og:image" content="https://blog.openai.com/content/images/2017/03/2x-1.jpg">
+    <meta property="article:published_time" content="2016-06-16T21:21:00.000Z">
+    <meta property="article:modified_time" content="2017-11-28T19:49:00.000Z">
+    <meta property="article:tag" content="Andrej Karpathy">
+    <meta property="article:tag" content="Pieter Abbeel">
+    <meta property="article:tag" content="Greg Brockman">
+    <meta property="article:tag" content="Peter Chen">
+    <meta property="article:tag" content="Vicki Cheung">
+    <meta property="article:tag" content="Rocky Duan">
+    <meta property="article:tag" content="Ian GoodFellow">
+    <meta property="article:tag" content="Durk Kingma">
+    <meta property="article:tag" content="Jonathan Ho">
+    <meta property="article:tag" content="Rein Houthooft">
+    <meta property="article:tag" content="Tim Salimans">
+    <meta property="article:tag" content="John Schulman">
+    <meta property="article:tag" content="Ilya Sutskever">
+    <meta property="article:tag" content="Wojciech Zaremba">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/openai.research">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Generative Models">
+    <meta name="twitter:description" content="This post describes four projects that share a common theme of enhancing or using generative models, a branch of unsupervised learning techniques in machine learning. In addition to describing our work, this post will tell you a bit more about generative models: what they are, why they are important, and">
+    <meta name="twitter:url" content="https://blog.openai.com/generative-models/">
+    <meta name="twitter:image" content="https://blog.openai.com/content/images/2017/03/2x-1.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="OpenAI">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Andrej Karpathy, Pieter Abbeel, Greg Brockman, Peter Chen, Vicki Cheung, Rocky Duan, Ian GoodFellow, Durk Kingma, Jonathan Ho, Rein Houthooft, Tim Salimans, John Schulman, Ilya Sutskever, Wojciech Zaremba">
+    <meta name="twitter:site" content="@openai">
+    <meta property="og:image:width" content="1276">
+    <meta property="og:image:height" content="1696">
+    
+    <script type="text/javascript" async="" src="Generative%20Models_files/analytics_002.js"></script><script type="text/javascript" async="" src="Generative%20Models_files/analytics.js"></script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "OpenAI Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.openai.com/content/images/2017/03/twitter.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "OpenAI",
+        "url": "https://blog.openai.com/author/openai/",
+        "sameAs": []
+    },
+    "headline": "Generative Models",
+    "url": "https://blog.openai.com/generative-models/",
+    "datePublished": "2016-06-16T21:21:00.000Z",
+    "dateModified": "2017-11-28T19:49:00.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.openai.com/content/images/2017/03/2x-1.jpg",
+        "width": 1276,
+        "height": 1696
+    },
+    "keywords": "Andrej Karpathy, Pieter Abbeel, Greg Brockman, Peter Chen, Vicki Cheung, Rocky Duan, Ian GoodFellow, Durk Kingma, Jonathan Ho, Rein Houthooft, Tim Salimans, John Schulman, Ilya Sutskever, Wojciech Zaremba",
+    "description": "This post describes four projects that share a common theme of enhancing or using generative models, a branch of unsupervised learning techniques in machine learning. In addition to describing our work, this post will tell you a bit more about generative models: what they are, why they are important, and",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.openai.com/"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="Generative%20Models_files/ghost-sdk.js"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "710c928a5473"
+});
+</script>
+    <meta name="generator" content="Ghost 1.21">
+    <link rel="alternate" type="application/rss+xml" title="OpenAI Blog" href="https://blog.openai.com/rss/">
+
+  <link rel="icon" href="https://blog.openai.com/assets/images/favicon/favicon.ico">
+  <link rel="shortcut icon" href="https://blog.openai.com/assets/images/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="https://blog.openai.com/assets/images/favicon/favicon.png">
+
+  <link rel="stylesheet" type="text/css" href="Generative%20Models_files/style.css">
+  
+
+  
+<style>.fluidvids {width: 100%; max-width: 100%; position: relative;}.fluidvids-item {position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;}</style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
+.MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
+.mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
+.mjx-full-width {text-align: center; display: table-cell!important; width: 10000em}
+.mjx-math {display: inline-block; border-collapse: separate; border-spacing: 0}
+.mjx-math * {display: inline-block; -webkit-box-sizing: content-box!important; -moz-box-sizing: content-box!important; box-sizing: content-box!important; text-align: left}
+.mjx-numerator {display: block; text-align: center}
+.mjx-denominator {display: block; text-align: center}
+.MJXc-stacked {height: 0; position: relative}
+.MJXc-stacked > * {position: absolute}
+.MJXc-bevelled > * {display: inline-block}
+.mjx-stack {display: inline-block}
+.mjx-op {display: block}
+.mjx-under {display: table-cell}
+.mjx-over {display: block}
+.mjx-over > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-under > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-stack > .mjx-sup {display: block}
+.mjx-stack > .mjx-sub {display: block}
+.mjx-prestack > .mjx-presup {display: block}
+.mjx-prestack > .mjx-presub {display: block}
+.mjx-delim-h > .mjx-char {display: inline-block}
+.mjx-surd {vertical-align: top}
+.mjx-mphantom * {visibility: hidden}
+.mjx-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 2px 3px; font-style: normal; font-size: 90%}
+.mjx-annotation-xml {line-height: normal}
+.mjx-menclose > svg {fill: none; stroke: currentColor}
+.mjx-mtr {display: table-row}
+.mjx-mlabeledtr {display: table-row}
+.mjx-mtd {display: table-cell; text-align: center}
+.mjx-label {display: table-row}
+.mjx-box {display: inline-block}
+.mjx-block {display: block}
+.mjx-span {display: inline}
+.mjx-char {display: block; white-space: pre}
+.mjx-itable {display: inline-table; width: auto}
+.mjx-row {display: table-row}
+.mjx-cell {display: table-cell}
+.mjx-table {display: table; width: 100%}
+.mjx-line {display: block; height: 0}
+.mjx-strut {width: 0; padding-top: 1em}
+.mjx-vsize {width: 0}
+.MJXc-space1 {margin-left: .167em}
+.MJXc-space2 {margin-left: .222em}
+.MJXc-space3 {margin-left: .278em}
+.mjx-chartest {display: block; visibility: hidden; position: absolute; top: 0; line-height: normal; font-size: 500%}
+.mjx-chartest .mjx-char {display: inline}
+.mjx-chartest .mjx-box {padding-top: 1000px}
+.MJXc-processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MJXc-processed {display: none}
+.mjx-test {display: block; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow: hidden; height: 1px}
+.mjx-ex-box-test {position: absolute; width: 1px; height: 60ex}
+.mjx-line-box-test {display: table!important}
+.mjx-line-box-test span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+#MathJax_CHTML_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.mjx-chtml .mjx-noError {line-height: 1.2; vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+.MJXc-TeX-unknown-R {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: normal}
+.MJXc-TeX-unknown-I {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: normal}
+.MJXc-TeX-unknown-B {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: bold}
+.MJXc-TeX-unknown-BI {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: bold}
+.MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw}
+.MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw}
+.MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw}
+.MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw}
+.MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw}
+.MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw}
+.MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw}
+.MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw}
+.MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw}
+.MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw}
+.MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw}
+.MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw}
+.MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw}
+.MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw}
+.MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw}
+.MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw}
+.MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw}
+.MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw}
+.MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw}
+@font-face {font-family: MJXc-TeX-ams-R; src: local('MathJax_AMS'), local('MathJax_AMS-Regular')}
+@font-face {font-family: MJXc-TeX-ams-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_AMS-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-cal-B; src: local('MathJax_Caligraphic Bold'), local('MathJax_Caligraphic-Bold')}
+@font-face {font-family: MJXc-TeX-cal-Bx; src: local('MathJax_Caligraphic'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-cal-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-frak-R; src: local('MathJax_Fraktur'), local('MathJax_Fraktur-Regular')}
+@font-face {font-family: MJXc-TeX-frak-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-frak-B; src: local('MathJax_Fraktur Bold'), local('MathJax_Fraktur-Bold')}
+@font-face {font-family: MJXc-TeX-frak-Bx; src: local('MathJax_Fraktur'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-frak-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-math-BI; src: local('MathJax_Math BoldItalic'), local('MathJax_Math-BoldItalic')}
+@font-face {font-family: MJXc-TeX-math-BIx; src: local('MathJax_Math'); font-weight: bold; font-style: italic}
+@font-face {font-family: MJXc-TeX-math-BIw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Math-BoldItalic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Math-BoldItalic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-R; src: local('MathJax_SansSerif'), local('MathJax_SansSerif-Regular')}
+@font-face {font-family: MJXc-TeX-sans-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-B; src: local('MathJax_SansSerif Bold'), local('MathJax_SansSerif-Bold')}
+@font-face {font-family: MJXc-TeX-sans-Bx; src: local('MathJax_SansSerif'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-sans-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-I; src: local('MathJax_SansSerif Italic'), local('MathJax_SansSerif-Italic')}
+@font-face {font-family: MJXc-TeX-sans-Ix; src: local('MathJax_SansSerif'); font-style: italic}
+@font-face {font-family: MJXc-TeX-sans-Iw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Italic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Italic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-script-R; src: local('MathJax_Script'), local('MathJax_Script-Regular')}
+@font-face {font-family: MJXc-TeX-script-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Script-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Script-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Script-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-type-R; src: local('MathJax_Typewriter'), local('MathJax_Typewriter-Regular')}
+@font-face {font-family: MJXc-TeX-type-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Typewriter-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Typewriter-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Typewriter-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-cal-R; src: local('MathJax_Caligraphic'), local('MathJax_Caligraphic-Regular')}
+@font-face {font-family: MJXc-TeX-cal-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-B; src: local('MathJax_Main Bold'), local('MathJax_Main-Bold')}
+@font-face {font-family: MJXc-TeX-main-Bx; src: local('MathJax_Main'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-main-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Main-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-I; src: local('MathJax_Main Italic'), local('MathJax_Main-Italic')}
+@font-face {font-family: MJXc-TeX-main-Ix; src: local('MathJax_Main'); font-style: italic}
+@font-face {font-family: MJXc-TeX-main-Iw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Main-Italic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-R; src: local('MathJax_Main'), local('MathJax_Main-Regular')}
+@font-face {font-family: MJXc-TeX-main-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-math-I; src: local('MathJax_Math Italic'), local('MathJax_Math-Italic')}
+@font-face {font-family: MJXc-TeX-math-Ix; src: local('MathJax_Math'); font-style: italic}
+@font-face {font-family: MJXc-TeX-math-Iw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size1-R; src: local('MathJax_Size1'), local('MathJax_Size1-Regular')}
+@font-face {font-family: MJXc-TeX-size1-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Size1-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size2-R; src: local('MathJax_Size2'), local('MathJax_Size2-Regular')}
+@font-face {font-family: MJXc-TeX-size2-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Size2-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size3-R; src: local('MathJax_Size3'), local('MathJax_Size3-Regular')}
+@font-face {font-family: MJXc-TeX-size3-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Size3-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size4-R; src: local('MathJax_Size4'), local('MathJax_Size4-Regular')}
+@font-face {font-family: MJXc-TeX-size4-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf') format('opentype')}
+</style></head>
+<body class="post-template tag-hash-research-release-post tag-andrej-karpathy tag-pieter-abbeel tag-greg-brockman tag-peter-chen tag-vicki-cheung tag-rocky-duan tag-ian-goodfellow tag-durk-kingma tag-jonathan-ho tag-rein-houthooft tag-tim-salimans tag-john-schulman tag-ilya-sutskever tag-wojciech-zaremba tag-hash-generative-models tag-hash-research-release-no-1" data-gr-c-s-loaded="true"><div id="MathJax_Message" style="display: none;"></div>
+
+
+  <main class="Main">
+
+    <div class="MainContent">
+
+      <div class="Shared-Navigation">
+  <div class="Shared-Navigation-logo">
+    <a href="https://openai.com/" title="OpenAI" class="Shared-Navigation-link
+              Shared-Navigation-link--logo">
+      <img class="logo" src="Generative%20Models_files/nav-logo.svg" alt="OpenAI" width="27" height="27">
+    </a>
+  </div>
+
+  <div class="Shared-Navigation-linksContainer">
+
+
+        <div class="Shared-Navigation-link
+                    Shared-Navigation-mobileNavToggle" ontouchstart=""> 
+             <!-- Note: ontouchstart makes :active work -->
+          <div class="Shared-Navigation-mobileNavIconContainer">
+            <div class="Shared-Navigation-mobileOpen"></div>
+            <div class="Shared-Navigation-mobileClose"></div>
+          </div>
+        </div>
+
+        <div class="Shared-Navigation-MobileContainer Shared-Navigation-MobileContainer--defaultTransition">
+
+          <div class="container-fluid">
+      
+        <div class="row
+                    center-xs">
+          <div class="col-xs-9
+                      col-sm-6">
+
+            <ul class="Shared-Navigation-list">
+              <li class="Shared-Navigation-listItem-0">
+                <a class="Shared-Navigation-link Shared-Navigation-link--listLink" href="https://openai.com/research">Research</a>
+              </li>
+              <li class="Shared-Navigation-listItem-1">
+                  <a class="Shared-Navigation-link Shared-Navigation-link--listLink" href="https://openai.com/systems">Systems</a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-xs-9
+                      col-sm-6">
+
+            <ul class="Shared-Navigation-list
+                       Shared-Navigation-list--rightAligned">
+              <li class="Shared-Navigation-listItem-2">
+                <a class="Shared-Navigation-link Shared-Navigation-link--listLink" href="https://openai.com/about">About</a>
+                </li>
+              <li class="Shared-Navigation-listItem-3">
+                <a class="Shared-Navigation-link
+                          Shared-Navigation-link--listLink
+                          Shared-Navigation-link--selected" href="https://blog.openai.com/">Blog</a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+     </div>
+    </div>
+      
+
+  </div><!-- ./Shared-Navigation-linksContainer -->
+</div><!-- ./Shared-Navigation -->
+      
+      
+
+  <article class="Post post tag-hash-research-release-post tag-andrej-karpathy tag-pieter-abbeel tag-greg-brockman tag-peter-chen tag-vicki-cheung tag-rocky-duan tag-ian-goodfellow tag-durk-kingma tag-jonathan-ho tag-rein-houthooft tag-tim-salimans tag-john-schulman tag-ilya-sutskever tag-wojciech-zaremba tag-hash-generative-models tag-hash-research-release-no-1" id="generative-models">
+    
+
+
+
+
+
+
+    <header class="ResearchPostHeader
+                   ResearchPostHeader--generative-models">
+
+      <section class="ResearchPostHeader-coverContainer">
+
+        <h1 class="ResearchPostHeader-cover">
+          <div class="ResearchPostHeader-cover-inner">
+            <div class="Shared-Card-glare"></div>
+            <img src="Generative%20Models_files/1x-no-mark.jpg" srcset="https://d4mucfpksywv.cloudfront.net/research-covers/generative-models/1x-no-mark.jpg 1x,
+            https://d4mucfpksywv.cloudfront.net/research-covers/generative-models/2x-no-mark.jpg 2x" alt="Generative Models">
+          </div>
+        </h1>
+
+      </section>
+
+      <section class="ResearchPostHeader-intro
+                      PostContent">
+
+        <time class="ResearchPostHeader-date" datetime="2016-06-16">June 16, 2016</time>
+
+        <h1 class="ResearchPostHeader-title">
+            Generative Models
+        </h1>
+
+    <div class="kg-card-markdown"><p>This post describes <a href="#contributions">four projects</a> that share a common theme of enhancing or using generative models, a branch of <a href="https://www.quora.com/What-is-the-difference-between-supervised-and-unsupervised-learning-algorithms">unsupervised learning</a> techniques in machine learning.</p>
+<p>In addition to describing our work, this post will tell you a bit 
+more about generative models: what they are, why they are important, and
+ where they might be going.</p>
+</div></section></header>
+<section class="Post-inner PostContent post-content research-release-post" id="content">
+<p>One of our core aspirations at OpenAI is to develop algorithms and 
+techniques that endow computers with an understanding of our world.</p>
+<p>It’s easy to forget just how much you know about the world: you 
+understand that it is made up of 3D environments, objects that move, 
+collide, interact; people who walk, talk, and think; animals who graze, 
+fly, run, or bark; monitors that display information encoded in language
+ about the weather, who won a basketball game, or what happened in 1970.</p>
+<p>This tremendous amount of information is out there and to a large 
+extent easily accessible — either in the physical world of atoms or the 
+digital world of bits. The only tricky part is to develop models and 
+algorithms that can analyze and understand this treasure trove of data.</p>
+<p><strong>Generative models are one of the most promising approaches towards this goal</strong>.
+ To train a generative model we first collect a large amount of data in 
+some domain (e.g., think millions of images, sentences, or sounds, etc.)
+ and then train a model to generate data like it. The intuition behind 
+this approach follows a famous quote from <a href="https://en.wikipedia.org/wiki/Richard_Feynman">Richard Feynman</a>:</p>
+<blockquote class="Blockquote--large"><p>“What I cannot create, I do not understand.”</p><cite>—Richard Feynman</cite></blockquote>
+<p>The trick is that the neural networks we use as generative models 
+have a number of parameters significantly smaller than the amount of 
+data we train them on, so the models are forced to discover and 
+efficiently internalize the essence of the data in order to generate it.</p>
+<p>Generative models have many short-term <a href="#going-forward">applications</a>.
+ But in the long run, they hold the potential to automatically learn the
+ natural features of a dataset, whether categories or dimensions or 
+something else entirely.</p>
+<hr>
+<h2 id="generatingimages">Generating images</h2>
+<p>Let’s make this more concrete with an example. Suppose we have some 
+large collection of images, such as the 1.2 million images in the <a href="http://www.image-net.org/">ImageNet</a>
+ dataset (but keep in mind that this could eventually be a large 
+collection of images or videos from the internet or robots). If we 
+resize each image to have width and height of 256 (as is commonly done),
+ our dataset is one large <code>1,200,000x256x256x3</code> (about 200GB) block of pixels. Here are a few example images from this dataset:</p>
+<p><img src="Generative%20Models_files/gen_models_img_1.jpg" alt=""></p>
+<p>These images are examples of what our visual world looks like and we 
+refer to these as “samples from the true data distribution”. We now 
+construct our generative model which we would like to train to generate 
+images like this from scratch. Concretely, a generative model in this 
+case could be one large neural network that outputs images and we refer 
+to these as “samples from the model”.</p>
+<hr>
+<h2>DCGAN</h2>
+<p>One such recent model is the <a href="https://github.com/Newmu/dcgan_code">DCGAN network</a> from Radford et al. (shown below). This network takes as input 100 random numbers drawn from a <a href="https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)">uniform distribution</a> (we refer to these as a <em>code</em>, or <em>latent variables</em>, in red) and outputs an image (in this case <code>64x64x3</code> images on the right, in green). As the code is changed incrementally, the <a href="https://github.com/Newmu/dcgan_code#walking-from-one-point-to-another-in-bedroom-latent-space">generated images</a> do too — this shows the model has learned features to describe how the world looks, rather than just memorizing some examples.</p>
+<p>The network (in yellow) is made up of standard <a href="http://cs231n.github.io/convolutional-networks/">convolutional neural network</a> components, such as <a href="http://datascience.stackexchange.com/questions/6107/what-are-deconvolutional-layers">deconvolutional layers</a> (reverse of convolutional layers), <a href="http://cs231n.github.io/convolutional-networks/#fc">fully connected layers</a>, etc.:</p>
+<p><img src="Generative%20Models_files/gen_models_diag_1.svg" alt=""></p>
+<p>DCGAN is initialized with random weights, so a random code plugged 
+into the network would generate a completely random image. However, as 
+you might imagine, the network has millions of parameters that we can 
+tweak, and the goal is to find a setting of these parameters that makes 
+samples generated from random codes look like the training data. Or to 
+put it another way, we want the model distribution to match the true 
+data distribution in the space of images.</p>
+<hr>
+<h2 id="trainingagenerativemodel">Training a generative model</h2>
+<p>Suppose that we used a newly-initialized network to generate 200 
+images, each time starting with a different random code. The question 
+is: how should we adjust the network’s parameters to encourage it to 
+produce slightly more believable samples in the future? Notice that 
+we’re not in a simple supervised setting and don’t have any explicit <em>desired targets</em> for our 200 generated images; we merely want them to look real. One clever approach around this problem is to follow the <a href="http://arxiv.org/abs/1406.2661">Generative Adversarial Network (GAN)</a> approach. Here we introduce a second <em>discriminator</em>
+ network (usually a standard convolutional neural network) that tries to
+ classify if an input image is real or generated. For instance, we could
+ feed the 200 generated images and 200 real images into the 
+discriminator and train it as a standard classifier to distinguish 
+between the two sources. But in addition to that — and here’s the trick —
+ we can also <a href="http://neuralnetworksanddeeplearning.com/chap2.html">backpropagate</a>
+ through both the discriminator and the generator to find how we should 
+change the generator’s parameters to make its 200 samples slightly more 
+confusing for the discriminator. These two networks are therefore locked
+ in a battle: the discriminator is trying to distinguish real images 
+from fake images and the generator is trying to create images that make 
+the discriminator think they are real. In the end, the generator network
+ is outputting images that are indistinguishable from real images for 
+the discriminator.</p>
+<p>There are a few other approaches to matching these distributions 
+which we will discuss briefly below. But before we get there below are 
+two animations that show samples from a generative model to give you a 
+visual sense for the training process.<br>
+In both cases the samples from the generator start out noisy and 
+chaotic, and over time converge to have more plausible image statistics:</p>
+<div class="PhotoGrid">
+<figure>
+<p><img src="Generative%20Models_files/gen_models_anim_1.gif" alt=""></p>
+<figcaption><a href="#vae">VAE</a> learning to generate images (log time)</figcaption>
+</figure>
+<figure>
+<p><img src="Generative%20Models_files/gen_models_anim_2.gif" alt=""></p>
+<figcaption><a href="#gan">GAN</a> learning to generate images (linear time)</figcaption>
+</figure>
+</div>
+<p>This is exciting — these neural networks are learning what the visual
+ world looks like! These models usually have only about 100 million 
+parameters, so a network trained on ImageNet has to (lossily) <a href="http://prize.hutter1.net/">compress</a>
+ 200GB of pixel data into 100MB of weights. This incentivizes it to 
+discover the most salient features of the data: for example, it will 
+likely learn that pixels nearby are likely to have the same color, or 
+that the world is made up of horizontal or vertical edges, or blobs of 
+different colors. Eventually, the model may discover many more complex 
+regularities: that there are certain types of backgrounds, objects, 
+textures, that they occur in certain likely arrangements, or that they 
+transform in certain ways over time in videos, etc.</p>
+<hr>
+<h2 id="moregeneralformulation">More general formulation</h2>
+<p>Mathematically, we think about a dataset of examples <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span id="MathJax-Element-1-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 125%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo&gt;&amp;#x2026;&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-1" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-2" class="mjx-mrow"><span id="MJXc-Node-3" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-4" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.269em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-5" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.358em; padding-bottom: 0.358em;">1</span></span></span></span><span id="MJXc-Node-6" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.176em; padding-bottom: 0.536em;">,</span></span><span id="MJXc-Node-7" class="mjx-mo MJXc-space1"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.176em; padding-bottom: 0.358em;">…</span></span><span id="MJXc-Node-8" class="mjx-mo MJXc-space1"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.176em; padding-bottom: 0.536em;">,</span></span><span id="MJXc-Node-9" class="mjx-msubsup MJXc-space1"><span class="mjx-base"><span id="MJXc-Node-10" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.269em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-11" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.269em;">n</span></span></span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mo>…</mo><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub></math></span></span><script type="math/tex" id="MathJax-Element-1">x_1, \ldots, x_n</script> as samples from a true data distribution <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span id="MathJax-Element-3-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 125%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-12" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-13" class="mjx-mrow"><span id="MJXc-Node-14" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.491em;">p</span></span><span id="MJXc-Node-15" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.447em; padding-bottom: 0.58em;">(</span></span><span id="MJXc-Node-16" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.269em;">x</span></span><span id="MJXc-Node-17" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.447em; padding-bottom: 0.58em;">)</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-3">p(x)</script>.
+ In the example image below, the blue region shows the part of the image
+ space that, with a high probability (over some threshold) contains real
+ images, and black dots indicate our data points (each is one image in 
+our dataset). Now, our model also describes a distribution <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span id="MathJax-Element-4-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 125%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mover&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;&amp;#x005E;&lt;/mo&gt;&lt;/mover&gt;&lt;/mrow&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-18" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-19" class="mjx-mrow"><span id="MJXc-Node-20" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-21" class="mjx-texatom"><span id="MJXc-Node-22" class="mjx-mrow"><span id="MJXc-Node-23" class="mjx-munderover"><span class="mjx-stack"><span class="mjx-over" style="height: 0.213em; padding-bottom: 0.06em; padding-left: 0.085em;"><span id="MJXc-Node-25" class="mjx-mo" style="vertical-align: top;"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.402em; padding-bottom: 0.313em;">^</span></span></span><span class="mjx-op"><span id="MJXc-Node-24" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.491em;">p</span></span></span></span></span></span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.36em; padding-right: 0.071em;"><span id="MJXc-Node-26" class="mjx-texatom" style=""><span id="MJXc-Node-27" class="mjx-mrow"><span id="MJXc-Node-28" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.491em; padding-bottom: 0.269em;">θ</span></span></span></span></span></span><span id="MJXc-Node-29" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.447em; padding-bottom: 0.58em;">(</span></span><span id="MJXc-Node-30" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.269em;">x</span></span><span id="MJXc-Node-31" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.447em; padding-bottom: 0.58em;">)</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow class="MJX-TeXAtom-ORD"><mover><mi>p</mi><mo stretchy="false">^</mo></mover></mrow><mrow class="MJX-TeXAtom-ORD"><mi>θ</mi></mrow></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-4">\hat{p}_{\theta}(x)</script> (green) that is defined implicitly by taking points from a unit <a href="https://en.wikipedia.org/wiki/Normal_distribution">Gaussian distribution</a>
+ (red) and mapping them through a (deterministic) neural network — our 
+generative model (yellow). Our network is a function with parameters <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span id="MathJax-Element-5-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 125%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-32" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-33" class="mjx-mrow"><span id="MJXc-Node-34" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.491em; padding-bottom: 0.269em;">θ</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math></span></span><script type="math/tex" id="MathJax-Element-5">\theta</script>, and tweaking these parameters will tweak the generated distribution of images. Our goal then is to find parameters <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span id="MathJax-Element-6-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 125%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-35" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-36" class="mjx-mrow"><span id="MJXc-Node-37" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.491em; padding-bottom: 0.269em;">θ</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math></span></span><script type="math/tex" id="MathJax-Element-6">\theta</script> that produce a distribution that closely matches the true data distribution (for example, by having a small <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">KL divergence</a> <a href="https://en.wikipedia.org/wiki/Loss_function">loss</a>).
+ Therefore, you can imagine the green distribution starting out random 
+and then the training process iteratively changing the parameters <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span id="MathJax-Element-7-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 125%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-38" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-39" class="mjx-mrow"><span id="MJXc-Node-40" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.491em; padding-bottom: 0.269em;">θ</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math></span></span><script type="math/tex" id="MathJax-Element-7">\theta</script> to stretch and squeeze it to better match the blue distribution.<br>
+<img src="Generative%20Models_files/gen_models_diag_2.svg" alt=""></p>
+<hr>
+<h2 id="threeapproachestogenerativemodels">Three approaches to generative models</h2>
+<p>Most generative models have this basic setup, but differ in the 
+details. Here are three popular examples of generative model approaches 
+to give you a sense of the variation:</p>
+<ul>
+<li><a href="http://arxiv.org/abs/1406.2661">Generative Adversarial Networks (GANs)</a>,
+ which we already discussed above, pose the training process as a game 
+between two separate networks: a generator network (as seen above) and a
+ second discriminative network that tries to classify samples as either 
+coming from the true distribution <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span id="MathJax-Element-10-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 125%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-41" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-42" class="mjx-mrow"><span id="MJXc-Node-43" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.491em;">p</span></span><span id="MJXc-Node-44" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.447em; padding-bottom: 0.58em;">(</span></span><span id="MJXc-Node-45" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.269em;">x</span></span><span id="MJXc-Node-46" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.447em; padding-bottom: 0.58em;">)</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-10">p(x)</script> or the model distribution <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span id="MathJax-Element-11-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 125%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mover&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;&amp;#x005E;&lt;/mo&gt;&lt;/mover&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-47" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-48" class="mjx-mrow"><span id="MJXc-Node-49" class="mjx-texatom"><span id="MJXc-Node-50" class="mjx-mrow"><span id="MJXc-Node-51" class="mjx-munderover"><span class="mjx-stack"><span class="mjx-over" style="height: 0.213em; padding-bottom: 0.06em; padding-left: 0.085em;"><span id="MJXc-Node-53" class="mjx-mo" style="vertical-align: top;"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.402em; padding-bottom: 0.313em;">^</span></span></span><span class="mjx-op"><span id="MJXc-Node-52" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.491em;">p</span></span></span></span></span></span></span><span id="MJXc-Node-54" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.447em; padding-bottom: 0.58em;">(</span></span><span id="MJXc-Node-55" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.269em;">x</span></span><span id="MJXc-Node-56" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.447em; padding-bottom: 0.58em;">)</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mover><mi>p</mi><mo stretchy="false">^</mo></mover></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-11">\hat{p}(x)</script>.
+ Every time the discriminator notices a difference between the two 
+distributions the generator adjusts its parameters slightly to make it 
+go away, until at the end (in theory) the generator exactly reproduces 
+the true data distribution and the discriminator is guessing at random, 
+unable to find a difference.</li>
+<li><a href="https://arxiv.org/abs/1312.6114">Variational Autoencoders (VAEs)</a> allow us to formalize this problem in the framework of <a href="https://en.wikipedia.org/wiki/Graphical_model">probabilistic graphical models</a> where we are maximizing a <a href="https://en.wikipedia.org/wiki/Variational_Bayesian_methods">lower bound</a> on the log likelihood of the data.</li>
+<li>Autoregressive models such as <a href="http://arxiv.org/abs/1601.06759">PixelRNN</a>
+ instead train a network that models the conditional distribution of 
+every individual pixel given previous pixels (to the left and to the 
+top). This is similar to plugging the pixels of the image into a <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">char-rnn</a>, but the RNNs run both horizontally and vertically over the image instead of just a 1D sequence of characters.</li>
+</ul>
+<p>All of these approaches have their pros and cons. For example, 
+Variational Autoencoders allow us to perform both learning and efficient
+ Bayesian inference in sophisticated probabilistic graphical models with
+ latent variables (e.g. see <a href="https://arxiv.org/abs/1502.04623">DRAW</a>, or <a href="http://arxiv.org/abs/1603.08575">Attend Infer Repeat</a>
+ for hints of recent relatively complex models). However, their 
+generated samples tend to be slightly blurry. GANs currently generate 
+the sharpest images but they are more difficult to optimize due to 
+unstable training dynamics. PixelRNNs have a very simple and stable 
+training process (<a href="https://en.wikipedia.org/wiki/Softmax_function">softmax loss</a>)
+ and currently give the best log likelihoods (that is, plausibility of 
+the generated data). However, they are relatively inefficient during 
+sampling and don’t easily provide simple low-dimensional <em>codes</em> for images. All of these models are active areas of research and we are eager to see how they develop in the future!</p>
+<hr>
+<p><a name="contributions"></a></p>
+<h2 id="ourrecentcontributions">Our recent contributions</h2>
+<p>We’re quite excited about generative models at OpenAI, and have just 
+released four projects that advance the state of the art. For each of 
+these contributions we are also releasing a technical report and source 
+code.</p>
+<p><a href="https://arxiv.org/abs/1606.03498"><strong>Improving GANs</strong></a> (<a href="https://github.com/openai/improved-gan">code</a>).
+ First, as mentioned above GANs are a very promising family of 
+generative models because, unlike other methods, they produce very clean
+ and sharp images and learn codes that contain valuable information 
+about these textures. However, GANs are formulated as a game between two
+ networks and it is important (and tricky!) to keep them in balance: for
+ example, they can oscillate between solutions, or the generator has a 
+tendency to collapse. In this work, Tim Salimans, Ian Goodfellow, 
+Wojciech Zaremba and colleagues have introduced a few new techniques for
+ making GAN training more stable. These techniques allow us to scale up 
+GANs and obtain nice <code>128x128</code> ImageNet samples:</p>
+<div class="PhotoGrid">
+<figure>
+<p><img src="Generative%20Models_files/gen_models_img_2.jpg" alt=""></p>
+<figcaption>Real images (ImageNet)</figcaption>
+</figure>
+<figure>
+<p><img src="Generative%20Models_files/gen_models_img_3.jpg" alt=""></p>
+<figcaption>Generated images</figcaption>
+</figure>
+</div>
+<p>Our <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a>
+ samples also look very sharp - Amazon Mechanical Turk workers can 
+distinguish our samples from real data with an error rate of 21.3% (50% 
+would be random guessing):</p>
+<div class="PhotoGrid">
+<figure>
+![](/content/images/2017/02/gen_models_img_4.jpg)
+<figcaption>Real images (CIFAR-10)</figcaption>
+</figure>
+<figure>
+![](/content/images/2017/02/gen_models_img_5.jpg)
+<figcaption>Generated images</figcaption>
+</figure>
+</div>
+<p>In addition to generating pretty pictures, we introduce an approach for <a href="https://en.wikipedia.org/wiki/Semi-supervised_learning">semi-supervised learning</a>
+ with GANs that involves the discriminator producing an additional 
+output indicating the label of the input. This approach allows us to 
+obtain state of the art results on <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a>, <a href="http://ufldl.stanford.edu/housenumbers/">SVHN</a>, and CIFAR-10 in settings with very few <a href="http://stackoverflow.com/questions/19170603/what-is-the-difference-between-labeled-and-unlabeled-data">labeled examples</a>.
+ On MNIST, for example, we achieve 99.14% accuracy with only 10 labeled 
+examples per class with a fully connected neural network — a result 
+that’s very close to the best known results with fully supervised 
+approaches using all 60,000 labeled examples. This is very promising 
+because labeled examples can be quite expensive to obtain in practice.</p>
+<p>Generative Adversarial Networks are a relatively new model 
+(introduced only two years ago) and we expect to see more rapid progress
+ in further improving the stability of these models during training.</p>
+<p><a href="http://arxiv.org/abs/1606.04934"><strong>Improving VAEs</strong></a> (<a href="http://github.com/openai/iaf">code</a>).
+ In this work Durk Kingma and Tim Salimans introduce a flexible and 
+computationally scalable method for improving the accuracy of <a href="https://www.cs.jhu.edu/~jason/tutorials/variational.html">variational inference</a>. In particular, most VAEs have so far been trained using crude <a href="http://www.cs.princeton.edu/courses/archive/spr06/cos598C/papers/chapter2.pdf">approximate posteriors</a>, where every latent variable is independent. <a href="http://arxiv.org/abs/1505.05770">Recent extensions</a>
+ have addressed this problem by conditioning each latent variable on the
+ others before it in a chain, but this is computationally inefficient 
+due to the introduced sequential dependencies. The core contribution of 
+this work, termed <em>inverse autoregressive flow</em> (IAF), is a new 
+approach that, unlike previous work, allows us to parallelize the 
+computation of rich approximate posteriors, and make them almost 
+arbitrarily flexible.</p>
+<p>We show some example <code>32x32</code> image samples from the model in the image below, on the right. On the left are earlier samples from the <a href="https://arxiv.org/abs/1502.04623">DRAW</a>
+ model for comparison (vanilla VAE samples would look even worse and 
+more blurry). The DRAW model was published only one year ago, 
+highlighting again the rapid progress being made in training generative 
+models.</p>
+<div class="PhotoGrid">
+<figure>
+<p><img src="Generative%20Models_files/gen_models_img_6.jpg" alt=""></p>
+<figcaption>Generated from a DRAW model</figcaption>
+</figure>
+<figure>
+<p><img src="Generative%20Models_files/gen_models_img_7.jpg" alt=""></p>
+<figcaption>Generated from a VAE trained with IAF</figcaption>
+</figure>
+</div>
+<p><a href="https://arxiv.org/abs/1606.03657"><strong>InfoGAN</strong></a> (<a href="https://github.com/openai/InfoGAN">code</a>).
+ Peter Chen and colleagues introduce InfoGAN — an extension of GAN that 
+learns disentangled and interpretable representations for images. A 
+regular GAN achieves the objective of reproducing the data distribution 
+in the model, but the layout and organization of the code space is <em>underspecified</em>
+ — there are many possible solutions to mapping the unit Gaussian to 
+images and the one we end up with might be intricate and highly 
+entangled. The InfoGAN imposes additional structure on this space by 
+adding new objectives that involve maximizing the <a href="https://en.wikipedia.org/wiki/Mutual_information">mutual information</a>
+ between small subsets of the representation variables and the 
+observation. This approach provides quite remarkable results. For 
+example, in the images of 3D faces below we vary one continuous 
+dimension of the code, keeping all others fixed. It’s clear from the 
+five provided examples (along each row) that the resulting dimensions in
+ the code capture interpretable dimensions, and that the model has 
+perhaps <em>understood</em> that there are camera angles, facial variations, etc., without having been told that these features exist and are important:</p>
+<div class="PhotoGrid">
+<figure>
+<p><img src="Generative%20Models_files/infogan_1.jpg" alt=""></p>
+<figcaption>(a) Azimuth (pose)</figcaption>
+</figure>
+<figure>
+<p><img src="Generative%20Models_files/ingogan_2.jpg" alt=""></p>
+<figcaption>(b) Elevation</figcaption>
+</figure>
+<figure>
+<p><img src="Generative%20Models_files/infogan_3.jpg" alt=""></p>
+<figcaption>(c) Lighting</figcaption>
+</figure>
+<figure>
+<p><img src="Generative%20Models_files/infogan_4.jpg" alt=""></p>
+<figcaption>(d) Wide or Narrow</figcaption>
+</figure>
+</div>
+<h2 id="wealsonotethatnicedisentangledrepresentationshavebeenachievedbeforesuchaswithdcignbykulkarnietalbuttheseapproachesrelyonadditionalsupervisionwhileourapproachisentirelyunsupervised">We also note that nice, disentangled representations have been achieved before (such as with <a href="https://arxiv.org/abs/1503.03167">DC-IGN</a> by Kulkarni et al.), but these approaches rely on additional supervision, while our approach is entirely unsupervised.</h2>
+<p>The next two recent projects are in a <a href="https://en.wikipedia.org/wiki/Reinforcement_learning">reinforcement learning</a> (RL) setting (another area of <a href="https://openai.com/blog/openai-gym-beta/">focus</a> at OpenAI), but they both involve a generative model component.</p>
+<p><a href="http://arxiv.org/abs/1605.09674"><strong>Curiosity-driven Exploration in Deep Reinforcement Learning via Bayesian Neural Networks</strong></a> (<a href="https://github.com/openai/vime">code</a>).
+ Efficient exploration in high-dimensional and continuous spaces is 
+presently an unsolved challenge in reinforcement learning. Without 
+effective exploration methods our agents <a href="http://karpathy.github.io/2016/05/31/rl/">thrash around</a>
+ until they randomly stumble into rewarding situations. This is 
+sufficient in many simple toy tasks but inadequate if we wish to apply 
+these algorithms to complex settings with high-dimensional action 
+spaces, as is common in robotics. In this paper, Rein Houthooft and 
+colleagues propose VIME, a practical approach to exploration using 
+uncertainty on generative models. VIME makes the agent self-motivated; 
+it actively seeks out surprising state-actions. We show that VIME can 
+improve a range of <a href="https://en.wikipedia.org/wiki/Reinforcement_learning#Direct_policy_search">policy search</a>
+ methods and makes significant progress on more realistic tasks with 
+sparse rewards (e.g. scenarios in which the agent has to learn 
+locomotion primitives without any guidance).</p>
+<div class="PhotoGrid">
+<figure>
+<p><img src="Generative%20Models_files/policy_search_1.gif" alt=""></p>
+<figcaption>Policy trained with VIME</figcaption>
+</figure>
+<figure>
+<p><img src="Generative%20Models_files/policy_search_2.gif" alt=""></p>
+<figcaption>Policy trained with naive exploration</figcaption>
+</figure>
+</div>
+<p>Finally, we would like to include a bonus fifth project: <a href="http://arxiv.org/abs/1606.03476"><strong>Generative Adversarial Imitation Learning</strong></a> (<a href="https://github.com/openai/imitation">code</a>), in which Jonathan Ho and colleagues present a new approach for <em>imitation learning</em>.
+ Jonathan Ho is joining us at OpenAI as a summer intern. He did most of 
+this work at Stanford but we include it here as a related and highly 
+creative application of GANs to RL. The standard reinforcement learning 
+setting usually requires one to design a reward function that describes 
+the desired behavior of the agent. However, in practice this can 
+sometimes involve expensive trial-and-error process to get the details 
+right. In contrast, in imitation learning the agent learns from example 
+demonstrations (for example provided by teleoperation in robotics), 
+eliminating the need to design a reward function.</p>
+<div class="PhotoGrid">
+<figure>
+<p><img src="Generative%20Models_files/running_human.gif" alt=""></p>
+</figure>
+<figure>
+<p><img src="Generative%20Models_files/running_bug.gif" alt=""></p>
+</figure>
+</div>
+<p>Popular imitation approaches involve a two-stage pipeline: first 
+learning a reward function, then running RL on that reward. Such a 
+pipeline can be slow, and because it’s indirect, it is hard to guarantee
+ that the resulting policy works well. This work shows how one can 
+directly extract policies from data via a connection to GANs. As a 
+result, this approach can be used to learn policies from expert 
+demonstrations (without rewards) on hard <a href="https://gym.openai.com/">OpenAI Gym</a> environments, such as <a href="https://gym.openai.com/envs/Ant-v1">Ant</a> and <a href="https://gym.openai.com/envs/Humanoid-v1">Humanoid</a>.</p>
+<hr>
+<h2 id="going-forward">Going forward</h2>
+<p>Generative models are a rapidly advancing area of research. As we 
+continue to advance these models and scale up the training and the 
+datasets, we can expect to eventually generate samples that depict 
+entirely plausible images or videos. This may by itself find use in 
+multiple applications, such as on-demand generated art, or Photoshop++ 
+commands such as “make my smile wider”. Additional presently known 
+applications include <a href="https://math.berkeley.edu/~sethian/2006/Applications/ImageProcessing/noiseremoval.html">image denoising</a>, <a href="https://en.wikipedia.org/wiki/Inpainting">inpainting</a>, <a href="https://en.wikipedia.org/wiki/Super-resolution_imaging">super-resolution</a>, <a href="https://en.wikipedia.org/wiki/Structured_prediction">structured prediction</a>, <a href="https://en.wikipedia.org/wiki/Reinforcement_learning#Exploration">exploration</a> in reinforcement learning, and neural network <a href="http://image.diku.dk/shark/sphinx_pages/build/html/rest_sources/tutorials/algorithms/deep_denoising_autoencoder_network.html">pretraining</a> in cases where labeled data is expensive.</p>
+<p>However, the deeper promise of this work is that, in the process of 
+training generative models, we will endow the computer with an 
+understanding of the world and what it is made up of.</p>
+</section></article></div>
+
+    
+
+    
+
+    <script type="text/x-mathjax-config;executed=true">
+      MathJax.Hub.Config({
+        messageStyle: "none"
+      });
+    </script>
+    <script src="Generative%20Models_files/MathJax.js" id="">
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <footer class="PostFooter">
+
+  <div class="PostFooter-authors">
+    <span class="PostFooter-authors--label">By</span>             <a href="https://blog.openai.com/tag/andrej-karpathy/" title="Andrej Karpathy" class="tag tag-59c2c23a1b5ef5001987046a andrej-karpathy">
+          Andrej Karpathy</a>, 
+        <a href="https://blog.openai.com/tag/pieter-abbeel/" title="Pieter Abbeel" class="tag tag-59c2c23a1b5ef5001987046b pieter-abbeel">
+          Pieter Abbeel</a>, 
+        <a href="https://blog.openai.com/tag/greg-brockman/" title="Greg Brockman" class="tag tag-59c2c2391b5ef5001987044a greg-brockman">
+          Greg Brockman</a>, 
+        <a href="https://blog.openai.com/tag/peter-chen/" title="Peter Chen" class="tag tag-59c2c23a1b5ef5001987046c peter-chen">
+          Peter Chen</a>, 
+        <a href="https://blog.openai.com/tag/vicki-cheung/" title="Vicki Cheung" class="tag tag-59c2c2391b5ef50019870453 vicki-cheung">
+          Vicki Cheung</a>, 
+        <a href="https://blog.openai.com/tag/rocky-duan/" title="Rocky Duan" class="tag tag-59c2c23a1b5ef5001987046d rocky-duan">
+          Rocky Duan</a>, 
+        <a href="https://blog.openai.com/tag/ian-goodfellow/" title="Ian GoodFellow" class="tag tag-59c2c2391b5ef50019870452 ian-goodfellow">
+          Ian GoodFellow</a>, 
+        <a href="https://blog.openai.com/tag/durk-kingma/" title="Durk Kingma" class="tag tag-59c2c23a1b5ef5001987046e durk-kingma">
+          Durk Kingma</a>, 
+        <a href="https://blog.openai.com/tag/jonathan-ho/" title="Jonathan Ho" class="tag tag-59c2c23a1b5ef5001987046f jonathan-ho">
+          Jonathan Ho</a>, 
+        <a href="https://blog.openai.com/tag/rein-houthooft/" title="Rein Houthooft" class="tag tag-59c2c23a1b5ef50019870470 rein-houthooft">
+          Rein Houthooft</a>, 
+        <a href="https://blog.openai.com/tag/tim-salimans/" title="Tim Salimans" class="tag tag-59c2c23a1b5ef50019870471 tim-salimans">
+          Tim Salimans</a>, 
+        <a href="https://blog.openai.com/tag/john-schulman/" title="John Schulman" class="tag tag-59c2c2391b5ef50019870450 john-schulman">
+          John Schulman</a>, 
+        <a href="https://blog.openai.com/tag/ilya-sutskever/" title="Ilya Sutskever" class="tag tag-59c2c2391b5ef5001987044f ilya-sutskever">
+          Ilya Sutskever</a> &amp; 
+        <a href="https://blog.openai.com/tag/wojciech-zaremba/" title="Wojciech Zaremba" class="tag tag-59c2c23a1b5ef50019870472 wojciech-zaremba">
+          Wojciech Zaremba</a>.
+
+  </div>
+
+  <section class="PostFooter-social">
+    <a class="SocialButton
+              SocialButton--twitter" href="https://twitter.com/intent/tweet?text=Generative%20Models&amp;url=https://blog.openai.com/generative-models/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      Tweet
+    </a>
+    <a class="SocialButton
+              SocialButton--facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.openai.com/generative-models/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      Share
+    </a>
+    <!--<a class="icon-google-plus" href="https://plus.google.com/share?url=https://blog.openai.com/generative-models/"
+        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+    </a>-->
+  </section>
+
+
+</footer>  
+
+
+<section class="MorePosts">
+
+  <header class="Shared-SectionHeader">
+    <h1>Keep reading</h1>
+    <div class="Shared-SectionHeader-linkWrap">
+      <a class="Shared-SectionHeader-Link" href="https://blog.openai.com/">More</a>
+    </div>
+  </header>
+
+  <div class="PostList-container">
+    <div class="PostList
+                PostList--cardify">
+
+              <article class="Shared-Card post tag-matthias-plappert tag-marcin-andrychowicz tag-alex-ray tag-bob-mcgrew tag-bowen-baker tag-glenn-powell tag-jonas-schneider tag-josh-tobin tag-maciek-chociej tag-peter-welinder tag-vikash-kumar tag-wojciech-zaremba tag-hash-ingredients-for-robotics-research tag-hash-robots-that-learn tag-hash-research-release-post tag-hash-research-release-no-11" id="ingredients-for-robotics-research">
+        <a class="Shared-Card-anchor" href="https://blog.openai.com/ingredients-for-robotics-research/">
+
+          <span class="Shared-Card-background">
+            <span class="Shared-Card-background-inner">
+
+
+              <svg class="icon" width="100%" height="100%" viewBox="0 0 330 418">
+              </svg>
+
+            </span>
+          </span>
+
+          <span class="Shared-Card-inner">
+            <h2 class="Shared-Card-title">
+                      Ingredients for<br>
+                      Robotics Research
+            </h2>
+
+
+              <span class="Shared-Card-coverContainer">
+                <span class="Shared-Card-coverContainer-inner">
+                  <span class="Shared-Card-coverContainer-meta">
+                    <time datetime="2018-02-26">
+                      <span class="Shared-card-coverContainer-meta-date">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        No. 11
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+
+                      </span>
+                      <span class="Shared-card-coverContainer-meta-date">Feb 26</span>
+                      <span class="Shared-card-coverContainer-meta-date">2018</span>
+                    </time>
+                  </span>
+
+                  <div class="Shared-Card-coverContainer-cover" data-parallax-z-index="1">
+                    <img src="Generative%20Models_files/1x-no-mark_002.jpg" srcset="https://d4mucfpksywv.cloudfront.net/research-covers/ingredients-for-robotics-research/1x-no-mark.jpg 1x,
+            https://d4mucfpksywv.cloudfront.net/research-covers/ingredients-for-robotics-research/2x-no-mark.jpg 2x" alt="Ingredients for Robotics Research">
+                    <span class="Shared-Card-glare"></span>
+                  </div>
+                </span>
+              </span>
+
+
+
+
+
+          </span>
+        </a>
+     </article>
+              <article class="Shared-Card post tag-parnian-barekatain tag-greg-brockman tag-hash-events tag-hash-design-card-slate-dark" id="hackathon">
+        <a class="Shared-Card-anchor" href="https://blog.openai.com/hackathon/">
+
+          <span class="Shared-Card-background">
+              <span class="Shared-Card-glare"></span>
+            <span class="Shared-Card-background-inner">
+
+
+              <svg class="icon" width="100%" height="100%" viewBox="0 0 330 418">
+                    <use class="background-shape" xlink:href="#triangle" x="0" y="0"></use>
+                            </svg>
+
+            </span>
+          </span>
+
+          <span class="Shared-Card-inner">
+            <h2 class="Shared-Card-title">
+                OpenAI Hackathon
+            </h2>
+
+
+
+
+                <span class="Shared-Card-iconContainer">
+                  <span class="Shared-Card-iconCSS">
+                    <span class="Shared-Card-iconCSS-img
+                                
+                                
+                                
+                                
+                                Shared-Card-iconCSS-img--events"></span>
+                  </span>
+                </span>
+
+              
+
+              <span class="Shared-Card-meta">
+                <span class="Shared-Card-meta-category"></span>
+                <span class="Shared-Card-meta-date">
+                  <time datetime="2018-02-22">Feb 22, 2018</time>
+                </span>
+              </span>
+
+            
+
+
+          </span>
+        </a>
+     </article>
+              <article class="Shared-Card post tag-openai tag-hash-updates tag-hash-design-card-slate-light" id="openai-supporters">
+        <a class="Shared-Card-anchor" href="https://blog.openai.com/openai-supporters/">
+
+          <span class="Shared-Card-background">
+              <span class="Shared-Card-glare"></span>
+            <span class="Shared-Card-background-inner">
+
+
+              <svg class="icon" width="100%" height="100%" viewBox="0 0 330 418">
+                    <use class="background-shape" xlink:href="#circle" x="0" y="0"></use>
+              </svg>
+
+            </span>
+          </span>
+
+          <span class="Shared-Card-inner">
+            <h2 class="Shared-Card-title">
+                OpenAI Supporters
+            </h2>
+
+
+
+
+                <span class="Shared-Card-iconContainer">
+                  <span class="Shared-Card-iconCSS">
+                    <span class="Shared-Card-iconCSS-img
+                                Shared-Card-iconCSS-img--updates
+                                
+                                
+                                
+                                "></span>
+                  </span>
+                </span>
+
+              
+
+              <span class="Shared-Card-meta">
+                <span class="Shared-Card-meta-category"></span>
+                <span class="Shared-Card-meta-date">
+                  <time datetime="2018-02-20">Feb 20, 2018</time>
+                </span>
+              </span>
+
+            
+
+
+          </span>
+        </a>
+     </article>
+
+    </div>
+  </div>
+</section>
+
+    
+
+    <footer class="Shared-Footer">
+
+  <div class="Shared-Footer-linksContainer">
+
+    <div class="container-fluid">
+<!--      
+        <div class="row">
+          <div class="col-xs-9
+                      col-sm-6">-->
+
+        <div class="Shared-Footer-wrap">
+
+            <ul class="Shared-Footer-list">
+
+              <li class="">
+                <a class="Shared-Footer-link
+                          Shared-Footer-link--listLink" href="https://openai.com/research/">Research</a>
+              </li>
+
+              <li class="">
+                <a class="Shared-Footer-link
+                          Shared-Footer-link--listLink" href="https://openai.com/systems/">Systems</a>
+              </li>
+
+              <li class="Shared-Footer-separated-x">
+                <a class="Shared-Footer-link
+                          Shared-Footer-link--listLink" href="https://openai.com/about/">About</a>
+              </li>
+              <li class="">
+                <a class="Shared-Footer-link
+                          Shared-Footer-link--listLink" href="https://blog.openai.com/">Blog</a>
+              </li>
+              <li class="">
+                <a class="Shared-Footer-link
+                          Shared-Footer-link--listLink" href="https://openai.com/jobs/">Jobs</a>
+              </li>
+            </ul>
+
+          <!--</div>
+
+          <div class="col-xs-3
+                      col-sm-6">-->
+            <section class="Shared-Footer-social">  
+              <a class="Shared-Footer-link
+                        Shared-Footer-link--image
+                        Shared-Footer-link--twitter" href="https://twitter.com/openai">Twitter</a>
+              <a class="Shared-Footer-link
+                        Shared-Footer-link--image
+                        Shared-Footer-link--facebook" href="https://www.facebook.com/openai.research">Facebook</a>
+            </section>
+          <!--</div>
+
+        </div>-->
+
+        </div>
+
+    </div>
+      
+  </div><!-- ./Shared-Footer-linksContainer -->
+</footer><!-- ./Shared-Footer -->
+  </main>
+
+  
+  <script type="text/javascript" src="Generative%20Models_files/app.js"></script>
+
+
+
+<svg width="0" height="0" viewBox="0 0 330 418" style="visibility:hidden;width:0;height:0;display:block;">
+  
+  <filter id="f1" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="30"></feGaussianBlur>
+  </filter>
+
+  <defs>
+    <linearGradient id="blue">
+      <stop offset="0" stop-color="rgb(94,33,217)"></stop>
+      <stop offset="1" stop-color="rgb(18,165,226)"></stop>
+    </linearGradient>
+    <linearGradient id="blue_green">
+      <stop offset="0" stop-color="rgb(47,134,215)"></stop>
+      <stop offset="1" stop-color="rgb(28,245,186)"></stop>
+    </linearGradient>
+    <linearGradient id="cyan">
+      <stop offset="0" stop-color="rgb(64,100,216)"></stop>
+      <stop offset="1" stop-color="rgb(74,216,221)"></stop>
+    </linearGradient>
+    <linearGradient id="purple">
+      <stop offset="0" stop-color="rgb(90,64,216)"></stop>
+      <stop offset="1" stop-color="rgb(216,74,221)"></stop>
+    </linearGradient>
+    <linearGradient id="red">
+      <stop offset="0" stop-color="rgb(183,24,102)"></stop>
+      <stop offset="1" stop-color="rgb(235,52,52)"></stop>
+    </linearGradient>
+    <linearGradient id="orange">
+      <stop offset="0" stop-color="rgb(211,56,56)"></stop>
+      <stop offset="1" stop-color="rgb(242,153,38)"></stop>
+    </linearGradient>
+    <linearGradient id="yellow">
+      <stop offset="0" stop-color="rgb(232,91,6)"></stop>
+      <stop offset="1" stop-color="rgb(229,231,42)"></stop>
+    </linearGradient>
+    <linearGradient id="green">
+      <stop offset="0" stop-color="rgb(13,163,130)"></stop>
+      <stop offset="1" stop-color="rgb(103,228,78)"></stop>
+    </linearGradient>
+    <linearGradient id="black">
+      <stop offset="0" stop-color="rgb(0,0,0)"></stop>
+      <stop offset="1" stop-color="rgb(38,38,38)"></stop>
+    </linearGradient>
+    <linearGradient id="slate-dark">
+      <stop offset="0" stop-color="rgb(34,34,34)"></stop>
+      <stop offset="1" stop-color="rgb(69,69,77)"></stop>
+    </linearGradient>
+    <linearGradient id="slate-mid">
+      <stop offset="0" stop-color="rgb(59,62,76)"></stop>
+      <stop offset="1" stop-color="rgb(102,102,120)"></stop>
+    </linearGradient>
+    <linearGradient id="slate-light">
+      <stop offset="0" stop-color="rgb(137,137,155)"></stop>
+      <stop offset="1" stop-color="rgb(181,181,196)"></stop>
+    </linearGradient>
+
+
+    <!-- Outer shape -->
+    <symbol id="outer">
+      <path d="M268.7 12c-10.16-4.21-26.79-4.21-37 0l-137 56.74C84.61 73 72.85 84.71 68.64 94.87l-56.74 137c-4.21 10.16-4.21 26.79 0 37l56.74 137c4.21 10.16 16 21.92 26.13 26.13l137 56.74c10.16 4.21 26.79 4.21 37 0l137-56.74c10.16-4.21 21.92-16 26.13-26.13l56.74-137c4.21-10.16 4.21-26.79 0-37l-56.74-137c-4.21-10.16-16-21.92-26.13-26.13z"></path>
+    </symbol>
+
+    <!-- Inner shape -->
+    <symbol id="inner">
+      <path d="M250.22 56.28l-137.2 56.84-56.84 137.21 56.84 137.21 137.21 56.83 137.2-56.84 56.84-137.21-56.84-137.2-137.21-56.84z"></path>
+    </symbol>
+
+    <mask id="outerMask" maskUnits="userSpaceOnUse" x="0" y="0" width="500" height="500">
+      <rect x="0" y="0" width="500" height="500" fill="white"></rect>
+      <use filter="url(#f1)" xlink:href="#outer"></use>
+    </mask>
+
+    <mask id="outlineMask" maskUnits="userSpaceOnUse" x="0" y="0" width="500" height="500">
+      <use fill="white" xlink:href="#outer"></use>
+      <use fill="black" xlink:href="#inner"></use>
+    </mask>
+
+  </defs>
+  <symbol id="circle">
+    <path class="cls-1" d="M46.633,169.834A171,171,0,1,1-162.8,290.749,171,171,0,0,1,46.633,169.834Z"></path>
+    <circle class="cls-2" cx="250.625" cy="98.984" r="171.063"></circle>
+  </symbol>
+  <symbol id="hexagon">
+    <path d="M103.728-104.851a20.335,20.335,0,0,0-13.505,0L-16.926-60.458a20.338,20.338,0,0,0-9.549,9.55L-70.851,56.249a20.338,20.338,0,0,0,0,13.506L-26.458,176.9a20.343,20.343,0,0,0,9.551,9.55L90.249,230.828a20.336,20.336,0,0,0,13.505,0L210.9,186.435a20.337,20.337,0,0,0,9.549-9.55L264.828,69.729a20.336,20.336,0,0,0,0-13.505L220.435-50.926a20.337,20.337,0,0,0-9.551-9.549Z"></path>
+    <path d="M186.713,201.118a20.332,20.332,0,0,0-13.506,0l-107.16,44.4a20.342,20.342,0,0,0-9.55,9.551L12.117,362.232a20.341,20.341,0,0,0,0,13.507L56.515,482.9a20.335,20.335,0,0,0,9.551,9.55l107.166,44.38a20.334,20.334,0,0,0,13.507,0l107.159-44.4a20.339,20.339,0,0,0,9.55-9.552l44.38-107.166a20.338,20.338,0,0,0,0-13.506l-44.4-107.16a20.343,20.343,0,0,0-9.552-9.55Z"></path>
+  </symbol>
+  <symbol id="square">
+    <path d="M184.988,276.989a14.03,14.03,0,0,1,0,19.774L38.917,442.917a14.011,14.011,0,0,1-19.762,0L-126.916,296.762a14.027,14.027,0,0,1,0-19.773L19.155,130.835a14.009,14.009,0,0,1,19.762,0Z" transform="translate(0 -47)"></path>
+    <path d="M464.677,206.029a14.843,14.843,0,0,1,0,20.932L309.948,381.673a14.846,14.846,0,0,1-20.933,0L134.286,226.96a14.844,14.844,0,0,1,0-20.931L289.015,51.317a14.847,14.847,0,0,1,20.934,0Z" transform="translate(0 -47)"></path>
+  </symbol>
+  <symbol id="triangle">
+    <path d="M71.037-26.913c-4.7-8.144-12.378-8.144-17.074,0L-130,292.192c-4.695,8.144-.854,14.808,8.537,14.808H246.462c9.391,0,13.232-6.664,8.537-14.808Z"></path>
+    <path d="M305-.476C299.5-10,290.5-10,285-.476L69.5,372.683C64,382.208,68.5,390,79.5,390h431c11,0,15.5-7.792,10-17.317Z"></path>
+  </symbol>
+
+
+  <symbol id="hexagon-icon">
+    <g mask="url(#outlineMask)">
+      <rect mask="url(#outerMask)" x="-50%" y="-50%" width="200%" height="200%" fill="black"></rect>
+      <rect mask="url(#outerMask)" x="-50%" y="-50%" width="200%" height="200%" fill="black"></rect>
+      <rect mask="url(#outerMask)" x="-50%" y="-50%" width="200%" height="200%" fill="black"></rect>
+    </g>
+  </symbol>
+</svg>
+
+
+
+  <!-- Segment snippet -->
+  <script type="text/javascript">
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
+    analytics.load("6gG9RqmGss3RlZ1wdayfXrkImRHAx0hE");
+    analytics.page("Blog", "Generative Models");
+    }}();
+  </script>
+
+
+
+</body></html>
